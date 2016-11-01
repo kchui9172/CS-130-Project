@@ -11,7 +11,7 @@ class TodoList extends React.Component {
       	}
    		
    		this.addItem = this.addItem.bind(this);
-   		this.handleRemove = this.handleRemove.bind(this);
+   		//this.handleRemove = this.handleRemove.bind(this);
 
       //this.setStateHandler = this.setStateHandler.bind(this);
       //this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
@@ -21,11 +21,15 @@ class TodoList extends React.Component {
 	addItem(e){
 		var itemArray = this.state.items;
 		//itemArray.push(this._inputElement.value);
-		itemArray.push({
+        if (this._inputElement.value == ""){ //if empty, don't create note
+            e.preventDefault();
+            return;
+        }
+		itemArray.unshift({ //newest message at top
 			text: this._inputElement.value,
-			time: Date.now(),
-			//later add functionality of user that added this message
-			key: this.generateId()}
+			time: this.generateDate(),
+            user: "Kristen", //replace with user's name 
+			key: this.generateId()} //should replace this with apartment id 
 			);
 		
 		this.setState({items: itemArray});
@@ -37,15 +41,30 @@ class TodoList extends React.Component {
 		return Math.floor(Math.random() * 90000) + 10000;
 	}
 
+	generateDate(){
+		var date = new Date();
+		var year = date.getUTCFullYear();
+		var month = date.getUTCMonth();
+		var day = date.getUTCDate();
+		//month 2 digits
+		month = ("0" + (month + 1)).slice(-2);
+
+		//year 2 digits
+		year = year.toString().substr(2,2);
+
+		var formattedDate = month + '/' + day + "/" + year;
+		return formattedDate;
+	}
+
 	
-	handleRemove(key){
+	/*handleRemove(key){
 		var itemArray = this.state.items;
 		itemArray = itemArray.filter(function (el){
 			return el.key !== key;
         }
 		)
 		this.setState({items: itemArray});
-	}
+	}*/
 	
 	render(){
 		return (
@@ -57,9 +76,10 @@ class TodoList extends React.Component {
 						</input>
 						<button type="submit">+</button>
 					</form>
-				</div>            
-                        
-				<ToDoItem entries={this.state.items} removeNode={this.handleRemove}/>
+				</div>
+                <div class="items">
+				    <ToDoItem entries={this.state.items}/>
+                </div>
 			</div>
 		);
 	}
@@ -68,3 +88,4 @@ class TodoList extends React.Component {
 
 export default TodoList;
 
+//removeNode={this.handleRemove}

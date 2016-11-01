@@ -6,23 +6,23 @@ class ToDoItem extends React.Component {
   constructor(props) { 
     super(props);
       
-    this.removeNode = this.removeNode.bind(this);
+    //this.removeNode = this.removeNode.bind(this);
   };
 
-  removeNode(key){
+  /*removeNode(key){
     e.preventDefault();
     this.props.removeNode(key);
-  }
+  }*/
 
   render(){
     var todoEntries = this.props.entries;
     function createTasks(item){
       return (
         <li key={item.key}>
-          {item.text}
-          <div className="pull-right" role="group">
-            <button type="button" className="btn btn-xs btn-danger img-circle">X</button>
-          </div>
+            {item.text}
+            <div className="poster">
+                {item.user} - {item.time}
+            </div>
         </li> 
         );
     }
@@ -38,3 +38,9 @@ class ToDoItem extends React.Component {
 export default ToDoItem;
 
 //onClick={this.removeNode}
+
+/*
+          <div className="pull-right" role="group">
+            <button type="button" className="btn btn-xs btn-danger img-circle">X</button>
+          </div>
+*/
