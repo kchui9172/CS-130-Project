@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CartItem from './cartItem.js';
+import Login from './components/Login'
 
 const order = {
     title: 'Fresh fruits package',
@@ -12,4 +13,9 @@ const order = {
 ReactDOM.render(
     <CartItem title={order.title} image={order.image} initialQty={order.initialQty} price={order.price}/>,
     document.querySelector('.root')
+);
+
+ReactDOM.render(
+    <Login/>,
+    document.querySelector('.root1')
 );
