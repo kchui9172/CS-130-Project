@@ -1,134 +1,23 @@
 <!DOCTYPE html>
-<html lang = "en">
-
-	<head>
-		<meta charset = "UTF-8">
-		<title>React App</title>
-
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	</head>
-
-	<body>
-    <!--<div id = "todobox"></div>
-    <script src ="index.js"</script>-->
-
-		<div class="row">
-			<div class="col-sm-4">
-				<h1> Groceries </h1>
-				<div id = "list1"></div>
-			</div>
-			<div class="col-sm-4">
-				<h1> Meetings </h1>
-		  		<div id = "list2"></div>
-		  	</div>
-		  	<div class="col-sm-4">
-		  		<h1> Misc </h1>
-		  		<div id="list3"></div> 
-		  	</div>
-		</div>
-
-		<div id="todoBox"></div>
-	  <script src = "index.js"></script>
-	</body>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>React and ES6 Part 6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
+</head>
+<body>
+<nav class="top-bar" data-topbar role="navigation">
+    <section class="top-bar-section">
+        <ul class="left">
+            <li class="active">
+                <a href="http://egorsmirnov.me/2016/04/11/react-and-es6-part6.html" target="_blank">
+                    Blog post at egorsmirnov.me: React and ES6 - Part 6, React and ES6 Workflow with Webpack
+                </a>
+            </li>
+        </ul>
+    </section>
+</nav>
+<div class="root"></div>
+<script src="/dist/bundle.js"></script>
+</body>
 </html>
-
-<!--
-Things to add:
-- functionality of removing note
-- ways to keep track of who added note
-- center titles
-- somehow store in backend?
-- make like trello board?
-- add most recent items to top of the list (not bottom) - depend on order add to array
-- double click means can edit? (better just to have remove option
-- allow generation of new lists
--->
-
-
-<!--<!DOCTYPE html>
-<html lang="en" data-framework="react">
-	<head>
-			<title> To do List </title>
-			<script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
-  			<script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-			<link rel="stylesheet" href="style.css">
-	</head>
-	<body>
-  		<div id="container"></div>
-  		
-  		<script type="text/babel">	
-  			var destination = document.querySelector("#container");
-
-  			var ToDoItem = React.createClass({
-  				render: function (){
-  					var todoEntries = this.props.entries;
-
-  					function createTasks(item){
-  						return <li key={item.key}>{item.text}</li>
-  					}
-  					var listItems = todoEntries.map(createTasks); //map iterates over every entry in todoEntries and applies createTasks function
-
-  					return(
-  						<ul className="theList">
-  							{listItems}
-  						</ul>
-  					);
-  				}
-  			});
-
-  			var TodoList = React.createClass({
-  				getInitialState: function(){
-  					return {
-  						items : [] //can access via this.state.items anywhere from inside this component 
-  					};
-  				},
-
-  				addItem : function(e){
-  					var itemArray = this.state.items;
-  					itemArray.push(
-  						{
-  							text: this._inputElement.value,
-  							key: Date.now()
-  						}
-  					);
-
-  					this.setState({
-  						items: itemArray
-  					});
-
-  					this._inputElement.value = "";
-  					e.preventDefault(); //to override default onSubmit event; stop default POST behavior
-  				},
-
-				//onSubmit= affects anything with type="submit", event = onSubmit, event handler = addItem
-				//entries = declare ToDoItem component and pass items state as prop
-  				render: function(){
-  					return (
-  						<div className="todoMain">
-  							<div className="header">
-  								<form onSubmit={this.addItem}> 
-  									<input ref={(a) => this._inputElement = a} //inputElement property stores reference to input element
-  										placeholder="Enter note">
-  									</input>
-  									<button type="submit">+</button>
-  								</form>
-  							</div>
-  							<ToDoItem entries={this.state.items}/> 
-  						</div>
-  					);
-  				}
-  			});
-
-
-  			ReactDOM.render(
-  				<div>
-  					<TodoList/>
-  				</div>,
-  				destination);
-  		</script>
-	</body>
-</html>-->
