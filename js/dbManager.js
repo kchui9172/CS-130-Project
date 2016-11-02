@@ -1,5 +1,4 @@
 var firebase = require("firebase");
-import React from 'react';
 
 // Firebase API Credentials
 var config = {
