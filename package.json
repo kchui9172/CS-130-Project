@@ -6,13 +6,25 @@
   "scripts": {
     "start": "webpack-dev-server --hot"
   },
-  "author": "",
+  "author": "Rockmates",
   "license": "ISC",
   "dependencies": {
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.6",
     "react-dom": "^15.3.2",
-    "webpack": "^1.13.2",
+    "react-router": "^3.0.0",
+    "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kchui9172/CS-130-Project.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "bugs": {
+    "url": "https://github.com/kchui9172/CS-130-Project/issues"
+  },
+  "homepage": "https://github.com/kchui9172/CS-130-Project"
 }
