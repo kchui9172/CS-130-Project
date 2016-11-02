@@ -1,14 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import App from './App.jsx';
 import TodoList from './TodoList.jsx';
 import ToDoItem from './ToDoItem.jsx';
-//import TodoBox from './TodoBox.jsx';
+import Messages from './messages.jsx';
+import HomePage from './HomePage.jsx';
+import Navigation from './Nav.jsx';
+import Payments from './Payments.jsx';
+import Chores from './Chores.jsx';
+import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router';
 
-ReactDOM.render(<TodoList />, document.getElementById('list1'));
-ReactDOM.render(<TodoList />, document.getElementById('list2'));
-ReactDOM.render(<TodoList />, document.getElementById('list3'));
 
 
-//ReactDOM.render(<TodoBox />, document.getElementById('todobox'));
-//ReactDOM.render(<TodoItem />, document.getElementById('todoapp'));
+ReactDOM.render((
+   <Router history = {browserHistory}>
+      <Route path = "/" component = {Navigation}>
+         <IndexRoute component = {HomePage} />
+         <Route path = "home" component = {HomePage} />
+         <Route path = "messages" component = {Messages} />
+         <Route path = "payments" component = {Payments} />
+         <Route path = "chores" component = {Chores} />
+      </Route>
+   </Router>
+	
+), document.getElementById('nav'));
