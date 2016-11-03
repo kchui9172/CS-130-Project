@@ -24,7 +24,6 @@ export default class DBManager {
         if(!dbm_instance){
             dbm_instance = this;
             firebase.initializeApp(config);
-            this._database = firebase.database();
         }
         return dbm_instance;
     }
@@ -59,7 +58,7 @@ export default class DBManager {
     // email, password: string
     // return {exception_object}
     signUp(email, password) {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
             switch (error.code) {
                 case 'auth/email-already-in-use':
                     alert("Email is already in user.");
@@ -74,8 +73,11 @@ export default class DBManager {
     }
 
     // user = [...] User Object defined
-    // return {exception_object}
-    addUser(user) {}
+    // return UserID of user added
+    addUser(user) {
+        var data = JSON.stringify(user);
+        firebase.database().ref('users/' + user.getUserID()).set(data);
+    }
 
     // Default parameter ( user=user_cache.getID())
     // Otherwise look for new user
