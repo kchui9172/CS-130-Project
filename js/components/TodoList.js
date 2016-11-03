@@ -2,7 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ToDoItem from './ToDoItem.js';
 
+/**
+ * Represents a To-Do List.
+ *
+ * @class React.Component.TodoList
+ * @extends React.Component
+ */
 export default class TodoList extends React.Component {
+    /**
+     * Constructs a To-Do List.
+     *
+     * @method constructor
+     * @constructor
+     */
     constructor() {
         super();
 
@@ -37,10 +49,22 @@ export default class TodoList extends React.Component {
 	e.preventDefault();
     }
 
+    /**
+     * Generates an ID.
+     *
+     * @method generateID
+     * @return {int} - The generated ID
+     */
     generateId() {
         return Math.floor(Math.random() * 90000) + 10000;
     }
 
+    /**
+     * Generates a Date.
+     *
+     * @method generateDate
+     * @return {string} - The generated date
+     */
     generateDate() {
         var date = new Date();
 	var year = date.getUTCFullYear();
@@ -66,6 +90,11 @@ export default class TodoList extends React.Component {
 	this.setState({items: itemArray});
     }*/
 
+    /**
+     * Renders a To-Do Item.
+     *
+     * @method render
+     */
     render() {
 	return (
 	    <div className="todoMain">

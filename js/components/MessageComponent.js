@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom';
 import TodoList from './TodoList.js';
 import ToDoItem from './ToDoItem.js';
 
+/**
+ * Represents the Messages page.
+ *
+ * @class React.Component.Messages
+ * @extends React.Component
+ */
 export default class Messages extends React.Component{
+    /**
+     * Constructs the Messages page.
+     *
+     * @method constructor
+     * @constructor
+     */
     constructor() {
         super();
     };
 
+    /**
+     * Renders the Messages page
+     *
+     * @render
+     */
     render(){
         return (
             <TodoList/>

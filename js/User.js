@@ -1,10 +1,18 @@
+/**
+ * Represents a User.
+ *
+ * @class User
+ */
 export default class User {
     /**
-    * Represents a User
-    * @param {string} email - email of user
-    * @param {string} firstName - user's first name
-    * @param {string} lastName - user's last name
-    * @param {string} phoneNumber - user's phone number
+    * Constructs a User.
+    *
+    * @method constructor
+    * @constructor
+    * @param {string} email - The email of User
+    * @param {string} firstName - The first name of the User
+    * @param {string} lastName - The last name of the User
+    * @param {string} phoneNumber - The phone number of the User
     */
     constructor(email, firstName, lastName, phoneNumber) {
             this._userID = null;
@@ -18,7 +26,14 @@ export default class User {
             this._payments = new Array(0);
     }
 
-    // pass in JSON and return User
+    /**
+     * Creates a User from input JSON.
+     *
+     * @method JSONtoUser
+     * @static
+     * @param {string} - JSON representing a User
+     * @return {User} - The User represented by the JSOn
+     */
     static JSONtoUser(data) {
         var user = new User();
         var JSONObj = JSON.parse(data);
@@ -35,67 +50,98 @@ export default class User {
     }
 
     /**
-    * Returns user's name (first and last names) in string form
-    */
+     * Gets the name of the User (first and last names).
+     *
+     * @method getName
+     * @return {string} - The first and last names of the User
+     */
     getName() { return (this._firstName + ' ' + this._lastName); }
 
-    /**
-    * Return user's email in string form
-    */
+    /** 
+     * Gets the email of the User.
+     *
+     * @method getEmail
+     * @return {string} - The email of the User
+     */
     getEmail() { return this._email; }
 
-    /**
-    * Returns user's id in string form
-    */
+    /** 
+     * Gets the ID of the User.
+     *
+     * @method getUserID
+     * @return {string} - The User ID
+     */
     getUserID() { return this._userID; }
 
-    /**
-    * Returns apartment id in string form
-    */
+    /** 
+     * Gets the Apartment ID.
+     *
+     * @method getAptID
+     * @return {string} - The Apartment ID
+     */
     getAptID() { return this._aptID; }
 
     /**
-    * Returns array of message ids (each as string) associated with the user (messages created by user)
-    */
+     * Gets the message IDs associated with the User.
+     *
+     * @method getMessageIDs
+     * @return {array{string}} - The message IDs of the messages created by the User
+     */
     getMessageIDs() { return this._messages; }
 
     /**
-    * Return array of chore ids (each as string) belonging to user
-    */
+     * Gets the chore IDs associated with the User.
+     *
+     * @method getChoreIDs
+     * @return {array{string}} - The chore IDs of all chores associated with the User
+     */
     getChoreIDs() { return this._chores; }
 
-    /**
-    * Return array of payment ids (each as string) associated with user
-    */
+    /** 
+     * Gets the payment IDs associated with User.
+     *
+     * @method getPaymentIDs
+     * @return {array{string}} - The payment IDs of all payments associated with the User
+     */
     getPaymentIDs() { return this._payments; }
 
     /**
-    * Set user id
-    * @param {string} userID - value to set user's id to
-    */
+     * Sets the User ID.
+     *
+     * @method setUserID
+     * @param {string} userID - The new value of the User ID
+     */
     setUserID(userID) { this._userID = userID; }
 
-    /**
-    * Set apartment id
-    * @param {string} aptID - value to set user's apartment id to
-    */
+    /** 
+     * Sets the apartment ID.
+     *
+     * @method setAptID
+     * @param {string} aptID - The new value of the apartment ID
+     */
     setAptID(aptID) { this._aptID = aptID; }
 
-    /**
-    * Add message (via message id) to messages array
-    * @param {string} messageID - id associated with message to be added
-    */
+    /** 
+     * Add message to messages array.
+     *
+     * @method addMessage
+     * @param {string} messageID - The ID associated with message to be added
+     */
     addMessage(messageID) { this._messages.push(messageID); }
 
     /**
-    * Add chore (via chore id) to chores array
-    * @param {string} choreID - id associated with chore to be added
-    */
+     * Add chore to chores array.
+     *
+     * @method addChore
+     * @param {string} choreID - The ID associated with chore to be added
+     */
     addChore(choreID) { this._chores.push(choreID); }
 
-    /**
-    * Add payment (via payment id) to payments array
-    * @param {string} paymentID - id associated with payment to be added
-    */
+    /** 
+     * Add payment to payments array.
+     *
+     * @method addPayment
+     * @param {string} paymentID - The ID associated with payment to be added 
+     */
     addPayment(paymentID) { this._payments.push(paymentID); }
 }

@@ -9,7 +9,7 @@ var config = {
   messagingSenderId: "370968243217"
 };
 
-// Singleton Design Patter...We only want one
+// Singleton Design Pattern... We only want one
 // instance of DBManager
 let dbm_instance = null;
 
@@ -17,9 +17,19 @@ let dbm_instance = null;
 let user_cache = null; // User Object
 let apt_cache = null;  // Apt Object
 
-
 // Firebase Realtime checks before using cached version
+/**
+ * Represents a Database Manager.
+ *
+ * @class DBManager
+ */
 export default class DBManager {
+    /**
+     * Constructs a Database Manager.
+     *
+     * @method constructor
+     * @constructor
+     */
     constructor() {
         if(!dbm_instance){
             dbm_instance = this;
@@ -28,8 +38,14 @@ export default class DBManager {
         return dbm_instance;
     }
 
-    // email, password: string
-    // return {exception_object}
+    /**
+     * Attempts to sign a user in.
+     *
+     * @method signIn
+     * @param {string} email - The user's email
+     * @param {string} password - The user's password
+     * @throws {Error} - A possible authentication error
+     */
     signIn(email, password) {
         firebase.auth().signInWithEmailAndPassword(email, password)
         .catch(function(error) {
@@ -55,8 +71,14 @@ export default class DBManager {
         });
     }
 
-    // email, password: string
-    // return {exception_object}
+    /**
+     * Attempts to sign up a user.
+     *
+     * @method signUp
+     * @param {string} email - The user's email
+     * @param {string} password - The user's password
+     * @throws {Error} - A possible authentication error
+     */
     signUp(email, password) {
         return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
             switch (error.code) {
@@ -72,36 +94,76 @@ export default class DBManager {
         });
     }
 
-    // user = [...] User Object defined
-    // return UserID of user added
+    /**
+     * Adds a user to the database.
+     *
+     * @method addUser
+     * @param {User} - The User Object to be added
+     * @return {string} - The User ID of the added user
+     */
     addUser(user) {
         var data = JSON.stringify(user);
         firebase.database().ref('users/' + user.getUserID()).set(data);
     }
 
-    // Default parameter ( user=user_cache.getID())
-    // Otherwise look for new user
-    // return user_object
+    /**
+     * Gets the user.
+     *
+     * @method getUser
+     * @param {string} [user=user_cache.getID()] - The user ID
+     * @return {User} - The corresponding User
+     */
     getUser(user=user_cache.getID()) {}
 
-    // apartment = [...]
-    // return {exception_object}
+    /**
+     * Adds an apartment.
+     * 
+     * @method addApartment
+     * @param {Apartment} apartment - The apartment to be added
+     * @throws {Error} - Possible failure to add Apartment
+     */
     addApartment(apartment) {}
 
-    // return apartment_object
-    getApt() {}
+    /**
+     * Gets an apartment.
+     *
+     * @method getApt
+     * @param {string} apartment - The apartment ID
+     * @return {Apartment} - The corresponding Apartment
+     */
+    getApt(apartment) {}
 
-    // chore = [...]
-    // return {exception_object}
+    /**
+     * Adds a chore.
+     *
+     * @method addChore
+     * @param {Chore} chore - The chore to be added.
+     * @throws {Error} - Possible failure to add Chore
+     */
     addChore(chore) {}
 
-    // return chore array
+    /**
+     * Gets all chores.
+     *
+     * @method getChores
+     * @returns {Array{Chores}}
+     */
     getChores() {}
 
-    // message = [...]
-    // return {exception_object}
+    /**
+     * Adds a message.
+     *
+     * @method addMessage
+     * @param {Message} message - The message to be added.
+     * @throws {Exception} - Possible failure to add Message
+     */
     addMessage(message) {}
 
-    // return message array
+    /**
+     * Gets all messages.
+     *
+     * @method getMessages
+     * @returns {Array{Message}}
+     */
     getMessages() {}
 }

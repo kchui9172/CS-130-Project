@@ -23,14 +23,14 @@
     "react-tap-event-plugin": "^1.0.0",
     "webpack": "^1.13.3",
     "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.1"
+    "webpack-hot-middleware": "^2.13.1",
+    "yuidocjs": "^0.10.2"
   },
   "dependencies": {
     "firebase": "^3.5.3",
     "material-ui": "^0.16.1",
     "react": "^15.3.2",
     "react-cellblock": "^2.0.0",
-
     "react-dom": "^15.3.2",
     "react-motion": "^0.4.5",
     "react-swipeable-views": "^0.8.0",

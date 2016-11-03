@@ -1,10 +1,17 @@
+/**
+ * Represents and contains information about an Apartment.
+ *
+ * @class Apartment
+ */
 export default class Apartment {
 
     /**
-    * Represents an aparment
-    * @param {string} address - address of aparment
-    * @constructor
-    */
+     * Constructs an Apartment.
+     *
+     * @method constructor
+     * @param {string} address - Address of the Apartment
+     * @constructor
+     */
     constructor (address) {
         this._aptID = null;
         this._tenants = new Array(0);
@@ -13,38 +20,51 @@ export default class Apartment {
     }
 
     /**
-    * Returns apartment id in string form
-    */
+     * Gets the Apartment ID.
+     *
+     * @method getAptID
+     * @return {string} - The Apartment ID
+     */
     getAptID() {
         return this._aptID;
     }
 
     /**
-    * Returns apartment's address in string form
-    */
+     * Gets the address of the Apartment.
+     *
+     * @method getAddress
+     * @return {string} - The Apartment address
+     */
     getAddress() {
         return this._address;
     }
 
     /**
-    * Return arrays of tenants' ids each in string form 
-    */
+     * Gets the tenants of the Apartment.
+     *
+     * @method getTenantIDs
+     * @return {Array{string}}
+     */
     getTenantIDs() {
         return this._tenants;
     }
 
     /**
-    * Sets apartment's id
-    * @param {string} aptId 
-    */ 
+     * Sets the Apartment ID.
+     *
+     * @method setAptID
+     * @param {string} aptId - The new Apartment ID
+     */ 
     setAptID(aptID) {
         this._aptID = aptID;
     }
 
     /** 
-    * Adds tenant to apartment
-    * @param {string} tenant
-    */
+     * Adds a tenant to the Apartment.
+     *
+     * @method addTenant
+     * @param {string} tenant - The new tenant's ID
+     */
     addTenant(tenant) {
         this._tenants.push(tenant);
     }

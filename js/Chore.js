@@ -1,10 +1,21 @@
+/**
+ * Represents a Chore.
+ *
+ * @class Chore
+ */
 export default class Chore {
-    // cateogry, details: string
-    // createdBy: (UserID) string
-    // deadline: date obj?
+    /**
+     * Constructs a Chore.
+     *
+     * @constructor
+     * @method constructor
+     * @param {string} category - The category of the Chore.
+     * @param {Date} deadline - The deadline of the Chore.
+     * @param {string} details - Additional details of the Chore.
+     */
     constructor(category, deadline, details) {
         this._choreID = null;
-        this._cateogry = cateogry;
+        this._category = category;
         this._createdBy = getUser().getUserID();
         this._deadline = deadline;
         this._details = details;
@@ -14,30 +25,90 @@ export default class Chore {
         this.AptID = getUser().getAptID();
     }
 
-    // userID: string
-    addAssignment(userID) { this._assignedTo = userID; }
+    /**
+     * Sets a user assignment to the Chore.
+     *
+     * @method setAssignment
+     * @param {string} userID - The User ID of the assignee of the Chore.
+     */
+    setAssignment(userID) { this._assignedTo = userID; }
 
-    // Called when chore is completed
+    /**
+     * Sets the deadline for the chore.
+     *
+     * @method setDeadline
+     * @param {Date} deadline - The deadline of the Chore.
+     */
+    setDeadline(deadline) { this._deadline = deadline; }
+
+    /**
+     * Sets the details for the chore.
+     *
+     * @method setDetails
+     * @param {string} details - The details of the Chore.
+     */
+    setDetails(detail) { this._details = details; }
+
+    /** 
+     * Sets the completion date of the finished Chore.
+     *
+     * @method complete
+     */
     complete() { this._finishedBy = getDate(); }
 
-    // return string
+    /**
+     * Gets the category of the Chore.
+     *
+     * @method getCategory
+     * @return {string} - The category of the Chore
+     */
     getCategory() { return this._cateogry; }
 
-    // return string (userID)
+    /**
+     * Gets the User ID of the creator of the Chore.
+     * 
+     * @method getCreator
+     * @return {string} - The creator of the Chore
+     */
     getCreator() { return this._createdBy; }
 
-    // return date obj?
+    /**
+     * Gets the deadline of the Chore.
+     *
+     * @method getDeadline
+     * @return {Date} - The deadline of the Chore
+     */
     getDeadline() { return this._deadline; }
 
-    // return string (details)
+    /**
+     * Gets the additional details of the Chore.
+     *
+     * @method getDetails
+     * @return {string} - The details of the Chore
+     */
     getDetails() { return this._details; }
 
-    // return string (userID)
+    /**
+     * Gets the User ID of the assignee of the Chore.
+     *
+     * @method getAssignment
+     * @return {string} - The assignee of the Chore
+     */
     getAssignment() { return this._assignedTo; }
 
-    // return date obj?
+    /**
+     * Gets the creation date of the Chore.
+     *
+     * @method getCreationDate
+     * @return {Date} - The creation date of the Chore
+     */
     getCreationDate() { return this._createdOn; }
 
-    // return date obj?
+    /**
+     * Gets the completion date of the Chore.
+     *
+     * @method getCompletionDate
+     * @return {Date} - The completion date of the Chore
+     */
     getCompletionDate() { return this._finishedBy; }
 }

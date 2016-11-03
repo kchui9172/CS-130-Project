@@ -1,14 +1,18 @@
-export default class Message {
-    // sender: string (userID)
-    // timeSent: date obj?
-    
+/**
+ * Represents a Message.
+ *
+ * @class Message
+ */
+export default class Message { 
     /**
-    * Represents a message
-    * @param {string} sender - user id of message creator
-    * @param {string} timeSent - time stamp of when message was sent
-    * @param {text} text - actual text of message
-    * @constructor
-    */
+     * Represents a message.
+     *
+     * @method constructor
+     * @constructor
+     * @param {string} sender - The User ID of message creator
+     * @param {Date} timeSent - The timestamp of when message was sent
+     * @param {text} text - The actual text of message
+     */
     constructor(sender, timeSent, text) {
         this._sender = this.;
         this._timeSent = timeSent;
@@ -18,22 +22,33 @@ export default class Message {
     }
 
     /**
-    * Function that shows message has been successful posted
-    */
+     * Updates Message to show that it has  been successful posted.
+     *
+     * @method confirmSend
+     */
     confirmSend() { this._sent = true; }
 
     /**
-    * Returns user id in string form of creator of message
-    */
+     * Gets the user id of the creator of the Message.
+     *
+     * @method getSender
+     * @return {string} - The user ID of the creator
+     */
     getSender() { return this._sender; }
 
     /**
-    * Returns time stamp in string form of when message was posted
-    */
+     * Gets the timestamp of when the Message was posted.
+     *
+     * @method getTimeSent
+     * @return {Date} - The time when the Message was posted
+     */
     getTimeSent() { return this._timeSent; }
 
     /**
-    * Returns text of message posted in string form
-    */
+     * Gets the text of Message.
+     *
+     * @method getText
+     * @return {string} - The text of the Message
+     */
     getText() { return this._text; }
 }
