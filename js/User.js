@@ -9,7 +9,7 @@ export default class User {
     constructor(email, firstName, lastName, phoneNumber) {
             this._userID = null;
             this._email = email;
-            this._firstNname = firstName;
+            this._firstName = firstName;
             this._lastName = lastName;
             this._phoneNumber = phoneNumber;
             this._aptID = null;
@@ -17,6 +17,23 @@ export default class User {
             this._chores = new Array(0);
             this._payments = new Array(0);
     }
+
+    // pass in JSON and return User
+    static JSONtoUser(data) {
+        var user = new User();
+        var JSONObj = JSON.parse(data);
+        user._userID = JSONObj._userID;
+        user._email = JSONObj._email;
+        user._firstName = JSONObj._firstName;
+        user._lastName = JSONObj._lastName;
+        user._phoneNumber = JSONObj._phoneNumber;
+        user._aptID = JSONObj._aptID;
+        user._messages = JSONObj._messages;
+        user._chores = JSONObj._chores;
+        user._payments = JSONObj._payments;
+        return user;
+    }
+
     /**
     * Returns user's name (first and last names) in string form
     */
