@@ -24,17 +24,54 @@ export default class DBManager {
         if(!dbm_instance){
             dbm_instance = this;
             firebase.initializeApp(config);
+            this._database = firebase.database();
         }
         return dbm_instance;
     }
 
-    // login_cred = [email, password, user_object]
+    // email, password: string
     // return {exception_object}
-    signIn(login_info) {}
+    signIn(email, password) {
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            switch (error.code) {
+                case 'auth/invalid-email':
+                    alert("Invalid email.");
+                    break;
+                case 'auth/user-disabled':
+                    alert("User account disabled.");
+                    break;
+                case 'auth/user-not-found':
+                    alert("User not found.");
+                    break;
+                case 'auth/wrong-password':
+                    alert("Wrong password");
+                    break;
+                default:
+                    alert("Error signing in.");
+            }
+        });
+    }
 
-    // registration = [first_name, last_name, email, password]
+    // email, password: string
     // return {exception_object}
-    signUp(registration) {}
+    signUp(email, password) {
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+            switch (error.code) {
+                case 'auth/email-already-in-use':
+                    alert("Email is already in user.");
+                    break;
+                case 'auth/invalid-email':
+                    alert("Email is invalid.");
+                    break;
+                default:
+                    alert("Error signing up.");
+            }
+        });
+    }
 
     // user = [...] User Object defined
     // return {exception_object}
@@ -65,5 +102,4 @@ export default class DBManager {
 
     // return message array
     getMessages() {}
-
 }
