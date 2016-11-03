@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import CartItem from './js/components/cartItem.js';
 import Login from './js/components/Login.js'
 import MessageComponent from './js/components/MessageComponent.js'
+import ChoreComponent from './js/components/ChoreComponent.js'
 
 // const order = {
 //     title: 'Fresh fruits package',
@@ -25,3 +26,9 @@ ReactDOM.render(
     <MessageComponent/>,
     document.querySelector('.messages')
 );
+
+ReactDOM.render(
+    <ChoreComponent/>,
+    document.querySelector('.chores')
+);
+
