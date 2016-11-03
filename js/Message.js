@@ -33,7 +33,7 @@ export default class Message {
     getTimeSent() { return this._timeSent; }
 
     /**
-    * Returns text of message posted
+    * Returns text of message posted in string form
     */
     getText() { return this._text; }
 }

@@ -39,17 +39,17 @@ export default class User {
     getAptID() { return this._aptID; }
 
     /**
-    * Returns array of message ids associated with the user (messages created by user) 
+    * Returns array of message ids (each as string) associated with the user (messages created by user) 
     */
     getMessageIDs() { return this._messages; }
 
     /**
-    * Return array of chore ids belonging to user
+    * Return array of chore ids (each as string) belonging to user
     */
     getChoreIDs() { return this._chores; }
 
     /** 
-    * Return array of payment ids associated with user
+    * Return array of payment ids (each as string) associated with user
     */
     getPaymentIDs() { return this._payments; }
 

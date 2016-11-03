@@ -27,7 +27,7 @@ export default class Apartment {
     }
 
     /**
-    * Return arrays of tenants' ids
+    * Return arrays of tenants' ids each in string form 
     */
     getTenantIDs() {
         return this._tenants;
