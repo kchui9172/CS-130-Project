@@ -2,24 +2,40 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>React and ES6 Part 6</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rockmates</title>
+    <meta name="description" content="<insert cool tagline here>">
+    <!-- Use minimum-scale=1 to enable GPU rasterization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+    <style>
+        html {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-size: 13px;
+            line-height: 20px;
+        }
+    </style>
 </head>
 <body>
-<nav class="top-bar" data-topbar role="navigation">
-    <section class="top-bar-section">
-        <ul class="left">
-            <li class="active">
-                <a href="http://egorsmirnov.me/2016/04/11/react-and-es6-part6.html" target="_blank">
-                    Blog post at egorsmirnov.me: React and ES6 - Part 6, React and ES6 Workflow with Webpack
-                </a>
-            </li>
-        </ul>
-    </section>
-</nav>
-<div class="root"></div>
-<div class="login"></div>
-<div class="messages"></div>
-<script src="/dist/bundle.js"></script>
+    <div class="root"></div>
+    <div class="login"></div>
+    <div class="messages"></div>
+
+    <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
+    <script>
+        var WebFontConfig = {google: {families:['Roboto:400,300,500:latin' ]}};
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+
+    <script src="/dist/bundle.js"></script>
 </body>
 </html>

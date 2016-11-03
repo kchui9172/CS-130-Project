@@ -16,13 +16,29 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.16.0",
     "express": "^4.14.0",
+    "formsy-react":"^0.18.0",
+    "material-ui": "^0.16.1",
+    "react-cellblock": "^2.0.0",
+    "react-motion": "^0.4.5",
+    "react-swipeable-views": "^0.8.0",
+    "react-tap-event-plugin": "^1.0.0",
     "webpack": "^1.13.3",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.1"
   },
   "dependencies": {
     "firebase": "^3.5.3",
+    "formsy-material-ui": "^0.5.2",
+    "formsy-react": "^0.18.1",
+    "material-ui": "^0.16.1",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-cellblock": "^2.0.0",
+    "react-columns": "^0.2.2",
+    "react-dom": "^15.3.2",
+    "react-motion": "^0.4.5",
+    "react-swipeable-views": "^0.8.0",
+    "react-tap-event-plugin": "^1.0.0",
+    "redux-form": "^6.1.1",
+    "redux-form-material-ui": "^4.1.0"
   }
 }

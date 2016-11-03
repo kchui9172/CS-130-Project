@@ -77,7 +77,7 @@ export default class TodoList extends React.Component {
 			<button type="submit">+</button>
 		    </form>
 		</div>
-                <div class="items">
+                <div className="items">
 		    <ToDoItem entries={this.state.items}/>
                 </div>
 	    </div>
