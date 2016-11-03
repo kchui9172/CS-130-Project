@@ -38,7 +38,7 @@ export default class DBManager {
 
     // user = [...] User Object defined
     // return {exception_object}
-    createUser(user) {}
+    addUser(user) {}
 
     // Default parameter ( user=user_cache.getID())
     // Otherwise look for new user
@@ -47,21 +47,21 @@ export default class DBManager {
 
     // apartment = [...]
     // return {exception_object}
-    createApt(apartment) {}
+    addApartment(apartment) {}
 
     // return apartment_object
     getApt() {}
 
     // chore = [...]
     // return {exception_object}
-    createChore(chore) {}
+    addChore(chore) {}
 
     // return chore array
     getChores() {}
 
     // message = [...]
     // return {exception_object}
-    createMessages(message) {}
+    addMessage(message) {}
 
     // return message array
     getMessages() {}
