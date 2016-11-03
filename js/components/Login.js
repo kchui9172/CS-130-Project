@@ -10,8 +10,6 @@ import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import ActionFlightTakeoff from 'material-ui/svg-icons/action/flight-takeoff';
-
 /** Use factory method to generate the correct type of login card **/
 
 const cardTypes = ['LoginCard', 'SignupCard'];
