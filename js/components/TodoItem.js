@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
  * @class React.Component.TodoItem
  * @extends React.Component
  */
-export default class ToDoItem extends React.Component {
+export default class TodoItem extends React.Component {
     /**
      * Constructs a To-Do Item
      *

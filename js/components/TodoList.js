@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToDoItem from './ToDoItem.js';
+import TodoItem from './TodoItem.js';
 
 /**
  * Represents a To-Do List.
@@ -107,7 +107,7 @@ export default class TodoList extends React.Component {
 		    </form>
 		</div>
                 <div className="items">
-		    <ToDoItem entries={this.state.items}/>
+		    <TodoItem entries={this.state.items}/>
                 </div>
 	    </div>
 	);
