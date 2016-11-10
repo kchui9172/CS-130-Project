@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {cyan500,cyan700,grey400,grey500,grey300,darkBlack,fullBlack, white} from 'material-ui/styles/colors';
 
-import Login from './js/components/Login'
+import AuthPage from './js/components/AuthPage/Main.js';
 import MessageComponent from './js/components/MessageComponent'
+import NavBar from './js/components/NavBar.js';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -30,22 +30,33 @@ const muiTheme = getMuiTheme({
     //clockCircleColor: fade(darkBlack, 0.07),
     shadowColor: fullBlack,
   },
-});
 
-// const App = () => (
-//     <MuiThemeProvider muiTheme={muiTheme} >
-//         <Login />
-//     </MuiThemeProvider>
-// );
+  appBar: {
+  height: 48,
+  },
+
+});
 
 ReactDOM.render(
   <MuiThemeProvider muiTheme={muiTheme} >
-    <Login />
+    <NavBar/>
   </MuiThemeProvider>,
-    document.querySelector('.login')
+    document.querySelector('#appBar')
+);
+
+ReactDOM.render(
+  <MuiThemeProvider muiTheme={muiTheme} >
+    <AuthPage />
+  </MuiThemeProvider>,
+    document.querySelector('#content')
 );
 
 ReactDOM.render(
     <MessageComponent />,
     document.querySelector('.messages')
 );
+
+/** TODO: Please convert this to better CSS later **/
+document.querySelector('#appBar').style.paddingBottom = '96px';
+document.body.style.backgroundColor = '#a9b1b1';
+document.body.style.margin = '0';
