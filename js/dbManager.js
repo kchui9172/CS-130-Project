@@ -92,8 +92,7 @@ export default class DBManager {
                 default:
                     alert("Error signing up.");
             }
-	    console.log(
-        });
+	    });
     }
 
     /**
