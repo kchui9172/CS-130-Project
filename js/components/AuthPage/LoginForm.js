@@ -1,7 +1,7 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import RaisedButton from 'material-ui/RaisedButton';
-import FormsyText from 'formsy-material-ui/lib'
+import {FormsyText} from 'formsy-material-ui/lib'
 import {CardMedia, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
 import DBManager from '../../dbManager.js';
@@ -129,5 +129,3 @@ const LoginForm = React.createClass({
 });
 
 export default LoginForm;
-      // <Card style={style} zDepth={style.zDepth} >
-      // </Card>

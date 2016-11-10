@@ -35,11 +35,8 @@ export default class CredentialsCard extends React.Component {
       slideIndex: value,
     });
   };
-  doNothing() {
-    return;
-  };
+
   render() {
-//<Card style={style.card} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} zDepth={this.state.zDepth}>
   return(
     <FloatingCard style={style.card}>
         <div>
@@ -48,8 +45,8 @@ export default class CredentialsCard extends React.Component {
               <Tab label='Login' value={1} />
           </Tabs>
           <SwipeableViews index={this.state.slideIndex} onChangeIndex={this.handleChange}>
-                    <SignUpForm style={style.contents}/>
-                    <LoginForm/>
+                  <SignUpForm/>
+                  <LoginForm/>
           </SwipeableViews>
         </div>
     </FloatingCard>

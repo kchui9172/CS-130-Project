@@ -1,8 +1,8 @@
 import React from 'react';
 import Formsy from 'formsy-react';
-import FormsyText from 'formsy-material-ui/lib'
+import {FormsyText} from 'formsy-material-ui/lib'
 import RaisedButton from 'material-ui/RaisedButton';
-import {CardActions, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
 import DBManager from '../../dbManager.js';
 
@@ -37,7 +37,8 @@ const validationChecks = {
     error: {minLength: '8 characters minimum', maxLength: '128 characters maximum', equalsField: 'Passwords must match'},
   },
 }
-  const SignUpForm = React.createClass({
+
+const SignUpForm = React.createClass({
 
   enableButton() {
     this.setState({
@@ -196,4 +197,3 @@ const validationChecks = {
 });
 
 export default SignUpForm;
-{{validationChecks.Password1.check}}
