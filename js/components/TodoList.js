@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToDoItem from './ToDoItem.js';
+import ToDoItem from './ToDoItem.js'; //hypothetically don't need anymore
+import dbManager from '../dbManTest.js';
+import Message from '../Message.js';
 
 /**
  * Represents a To-Do List.
@@ -23,30 +25,34 @@ export default class TodoList extends React.Component {
         }
 
    	this.addItem = this.addItem.bind(this);
-   	//this.handleRemove = this.handleRemove.bind(this);
-
-        //this.setStateHandler = this.setStateHandler.bind(this);
-        //this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-        //this.findDomNodeHandler = this.findDomNodeHandler.bind(this);
     };
 
     addItem(e) {
+        //dbManager should add item to list
+        var db = new dbManager();
+        var m = new Message("kristen",this.generateDate(),"this is a test"); //here add information about user and time
+        db.addMessage(m);
+
+
+        //TECHNICALLY CAN REMOVE ALL THIS
         var itemArray = this.state.items;
-	//itemArray.push(this._inputElement.value);
+	    //itemArray.push(this._inputElement.value);
         if (this._inputElement.value == ""){ //if empty, don't create note
             e.preventDefault();
             return;
         }
-	itemArray.unshift({ //newest message at top
-	    text: this._inputElement.value,
-	    time: this.generateDate(),
+	    itemArray.unshift({ //newest message at top
+	        text: this._inputElement.value,
+	        time: this.generateDate(),
             user: "Kristen", //replace with user's name
-	    key: this.generateId()} //should replace this with apartment id
-	);
+	        key: this.generateId()} //should replace this with apartment id
+	    );
 
-	this.setState({items: itemArray});
-	this._inputElement.value="";
-	e.preventDefault();
+    	this.setState({items: itemArray});
+        //REMOVE TO HERE
+    	this._inputElement.value="";
+    	e.preventDefault();
+
     }
 
     /**
@@ -67,17 +73,17 @@ export default class TodoList extends React.Component {
      */
     generateDate() {
         var date = new Date();
-	var year = date.getUTCFullYear();
-	var month = date.getUTCMonth();
-	var day = date.getUTCDate();
-	//month 2 digits
-	month = ("0" + (month + 1)).slice(-2);
+    	var year = date.getUTCFullYear();
+    	var month = date.getUTCMonth();
+	    var day = date.getUTCDate();
+	    //month 2 digits
+    	month = ("0" + (month + 1)).slice(-2);
 
-	//year 2 digits
+    	//year 2 digits
         year = year.toString().substr(2,2);
 
-	var formattedDate = month + '/' + day + "/" + year;
-	return formattedDate;
+	   var formattedDate = month + '/' + day + "/" + year;
+    	return formattedDate;
     }
 
 
@@ -96,20 +102,40 @@ export default class TodoList extends React.Component {
      * @method render
      */
     render() {
-	return (
-	    <div className="todoMain">
-		<div className="header">
-		    <form onSubmit={this.addItem}>
-			<input ref={(a) => this._inputElement = a} //inputElement property stores reference to input element
-			    placeholder="Enter note">
-			</input>
-			<button type="submit">+</button>
-		    </form>
-		</div>
+        var db = new dbManager();
+        var todoEntries = db.getMessages();
+        function createMessages(item){
+            return(
+                <li key={item.key}>
+                    {item.text}
+                    <div className="poster">
+                        {item.user} - {item.time}
+                    </div>
+                </li>
+            );
+        }
+        var listItems = todoEntries.map(createMessages);
+    	return (
+    	    <div className="todoMain">
+    		<div className="header">
+    		    <form onSubmit={this.addItem}>
+    			<input ref={(a) => this._inputElement = a} //inputElement property stores reference to input element
+    			    placeholder="Enter note">
+    			</input>
+    			<button type="submit">+</button>
+    		    </form>
+    		</div>
                 <div className="items">
-		    <ToDoItem entries={this.state.items}/>
+    		      {<ToDoItem entries={this.state.items}/>}
                 </div>
-	    </div>
-	);
+                <div>
+                    {listItems}
+                </div>
+    	    </div>
+    	);
     }
 }
+
+//SHOULD REPLACE ToDoItem WITH {listItems} 
+
+

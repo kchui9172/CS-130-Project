@@ -14,11 +14,11 @@ export default class Message {
      * @param {text} text - The actual text of message
      */
     constructor(sender, timeSent, text) {
-        this._sender = this.;
+        this._sender = this.sender;
         this._timeSent = timeSent;
         this._text = text;
         this._sent = false;
-        this._aptID = getUser().getAptID();
+        //this._aptID = getUser().getAptID();
     }
 
     /**

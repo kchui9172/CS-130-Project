@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoList from './TodoList.js';
 import ToDoItem from './ToDoItem.js';
+//import Message from '../Message.js';
+import dbManager from '../dbManTest.js';
 
 /**
  * Represents the Messages page.
@@ -9,7 +11,7 @@ import ToDoItem from './ToDoItem.js';
  * @class React.Component.Messages
  * @extends React.Component
  */
-export default class Messages extends React.Component{
+export default class MessageComponent extends React.Component{
     /**
      * Constructs the Messages page.
      *
@@ -25,9 +27,17 @@ export default class Messages extends React.Component{
      *
      * @render
      */
+
     render(){
         return (
-            <TodoList/>
+            <ul> 
+                <TodoList/>
+            </ul>
+	);
+    }
+}
+
+
 /*
             <div classname="messageClass">
                 <div className="messageTitle">
@@ -61,6 +71,3 @@ export default class Messages extends React.Component{
                 </Row>
             </div>
 */
-	);
-    }
-}
