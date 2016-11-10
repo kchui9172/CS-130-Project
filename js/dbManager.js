@@ -1,3 +1,4 @@
+import User from './User.js';
 var firebase = require("firebase");
 
 // Firebase API Credentials
@@ -66,7 +67,7 @@ export default class DBManager {
                     alert("Wrong password");
                     break;
                 default:
-                    alert("Error signing in.");
+                    alert(errorMessage);
             }
         });
     }
@@ -91,6 +92,7 @@ export default class DBManager {
                 default:
                     alert("Error signing up.");
             }
+	    console.log(
         });
     }
 
@@ -110,14 +112,18 @@ export default class DBManager {
      * Gets the user.
      *
      * @method getUser
-     * @param {string} [user=user_cache.getID()] - The user ID
+     * @param {string} [userID=user_cache.getID()] - The user ID
      * @return {User} - The corresponding User
      */
-    getUser(user=user_cache.getID()) {}
+    getUser(userID=user_cache.getID()) {
+        return firebase.database().ref('/users/' + userID).once('value').then(function(snapshot) {
+            return User.JSONtoUser(snapshot.val());
+        });
+    }
 
     /**
      * Adds an apartment.
-     * 
+     *
      * @method addApartment
      * @param {Apartment} apartment - The apartment to be added
      * @throws {Error} - Possible failure to add Apartment
