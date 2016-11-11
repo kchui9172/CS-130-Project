@@ -192,5 +192,7 @@ export default class DBManager {
      * @method getMessages
      * @returns {Array{Message}}
      */
-    getMessages() {}
+    getMessages() {
+        return user_cache.getMessages();
+    }
 }

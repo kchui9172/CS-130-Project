@@ -22,6 +22,26 @@ export default class Message {
     }
 
     /**
+     * Creates a User from input JSON.
+     *
+     * @method JSONtoUser
+     * @static
+     * @param {string} - JSON representing a User
+     * @return {User} - The User represented by the JSOn
+     */
+    static JSONtoMessage(data) {
+        var message = new Message();
+        var JSONObj = JSON.parse(data);
+        user._sender = JSONObj._sender;
+        user._timeSent = JSONObj._timeSent;
+        user._text = JSONObj._text;
+        user._sent = JSONObj._sent;
+        user._aptID = JSONObj._aptID;
+        return message;
+    }
+
+
+    /**
      * Updates Message to show that it has  been successful posted.
      *
      * @method confirmSend
