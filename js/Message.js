@@ -3,7 +3,7 @@
  *
  * @class Message
  */
-export default class Message { 
+export default class Message {
     /**
      * Represents a message.
      *
@@ -13,12 +13,12 @@ export default class Message {
      * @param {Date} timeSent - The timestamp of when message was sent
      * @param {text} text - The actual text of message
      */
-    constructor(sender, timeSent, text) {
-        this._sender = this.;
+    constructor(sender, timeSent, text, aptID) {
+        this._sender = sender;
         this._timeSent = timeSent;
         this._text = text;
         this._sent = false;
-        this._aptID = getUser().getAptID();
+        this._aptID = aptID;
     }
 
     /**

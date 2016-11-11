@@ -7,7 +7,9 @@ import {cyan500,cyan700,grey400,grey500,grey300,darkBlack,fullBlack, white} from
 import AuthPage from './js/components/AuthPage/Main.js';
 import MessageComponent from './js/components/MessageComponent'
 import NavBar from './js/components/NavBar.js';
-
+import DBManager from './js/dbManager.js';
+import Message from './js/Message.js';
+import User from './js/User.js';
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();

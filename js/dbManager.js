@@ -1,4 +1,5 @@
 import User from './User.js';
+import Message from './Message.js';
 var firebase = require("firebase");
 
 // Firebase API Credentials
@@ -103,8 +104,19 @@ export default class DBManager {
      * @return {string} - The User ID of the added user
      */
     addUser(user) {
-        var data = JSON.stringify(user);
-        firebase.database().ref('users/' + user.getUserID()).set(data);
+        this.user_cache = user;
+        firebase.database().ref('users/' + user.getUserID()).set(JSON.stringify(user));
+    }
+
+    /**
+     * Updates a user in the database.
+     *
+     * @method updateUser
+     * @param {User} - The User Object to be updated
+     */
+    updateUser(user) {
+        var messagesRef = firebase.database().ref("users/" + user.getUserID());
+        messagesRef.set(JSON.stringify(user));
     }
 
     /**
@@ -115,9 +127,12 @@ export default class DBManager {
      * @return {User} - The corresponding User
      */
     getUser(userID=user_cache.getID()) {
-        return firebase.database().ref('/users/' + userID).once('value').then(function(snapshot) {
-            return User.JSONtoUser(snapshot.val());
-        });
+        if (user_cache!=null)
+            return user_cache;
+        else
+            return firebase.database().ref('/users/' + userID).once('value').then(function(snapshot) {
+                return User.JSONtoUser(snapshot.val());
+            });
     }
 
     /**
@@ -162,7 +177,14 @@ export default class DBManager {
      * @param {Message} message - The message to be added.
      * @throws {Exception} - Possible failure to add Message
      */
-    addMessage(message) {}
+    addMessage(message) {
+        var messagesRef = firebase.database().ref('messages');
+        var newMessageRef = messagesRef.push();
+        newMessageRef.set(JSON.stringify(message));
+        // Add to User Message list
+        this.user_cache.addMessage(newMessageRef.getKey());
+        this.updateUser(this.user_cache);
+    }
 
     /**
      * Gets all messages.
