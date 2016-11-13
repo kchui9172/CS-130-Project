@@ -187,12 +187,25 @@ export default class DBManager {
     }
 
     /**
-     * Gets all messages.
+     * Gets all message ids.
      *
      * @method getMessages
-     * @returns {Array{Message}}
+     * @returns {Array{MessageIDs}}
      */
     getMessages() {
-        return user_cache.getMessages();
+        return this.user_cache.getMessageIDs();
+    }
+
+    /**
+     * Gets a message by its id.
+     *
+     * @method getMessage
+     * @returns {Message}
+     */
+    getMessage(id) {
+        var messages = [];
+        return firebase.database().ref('/messages/' + id).once('value').then(function(snapshot) {
+            return Message.JSONtoMessage(snapshot.val());
+        });
     }
 }
