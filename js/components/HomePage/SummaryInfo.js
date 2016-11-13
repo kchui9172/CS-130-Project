@@ -8,17 +8,17 @@ import FloatingCard from '../primitives/FloatingCard.js';
 const style = {
   text: {
     textAlign:'justify',
-    padding:'20px',
+    paddingLeft:'16px',
   },
 }
 const styleBig = {
     zDepth:1,
-    padding: '6px',
+    padding: '0px',
     textAlign: 'center',
-    minWidth:320,
-    height:'560px',
-    maxWidth:'100%',
-    borderRadius:'6px',
+    width:300,
+    height:160,
+    borderRadius:'3px',
+    overflowY:'scroll',
 };
 
 const styleSmall = {
@@ -32,19 +32,10 @@ const styleSmall = {
 };
 
 const BigView = (
-  <FloatingCard>
-    <CardTitle title="Cool Facts about Rockmates" subtitle="Lorem Ipsum"/>
-    <Divider/>
+  <FloatingCard style={styleBig}>
+    <CardTitle title="CardTitle"/>
     <CardText style={style.text}>
-    <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.</p>
-
-    <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.</p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa.
     </CardText>
   </FloatingCard>);
 

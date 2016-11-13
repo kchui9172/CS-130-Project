@@ -6,7 +6,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {cyan500,cyan700,grey400,grey500,grey300,darkBlack,fullBlack, white} from 'material-ui/styles/colors';
 import AuthPage from './js/components/AuthPage/Main.js';
 import MessageComponent from './js/components/MessageComponent'
-import NavBar from './js/components/NavBar.js';
+import Routes from './js/config/routes.js';
 import DBManager from './js/dbManager.js';
 import Message from './js/Message.js';
 import User from './js/User.js';
@@ -40,16 +40,9 @@ const muiTheme = getMuiTheme({
 
 ReactDOM.render(
   <MuiThemeProvider muiTheme={muiTheme} >
-    <NavBar/>
+    <Routes />
   </MuiThemeProvider>,
     document.querySelector('#appBar')
-);
-
-ReactDOM.render(
-  <MuiThemeProvider muiTheme={muiTheme} >
-    <AuthPage />
-  </MuiThemeProvider>,
-    document.querySelector('#content')
 );
 
 ReactDOM.render(
@@ -58,6 +51,5 @@ ReactDOM.render(
 );
 
 /** TODO: Please convert this to better CSS later **/
-document.querySelector('#appBar').style.paddingBottom = '96px';
-document.body.style.backgroundColor = '#a9b1b1';
+document.body.style.backgroundColor = '#f4f0e8';
 document.body.style.margin = '0';

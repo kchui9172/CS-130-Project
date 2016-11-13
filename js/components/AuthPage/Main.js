@@ -33,21 +33,14 @@ export default class AuthPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <Drawer style={style.drawer} open={this.state.openDrawer}>
-          <NavList/>
-        </Drawer>
-
         <div style={style.contents} >
-          <Grid  breakpoints={[3]}  columnWidth={320} gutterWidth={48} onChange={breakpoint => {}} >
+          <Grid  breakpoints={[3]}  columnWidth={280} gutterWidth={48} onChange={breakpoint => {}} >
             <Row>
-              <Column width={this.state.openDrawer ? "1/2" : "2/3"} offset={this.state.openDrawer ? "1/6" : "0/1"}> <ResponsiveSummary /> <br/> <FlatButton label="Toggle Drawer" onTouchTap={this.handleDrawerToggle}/> </Column>
+              <Column width="2/3"> <ResponsiveSummary /></Column>
               <Column width="1/3"> <CredentialsCard /> </Column>
             </Row>
           </Grid>
         </div>
-
-      </div>
     );
   }
 }

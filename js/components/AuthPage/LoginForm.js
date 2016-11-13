@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Formsy from 'formsy-react';
+
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {FormsyText} from 'formsy-material-ui/lib'
 import {CardMedia, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
 import DBManager from '../../dbManager.js';
+import FloatingDialog from '../primitives/FloatingDialog.js';
 
 const style = {
   image: {
@@ -26,6 +29,9 @@ const style = {
 };
 
 const LoginForm = React.createClass({
+  contextTypes: {
+      router: React.PropTypes.object.isRequired
+  },
 
   enableButton() {
     this.setState({
@@ -52,8 +58,26 @@ const LoginForm = React.createClass({
 
     console.log('submitLogin:', data);
     var dbManager = new DBManager();
-    var result = (dbManager.signIn(data.email, data.password));
-    console.log('resultLogin:', result);
+    var result = dbManager.signIn(data.email, data.password, this.notifyLoginError);
+    result.then(function(data){
+      console.log('resultLogin:', data);
+      //this.onLoginSuccessful();
+    });
+  },
+
+  notifyLoginError(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.error(errorCode);
+    this.setState({
+      errorDialog: true,
+      errorText: errorMessage,
+    });
+  },
+
+  resetLoginForm() {
+    this.setState(this.getInitialState());
+    this.refs.login.reset();
   },
 
   notifyFormError(data) {
@@ -62,6 +86,15 @@ const LoginForm = React.createClass({
       emailInvalid: (data.email==""),
       passwordInvalid: (data.password==""),
     });
+  },
+
+  onLoginSuccessful() {
+    var location = self.props.location
+    if (location.state && location.state.nextPathname) {
+      self.context.router.replace(location.state.nextPathname)
+    } else {
+        self.context.router.replace('/home')
+    }
   },
 
   getInitialState() {
@@ -74,6 +107,9 @@ const LoginForm = React.createClass({
 
       hasSubmitted: false,
       canSubmit:true,
+
+      errorText: null,
+      errorDialog: false,
     };
   },
 
@@ -123,6 +159,9 @@ const LoginForm = React.createClass({
         </CardActions>
       </Formsy.Form>
       </CardText>
+      <FloatingDialog title={"Login Failed!"} modal={false} open={this.state.errorDialog} onRequestClose={this.resetLoginForm}>
+        {this.state.errorText}
+      </FloatingDialog>
       </div>
   );
 },
