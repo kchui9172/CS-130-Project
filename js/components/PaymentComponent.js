@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Balance from './Balance.js';
 
 /**
  * Represents the Payments page.
@@ -25,7 +26,10 @@ export default class PaymentComponent extends React.Component{
      */
     render(){
         return (
-            <h1> Payments </h1>
+            <div>
+                <h1> Payments </h1>
+                <Balance />
+            </div>
 	   );
     }
 }

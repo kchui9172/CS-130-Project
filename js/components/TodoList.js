@@ -100,6 +100,7 @@ export default class TodoList extends React.Component {
         for (var i = 0; i < ids.length; i++){
             var message = manager.getMessage(ids[i]);
             message.then(function(e){
+                //console.log("get data");
                 var words = e.getText().toString();
                 var t = e.getTimeSent().toString();
                 var s = e.getSender().toString();
@@ -108,7 +109,7 @@ export default class TodoList extends React.Component {
             });
 
         }
-        //console.log(l);
+        console.log(l);
         return l;
     }
 

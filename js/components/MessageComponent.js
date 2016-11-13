@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoList from './TodoList.js';
-import TodoItem from './TodoItem.js';
 
 /**
  * Represents the Messages page.
