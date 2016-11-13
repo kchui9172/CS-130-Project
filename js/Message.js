@@ -32,11 +32,11 @@ export default class Message {
     static JSONtoMessage(data) {
         var message = new Message();
         var JSONObj = JSON.parse(data);
-        user._sender = JSONObj._sender;
-        user._timeSent = JSONObj._timeSent;
-        user._text = JSONObj._text;
-        user._sent = JSONObj._sent;
-        user._aptID = JSONObj._aptID;
+        message._sender = JSONObj._sender;
+        message._timeSent = JSONObj._timeSent;
+        message._text = JSONObj._text;
+        message._sent = JSONObj._sent;
+        message._aptID = JSONObj._aptID;
         return message;
     }
 
