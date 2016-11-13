@@ -4,7 +4,7 @@ import SwipeableViews from 'react-swipeable-views';
 
 import LoginForm from './LoginForm.js';
 import SignUpForm from './SignUpForm.js';
-import FloatingCard from '../FloatingCard.js';
+import FloatingCard from '../primitives/FloatingCard.js';
 
 const style = {
   card: {
