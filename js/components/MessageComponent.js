@@ -26,7 +26,10 @@ export default class Messages extends React.Component{
      */
     render(){
         return (
-            <TodoList/>
+            <div>
+                <h1> Messages</h1>
+                <TodoList />
+            </div>
 /*
             <div classname="messageClass">
                 <div className="messageTitle">

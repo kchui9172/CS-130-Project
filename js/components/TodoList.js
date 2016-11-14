@@ -34,21 +34,21 @@ export default class TodoList extends React.Component {
 
     addItem(e) {
         var itemArray = this.state.items;
-	//itemArray.push(this._inputElement.value);
+	   //itemArray.push(this._inputElement.value);
         if (this._inputElement.value == ""){ //if empty, don't create note
             e.preventDefault();
             return;
         }
-	itemArray.unshift({ //newest message at top
-	    text: this._inputElement.value,
-	    time: this.generateDate(),
-            user: "Kristen", //replace with user's name
-	    key: this.generateId()} //should replace this with apartment id
-	);
+    	itemArray.unshift({ //newest message at top
+    	    text: this._inputElement.value,
+    	    time: this.generateDate(),
+                user: "Kristen", //replace with user's name
+    	    key: this.generateId()} //should replace this with apartment id
+    	);
 
-	this.setState({items: itemArray});
-	this._inputElement.value="";
-	e.preventDefault();
+    	this.setState({items: itemArray});
+    	this._inputElement.value="";
+    	e.preventDefault();
     }
 
     /**
@@ -96,7 +96,7 @@ export default class TodoList extends React.Component {
 // Extracts information to make message 
     createMessages(ids){
         var manager = new DBManager();
-        var l = [];
+        var l = new Array(ids.length);
         for (var i = 0; i < ids.length; i++){
             var message = manager.getMessage(ids[i]);
             message.then(function(e){
@@ -150,7 +150,16 @@ export default class TodoList extends React.Component {
         }
         var messages = this.createMessages(ids);
         console.log(messages);
+        //console.log("woot");
+        console.log(ids.length);
+
+        for (var i = 0; i < ids.length; i++){
+            console.log(messages[i + ids.length]);
+            var x = messages[i + ids.length];
+            //x.text;
+        }
         console.log(messages.length);
+
         var listItems = messages.map(formatMessage);
 
 

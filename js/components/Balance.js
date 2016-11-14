@@ -5,12 +5,12 @@ import User from '../User.js';
 import Payment from '../Payment.js';
 
 /**
- * Represents a Balance.
+ * Represents a PaymentForm.
  *
- * @class React.Component.Balance
+ * @class React.Component.PaymentForm
  * @extends React.Component
  */
-export default class Balance extends React.Component {
+export default class PaymentForm extends React.Component {
     /**
      * Constructs a Balance.
      *
@@ -19,39 +19,10 @@ export default class Balance extends React.Component {
      */
     constructor() {
         super();
-
-      	this.state = {
-            items: []
-        }
-
-       	this.addItem = this.addItem.bind(this);
     };
 
-    addItem(e) {
+// Calculate balances that user owes or is owed here!
 
-    }
-
-
-    /**
-     * Generates a Date.
-     *
-     * @method generateDate
-     * @return {string} - The generated date
-     */
-    generateDate() {
-        var date = new Date();
-    	var year = date.getUTCFullYear();
-    	var month = date.getUTCMonth();
-    	var day = date.getUTCDate();
-    	//month 2 digits
-    	month = ("0" + (month + 1)).slice(-2);
-
-	   //year 2 digits
-        year = year.toString().substr(2,2);
-
-    	var formattedDate = month + '/' + day + "/" + year;
-    	return formattedDate;
-    }
 
 
     /**
@@ -60,10 +31,17 @@ export default class Balance extends React.Component {
      * @method render
      */
     render() {
-    	return (
-    	    <div>
-                Balances
-    	    </div>
-    	);
+        return (
+            <div>
+                <li>Roommate 1 owes you $100 </li>
+                <li>Roommate 2 owes you $30 </li>
+                <li>You owe Roommate 3 $20</li>
+            </div>
+        );
     }
 }
+
+
+
+
+
