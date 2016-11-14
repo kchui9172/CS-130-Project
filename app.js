@@ -10,6 +10,7 @@ import Routes from './js/config/routes.js';
 import DBManager from './js/dbManager.js';
 import Message from './js/Message.js';
 import User from './js/User.js';
+import PaymentComponent from './js/components/PaymentComponent';
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
@@ -48,6 +49,11 @@ ReactDOM.render(
 ReactDOM.render(
     <MessageComponent />,
     document.querySelector('.messages')
+);
+
+ReactDOM.render(
+    <PaymentComponent />,
+    document.querySelector('.payments')
 );
 
 /** TODO: Please convert this to better CSS later **/

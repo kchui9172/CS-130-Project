@@ -35,21 +35,21 @@ export default class TodoList extends React.Component {
 
     addItem(e) {
         var itemArray = this.state.items;
-	//itemArray.push(this._inputElement.value);
+	   //itemArray.push(this._inputElement.value);
         if (this._inputElement.value == ""){ //if empty, don't create note
             e.preventDefault();
             return;
         }
-	itemArray.unshift({ //newest message at top
-	    text: this._inputElement.value,
-	    time: this.generateDate(),
-            user: "Kristen", //replace with user's name
-	    key: this.generateId()} //should replace this with apartment id
-	);
+    	itemArray.unshift({ //newest message at top
+    	    text: this._inputElement.value,
+    	    time: this.generateDate(),
+                user: "Kristen", //replace with user's name
+    	    key: this.generateId()} //should replace this with apartment id
+    	);
 
-	this.setState({items: itemArray});
-	this._inputElement.value="";
-	e.preventDefault();
+    	this.setState({items: itemArray});
+    	this._inputElement.value="";
+    	e.preventDefault();
     }
 
     /**
