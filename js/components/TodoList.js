@@ -161,7 +161,7 @@ export default class TodoList extends React.Component {
                 <div className="items">
         		    <TodoItem entries={this.state.items}/>
                 </div>
-                <button onClick={this.TestMessages.bind(this)} label='Test Messages' />
+                <button onClick={this.TestMessages.bind(this)}>Test Messages</button>
     	    </div>
     	);
     }
