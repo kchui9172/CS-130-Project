@@ -21,7 +21,8 @@ export default class TodoList extends React.Component {
         super();
 
       	this.state = {
-            items: []
+            items: [],
+            listItems: {},
         }
 
    	this.addItem = this.addItem.bind(this);
@@ -92,66 +93,59 @@ export default class TodoList extends React.Component {
 	this.setState({items: itemArray});
     }*/
 
-
-// Extracts information to make message 
-    createMessages(ids){
-        var manager = new DBManager();
-        var l = [];
-        for (var i = 0; i < ids.length; i++){
-            var message = manager.getMessage(ids[i]);
-            message.then(function(e){
-                var words = e.getText().toString();
-                var t = e.getTimeSent().toString();
-                var s = e.getSender().toString();
-
-                l.push({text: words, time: t, user: s});
-            });
-
-        }
-        //console.log(l);
-        return l;
+    createMessage(id) {
+      var manager = new DBManager();
+      var message = manager.getMessage(id);
+      return message.then(function(e){
+          var words = e.getText().toString();
+          var t = e.getTimeSent().toString();
+          var s = e.getSender().toString();
+          return {text: words, time: t, user: s};
+      });
     }
 
+// Extracts information to make message
+    createMessages(ids) {
+        console.log('start createMessages (ids)', ids.length, ids);
+        for (var i = 0; i < ids.length; i++){
+          var newMessage = this.createMessage(ids[i]);
+          newMessage.then(function(contents) {
+            var itemArray = this.state.items;
+            itemArray.unshift(contents);
+            this.setState({items: itemArray});
+          }.bind(this));
+        }
+    }
+
+    TestMessages() {
+      // Create a test user & add messages
+      var manager = new DBManager();
+      var uid = "GNfb868cZATuNgsI1kYLA1QxjWi2";
+      var aptid = "ASD77SDF70";
+
+      var testUser = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
+      testUser.setUserID(uid);
+      testUser.setAptID(aptid);
+      manager.addUser(testUser);
+
+      var obj = new Message("ABCDEFGHIJK", "1112333", "HELLOW WORLD", "aasdfasdf")
+      manager.addMessage(obj);
+      manager.addMessage(obj);
+      manager.addMessage(obj);
+      manager.addMessage(obj);
+
+      var ids = manager.getMessages();
+      console.log('ids :', ids);
+      var messages = this.createMessages(ids);
+    }
 
     /**
      * Renders a To-Do Item.
      *
      * @method render
      */
+
     render() {
-
-        // Create a test user & add messages
-        var manager = new DBManager();
-        var uid = "GNfb868cZATuNgsI1kYLA1QxjWi2";
-        var aptid = "ASD77SDF70";
-
-        var testUser = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
-        testUser.setUserID(uid);
-        testUser.setAptID(aptid);
-        manager.addUser(testUser);
-
-        var obj = new Message("ABCDEFGHIJK", "1112333", "HELLOW WORLD", "aasdfasdf")
-        manager.addMessage(obj);
-        manager.addMessage(obj);
-        manager.addMessage(obj);
-        manager.addMessage(obj);
-
-        var ids = manager.getMessages();
-        function formatMessage(item){
-            return(
-                <li>
-                    {item.text}
-                    <div className="poster">
-                        {item.user} - {item.time}
-                    </div>
-                </li>
-            );
-        }
-        var messages = this.createMessages(ids);
-        console.log(messages);
-        console.log(messages.length);
-        var listItems = messages.map(formatMessage);
-
 
     	return (
     	    <div className="todoMain">
@@ -164,13 +158,10 @@ export default class TodoList extends React.Component {
         		    </form>
         		</div>
 
-                <div>
-                    {listItems}
-                </div>
-                        
                 <div className="items">
         		    <TodoItem entries={this.state.items}/>
                 </div>
+                <button onClick={this.TestMessages.bind(this)} label='Test Messages' />
     	    </div>
     	);
     }
