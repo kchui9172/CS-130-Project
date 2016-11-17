@@ -5,12 +5,12 @@ import User from '../User.js';
 import Payment from '../Payment.js';
 
 /**
- * Represents a PaymentForm.
+ * Represents a Balance.
  *
- * @class React.Component.PaymentForm
+ * @class React.Component.Balance
  * @extends React.Component
  */
-export default class PaymentForm extends React.Component {
+export default class Balance extends React.Component {
     /**
      * Constructs a Balance.
      *
@@ -19,10 +19,39 @@ export default class PaymentForm extends React.Component {
      */
     constructor() {
         super();
+
+        this.calculateBalance = this.calculateBalance.bind(this);
     };
 
-// Calculate balances that user owes or is owed here!
+    /**
+     *Calculate balances that user owes or is owed here!
+     *
+     *@method calculateBalance
+     *@return balance
+    */
 
+    calculateBalance(){
+        var manager = new DBManager();
+        /*
+        var owed = manager.getOwedPayments();
+        var owe = manager.getOwePayments();
+        var roommates = manager.getRoommates();
+        create 2 arrays:
+            Array1 = holds total balance of owed/owe between two ppl (position corresponds to roommate)
+            Array2 = holds description of balance owed/owe (description of payment and amount) between two ppl (position corresponds to rommate)
+            render per roommate 
+        */
+        return (
+            <div>
+                <p>Your current balance:</p>
+                <p>Balance between you and Roommate 1: </p>
+                <p>Balance between you and Roommate 2: </p>
+                <p>Balance between you and Roommate 3: </p>
+            </div>
+        );
+    }
+
+    
 
 
     /**
@@ -31,11 +60,11 @@ export default class PaymentForm extends React.Component {
      * @method render
      */
     render() {
+        //var w = this.calculateBalance();
+        //console.log(w);
         return (
             <div>
-                <li>Roommate 1 owes you $100 </li>
-                <li>Roommate 2 owes you $30 </li>
-                <li>You owe Roommate 3 $20</li>
+                {this.calculateBalance()}
             </div>
         );
     }

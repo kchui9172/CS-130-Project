@@ -22,12 +22,12 @@ export default class Message {
     }
 
     /**
-     * Creates a User from input JSON.
+     * Creates a Message from input JSON.
      *
-     * @method JSONtoUser
+     * @method JSONtoMessage
      * @static
      * @param {string} - JSON representing a User
-     * @return {User} - The User represented by the JSOn
+     * @return {Message} - The Message represented by the JSOn
      */
     static JSONtoMessage(data) {
         var message = new Message();

@@ -12,7 +12,7 @@ import Payment from '../Payment.js';
  */
 export default class PaymentForm extends React.Component {
     /**
-     * Constructs a Balance.
+     * Constructs a Payment Form.
      *
      * @method constructor
      * @constructor

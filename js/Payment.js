@@ -32,6 +32,29 @@ export default class Payment {
     }
 
     /**
+     * Creates a Payment from input JSON.
+     *
+     * @method JSONtoPayment
+     * @static
+     * @param {string} - JSON representing a Payment
+     * @return {Payment} - The Payment represented by the JSOn
+     */
+    static JSONtoPayment(data) {
+        var payment = new Payment();
+        var JSONObj = JSON.parse(data);
+        payment._amount = JSONObj._amount;
+        payment._loaner = JSONObj._loaner;
+        payment._loanee = JSONObj._loanee;
+        payment._dateLoaned = JSONObj._dateLoaned;
+        payment._datePaid = JSONObj._datePaid;
+        payment._dateDue = JSONObj._dateDue;
+        payment._paymentDescription = JSONObj._paymentDescription;
+        payment._paymentCategory = JSONObj._paymentCategory;
+        payment._recurringPaymentPeriod = JSONObj._recurringPaymentPeriod;
+        return payment;
+    }
+
+    /**
      * Gets amount for this payment.
      *
      * @method getAmount

@@ -244,4 +244,20 @@ export default class DBManager {
             return Message.JSONtoMessage(snapshot.val());
         });
       }
+
+    /**
+     * Adds a payment.
+     *
+     *@method addPayment
+     *@param {Payment} payment - The payment to be added
+     *@throws {Exception} - Possible failure to add Payment 
+    */
+    addPayment(payment){
+        var paymentsRef = firebase.database().ref('payments');
+        var newPaymentRef = paymentsRef.push();
+        newPaymentRef.set(JSON.stringify(payment));
+        //Add to User Payments list
+        this.user_cache.addPayment(newPaymentRef.getKey());
+        this.updateUser(this.user_cache);
+    }
 }
