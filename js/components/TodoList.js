@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoItem from './TodoItem.js';
-
+import DBManager from '../dbManager.js';
+import User from '../User.js';
+import Message from '../Message.js';
 /**
  * Represents a To-Do List.
  *
@@ -19,7 +21,8 @@ export default class TodoList extends React.Component {
         super();
 
       	this.state = {
-            items: []
+            items: [],
+            listItems: {},
         }
 
    	this.addItem = this.addItem.bind(this);
@@ -32,21 +35,21 @@ export default class TodoList extends React.Component {
 
     addItem(e) {
         var itemArray = this.state.items;
-	//itemArray.push(this._inputElement.value);
+	   //itemArray.push(this._inputElement.value);
         if (this._inputElement.value == ""){ //if empty, don't create note
             e.preventDefault();
             return;
         }
-	itemArray.unshift({ //newest message at top
-	    text: this._inputElement.value,
-	    time: this.generateDate(),
-            user: "Kristen", //replace with user's name
-	    key: this.generateId()} //should replace this with apartment id
-	);
+    	itemArray.unshift({ //newest message at top
+    	    text: this._inputElement.value,
+    	    time: this.generateDate(),
+                user: "Kristen", //replace with user's name
+    	    key: this.generateId()} //should replace this with apartment id
+    	);
 
-	this.setState({items: itemArray});
-	this._inputElement.value="";
-	e.preventDefault();
+    	this.setState({items: itemArray});
+    	this._inputElement.value="";
+    	e.preventDefault();
     }
 
     /**
@@ -67,17 +70,17 @@ export default class TodoList extends React.Component {
      */
     generateDate() {
         var date = new Date();
-	var year = date.getUTCFullYear();
-	var month = date.getUTCMonth();
-	var day = date.getUTCDate();
-	//month 2 digits
-	month = ("0" + (month + 1)).slice(-2);
+    	var year = date.getUTCFullYear();
+    	var month = date.getUTCMonth();
+    	var day = date.getUTCDate();
+    	//month 2 digits
+    	month = ("0" + (month + 1)).slice(-2);
 
-	//year 2 digits
+	   //year 2 digits
         year = year.toString().substr(2,2);
 
-	var formattedDate = month + '/' + day + "/" + year;
-	return formattedDate;
+    	var formattedDate = month + '/' + day + "/" + year;
+    	return formattedDate;
     }
 
 
@@ -90,26 +93,76 @@ export default class TodoList extends React.Component {
 	this.setState({items: itemArray});
     }*/
 
+    createMessage(id) {
+      var manager = new DBManager();
+      var message = manager.getMessage(id);
+      return message.then(function(e){
+          var words = e.getText().toString();
+          var t = e.getTimeSent().toString();
+          var s = e.getSender().toString();
+          return {text: words, time: t, user: s};
+      });
+    }
+
+// Extracts information to make message
+    createMessages(ids) {
+        console.log('start createMessages (ids)', ids.length, ids);
+        for (var i = 0; i < ids.length; i++){
+          var newMessage = this.createMessage(ids[i]);
+          newMessage.then(function(contents) {
+            var itemArray = this.state.items;
+            itemArray.unshift(contents);
+            this.setState({items: itemArray});
+          }.bind(this));
+        }
+    }
+
+    TestMessages() {
+      // Create a test user & add messages
+      var manager = new DBManager();
+      var uid = "GNfb868cZATuNgsI1kYLA1QxjWi2";
+      var aptid = "ASD77SDF70";
+
+      var testUser = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
+      testUser.setUserID(uid);
+      testUser.setAptID(aptid);
+      manager.addUser(testUser);
+
+      var obj = new Message("ABCDEFGHIJK", "1112333", "HELLOW WORLD", "aasdfasdf")
+      manager.addMessage(obj);
+      manager.addMessage(obj);
+      manager.addMessage(obj);
+      manager.addMessage(obj);
+
+      var ids = manager.getMessages();
+      console.log('ids :', ids);
+      var messages = this.createMessages(ids);
+    }
+
     /**
      * Renders a To-Do Item.
      *
      * @method render
      */
+
     render() {
-	return (
-	    <div className="todoMain">
-		<div className="header">
-		    <form onSubmit={this.addItem}>
-			<input ref={(a) => this._inputElement = a} //inputElement property stores reference to input element
-			    placeholder="Enter note">
-			</input>
-			<button type="submit">+</button>
-		    </form>
-		</div>
+
+    	return (
+    	    <div className="todoMain">
+        		<div className="header">
+        		    <form onSubmit={this.addItem}>
+        			<input ref={(a) => this._inputElement = a} //inputElement property stores reference to input element
+        			    placeholder="Enter note">
+        			</input>
+        			<button type="submit">+</button>
+        		    </form>
+        		</div>
+
                 <div className="items">
-		    <TodoItem entries={this.state.items}/>
+        		    <TodoItem entries={this.state.items}/>
                 </div>
-	    </div>
-	);
+                <button onClick={this.TestMessages.bind(this)}>Test Messages</button>
+    	    </div>
+    	);
     }
 }

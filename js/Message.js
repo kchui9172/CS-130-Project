@@ -3,7 +3,7 @@
  *
  * @class Message
  */
-export default class Message { 
+export default class Message {
     /**
      * Represents a message.
      *
@@ -13,13 +13,33 @@ export default class Message {
      * @param {Date} timeSent - The timestamp of when message was sent
      * @param {text} text - The actual text of message
      */
-    constructor(sender, timeSent, text) {
-        this._sender = this.;
+    constructor(sender, timeSent, text, aptID) {
+        this._sender = sender;
         this._timeSent = timeSent;
         this._text = text;
         this._sent = false;
-        this._aptID = getUser().getAptID();
+        this._aptID = aptID;
     }
+
+    /**
+     * Creates a User from input JSON.
+     *
+     * @method JSONtoUser
+     * @static
+     * @param {string} - JSON representing a User
+     * @return {User} - The User represented by the JSOn
+     */
+    static JSONtoMessage(data) {
+        var message = new Message();
+        var JSONObj = JSON.parse(data);
+        message._sender = JSONObj._sender;
+        message._timeSent = JSONObj._timeSent;
+        message._text = JSONObj._text;
+        message._sent = JSONObj._sent;
+        message._aptID = JSONObj._aptID;
+        return message;
+    }
+
 
     /**
      * Updates Message to show that it has  been successful posted.

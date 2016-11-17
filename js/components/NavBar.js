@@ -23,7 +23,7 @@ const style = {
     paddingBottom: 96,
   },
   button: {
-    margin:0,
+    marginTop:-2,
     color:'white',
   },
 };
@@ -34,7 +34,7 @@ class NavLinks extends Component {
     return (
       <div>
       <FlatButton {...this.props} label="API Docs" />
-      <FlatButton {...this.props} label="GitHub"   style={style.button} href="https://github.com/callemall/material-ui" />
+      <FlatButton {...this.props} label="GitHub"   style={style.button} href="https://github.com/kchui9172/CS-130-Project/tree/new-master" />
       </div>
     );
   }

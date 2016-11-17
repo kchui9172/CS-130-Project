@@ -12,9 +12,8 @@ const style = {
     zIndex: '998',
     position: 'absolute',
   },
-  content: {
-    position:'absolute',
-    paddingTop:'156px',
+  contents: {
+    marginLeft:256,
   },
 };
 
@@ -38,10 +37,25 @@ export default class AuthPage extends React.Component {
         </Drawer>
 
         <div style={style.contents} >
-          <Grid  breakpoints={[3]}  columnWidth={320} gutterWidth={48} onChange={breakpoint => {}} >
+          <Grid breakpoints={[3]} flexible={true} columnWidth={300} gutterWidth={20} onChange={breakpoint => {}} >
             <Row>
-              <Column width={this.state.openDrawer ? "1/2" : "2/3"} offset={this.state.openDrawer ? "1/6" : "0/1"}> <ResponsiveSummary /> </Column>
+              <Column width="1/3" ><ResponsiveSummary/></Column>
+              <Column width="1/3"><ResponsiveSummary/></Column>
+              <Column width="1/3"> <ResponsiveSummary /> </Column>
             </Row>
+            <br/>
+            <Row>
+              <Column width="1/3" ><ResponsiveSummary/></Column>
+              <Column width="1/3"><ResponsiveSummary/></Column>
+              <Column width="1/3"> <ResponsiveSummary /> </Column>
+            </Row>
+            <br/>
+            <Row>
+              <Column width="1/3" ><ResponsiveSummary/></Column>
+              <Column width="1/3"><ResponsiveSummary/></Column>
+              <Column width="1/3"> <ResponsiveSummary /> </Column>
+            </Row>
+            <br/>
           </Grid>
         </div>
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoList from './TodoList.js';
-import TodoItem from './TodoItem.js';
 
 /**
  * Represents the Messages page.
@@ -27,7 +26,10 @@ export default class Messages extends React.Component{
      */
     render(){
         return (
-            <TodoList/>
+            <div>
+                <h1> Messages</h1>
+                <TodoList />
+            </div>
 /*
             <div classname="messageClass">
                 <div className="messageTitle">

@@ -34,7 +34,7 @@ export default class AuthPage extends React.Component {
   render() {
     return (
         <div style={style.contents} >
-          <Grid  breakpoints={[3]}  columnWidth={320} gutterWidth={48} onChange={breakpoint => {}} >
+          <Grid  breakpoints={[3]}  columnWidth={280} gutterWidth={48} onChange={breakpoint => {}} >
             <Row>
               <Column width="2/3"> <ResponsiveSummary /></Column>
               <Column width="1/3"> <CredentialsCard /> </Column>

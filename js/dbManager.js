@@ -9,7 +9,7 @@ var config = {
   storageBucket: "rockmates-d8edb.appspot.com",
   messagingSenderId: "370968243217"
 };
-
+firebase.initializeApp(config);
 
 
 
@@ -92,7 +92,10 @@ export default class DBManager {
          }
         }
         var signInPromise = firebase.auth().signInWithEmailAndPassword(email, password).catch(onFailCallback);
-        return signInPromise.then(function(signedInUser){user_cache=true;console.log('db.signIn: firebaseCurrentUser: ', (null !== firebase.auth().currentUser));return true;/*DBManager.getUser(signedInUser.uid)*/});
+
+        return signInPromise.then(function(signedInUser)
+        { user_cache=true;
+          console.log('db.signIn: firebaseCurrentUser: ', (null !== firebase.auth().currentUser));return true;/*DBManager.getUser(signedInUser.uid)*/});
         // TODO : should return promise of User object (but it should never be none, or if its, the other side should handle that case)
         // TODO : Also, don't forget about firebase.auth().onAuthStateChanged(function(user) {
         //   if (user) {
