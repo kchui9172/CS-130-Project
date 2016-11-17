@@ -15,5 +15,4 @@ so that the dependency is noted in in `package.json`.
 
 ## Running Rockmates
 
-After all packages are installed, run `npm start`. The website can be viewed at `localhost:8080`.
-
+After all packages are installed, run `npm start`. The website can be viewed at `localhost:3000`.

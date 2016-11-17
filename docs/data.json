@@ -1,0 +1,1023 @@
+{
+    "project": {},
+    "files": {
+        "js/components/Login.js": {
+            "name": "js/components/Login.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/MessageComponent.js": {
+            "name": "js/components/MessageComponent.js",
+            "modules": {},
+            "classes": {
+                "React.Component.Messages": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/TodoItem.js": {
+            "name": "js/components/TodoItem.js",
+            "modules": {},
+            "classes": {
+                "React.Component.TodoItem": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/TodoList.js": {
+            "name": "js/components/TodoList.js",
+            "modules": {},
+            "classes": {
+                "React.Component.TodoList": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/Apartment.js": {
+            "name": "js/Apartment.js",
+            "modules": {},
+            "classes": {
+                "Apartment": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/Chore.js": {
+            "name": "js/Chore.js",
+            "modules": {},
+            "classes": {
+                "Chore": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/Message.js": {
+            "name": "js/Message.js",
+            "modules": {},
+            "classes": {
+                "Message": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/User.js": {
+            "name": "js/User.js",
+            "modules": {},
+            "classes": {
+                "User": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/dbManager.js": {
+            "name": "js/dbManager.js",
+            "modules": {},
+            "classes": {
+                "DBManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "React.Component.Messages": {
+            "name": "React.Component.Messages",
+            "shortname": "React.Component.Messages",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/MessageComponent.js",
+            "line": 6,
+            "description": "Represents the Messages page.",
+            "extends": "React.Component"
+        },
+        "React.Component.TodoItem": {
+            "name": "React.Component.TodoItem",
+            "shortname": "React.Component.TodoItem",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/TodoItem.js",
+            "line": 4,
+            "description": "Represents a To-Do Item.",
+            "extends": "React.Component"
+        },
+        "React.Component.TodoList": {
+            "name": "React.Component.TodoList",
+            "shortname": "React.Component.TodoList",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/TodoList.js",
+            "line": 5,
+            "description": "Represents a To-Do List.",
+            "extends": "React.Component"
+        },
+        "Apartment": {
+            "name": "Apartment",
+            "shortname": "Apartment",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/Apartment.js",
+            "line": 1,
+            "description": "Represents and contains information about an Apartment."
+        },
+        "Chore": {
+            "name": "Chore",
+            "shortname": "Chore",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/Chore.js",
+            "line": 1,
+            "description": "Represents a Chore."
+        },
+        "Message": {
+            "name": "Message",
+            "shortname": "Message",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/Message.js",
+            "line": 1,
+            "description": "Represents a Message."
+        },
+        "User": {
+            "name": "User",
+            "shortname": "User",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/User.js",
+            "line": 1,
+            "description": "Represents a User."
+        },
+        "DBManager": {
+            "name": "DBManager",
+            "shortname": "DBManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/dbManager.js",
+            "line": 21,
+            "description": "Represents a Database Manager."
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "js/components/Login.js",
+            "line": 13,
+            "class": "React.Component.Messages"
+        },
+        {
+            "file": "js/components/MessageComponent.js",
+            "line": 13,
+            "description": "Constructs the Messages page.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.Messages"
+        },
+        {
+            "file": "js/components/MessageComponent.js",
+            "line": 23,
+            "description": "Renders the Messages page",
+            "render": "",
+            "class": "React.Component.Messages"
+        },
+        {
+            "file": "js/components/TodoItem.js",
+            "line": 11,
+            "description": "Constructs a To-Do Item",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.TodoItem"
+        },
+        {
+            "file": "js/components/TodoItem.js",
+            "line": 29,
+            "description": "Renders a To-Do Item",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.TodoItem"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 12,
+            "description": "Constructs a To-Do List.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 52,
+            "description": "Generates an ID.",
+            "itemtype": "method",
+            "name": "generateID",
+            "return": {
+                "description": "- The generated ID",
+                "type": "Int"
+            },
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 62,
+            "description": "Generates a Date.",
+            "itemtype": "method",
+            "name": "generateDate",
+            "return": {
+                "description": "- The generated date",
+                "type": "String"
+            },
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 93,
+            "description": "Renders a To-Do Item.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 8,
+            "description": "Constructs an Apartment.",
+            "itemtype": "method",
+            "name": "constructor",
+            "params": [
+                {
+                    "name": "address",
+                    "description": "- Address of the Apartment",
+                    "type": "String"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 22,
+            "description": "Gets the Apartment ID.",
+            "itemtype": "method",
+            "name": "getAptID",
+            "return": {
+                "description": "- The Apartment ID",
+                "type": "String"
+            },
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 32,
+            "description": "Gets the address of the Apartment.",
+            "itemtype": "method",
+            "name": "getAddress",
+            "return": {
+                "description": "- The Apartment address",
+                "type": "String"
+            },
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 42,
+            "description": "Gets the tenants of the Apartment.",
+            "itemtype": "method",
+            "name": "getTenantIDs",
+            "return": {
+                "description": "}",
+                "type": "Arraystring"
+            },
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 52,
+            "description": "Sets the Apartment ID.",
+            "itemtype": "method",
+            "name": "setAptID",
+            "params": [
+                {
+                    "name": "aptId",
+                    "description": "- The new Apartment ID",
+                    "type": "String"
+                }
+            ],
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 62,
+            "description": "Adds a tenant to the Apartment.",
+            "itemtype": "method",
+            "name": "addTenant",
+            "params": [
+                {
+                    "name": "tenant",
+                    "description": "- The new tenant's ID",
+                    "type": "String"
+                }
+            ],
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 7,
+            "description": "Constructs a Chore.",
+            "is_constructor": 1,
+            "itemtype": "method",
+            "name": "constructor",
+            "params": [
+                {
+                    "name": "category",
+                    "description": "- The category of the Chore.",
+                    "type": "String"
+                },
+                {
+                    "name": "deadline",
+                    "description": "- The deadline of the Chore.",
+                    "type": "Date"
+                },
+                {
+                    "name": "details",
+                    "description": "- Additional details of the Chore.",
+                    "type": "String"
+                }
+            ],
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 28,
+            "description": "Sets a user assignment to the Chore.",
+            "itemtype": "method",
+            "name": "setAssignment",
+            "params": [
+                {
+                    "name": "userID",
+                    "description": "- The User ID of the assignee of the Chore.",
+                    "type": "String"
+                }
+            ],
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 36,
+            "description": "Sets the deadline for the chore.",
+            "itemtype": "method",
+            "name": "setDeadline",
+            "params": [
+                {
+                    "name": "deadline",
+                    "description": "- The deadline of the Chore.",
+                    "type": "Date"
+                }
+            ],
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 44,
+            "description": "Sets the details for the chore.",
+            "itemtype": "method",
+            "name": "setDetails",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "- The details of the Chore.",
+                    "type": "String"
+                }
+            ],
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 52,
+            "description": "Sets the completion date of the finished Chore.",
+            "itemtype": "method",
+            "name": "complete",
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 59,
+            "description": "Gets the category of the Chore.",
+            "itemtype": "method",
+            "name": "getCategory",
+            "return": {
+                "description": "- The category of the Chore",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 67,
+            "description": "Gets the User ID of the creator of the Chore.",
+            "itemtype": "method",
+            "name": "getCreator",
+            "return": {
+                "description": "- The creator of the Chore",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 75,
+            "description": "Gets the deadline of the Chore.",
+            "itemtype": "method",
+            "name": "getDeadline",
+            "return": {
+                "description": "- The deadline of the Chore",
+                "type": "Date"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 83,
+            "description": "Gets the additional details of the Chore.",
+            "itemtype": "method",
+            "name": "getDetails",
+            "return": {
+                "description": "- The details of the Chore",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 91,
+            "description": "Gets the User ID of the assignee of the Chore.",
+            "itemtype": "method",
+            "name": "getAssignment",
+            "return": {
+                "description": "- The assignee of the Chore",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 99,
+            "description": "Gets the creation date of the Chore.",
+            "itemtype": "method",
+            "name": "getCreationDate",
+            "return": {
+                "description": "- The creation date of the Chore",
+                "type": "Date"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 107,
+            "description": "Gets the completion date of the Chore.",
+            "itemtype": "method",
+            "name": "getCompletionDate",
+            "return": {
+                "description": "- The completion date of the Chore",
+                "type": "Date"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 7,
+            "description": "Represents a message.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "sender",
+                    "description": "- The User ID of message creator",
+                    "type": "String"
+                },
+                {
+                    "name": "timeSent",
+                    "description": "- The timestamp of when message was sent",
+                    "type": "Date"
+                },
+                {
+                    "name": "text",
+                    "description": "- The actual text of message",
+                    "type": "Text"
+                }
+            ],
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 24,
+            "description": "Updates Message to show that it has  been successful posted.",
+            "itemtype": "method",
+            "name": "confirmSend",
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 31,
+            "description": "Gets the user id of the creator of the Message.",
+            "itemtype": "method",
+            "name": "getSender",
+            "return": {
+                "description": "- The user ID of the creator",
+                "type": "String"
+            },
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 39,
+            "description": "Gets the timestamp of when the Message was posted.",
+            "itemtype": "method",
+            "name": "getTimeSent",
+            "return": {
+                "description": "- The time when the Message was posted",
+                "type": "Date"
+            },
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 47,
+            "description": "Gets the text of Message.",
+            "itemtype": "method",
+            "name": "getText",
+            "return": {
+                "description": "- The text of the Message",
+                "type": "String"
+            },
+            "class": "Message"
+        },
+        {
+            "file": "js/User.js",
+            "line": 7,
+            "description": "Constructs a User.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "email",
+                    "description": "- The email of User",
+                    "type": "String"
+                },
+                {
+                    "name": "firstName",
+                    "description": "- The first name of the User",
+                    "type": "String"
+                },
+                {
+                    "name": "lastName",
+                    "description": "- The last name of the User",
+                    "type": "String"
+                },
+                {
+                    "name": "phoneNumber",
+                    "description": "- The phone number of the User",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 29,
+            "description": "Creates a User from input JSON.",
+            "itemtype": "method",
+            "name": "JSONtoUser",
+            "static": 1,
+            "params": [
+                {
+                    "name": "-",
+                    "description": "JSON representing a User",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The User represented by the JSOn",
+                "type": "User"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 52,
+            "description": "Gets the name of the User (first and last names).",
+            "itemtype": "method",
+            "name": "getName",
+            "return": {
+                "description": "- The first and last names of the User",
+                "type": "String"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 60,
+            "description": "Gets the email of the User.",
+            "itemtype": "method",
+            "name": "getEmail",
+            "return": {
+                "description": "- The email of the User",
+                "type": "String"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 68,
+            "description": "Gets the ID of the User.",
+            "itemtype": "method",
+            "name": "getUserID",
+            "return": {
+                "description": "- The User ID",
+                "type": "String"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 76,
+            "description": "Gets the Apartment ID.",
+            "itemtype": "method",
+            "name": "getAptID",
+            "return": {
+                "description": "- The Apartment ID",
+                "type": "String"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 84,
+            "description": "Gets the message IDs associated with the User.",
+            "itemtype": "method",
+            "name": "getMessageIDs",
+            "return": {
+                "description": "} - The message IDs of the messages created by the User",
+                "type": "Arraystring"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 92,
+            "description": "Gets the chore IDs associated with the User.",
+            "itemtype": "method",
+            "name": "getChoreIDs",
+            "return": {
+                "description": "} - The chore IDs of all chores associated with the User",
+                "type": "Arraystring"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 100,
+            "description": "Gets the payment IDs associated with User.",
+            "itemtype": "method",
+            "name": "getPaymentIDs",
+            "return": {
+                "description": "} - The payment IDs of all payments associated with the User",
+                "type": "Arraystring"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 108,
+            "description": "Sets the User ID.",
+            "itemtype": "method",
+            "name": "setUserID",
+            "params": [
+                {
+                    "name": "userID",
+                    "description": "- The new value of the User ID",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 116,
+            "description": "Sets the apartment ID.",
+            "itemtype": "method",
+            "name": "setAptID",
+            "params": [
+                {
+                    "name": "aptID",
+                    "description": "- The new value of the apartment ID",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 124,
+            "description": "Add message to messages array.",
+            "itemtype": "method",
+            "name": "addMessage",
+            "params": [
+                {
+                    "name": "messageID",
+                    "description": "- The ID associated with message to be added",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 132,
+            "description": "Add chore to chores array.",
+            "itemtype": "method",
+            "name": "addChore",
+            "params": [
+                {
+                    "name": "choreID",
+                    "description": "- The ID associated with chore to be added",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 140,
+            "description": "Add payment to payments array.",
+            "itemtype": "method",
+            "name": "addPayment",
+            "params": [
+                {
+                    "name": "paymentID",
+                    "description": "- The ID associated with payment to be added",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 27,
+            "description": "Constructs a Database Manager.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 41,
+            "description": "Attempts to sign a user in.",
+            "itemtype": "method",
+            "name": "signIn",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "- The user's email",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "- The user's password",
+                    "type": "String"
+                }
+            ],
+            "throws": {
+                "description": "- A possible authentication error",
+                "type": "Error"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 74,
+            "description": "Attempts to sign up a user.",
+            "itemtype": "method",
+            "name": "signUp",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "- The user's email",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "- The user's password",
+                    "type": "String"
+                }
+            ],
+            "throws": {
+                "description": "- A possible authentication error",
+                "type": "Error"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 97,
+            "description": "Adds a user to the database.",
+            "itemtype": "method",
+            "name": "addUser",
+            "params": [
+                {
+                    "name": "-",
+                    "description": "The User Object to be added",
+                    "type": "User"
+                }
+            ],
+            "return": {
+                "description": "- The User ID of the added user",
+                "type": "String"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 109,
+            "description": "Gets the user.",
+            "itemtype": "method",
+            "name": "getUser",
+            "params": [
+                {
+                    "name": "user",
+                    "description": "- The user ID",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "user_cache.getID()"
+                }
+            ],
+            "return": {
+                "description": "- The corresponding User",
+                "type": "User"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 118,
+            "description": "Adds an apartment.",
+            "itemtype": "method",
+            "name": "addApartment",
+            "params": [
+                {
+                    "name": "apartment",
+                    "description": "- The apartment to be added",
+                    "type": "Apartment"
+                }
+            ],
+            "throws": {
+                "description": "- Possible failure to add Apartment",
+                "type": "Error"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 127,
+            "description": "Gets an apartment.",
+            "itemtype": "method",
+            "name": "getApt",
+            "params": [
+                {
+                    "name": "apartment",
+                    "description": "- The apartment ID",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The corresponding Apartment",
+                "type": "Apartment"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 136,
+            "description": "Adds a chore.",
+            "itemtype": "method",
+            "name": "addChore",
+            "params": [
+                {
+                    "name": "chore",
+                    "description": "- The chore to be added.",
+                    "type": "Chore"
+                }
+            ],
+            "throws": {
+                "description": "- Possible failure to add Chore",
+                "type": "Error"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 145,
+            "description": "Gets all chores.",
+            "itemtype": "method",
+            "name": "getChores",
+            "return": {
+                "description": "}",
+                "type": "ArrayChores"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 153,
+            "description": "Adds a message.",
+            "itemtype": "method",
+            "name": "addMessage",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "- The message to be added.",
+                    "type": "Message"
+                }
+            ],
+            "throws": {
+                "description": "- Possible failure to add Message",
+                "type": "Exception"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 162,
+            "description": "Gets all messages.",
+            "itemtype": "method",
+            "name": "getMessages",
+            "return": {
+                "description": "}",
+                "type": "ArrayMessage"
+            },
+            "class": "DBManager"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: render",
+            "line": " js/components/MessageComponent.js:23"
+        },
+        {
+            "message": "replacing incorrect tag: params with param",
+            "line": " js/components/TodoItem.js:11"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " js/dbManager.js:145"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " js/dbManager.js:162"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/components/Login.js:13"
+        },
+        {
+            "message": "Missing item type\nRenders the Messages page",
+            "line": " js/components/MessageComponent.js:23"
+        }
+    ]
+}
