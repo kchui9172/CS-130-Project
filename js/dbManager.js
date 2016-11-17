@@ -212,13 +212,36 @@ export default class DBManager {
      * @param {Message} message - The message to be added.
      * @throws {Exception} - Possible failure to add Message
      */
-    addMessage(message) {}
+    addMessage(message) {
+        var messagesRef = firebase.database().ref('messages');
+        var newMessageRef = messagesRef.push();
+        newMessageRef.set(JSON.stringify(message));
+        // Add to User Message list
+        this.user_cache.addMessage(newMessageRef.getKey());
+        this.updateUser(this.user_cache);
+    }
 
     /**
-     * Gets all messages.
+     * Gets all message ids.
      *
      * @method getMessages
-     * @returns {Array{Message}}
+     * @returns {Array{MessageIDs}}
      */
-    getMessages() {}
+    getMessages() {
+        return this.user_cache.getMessageIDs();
+    }
+
+
+    /**
+     * Gets a message by its id.
+     *
+     * @method getMessage
+     * @returns {Message}
+    */
+    getMessage(id) {
+        var messages = [];
+        return firebase.database().ref('/messages/' + id).once('value').then(function(snapshot) {
+            return Message.JSONtoMessage(snapshot.val());
+        });
+      }
 }

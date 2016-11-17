@@ -25,12 +25,7 @@ export default class TodoList extends React.Component {
             listItems: {},
         }
 
-   	this.addItem = this.addItem.bind(this);
-   	//this.handleRemove = this.handleRemove.bind(this);
-
-        //this.setStateHandler = this.setStateHandler.bind(this);
-        //this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-        //this.findDomNodeHandler = this.findDomNodeHandler.bind(this);
+   	  this.addItem = this.addItem.bind(this);
     };
 
     addItem(e) {
@@ -149,19 +144,10 @@ export default class TodoList extends React.Component {
 
     	return (
     	    <div className="todoMain">
-        		<div className="header">
-        		    <form onSubmit={this.addItem}>
-        			<input ref={(a) => this._inputElement = a} //inputElement property stores reference to input element
-        			    placeholder="Enter note">
-        			</input>
-        			<button type="submit">+</button>
-        		    </form>
-        		</div>
-
-                <div className="items">
-        		    <TodoItem entries={this.state.items}/>
-                </div>
-                <button onClick={this.TestMessages.bind(this)}>Test Messages</button>
+            <div className="items">
+    		      <TodoItem entries={this.state.items}/>
+            </div>
+            <button onClick={this.TestMessages.bind(this)}>Test Messages</button>
     	    </div>
     	);
     }
