@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Formsy from 'formsy-react';
 
 import FlatButton from 'material-ui/FlatButton';
@@ -7,7 +7,7 @@ import {FormsyText} from 'formsy-material-ui/lib'
 import {CardMedia, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
 import DBManager from '../../dbManager.js';
-import FloatingDialog from '../primitives/FloatingDialog.js';
+import FloatingDialog from '../FloatingDialog.js';
 
 const style = {
   image: {
@@ -29,9 +29,6 @@ const style = {
 };
 
 const LoginForm = React.createClass({
-  contextTypes: {
-      router: React.PropTypes.object.isRequired
-  },
 
   enableButton() {
     this.setState({
@@ -57,11 +54,10 @@ const LoginForm = React.createClass({
     });
 
     console.log('submitLogin:', data);
-    var dbManager = new DBManager();
+    var dbManager = DBManager.getInstance();
     var result = dbManager.signIn(data.email, data.password, this.notifyLoginError);
     result.then(function(data){
       console.log('resultLogin:', data);
-      //this.onLoginSuccessful();
     });
   },
 
@@ -86,15 +82,6 @@ const LoginForm = React.createClass({
       emailInvalid: (data.email==""),
       passwordInvalid: (data.password==""),
     });
-  },
-
-  onLoginSuccessful() {
-    var location = self.props.location
-    if (location.state && location.state.nextPathname) {
-      self.context.router.replace(location.state.nextPathname)
-    } else {
-        self.context.router.replace('/home')
-    }
   },
 
   getInitialState() {

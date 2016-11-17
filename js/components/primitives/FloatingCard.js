@@ -11,7 +11,7 @@ const style = {
   },
 };
 
-export default class CredentialsCard extends Component {
+export default class FloatingCard extends Component {
   static muiName = 'Card';
 
   constructor(props, context) {

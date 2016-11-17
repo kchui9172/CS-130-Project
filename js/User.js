@@ -32,7 +32,7 @@ export default class User {
      * @method JSONtoUser
      * @static
      * @param {string} - JSON representing a User
-     * @return {User} - The User represented by the JSOn
+     * @return {User} - The User represented by the JSON
      */
     static JSONtoUser(data) {
         var user = new User();
@@ -57,7 +57,7 @@ export default class User {
      */
     getName() { return (this._firstName + ' ' + this._lastName); }
 
-    /** 
+    /**
      * Gets the email of the User.
      *
      * @method getEmail
@@ -65,7 +65,7 @@ export default class User {
      */
     getEmail() { return this._email; }
 
-    /** 
+    /**
      * Gets the ID of the User.
      *
      * @method getUserID
@@ -73,7 +73,7 @@ export default class User {
      */
     getUserID() { return this._userID; }
 
-    /** 
+    /**
      * Gets the Apartment ID.
      *
      * @method getAptID
@@ -97,7 +97,7 @@ export default class User {
      */
     getChoreIDs() { return this._chores; }
 
-    /** 
+    /**
      * Gets the payment IDs associated with User.
      *
      * @method getPaymentIDs
@@ -113,7 +113,7 @@ export default class User {
      */
     setUserID(userID) { this._userID = userID; }
 
-    /** 
+    /**
      * Sets the apartment ID.
      *
      * @method setAptID
@@ -121,7 +121,7 @@ export default class User {
      */
     setAptID(aptID) { this._aptID = aptID; }
 
-    /** 
+    /**
      * Add message to messages array.
      *
      * @method addMessage
@@ -137,11 +137,11 @@ export default class User {
      */
     addChore(choreID) { this._chores.push(choreID); }
 
-    /** 
+    /**
      * Add payment to payments array.
      *
      * @method addPayment
-     * @param {string} paymentID - The ID associated with payment to be added 
+     * @param {string} paymentID - The ID associated with payment to be added
      */
     addPayment(paymentID) { this._payments.push(paymentID); }
 }

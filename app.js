@@ -7,19 +7,19 @@ import {cyan500,cyan700,grey400,grey500,grey300,darkBlack,fullBlack, white} from
 import AuthPage from './js/components/AuthPage/Main.js';
 import MessageComponent from './js/components/MessageComponent'
 import NavBar from './js/components/NavBar.js';
-
+import Routes from './js/config/routes.js';
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
   palette: {
-    textColor: '#283c46',
-    accent1Color: '#3cb371',
-    accent2Color: '#ACE7EF',
+    textColor: '#283c46',    // dirty-blue-black
+    accent1Color: '#3cb371', // green
+    accent2Color: '#ACE7EF', // cyan
     primary3Color: grey400,
-    primary1Color: '#856ec6',
-    primary2Color: '#715ea8',
+    primary1Color: '#856ec6',  // lighter - purple
+    primary2Color: '#715ea8', // purple
     accent3Color: grey500,
     alternateTextColor: white,
     canvasColor: white,
@@ -35,27 +35,34 @@ const muiTheme = getMuiTheme({
   },
 
 });
+//
+// ReactDOM.render(
+//   <MuiThemeProvider muiTheme={muiTheme} >
+//     <NavBar/>
+//   </MuiThemeProvider>,
+//     document.querySelector('#appBar')
+// );
 
 ReactDOM.render(
   <MuiThemeProvider muiTheme={muiTheme} >
-    <NavBar/>
-  </MuiThemeProvider>,
-    document.querySelector('#appBar')
+    <Routes />
+  </MuiThemeProvider>, document.querySelector('#app')
 );
 
-ReactDOM.render(
-  <MuiThemeProvider muiTheme={muiTheme} >
-    <AuthPage />
-  </MuiThemeProvider>,
-    document.querySelector('#content')
-);
 
-ReactDOM.render(
-    <MessageComponent />,
-    document.querySelector('.messages')
-);
+
+// ReactDOM.render(
+//   <MuiThemeProvider muiTheme={muiTheme} >
+//     <AuthPage />
+//   </MuiThemeProvider>,
+//     document.querySelector('#content')
+// );
+
+// ReactDOM.render(
+//     <MessageComponent />,
+//     document.querySelector('.messages')
+// );
 
 /** TODO: Please convert this to better CSS later **/
-document.querySelector('#appBar').style.paddingBottom = '96px';
-document.body.style.backgroundColor = '#a9b1b1';
+document.body.style.backgroundColor = '#f4f0e8';
 document.body.style.margin = '0';

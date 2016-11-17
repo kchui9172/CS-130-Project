@@ -4,65 +4,71 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import RaisedButton from 'material-ui/RaisedButton';
+
+import ActionAndroid from 'material-ui/svg-icons/action/android';
+import FontIcon from 'material-ui/FontIcon';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
+import DBManager from '../dbManager.js';
+
 const style = {
-  zIndex:'999',
-  position:'fixed',
-  marginBottom:'48px',
-  textTransform:'uppercase',
+  bar : {
+    zIndex:'999',
+    position:'fixed',
+    marginBottom:'48px',
+    textTransform:'uppercase',
+  },
+  container : {
+    paddingBottom: 96,
+  },
+  button: {
+    margin:0,
+    color:'white',
+  },
 };
 
-class Login extends Component {
+class NavLinks extends Component {
   static muiName = 'FlatButton';
-
   render() {
     return (
-      <FlatButton {...this.props} label="MENU" />
+      <div>
+      <FlatButton {...this.props} label="API Docs" />
+      <FlatButton {...this.props} label="GitHub"   style={style.button} href="https://github.com/callemall/material-ui" />
+      </div>
     );
   }
 }
-
-const Logged = (props) => (
-  <IconMenu
-    {...props}
-    iconButtonElement={
-      <IconButton><MoreVertIcon /></IconButton>
-    }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-  >
-    <MenuItem primaryText="Refresh" />
-    <MenuItem primaryText="Help" />
-    <MenuItem primaryText="Sign out" />
-  </IconMenu>
-);
-
-Logged.muiName = 'IconMenu';
 
 /**
  * This example is taking advantage of the composability of the `AppBar`
  * to render different components depending on the application state.
  */
-export default class NavBar extends Component {
-  state = {
-    logged: true,
-  };
+//export default class NavBar extends Component {
+const NavBar = React.createClass({
 
-  handleChange = (event, logged) => {
-    this.setState({logged: logged});
-  };
+  getInitialState() {
+    return {
+      contextVars: {
+        dbManager : new DBManager(),
+      },
+    };
+  },
 
   render() {
     return (
       <div>
-        <AppBar style={style}
+      <div style={style.container}>
+        <AppBar style={style.bar}
           title="Rockmates"
           iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-          iconElementRight={this.state.logged ? <Logged /> : <Login />}
+          iconElementRight={<NavLinks />}
         />
       </div>
+        {this.props.children}
+      </div>
     );
-  }
-}
+  },
+});
+
+export default NavBar;
