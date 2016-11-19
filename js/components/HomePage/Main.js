@@ -6,6 +6,7 @@ import SwipeableViews from 'react-swipeable-views';
 
 import NavList from '../NavList.js';
 import SummaryInfo from './SummaryInfo.js';
+import AddAptDialog from './AddAptDialog.js';
 
 const style = {
   drawer: {
@@ -18,7 +19,7 @@ const style = {
 };
 
 const ResponsiveSummary = (SummaryInfo);
-export default class AuthPage extends React.Component {
+export default class HomePage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -31,7 +32,9 @@ export default class AuthPage extends React.Component {
 
   render() {
     return (
+
       <div>
+      <AddAptDialog/>
         <Drawer style={style.drawer} open={this.state.openDrawer}>
           <NavList/>
         </Drawer>
