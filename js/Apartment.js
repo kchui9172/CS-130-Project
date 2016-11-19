@@ -4,7 +4,6 @@
  * @class Apartment
  */
 export default class Apartment {
-
     /**
      * Constructs an Apartment.
      *
@@ -15,8 +14,28 @@ export default class Apartment {
     constructor (address) {
         this._aptID = null;
         this._tenants = new Array(0);
-        // Parse address
+        this._messages = new Array(0);
+        this._chores = new Array(0);
         this._address = address;
+    }
+
+    /**
+     * Creates an Apartment from input JSON.
+     *
+     * @method JSONtoApartment
+     * @static
+     * @param {string} - JSON representing an Apartment
+     * @return {Apartment} - The Apartment represented by the JSON
+     */
+    static JSONtoApartment(data) {
+        var apartment = new Apartment();
+        var JSONObj = JSON.parse(data);
+        apartment._aptID = JSONObj._aptID;
+        apartment._tenants = JSONObj._tenants;
+        apartment._messages = JSONObj._messages;
+        apartment._chores = JSONObj._chores;
+        apartment._address = JSONObj._address;
+        return apartment;
     }
 
     /**
@@ -50,22 +69,52 @@ export default class Apartment {
     }
 
     /**
+      * Gets the ids of all the messages sent in the Apartment
+      *
+      * @method getMessageIDs
+      * @return {Array{string}}
+      */
+    getMessageIDs() {
+        return this._messages;
+    }
+
+    /**
+      * Gets the ids of all the chores in the Apartment
+      *
+      * @method getChoreIDs
+      * @return {Array{string}}
+      */
+    getChoreIDs() {
+        return this._chores;
+    }
+
+    /**
      * Sets the Apartment ID.
      *
      * @method setAptID
-     * @param {string} aptId - The new Apartment ID
-     */ 
+     * @param {string} aptID - The new Apartment ID
+     */
     setAptID(aptID) {
         this._aptID = aptID;
     }
 
-    /** 
+    /**
      * Adds a tenant to the Apartment.
      *
      * @method addTenant
-     * @param {string} tenant - The new tenant's ID
+     * @param {string} userID - The new tenant's ID
      */
-    addTenant(tenant) {
-        this._tenants.push(tenant);
+    addTenant(userID) {
+        this._tenants.push(userID);
+    }
+
+    /**
+     * Adds a tenant to the Apartment.
+     *
+     * @method addMessage
+     * @param {string} messageID - The new message ID
+     */
+    addMessage(messageID) {
+        this._messages.push(messageID);
     }
 }

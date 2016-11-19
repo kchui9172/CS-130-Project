@@ -17,7 +17,7 @@ export default class Payment {
      * @param {Date} dateDue - The date the loan is to be repaid
      * @param {string} paymentDescription - Description of what the loan was for
      * @param {string} paymentCategory - What category this payment belongs to
-     * @param {int} recurringPaymentPeriod - How often this payment is made 
+     * @param {int} recurringPaymentPeriod - How often this payment is made
      */
     constructor(amount, loaner, loanee, dateLoaned, datePaid, dateDue, paymentDescription, paymentCategory, recurringPaymentPeriod) {
         this._amount = amount;
@@ -37,7 +37,7 @@ export default class Payment {
      * @method JSONtoPayment
      * @static
      * @param {string} - JSON representing a Payment
-     * @return {Payment} - The Payment represented by the JSOn
+     * @return {Payment} - The Payment represented by the JSON
      */
     static JSONtoPayment(data) {
         var payment = new Payment();
@@ -100,7 +100,7 @@ export default class Payment {
      * @method getDateDue
      * @return {Date} - The date this payment is due
      */
-    getDateDue() { return this._dateDue; }    
+    getDateDue() { return this._dateDue; }
 
     /**
      * Gets this payment's description.
@@ -108,7 +108,7 @@ export default class Payment {
      * @method getPaymentDescription
      * @return {string} - Description of payment
      */
-    getPaymentDescription() { return this._paymentDescription; }      
+    getPaymentDescription() { return this._paymentDescription; }
 
     /**
      * Gets this payment's category.
@@ -116,7 +116,7 @@ export default class Payment {
      * @method getPaymentCategory
      * @return {string} - Category of payment
      */
-    getPaymentCategory() { return this._paymentCategory; }  
+    getPaymentCategory() { return this._paymentCategory; }
 
     /**
      * Gets this payment's recurring payment period.
@@ -130,12 +130,11 @@ export default class Payment {
      * Sets the date the payment was repaid.
      *
      * @method setDatePaid
-     * @param {Date} date 
+     * @param {Date} date
      * @return {void}
      */
     setDatePaid(date){
         this._datePaid = date;
-    }  
+    }
 
 }
-
