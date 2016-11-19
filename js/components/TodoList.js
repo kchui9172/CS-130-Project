@@ -115,7 +115,7 @@ export default class TodoList extends React.Component {
     TestMessages() {
       // Create a test user & add messages
       var manager = new DBManager();
-      var uid = "GNfb868cZATuNgsI1kYLA1QxjWi2";
+      var uid = "ZNfb868cZATuNgsI1kYLA1QxjWi2";
       var aptid = "ASD77SDF70";
 
       var testUser = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
@@ -146,6 +146,7 @@ export default class TodoList extends React.Component {
     	    <div className="todoMain">
             <div className="items">
     		      <TodoItem entries={this.state.items}/>
+              {this.TestMessages.bind(this)}
             </div>
             <button onClick={this.TestMessages.bind(this)}>Test Messages</button>
     	    </div>

@@ -30,7 +30,7 @@ export default class MessageForm extends React.Component {
 
     addItem(e) {
         var manager = new DBManager();
-        var uid = "GNfb868cZATuNgsI1kYLA1QxjWi2";
+        var uid = "ZNfb868cZATuNgsI1kYLA1QxjWi2";
         var aptid = "ASD77SDF70";
 
         var testUser = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");

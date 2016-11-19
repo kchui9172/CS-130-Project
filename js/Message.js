@@ -72,3 +72,4 @@ export default class Message {
      */
     getText() { return this._text; }
 }
+

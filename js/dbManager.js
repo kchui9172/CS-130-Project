@@ -1,4 +1,5 @@
 import User from './User.js';
+import Message from './Message.js';
 var firebase = require("firebase");
 
 // Firebase API Credentials
@@ -9,16 +10,14 @@ var config = {
   storageBucket: "rockmates-d8edb.appspot.com",
   messagingSenderId: "370968243217"
 };
-firebase.initializeApp(config);
-
-
 
 // Singleton Design Pattern... We only want one
 // instance of DBManager
-var dbm_instance = null;
+let dbm_instance = null;
+
 // Global Data for User & Apartment
-var user_cache = false; // User Object
-var apt_cache = null;  // Apt Object
+let user_cache = null; // User Object
+let apt_cache = null;  // Apt Object
 
 // Firebase Realtime checks before using cached version
 /**
@@ -27,7 +26,6 @@ var apt_cache = null;  // Apt Object
  * @class DBManager
  */
 export default class DBManager {
-
     /**
      * Constructs a Database Manager.
      *
@@ -35,44 +33,27 @@ export default class DBManager {
      * @constructor
      */
     constructor() {
-        console.log('dbManager.constructor :' );
-        console.log('DBManager.getInstance: (old dbm_instance :', (dbm_instance != null))
-        if(dbm_instance == null){
+        if(!dbm_instance){
             dbm_instance = this;
-            console.log('DBManager.onCreate: [new dbm_instance]');
+            firebase.initializeApp(config);
         }
-        console.log('DBManager.getInstance: (new dbm_instance :', (dbm_instance != null))
         return dbm_instance;
     }
 
-    getAuthHandle() {
-      return firebase.auth();
-    }
-
-    //
-    // componentWillMount: function() {
-    //         firebase.auth().onAuthStateChanged(firebaseUser => {
-    //             if (firebaseUser) {
-    //                 console.log("Logged IN", firebaseUser);
-    //             } else {
-    //                 console.log('Not logged in');
-    //             }
-    //         });
-    //     },
     /**
      * Attempts to sign a user in.
      *
      * @method signIn
      * @param {string} email - The user's email
      * @param {string} password - The user's password
-     * @param {function} onFailCallback - Asynchronous exception handler
-     * @return {Promise} Promise of a non-null User object (newly signed in)
      * @throws {Error} - A possible authentication error
      */
-    signIn(email, password, onFailCallback) {
-        if(onFailCallback == null) {
-          /* Default error handler */
-          onFailCallback = function(error) {
+    signIn(email, password) {
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
             switch (error.code) {
                 case 'auth/invalid-email':
                     alert("Invalid email.");
@@ -87,23 +68,9 @@ export default class DBManager {
                     alert("Wrong password");
                     break;
                 default:
-                    alert(error.message);
-          }
-         }
-        }
-        var signInPromise = firebase.auth().signInWithEmailAndPassword(email, password).catch(onFailCallback);
-
-        return signInPromise.then(function(signedInUser)
-        { user_cache=true;
-          console.log('db.signIn: firebaseCurrentUser: ', (null !== firebase.auth().currentUser));return true;/*DBManager.getUser(signedInUser.uid)*/});
-        // TODO : should return promise of User object (but it should never be none, or if its, the other side should handle that case)
-        // TODO : Also, don't forget about firebase.auth().onAuthStateChanged(function(user) {
-        //   if (user) {
-        //     // User is signed in.
-        //   } else {
-        //     // No user is signed in.
-        //   }
-        // });
+                    alert(errorMessage);
+            }
+        });
     }
 
     /**
@@ -112,11 +79,9 @@ export default class DBManager {
      * @method signUp
      * @param {string} email - The user's email
      * @param {string} password - The user's password
-     * @param {function} onFailCallback - Asynchronous exception handler
-     * @return {Promise} Promise of a nonNull Firebase user
      * @throws {Error} - A possible authentication error
      */
-    signUp(email, password, onFailCallback) {
+    signUp(email, password) {
         return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
             switch (error.code) {
                 case 'auth/email-already-in-use':
@@ -128,7 +93,7 @@ export default class DBManager {
                 default:
                     alert("Error signing up.");
             }
-	    });
+        });
     }
 
     /**
@@ -139,8 +104,19 @@ export default class DBManager {
      * @return {string} - The User ID of the added user
      */
     addUser(user) {
-        var data = JSON.stringify(user);
-        firebase.database().ref('users/' + user.getUserID()).set(data);
+        this.user_cache = user;
+        firebase.database().ref('users/' + user.getUserID()).set(JSON.stringify(user));
+    }
+
+    /**
+     * Updates a user in the database.
+     *
+     * @method updateUser
+     * @param {User} - The User Object to be updated
+     */
+    updateUser(user) {
+        var messagesRef = firebase.database().ref("users/" + user.getUserID());
+        messagesRef.set(JSON.stringify(user));
     }
 
     /**
@@ -150,24 +126,13 @@ export default class DBManager {
      * @param {string} [userID=user_cache.getID()] - The user ID
      * @return {User} - The corresponding User
      */
-    // getUser(userID=user_cache.getID()) {
-    //     return firebase.database().ref('/users/' + userID).once('value').then(function(snapshot) {
-    //         return User.JSONtoUser(snapshot.val());
-    //     });
-    // }
-
-    getUser(userID) {
-        userID = (userID!=null) ? userID : (null !== firebase.auth().currentUser) ? firebase.auth().currentUser.uid : null;
-        console.log('db.getUser: firebaseCurrentUser: ', (null !== firebase.auth().currentUser))
-        if(userID) {
-          console.log('db.getUser', userID);
-          return firebase.database().ref('/users/' + userID).once('value').then(function(snapshot) {
-              return User.JSONtoUser(snapshot.val());
+    getUser(userID=user_cache.getID()) {
+        if (user_cache!=null)
+            return user_cache;
+        else
+            return firebase.database().ref('/users/' + userID).once('value').then(function(snapshot) {
+                return User.JSONtoUser(snapshot.val());
             });
-        } else {
-          console.log('db.getUser', 'null');
-          return null;
-        }
     }
 
     /**
@@ -231,19 +196,18 @@ export default class DBManager {
         return this.user_cache.getMessageIDs();
     }
 
-
     /**
      * Gets a message by its id.
      *
      * @method getMessage
      * @returns {Message}
-    */
+     */
     getMessage(id) {
         var messages = [];
         return firebase.database().ref('/messages/' + id).once('value').then(function(snapshot) {
             return Message.JSONtoMessage(snapshot.val());
         });
-      }
+    }
 
     /**
      * Adds a payment.
