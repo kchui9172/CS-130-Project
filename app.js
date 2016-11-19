@@ -10,6 +10,9 @@ import Routes from './js/config/routes.js';
 import DBManager from './js/dbManager.js';
 import Message from './js/Message.js';
 import User from './js/User.js';
+import Chore from './js/Chore.js';
+import Payment from './js/Payment.js';
+import Apartment from './js/Apartment.js';
 import PaymentComponent from './js/components/PaymentComponent';
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941

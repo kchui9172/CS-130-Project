@@ -14,11 +14,13 @@ export default class Message {
      * @param {text} text - The actual text of message
      */
     constructor(sender, timeSent, text, aptID) {
+        this._messageID = null;
         this._sender = sender;
         this._timeSent = timeSent;
         this._text = text;
         this._sent = false;
         this._aptID = aptID;
+        console.log("done creating message");
     }
 
     /**
@@ -27,11 +29,12 @@ export default class Message {
      * @method JSONtoMessage
      * @static
      * @param {string} - JSON representing a User
-     * @return {Message} - The Message represented by the JSOn
+     * @return {Message} - The Message represented by the JSON
      */
     static JSONtoMessage(data) {
         var message = new Message();
         var JSONObj = JSON.parse(data);
+        message._messageID = JSONObj._messageID;
         message._sender = JSONObj._sender;
         message._timeSent = JSONObj._timeSent;
         message._text = JSONObj._text;
@@ -40,13 +43,20 @@ export default class Message {
         return message;
     }
 
-
     /**
      * Updates Message to show that it has  been successful posted.
      *
      * @method confirmSend
      */
     confirmSend() { this._sent = true; }
+
+
+    /**
+     * Gets the Message ID
+     *
+     * @method getMessageID
+     */
+    getMessageID() { return this._messageID; }
 
     /**
      * Gets the user id of the creator of the Message.
@@ -71,5 +81,12 @@ export default class Message {
      * @return {string} - The text of the Message
      */
     getText() { return this._text; }
+
+    /**
+     * Sets the Message ID
+     *
+     * @method setMessageID
+     */
+    setMessageID(messageID) { this._messageID = messageID; }
 }
 

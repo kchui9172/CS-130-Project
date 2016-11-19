@@ -15,15 +15,13 @@ export default class User {
     * @param {string} phoneNumber - The phone number of the User
     */
     constructor(email, firstName, lastName, phoneNumber) {
-            this._userID = null;
-            this._email = email;
-            this._firstName = firstName;
-            this._lastName = lastName;
-            this._phoneNumber = phoneNumber;
-            this._aptID = null;
-            this._messages = new Array(0);
-            this._chores = new Array(0);
-            this._payments = new Array(0);
+        this._userID = null;
+        this._email = email;
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._phoneNumber = phoneNumber;
+        this._aptID = null;
+        this._payments = new Array(0);
     }
 
     /**
@@ -43,8 +41,6 @@ export default class User {
         user._lastName = JSONObj._lastName;
         user._phoneNumber = JSONObj._phoneNumber;
         user._aptID = JSONObj._aptID;
-        user._messages = JSONObj._messages;
-        user._chores = JSONObj._chores;
         user._payments = JSONObj._payments;
         return user;
     }
@@ -81,22 +77,6 @@ export default class User {
      */
     getAptID() { return this._aptID; }
 
-    /**
-     * Gets the message IDs associated with the User.
-     *
-     * @method getMessageIDs
-     * @return {array{string}} - The message IDs of the messages created by the User
-     */
-    getMessageIDs() { return this._messages; }
-
-    /**
-     * Gets the chore IDs associated with the User.
-     *
-     * @method getChoreIDs
-     * @return {array{string}} - The chore IDs of all chores associated with the User
-     */
-    getChoreIDs() { return this._chores; }
-
     /** 
      * Gets the payment IDs associated with User.
      *
@@ -121,23 +101,7 @@ export default class User {
      */
     setAptID(aptID) { this._aptID = aptID; }
 
-    /** 
-     * Add message to messages array.
-     *
-     * @method addMessage
-     * @param {string} messageID - The ID associated with message to be added
-     */
-    addMessage(messageID) { this._messages.push(messageID); }
-
     /**
-     * Add chore to chores array.
-     *
-     * @method addChore
-     * @param {string} choreID - The ID associated with chore to be added
-     */
-    addChore(choreID) { this._chores.push(choreID); }
-
-    /** 
      * Add payment to payments array.
      *
      * @method addPayment

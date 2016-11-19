@@ -123,12 +123,14 @@ export default class TodoList extends React.Component {
       testUser.setAptID(aptid);
       manager.addUser(testUser);
 
+      console.log("done creating user");
       var obj = new Message("ABCDEFGHIJK", "1112333", "HELLOW WORLD", "aasdfasdf")
       manager.addMessage(obj);
       manager.addMessage(obj);
       manager.addMessage(obj);
       manager.addMessage(obj);
 
+      console.log("get messages");
       var ids = manager.getMessages();
       console.log('ids :', ids);
       var messages = this.createMessages(ids);
