@@ -1,3 +1,4 @@
+import DBManager from './dbManager.js';
 /**
  * Represents a Chore.
  *
@@ -14,16 +15,51 @@ export default class Chore {
      * @param {string} details - Additional details of the Chore.
      */
     constructor(category, deadline, details) {
+        var manager = new DBManager();
         this._choreID = null;
         this._category = category;
-        this._createdBy = getUser().getUserID();
+        var userPromise = manager.getUser();
+        userPromise.then(function (user) {
+            this._createdBy = user.getUserID();
+            this._AptID = user.getAptID();
+        }.bind(this));
         this._deadline = deadline;
         this._details = details;
         this._assignedTo = null;
-        this._createdOn = getDate();
+        this._createdOn = null;
         this.finishedBy = null;
-        this.AptID = getUser().getAptID();
     }
+
+    /**
+     * Creates a Chore from input JSON.
+     *
+     * @method JSONtoChore
+     * @static
+     * @param {string} - JSON representing a Chore
+     * @return {Chore} - The Chore represented by the JSON
+     */
+    static JSONtoChore(data) {
+        var chore = new Chore();
+        var JSONObj = JSON.parse(data);
+        chore._choreID = JSONObj._choreID;
+        chore._category = JSONObj._category;
+        chore._createdBy = JSONObj._createdBy;
+        chore._deadline = JSONObj._deadline;
+        chore._details = JSONObj._details;
+        chore._assignedTo = JSONObj._assignedTo;
+        chore._createdOn = JSONObj._createdOn;
+        chore.finishedBy = JSONObj._createdBy;
+        chore.AptID = JSONObj._AptID;
+        return chore;
+    }
+
+    /**
+     * Sets a user assignment to the Chore.
+     *
+     * @method setAssignment
+     * @param {string} choreID - The Chore ID
+     */
+    setChoreID(choreID) { this._choreID = choreID; }
 
     /**
      * Sets a user assignment to the Chore.
@@ -49,12 +85,20 @@ export default class Chore {
      */
     setDetails(detail) { this._details = details; }
 
-    /** 
+    /**
      * Sets the completion date of the finished Chore.
      *
      * @method complete
      */
     complete() { this._finishedBy = getDate(); }
+
+    /**
+     * Gets the Chore ID
+     *
+     * @method getChoreID
+     * @return {string} - The Chore ID
+     */
+    getChoreID() { return this._choreID; }
 
     /**
      * Gets the category of the Chore.
@@ -66,7 +110,7 @@ export default class Chore {
 
     /**
      * Gets the User ID of the creator of the Chore.
-     * 
+     *
      * @method getCreator
      * @return {string} - The creator of the Chore
      */
