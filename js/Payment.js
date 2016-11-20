@@ -137,4 +137,26 @@ export default class Payment {
         this._datePaid = date;
     }
 
+    /**
+     * Sets the Loaner ID
+     *
+     * @method setLoanerID
+     * @param {string} loanerID
+     * @return {void}
+     */
+    setLoanerID(loanerID){
+        this._loaner = loanerID;
+    }
+
+    /**
+     * Sets the Loanee ID
+     *
+     * @method setLoaneeID
+     * @param {string} loaneeID
+     * @return {void}
+     */
+    setLoaneeID(loaneeID){
+        this._loanee = loaneeID;
+    }
+
 }

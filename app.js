@@ -41,6 +41,28 @@ const muiTheme = getMuiTheme({
   },
 
 });
+
+// Create a test user & add messages
+var manager = new DBManager();
+var uid = "GNfb868cZATuNgsI1kYLA1QxjWi2";
+
+var user = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
+user.setUserID(uid);
+manager.signIn("bob@gmail.com", "password").then(function () {
+    // manager.addUser(user);
+    // var apt = new Apartment("Apt. 311 | 715 Gayley | Los Angeles, CA 92203");
+    // var ID = manager.addApartment(apt);
+    // manager.bindApartment(ID, function () {
+        manager.getUser().then(function(user) {
+            var message = new Message(user.getUserID(),user.getAptID(), new Date(), "We need to have an apartment meeting");
+            var chore = new Chore(user.getUserID(), user.getAptID(), "kitchen", new Date(), "Make sure to take out the recycling.");
+            // manager.addMessage(message);
+
+            manager.addChore(chore);
+        });
+    // });
+});
+
 //
 // ReactDOM.render(
 //   <MuiThemeProvider muiTheme={muiTheme} >
