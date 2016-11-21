@@ -104,7 +104,7 @@ export default class Chore {
      * @method getCategory
      * @return {string} - The category of the Chore
      */
-    getCategory() { return this._cateogry; }
+    getCategory() { return this._category; }
 
     /**
      * Gets the User ID of the creator of the Chore.

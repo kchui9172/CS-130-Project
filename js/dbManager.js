@@ -249,12 +249,29 @@ export default class DBManager {
     }
 
     /**
+     * Gets all chore ids.
+     *
+     * @method getChoreIDs
+     * @returns {Array{ChoreIDs}}
+     */
+    getChoreIDs() {
+        return this.getApartment().then(function (apt) {
+            return apt.getChoreIDs();
+        });
+    }
+
+    /**
      * Gets all chores.
      *
      * @method getChores
+     * @param {string} choreID - The id of the chore to get.
      * @returns {Array{Chores}}
      */
-    getChores() {}
+    getChore(choreID) {
+        return firebase.database().ref('/chores/' + choreID).once('value').then(function(snapshot) {
+            return Chore.JSONtoChore(snapshot.val());
+        });
+    }
 
     /**
      * Adds a message.
@@ -278,12 +295,12 @@ export default class DBManager {
     /**
      * Gets all message ids.
      *
-     * @method getMessages
+     * @method getMessageIDs
      * @returns {Array{MessageIDs}}
      */
-    getMessages() {
+    getMessageIDs() {
         return this.getApartment().then(function (apt) {
-            return apt.getMessages();
+            return apt.getMessageIDs();
         });
     }
 
@@ -291,10 +308,11 @@ export default class DBManager {
      * Gets a message by its id.
      *
      * @method getMessage
+     * @param {string} messageID - The id of the message to get.
      * @returns {Message}
      */
-    getMessage(id) {
-        return firebase.database().ref('/messages/' + id).once('value').then(function(snapshot) {
+    getMessage(messageID) {
+        return firebase.database().ref('/messages/' + messageID).once('value').then(function(snapshot) {
             return Message.JSONtoMessage(snapshot.val());
         });
     }
