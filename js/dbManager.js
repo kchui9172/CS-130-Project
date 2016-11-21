@@ -17,10 +17,11 @@ firebase.initializeApp(config);
 
 // Singleton Design Pattern... We only want one
 // instance of DBManager
-var dbm_instance = null;
+let dbm_instance = null;
+
 // Global Data for User & Apartment
-var user_cache = false; // User Object
-var apt_cache = null;  // Apt Object
+let user_cache = null; // User Object
+let apt_cache = null;  // Apt Object
 
 // Firebase Realtime checks before using cached version
 /**
@@ -29,7 +30,6 @@ var apt_cache = null;  // Apt Object
  * @class DBManager
  */
 export default class DBManager {
-
     /**
      * Constructs a Database Manager.
      *
@@ -51,16 +51,7 @@ export default class DBManager {
       return firebase.auth();
     }
 
-    //
-    // componentWillMount: function() {
-    //         firebase.auth().onAuthStateChanged(firebaseUser => {
-    //             if (firebaseUser) {
-    //                 console.log("Logged IN", firebaseUser);
-    //             } else {
-    //                 console.log('Not logged in');
-    //             }
-    //         });
-    //     },
+
     /**
      * Attempts to sign a user in.
      *
@@ -130,7 +121,7 @@ export default class DBManager {
                 default:
                     alert("Error signing up.");
             }
-	    });
+        });
     }
 
     /**
@@ -141,9 +132,20 @@ export default class DBManager {
      * @return {string} - The User ID of the added user
      */
     addUser(user) {
-        var data = JSON.stringify(user);
-        firebase.database().ref('users/' + user.getUserID()).set(data);
+        this.user_cache = user;
+        firebase.database().ref('users/' + user.getUserID()).set(JSON.stringify(user));
     }
+
+    /**
+     * Updates a user in the database.
+     *
+     * @method updateUser
+     * @param {User} - The User Object to be updated
+     */
+    /*updateUser(user) {
+        var messagesRef = firebase.database().ref("users/" + user.getUserID());
+        messagesRef.set(JSON.stringify(user));
+    }*/
 
     /**
      * Gets the user.
@@ -285,7 +287,6 @@ export default class DBManager {
         });
     }
 
-
     /**
      * Gets a message by its id.
      *
@@ -296,7 +297,7 @@ export default class DBManager {
         return firebase.database().ref('/messages/' + id).once('value').then(function(snapshot) {
             return Message.JSONtoMessage(snapshot.val());
         });
-      }
+    }
 
     /**
      * Adds a payment.
