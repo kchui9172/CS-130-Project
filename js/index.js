@@ -8,6 +8,7 @@ import {cyan500,cyan700,grey400,grey500,grey300,darkBlack,fullBlack, white} from
 
 import App from './components/index.js';
 import MessageComponent from './components/MessageComponent';
+import ChoreComponent from './components/ChoreComponent';
 import PaymentComponent from './components/PaymentComponent';
 
 // Needed for onTouchTap
@@ -44,10 +45,17 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-<MuiThemeProvider muiTheme={muiTheme} >
-	<MessageComponent />
-</MuiThemeProvider>,
-    document.querySelector('.messages')
+  <MuiThemeProvider muiTheme={muiTheme} >
+    <MessageComponent />
+  </MuiThemeProvider>,
+  document.querySelector('.messages')
+);
+
+ReactDOM.render(
+  <MuiThemeProivder muiTheme={muiTheme} >
+    <ChoreComponent />
+  </MuiThemeProvider>,
+  document.querySelector('.chores')
 );
 
 ReactDOM.render( 

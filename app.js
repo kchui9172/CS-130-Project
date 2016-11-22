@@ -5,13 +5,15 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {cyan500,cyan700,grey400,grey500,grey300,darkBlack,fullBlack, white} from 'material-ui/styles/colors';
 import AuthPage from './js/components/AuthPage/Main.js';
-import MessageComponent from './js/components/MessageComponent'
 import Routes from './js/config/routes.js';
 import DBManager from './js/dbManager.js';
 import User from './js/User.js';
+import Message from './js/Message.js';
 import Chore from './js/Chore.js';
 import Payment from './js/Payment.js';
 import Apartment from './js/Apartment.js';
+import MessageComponent from './js/components/MessageComponent';
+import ChoreComponent from './js/components/ChoreComponent';
 import PaymentComponent from './js/components/PaymentComponent';
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -58,15 +60,23 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-      <MuiThemeProvider muiTheme={muiTheme} >
-      <MessageComponent />
-      </MuiThemeProvider>,
-    document.querySelector('.messages')
+  <MuiThemeProvider muiTheme={muiTheme} >
+    <MessageComponent />
+  </MuiThemeProvider>,
+  document.querySelector('.messages')
+);
+
+
+ReactDOM.render(
+  <MuiThemeProvider muiTheme={muiTheme} >
+    <ChoreComponent />
+  </MuiThemeProvider>,
+  document.querySelector('.chores')
 );
 
 ReactDOM.render(
-    <PaymentComponent />,
-    document.querySelector('.payments')
+  <PaymentComponent />,
+  document.querySelector('.payments')
 );
 
 /** TODO: Please convert this to better CSS later **/
