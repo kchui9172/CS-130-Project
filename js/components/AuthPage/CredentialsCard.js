@@ -8,12 +8,8 @@ import FloatingCard from '../primitives/FloatingCard.js';
 
 const style = {
   card: {
-    zDepth_onBlur:1,
-    zDepth_onFocus: 5,
     width: '320px',
-    padding: '0px',
-    textAlign: 'center',
-    borderRadius: '6px',
+    position: 'fixed',
   },
   tabs: {
     overflow:'hidden',
@@ -38,7 +34,8 @@ export default class CredentialsCard extends React.Component {
 
   render() {
   return(
-    <FloatingCard style={style.card}>
+    <div style={style.card}>
+    <FloatingCard>
         <div>
           <Tabs style={style.tabs} onChange={this.handleChange} value={this.state.slideIndex}>
               <Tab label='SignUp' value={0} />
@@ -50,6 +47,7 @@ export default class CredentialsCard extends React.Component {
           </SwipeableViews>
         </div>
     </FloatingCard>
+    </div>
     );
   }
 }

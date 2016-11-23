@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rockmates</title>
+    <meta name="description" content="Throw a rock on your mates!">
+    <!-- Use minimum-scale=1 to enable GPU rasterization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+    <style>
+
+$header-height : 60px;
+$footer-height : 45px;
+
+html,
+body{
+margin:0;
+padding:0;
+
+height:100vh;
+width:100vw;
+
+overflow: hidden;
+}
+
+.content {
+position:absolute;
+padding: $header-height 0 $footer-height 0;
+
+top:0;bottom:0;
+left:0;right:0;
+
+overflow: scroll;
+-webkit-overflow-scrolling: touch;
+}
+
+.bar {
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width:inherit;
+
+  z-index: 1;
+}
+
+.bar__text{
+  font-weight:300;
+}
+
+.blurred {
+  -webkit-backdrop-filter:blur(10px);
+  background: rgba(255,255,255,0.8);
+}
+
+.header{
+  height: $header-height;
+  border-bottom:.5px solid #B2B2B2;
+}
+
+.footer {
+  bottom:0;
+  height:$footer-height;
+  border-top:.5px solid #B2B2B2;
+}
+
+
+
+
+
+.messages {
+padding:0 1em;
+list-style-type:none;
+}
+
+.messages li {
+display:block;
+float:left;
+clear:both;
+max-width:60%;
+margin:0 0 1em 0;
+padding:0;
+}
+
+.messages li:nth-child(even) {
+float:right;
+}
+
+.messages li:nth-child(even) img {
+float:right;
+}
+
+.messages p {
+border-radius:.75em;
+background:#e6e5eb;
+color:#383641;
+padding:.6875em;
+margin:0;
+font-size:.875em;
+}
+
+.messages li:nth-child(even) p {
+background:#158ffe;
+color:#fff;
+}
+
+.messages img {
+display:block;
+max-width:65%;
+border-radius:.75rem;
+}
+
+// General page styles
+body{
+font-family:"Helvetica Neue","Helvetica","sans-serif";
+}
+
+.custom{
+position:absolute;
+top:10px;
+
+style{
+  display:block;
+  white-space:pre;
+}
+}
+
+
+    </style>
+</head>
+<body>
+  <div class="bar blurred header">
+      <div class="bar__text">Header</div>
+   </div>
+
+    <div class="bar blurred footer">
+      <div class="bar__text">Footer</div>
+    </div>
+
+    <div class="content">
+      <ol class="messages">
+        <li>
+          <p>Using -webkit-backdrop-filter to create iOS blur effect.<br />Only works in Safari 9 and iOS. See it in action <a href="http://imgur.com/YFFvg7c">here</a>.</p>
+        </li>
+        <li>
+          <p>Praesent porttitor nisl vel enim consectetur, vitae dictum ipsum condimentum.</p>
+        </li>
+        <li>
+          <p>Sed convallis lorem non augue lobortis tincidunt.</p>
+        </li>
+        <li>
+          <img src="http://lorempixel.com/200/300/nature/" alt=""/>
+        </li>
+        <li>
+          <p>Mauris viverra lacus et justo accumsan, et lobortis eros adipiscing.</p>
+        </li>
+        <li>
+          <p>Integer dignissim metus id arcu pretium, ultrices tristique dolor vulputate.</p>
+        </li>
+        <li>
+          <p>Sed ultricies tortor sagittis sapien dapibus commodo.</p>
+        </li>
+        <li>
+          <p>Morbi nec erat sit amet dui aliquet pretium.</p>
+        </li>
+        <li>
+          <img src="http://lorempixel.com/200/250/nature/" alt=""/>
+        </li>
+        <li>
+          <p>Mauris viverra lacus et justo accumsan, et lobortis eros adipiscing.</p>
+        </li>
+        <li>
+          <p>Integer eget nisi euismod, fermentum ligula eget, faucibus nibh.</p>
+        </li>
+        <li>
+          <p>Sed ultricies tortor sagittis sapien dapibus commodo.</p>
+        </li>
+        <li>
+          <p>Morbi nec erat sit amet dui aliquet pretium.</p>
+        </li>
+        <li>
+          <p>Praesent porttitor nisl vel enim consectetur, vitae dictum ipsum condimentum.</p>
+        </li>
+        <li>
+          <p>Sed convallis lorem non augue lobortis tincidunt.</p>
+        </li>
+        <li>
+          <p>Praesent porttitor nisl vel enim consectetur, vitae dictum ipsum condimentum.</p>
+        </li>
+        <li>
+          <p>Sed convallis lorem non augue lobortis tincidunt.</p>
+        </li>
+        <li>
+          <img src="http://lorempixel.com/200/310/nature/" alt=""/>
+        </li>
+        <li>
+          <p>Mauris viverra lacus et justo accumsan, et lobortis eros adipiscing.</p>
+        </li>
+        <li>
+          <p>Integer dignissim metus id arcu pretium, ultrices tristique dolor vulputate.</p>
+        </li>
+        <li>
+          <p>Sed ultricies tortor sagittis sapien dapibus commodo.</p>
+        </li>
+        <li>
+          <p>Morbi nec erat sit amet dui aliquet pretium.</p>
+        </li>
+        <li>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </li>
+        <li>
+          <p>Voluptatibus, aperiam tempore iusto est voluptate eius autem!</p>
+        </li>
+        <li>
+          <p>Et molestiae non esse mollitia delectus blanditiis magni.</p>
+        </li>
+        <li>
+          <p>Aliquam corrupti laboriosam placeat expedita in iure hic?</p>
+        </li>
+        <li>
+          <p>Vel, molestias eligendi accusamus aliquid voluptates repellendus nostrum.</p>
+        </li>
+      </ol>
+    </div>
+</body>
+<script>
+window.onload = function() {
+
+  var headerBackgroundNode = document.querySelector('.header')
+
+
+  var updateHeaderTintColor = function(color){
+    color = 'rgba('+color.map(function(i, dex){return (dex !== 3) ? Math.round(i) : i;}).join(',')+')';
+    headerBackgroundNode.style.backgroundColor = color;
+  };
+
+  var updateHeaderBlur = function(blur){
+    headerBackgroundNode.style.webkitBackdropFilter = 'blur('+blur+'px)';
+  };
+
+  var updateHeaderOpacity = function(opacity){
+    headerBackgroundNode.style.backgroundColor = 'rgba(255,255,255,'+opacity+')';
+  };
+
+  var options = {
+    headerTint : {
+      color   : [ 255, 255, 255, 0.1 ], // Shared with SCSS! Keep in mind
+      opacity : 0.1
+    },
+    headerBlur : {
+      blur    : 10,
+      opacity : 0.1
+    },
+    custom : {
+      preset : '',
+      filter : ''
+    }
+  };
+
+  var gui = new dat.GUI();
+
+  var headerTint = gui.addFolder('Header tint');
+
+      headerTint.addColor(options.headerTint, 'color').onChange(updateHeaderTintColor).listen();
+
+      headerTint.add(options.headerTint, 'opacity', 0, 1).step(0.1).onChange(function(opacity){
+        options.headerTint.color[3] = Math.round(opacity*10)/10;
+        updateHeaderTintColor(options.headerTint.color);
+      });
+
+      headerTint.open();
+
+  var headerBlur = gui.addFolder('Header blur');
+
+      headerBlur.add(options.headerBlur, 'blur',0, 20).onChange(updateHeaderBlur);
+
+      headerBlur.add(options.headerBlur, 'opacity', 0, 1).step(0.1).onChange(updateHeaderOpacity);
+
+
+      headerBlur.open();
+
+  var headerCustom = gui.addFolder('Custom filter:');
+
+      headerCustom.add(options.custom, 'preset', [ '', 'invert(1)', 'hue-rotate(90deg)', 'grayscale(100%)' ]).onChange(function(change){
+        headerBackgroundNode.style.webkitBackdropFilter = change;
+      });
+
+      headerCustom.add(options.custom, 'filter').onChange(function(change){
+        headerBackgroundNode.style.webkitBackdropFilter = change;
+      });
+
+      headerCustom.open();
+  // Fix dat.gui bug https://code.google.com/p/dat-gui/issues/detail?id=11
+  var cInput = document.querySelector('.c input');
+      cInput.disabled = true;
+
+  document.querySelector('.dg.ac').style.zIndex = "1";
+};
+
+// Activate scrolling on iOS7 (Don't know why this is working)
+document.addEventListener('touchstart', function(){});
+</script>
+</html>

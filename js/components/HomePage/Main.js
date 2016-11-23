@@ -1,24 +1,18 @@
 import React, {Component} from 'react';
-import Drawer from 'material-ui/Drawer';
 import {Grid, Row, Column} from 'react-cellblock';
 import FlatButton from 'material-ui/RaisedButton';
 import SwipeableViews from 'react-swipeable-views';
 
-import NavList from '../NavList.js';
-import SummaryInfo from './SummaryInfo.js';
+
+import FAB from '../primitives/FAB.js';
+import NavDrawer from '../primitives/NavDrawer.js';
 import AddAptDialog from './AddAptDialog.js';
+import NavList from './NavList.js';
 
-const style = {
-  drawer: {
-    zIndex: '998',
-    position: 'absolute',
-  },
-  contents: {
-    marginLeft:256,
-  },
-};
+import MessagesCard from './Cards/MessagesCard.js';
+import PaymentsCard from './Cards/PaymentsCard.js';
+import ChoresCard   from './Cards/ChoresCard.js';
 
-const ResponsiveSummary = (SummaryInfo);
 export default class HomePage extends React.Component {
 
   constructor(props) {
@@ -34,29 +28,17 @@ export default class HomePage extends React.Component {
     return (
 
       <div>
-      <AddAptDialog/>
-        <Drawer style={style.drawer} open={this.state.openDrawer}>
+        <FAB onTouchTap={this.handleDrawerToggle}/>
+        <NavDrawer>
           <NavList/>
-        </Drawer>
+        </NavDrawer>
 
-        <div style={style.contents} >
+        <div>
           <Grid breakpoints={[3]} flexible={true} columnWidth={300} gutterWidth={20} onChange={breakpoint => {}} >
             <Row>
-              <Column width="1/3" ><ResponsiveSummary/></Column>
-              <Column width="1/3"><ResponsiveSummary/></Column>
-              <Column width="1/3"> <ResponsiveSummary /> </Column>
-            </Row>
-            <br/>
-            <Row>
-              <Column width="1/3" ><ResponsiveSummary/></Column>
-              <Column width="1/3"><ResponsiveSummary/></Column>
-              <Column width="1/3"> <ResponsiveSummary /> </Column>
-            </Row>
-            <br/>
-            <Row>
-              <Column width="1/3" ><ResponsiveSummary/></Column>
-              <Column width="1/3"><ResponsiveSummary/></Column>
-              <Column width="1/3"> <ResponsiveSummary /> </Column>
+              <Column width="1/3" ><PaymentsCard/></Column>
+              <Column width="1/3"><MessagesCard/></Column>
+              <Column width="1/3"> <ChoresCard /> </Column>
             </Row>
             <br/>
           </Grid>
@@ -66,3 +48,4 @@ export default class HomePage extends React.Component {
     );
   }
 }
+//<AddAptDialog/>

@@ -1,0 +1,5 @@
+body {
+  backgroundColor: '#f4f0e8',
+  margin:'0',
+},
+.dialogRadiusHack > div:first-child {border-radius: 10px 10px 5px 5px !important;}

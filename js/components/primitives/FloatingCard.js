@@ -26,7 +26,7 @@ export default class FloatingCard extends Component {
 
   render() {
       return (
-        <Card style={style.card} {...this.props}  onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} zDepth={this.state.zDepth} />
+        <Card className="blurred" style={style.card} {...this.props}  onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} zDepth={this.state.zDepth} />
       );
     }
 };

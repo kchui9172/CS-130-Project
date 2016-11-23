@@ -61,7 +61,7 @@ const LoginForm = React.createClass({
     var result = dbManager.signIn(data.email, data.password, this.notifyLoginError);
     result.then(function(data){
       console.log('resultLogin:', data);
-      //this.onLoginSuccessful();
+      console.log('loggedIn:', DBManager.isLoggedIn());
     });
   },
 
@@ -86,15 +86,6 @@ const LoginForm = React.createClass({
       emailInvalid: (data.email==""),
       passwordInvalid: (data.password==""),
     });
-  },
-
-  onLoginSuccessful() {
-    var location = self.props.location
-    if (location.state && location.state.nextPathname) {
-      self.context.router.replace(location.state.nextPathname)
-    } else {
-        self.context.router.replace('/home')
-    }
   },
 
   getInitialState() {

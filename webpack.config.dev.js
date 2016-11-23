@@ -4,7 +4,7 @@ var webpack = require('webpack');
 var config = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
-        './app.js',
+        './js/index.js',
         'webpack-hot-middleware/client'
     ],
     output: {

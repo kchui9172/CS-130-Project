@@ -16,6 +16,26 @@
             font-size: 13px;
             line-height: 20px;
         }
+
+        .dialogHack > div:first-child {
+          border-radius: 6px !important;
+        }
+
+
+        @supports (-webkit-backdrop-filter:blur(4px)) {
+          .dialogHack > div:first-child {
+            border-radius: 6px !important;
+            background-color:rgba(255,255,255,0.80) !important;
+            -webkit-backdrop-filter:blur(4px);
+          }
+          .blurred{
+            background-color:rgba(255,255,255,0.85) !important;
+            -webkit-backdrop-filter:blur(4px);
+          }
+          .frosted{
+            -webkit-backdrop-filter:blur(4px);
+          }
+        }
     </style>
 </head>
 <body>

@@ -1,19 +1,21 @@
+import { ref, firebaseHandle } from './config/firebase.js'
+var firebase = firebaseHandle;
+
 import Message from './Message.js';
 import User from './User.js';
 import Chore from './Chore.js';
 import Payment from './Payment.js';
 import Apartment from './Apartment.js';
-var firebase = require("firebase");
 
-// Firebase API Credentials
-var config = {
-  apiKey: "AIzaSyCAFUnm_bsnpiRyziqTB41QZoLW3-OYp20",
-  authDomain: "rockmates-d8edb.firebaseapp.com",
-  databaseURL: "https://rockmates-d8edb.firebaseio.com",
-  storageBucket: "rockmates-d8edb.appspot.com",
-  messagingSenderId: "370968243217"
-};
-firebase.initializeApp(config);
+// // Firebase API Credentials
+// var config = {
+//   apiKey: "AIzaSyCAFUnm_bsnpiRyziqTB41QZoLW3-OYp20",
+//   authDomain: "rockmates-d8edb.firebaseapp.com",
+//   databaseURL: "https://rockmates-d8edb.firebaseio.com",
+//   storageBucket: "rockmates-d8edb.appspot.com",
+//   messagingSenderId: "370968243217"
+// };
+// firebase.initializeApp(config);
 
 // Singleton Design Pattern... We only want one
 // instance of DBManager
@@ -159,8 +161,10 @@ export default class DBManager {
     // }
 
     getUser(userID) {
-        var ID = (userID!=null) ? userID : (null !== firebase.auth().currentUser) ? firebase.auth().currentUser.uid : null;
-        console.log('db.getUser: firebaseCurrentUser: ', (null !== firebase.auth().currentUser))
+        var ID = (userID!=null) ? userID : this.isLoggedIn();
+
+        console.log('db.getUser: firebaseCurrentUser: ', (null !== firebase.auth().currentUser));
+
         if(ID) {
           console.log('db.getUser', ID);
           return firebase.database().ref('/users/' + ID).once('value').then(function(snapshot) {
@@ -170,6 +174,14 @@ export default class DBManager {
           console.log('getUser','Not Logged In');
           return null;
         }
+    }
+
+    /**
+    * Checks current auth state
+    * @return {uid} - current user id
+    */
+    static isLoggedIn() {
+      return (null !== firebase.auth().currentUser) ? firebase.auth().currentUser.uid : null;
     }
 
     /**

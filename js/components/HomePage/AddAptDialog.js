@@ -4,13 +4,34 @@ import {FormsyText} from 'formsy-material-ui/lib'
 import RaisedButton from 'material-ui/RaisedButton';
 import {CardMedia, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
+
+import User from '../../User.js';
+import Chore from '../../Chore.js';
+import Message from '../../Message.js';
 import DBManager from '../../dbManager.js';
+import Apartment from '../../Apartment.js';
 
 const style = {
+  titles:{
+    //backgroundColor:'rgba(0,0,255,0.85)',
+  },
+
   dialog:{
+
+  },
+
+  contents:{
       textAlign: 'center',
       width: '480px',
-      padding:'32px',
+  },
+
+  overlay:{
+
+  },
+
+  bodys:{
+    //backgroundColor:'rgba(255,0,255,0.85)',
+    // WebkitBackdropFilter:'blur(4px)',
   },
 };
 
@@ -18,10 +39,14 @@ const style = {
  * A modal dialog can only be closed by selecting one of the actions.
  */
 export default class AddAptDialog extends React.Component {
-  state = {
-    modalOpen: true,
-    submitEnabled: true,
-    hasSubmitted: false,
+
+  constructor(props, context) {
+      super(props, context);
+      this.state = {
+        modalOpen: true,
+        submitEnabled: true,
+        hasSubmitted: false,
+      };
   };
 
   handleOpen = () => {
@@ -52,14 +77,41 @@ export default class AddAptDialog extends React.Component {
     });
 
     console.log('submit_bind:', data);
-    var dbManager = new DBManager();
-    var result = dbManager.bindApartment(data.invite_code, this.notifyRequestError);
+    this.unitTest_bindApartment();
+    //var dbManager = new DBManager();
+    //var result = dbManager.bindApartment(data.invite_code).catch(this.notifyRequestError);
     // result.then(function(data){
     //   console.log('onSubmit_bind:', data);
     // }).catch(function(data){
     //   console.log('submit_bind_failed:', data);
     // });
   };
+
+  checkAptBinding() {
+
+  };
+
+  unitTest_bindApartment(aptID) {
+    console.log('on_UnitTest_bindApartment');
+    // Create a test user & add messages
+    var manager = new DBManager();
+    var uid = "GNfb868cZATuNgsI1kYLA1QxjWi2";
+    var user = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
+    user.setUserID(uid);
+
+    manager.signIn("bob@gmail.com", "password").then(function () {
+    var message = new Message("ABCDEFGHIJK", "1112333", "HELLOW WORLD", "aasdfasdf");
+    var chore = new Chore("random", "23/23/23", "Do this task well");
+    var apartment = new Apartment("Apt. 311 | 715 Gayley | Los Angeles, CA 92203");
+    // apartment.addTenant(uid);
+    manager.addUser(user);
+    manager.addMessage(message);
+    manager.addChore(chore);
+    var id = manager.addApartment(apartment);
+    console.log('apartment ID:', id);
+    manager.bindApartment(id);
+  });
+};
 
   notifyRequestError(error) {
     console.log('onSubmit_error:');
@@ -78,7 +130,12 @@ export default class AddAptDialog extends React.Component {
         <Dialog
           title="Invite Code"
           modal={true}
-          contentStyle={style.dialog}
+          style={style.dialog}
+          contentClassName="dialogHack"
+          contentStyle={style.contents}
+          overlayStyle={style.overlay}
+          bodyStyle={style.bodys}
+          titleStyle={style.titles}
           open={this.state.modalOpen}
         >
         <Formsy.Form ref="InviteCode"

@@ -3,8 +3,6 @@ import Dialog from 'material-ui/Dialog';
 
 const style = {
   card: {
-    zDepth_onBlur:1,
-    zDepth_onFocus: 5,
     padding: '20px',
     textAlign: 'center',
     borderRadius: '16px',
@@ -26,7 +24,7 @@ export default class FloatingDialog extends Component {
 
   render() {
       return (
-        <Dialog contentStyle={style.card} {...this.props} />
+        <Dialog contentClassName="dialogHack" contentStyle={style.card} {...this.props} />
       );
     }
 };

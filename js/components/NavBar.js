@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import ActionAndroid from 'material-ui/svg-icons/action/android';
 import FontIcon from 'material-ui/FontIcon';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import NavigationClose from 'material-ui/svg-icons/social/whatshot';
 
 import DBManager from '../dbManager.js';
 
@@ -18,6 +18,7 @@ const style = {
     position:'fixed',
     marginBottom:'48px',
     textTransform:'uppercase',
+    // backgroundColor:'rgba(133, 110, 198, 0.85 )',
   },
   container : {
     paddingBottom: 96,
@@ -26,6 +27,11 @@ const style = {
     marginTop:-2,
     color:'white',
   },
+
+  drawerToggle:{
+    width: 48,
+   height: 48,
+  }
 };
 
 class NavLinks extends Component {
@@ -34,7 +40,10 @@ class NavLinks extends Component {
     return (
       <div>
       <FlatButton {...this.props} label="API Docs" />
-      <FlatButton {...this.props} label="GitHub"   style={style.button} href="https://github.com/kchui9172/CS-130-Project/tree/new-master" />
+      <FlatButton {...this.props} label="GitHub"   style={style.button} href="https://github.com/kchui9172/CS-130-Project/tree/new-master"
+      target="_blank"
+      secondary={true}
+      icon={<FontIcon className="muidocs-icon-custom-github" />} />
       </div>
     );
   }
@@ -59,7 +68,7 @@ const NavBar = React.createClass({
     return (
       <div>
       <div style={style.container}>
-        <AppBar style={style.bar}
+        <AppBar className="frosted" style={style.bar}
           title="Rockmates"
           iconElementLeft={<IconButton><NavigationClose /></IconButton>}
           iconElementRight={<NavLinks />}

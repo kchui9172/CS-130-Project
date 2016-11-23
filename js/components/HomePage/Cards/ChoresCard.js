@@ -3,7 +3,7 @@ import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-import FloatingCard from '../primitives/FloatingCard.js';
+import FloatingCard from '../../primitives/FloatingCard.js';
 
 const style = {
   text: {
@@ -12,13 +12,8 @@ const style = {
   },
 }
 const styleBig = {
-    zDepth:1,
-    padding: '0px',
-    textAlign: 'center',
     width:300,
     height:160,
-    borderRadius:'3px',
-    overflowY:'scroll',
 };
 
 const styleSmall = {
@@ -32,12 +27,15 @@ const styleSmall = {
 };
 
 const BigView = (
-  <FloatingCard style={styleBig}>
+  <div style={styleBig}>
+  <FloatingCard>
     <CardTitle title="CardTitle"/>
     <CardText style={style.text}>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa.
     </CardText>
-  </FloatingCard>);
+  </FloatingCard>
+  </div>
+);
 
 const SmallView = (
     <Card style={styleSmall} zDepth={styleSmall.zDepth}>
