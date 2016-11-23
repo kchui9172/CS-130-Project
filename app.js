@@ -8,7 +8,6 @@ import AuthPage from './js/components/AuthPage/Main.js';
 import MessageComponent from './js/components/MessageComponent'
 import Routes from './js/config/routes.js';
 import DBManager from './js/dbManager.js';
-import Message from './js/Message.js';
 import User from './js/User.js';
 import Chore from './js/Chore.js';
 import Payment from './js/Payment.js';
@@ -41,6 +40,8 @@ const muiTheme = getMuiTheme({
   },
 
 });
+
+
 //
 // ReactDOM.render(
 //   <MuiThemeProvider muiTheme={muiTheme} >
@@ -57,7 +58,9 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-    <MessageComponent />,
+      <MuiThemeProvider muiTheme={muiTheme} >
+      <MessageComponent />
+      </MuiThemeProvider>,
     document.querySelector('.messages')
 );
 

@@ -19,10 +19,11 @@ import Apartment from './Apartment.js';
 
 // Singleton Design Pattern... We only want one
 // instance of DBManager
-var dbm_instance = null;
+let dbm_instance = null;
+
 // Global Data for User & Apartment
-var user_cache = false; // User Object
-var apt_cache = null;  // Apt Object
+let user_cache = null; // User Object
+let apt_cache = null;  // Apt Object
 
 // Firebase Realtime checks before using cached version
 /**
@@ -31,7 +32,6 @@ var apt_cache = null;  // Apt Object
  * @class DBManager
  */
 export default class DBManager {
-
     /**
      * Constructs a Database Manager.
      *
@@ -39,13 +39,13 @@ export default class DBManager {
      * @constructor
      */
     constructor() {
-        console.log('dbManager.constructor :' );
-        console.log('DBManager.getInstance: (old dbm_instance :', (dbm_instance != null))
+        //console.log('dbManager.constructor :' );
+        //console.log('DBManager.getInstance: (old dbm_instance :', (dbm_instance != null))
         if(dbm_instance == null){
             dbm_instance = this;
             console.log('DBManager.onCreate: [new dbm_instance]');
         }
-        console.log('DBManager.getInstance: (new dbm_instance :', (dbm_instance != null))
+        //console.log('DBManager.getInstance: (new dbm_instance :', (dbm_instance != null))
         return dbm_instance;
     }
 
@@ -53,16 +53,7 @@ export default class DBManager {
       return firebase.auth();
     }
 
-    //
-    // componentWillMount: function() {
-    //         firebase.auth().onAuthStateChanged(firebaseUser => {
-    //             if (firebaseUser) {
-    //                 console.log("Logged IN", firebaseUser);
-    //             } else {
-    //                 console.log('Not logged in');
-    //             }
-    //         });
-    //     },
+
     /**
      * Attempts to sign a user in.
      *
@@ -132,7 +123,7 @@ export default class DBManager {
                 default:
                     alert("Error signing up.");
             }
-	    });
+        });
     }
 
     /**
@@ -143,9 +134,20 @@ export default class DBManager {
      * @return {string} - The User ID of the added user
      */
     addUser(user) {
-        var data = JSON.stringify(user);
-        firebase.database().ref('users/' + user.getUserID()).set(data);
+        this.user_cache = user;
+        firebase.database().ref('users/' + user.getUserID()).set(JSON.stringify(user));
     }
+
+    /**
+     * Updates a user in the database.
+     *
+     * @method updateUser
+     * @param {User} - The User Object to be updated
+     */
+    /*updateUser(user) {
+        var messagesRef = firebase.database().ref("users/" + user.getUserID());
+        messagesRef.set(JSON.stringify(user));
+    }*/
 
     /**
      * Gets the user.
@@ -154,12 +156,6 @@ export default class DBManager {
      * @param {string} [userID=user_cache.getID()] - The user ID
      * @return {User} - The corresponding User
      */
-    // getUser(userID=user_cache.getID()) {
-    //     return firebase.database().ref('/users/' + userID).once('value').then(function(snapshot) {
-    //         return User.JSONtoUser(snapshot.val());
-    //     });
-    // }
-
     getUser(userID) {
         var ID = (userID!=null) ? userID : this.isLoggedIn();
 
@@ -241,11 +237,16 @@ export default class DBManager {
      * @throws {Error} - Possible failure to add Chore
      */
     addChore(chore) {
+        console.log("Adding Chore");
         var choresRef = firebase.database().ref('chores');
         var newChoreRef = choresRef.push();
         chore.setChoreID(newChoreRef.getKey());
         newChoreRef.set(JSON.stringify(chore));
         // Add to Chore to Apartment
+        this.getApartment().then(function (apt) {
+            apt.addChore(newChoreRef.getKey());
+            this.updateApartment(apt);
+        }.bind(this));
     }
 
     /**
@@ -260,12 +261,29 @@ export default class DBManager {
     }
 
     /**
+     * Gets all chore ids.
+     *
+     * @method getChoreIDs
+     * @returns {Array{ChoreIDs}}
+     */
+    getChoreIDs() {
+        return this.getApartment().then(function (apt) {
+            return apt.getChoreIDs();
+        });
+    }
+
+    /**
      * Gets all chores.
      *
      * @method getChores
+     * @param {string} choreID - The id of the chore to get.
      * @returns {Array{Chores}}
      */
-    getChores() {}
+    getChore(choreID) {
+        return firebase.database().ref('/chores/' + choreID).once('value').then(function(snapshot) {
+            return Chore.JSONtoChore(snapshot.val());
+        });
+    }
 
     /**
      * Adds a message.
@@ -275,37 +293,41 @@ export default class DBManager {
      * @throws {Exception} - Possible failure to add Message
      */
     addMessage(message) {
+        console.log("Adding Message");
         var messagesRef = firebase.database().ref('messages');
         var newMessageRef = messagesRef.push();
         message.setMessageID(newMessageRef.getKey());
         newMessageRef.set(JSON.stringify(message));
-        // Add to Message to Apartment
-        // this.user_cache.addMessage(newMessageRef.getKey());
-        // this.updateUser(this.user_cache);
+        this.getApartment().then(function (apt) {
+            apt.addMessage(newMessageRef.getKey());
+            this.updateApartment(apt);
+        }.bind(this));
     }
 
     /**
      * Gets all message ids.
      *
-     * @method getMessages
+     * @method getMessageIDs
      * @returns {Array{MessageIDs}}
      */
-    getMessages() {
-        return this.user_cache.getMessageIDs();
+    getMessageIDs() {
+        return this.getApartment().then(function (apt) {
+            return apt.getMessageIDs();
+        });
     }
-
 
     /**
      * Gets a message by its id.
      *
      * @method getMessage
+     * @param {string} messageID - The id of the message to get.
      * @returns {Message}
      */
-    getMessage(id) {
-        return firebase.database().ref('/messages/' + id).once('value').then(function(snapshot) {
+    getMessage(messageID) {
+        return firebase.database().ref('/messages/' + messageID).once('value').then(function(snapshot) {
             return Message.JSONtoMessage(snapshot.val());
         });
-      }
+    }
 
     /**
      * Adds a payment.
@@ -318,9 +340,20 @@ export default class DBManager {
         var paymentsRef = firebase.database().ref('payments');
         var newPaymentRef = paymentsRef.push();
         newPaymentRef.set(JSON.stringify(payment));
-        //Add to Payement to Both Users
-        // this.user_cache.addPayment(newPaymentRef.getKey());
-        // this.updateUser(this.user_cache);
+        this.getUser().then(function (user) {
+            var context = this;
+            var pay1 = payment;
+            user.addPayment(payment);
+            this.updateUser(user);
+            // Switch loaner and loanee and save to other user
+            var loanerID = payment.getLoaner();
+            payment.setLoanerID(payment.getLoanee);
+            payment.setLoaneeID(loanerID);
+            this.getUser(payment.getLoaner()).then(function (user2) {
+                user2.addPayment(payment);
+                context.updateUser(user2);
+            });
+        }.bind(this));
     }
 
     /**
@@ -341,5 +374,16 @@ export default class DBManager {
                  return apt;
              });
          }.bind(this));
+     }
+
+    listenForMessages(onChangeCallBack){
+        var aptIDPromise = this.getApartment().then(function(apt) {return apt.getAptID()});
+        aptIDPromise.then(function(aptID) {
+            console.log('listenForMessages(aptID):', aptID);
+             var reference = firebase.database().ref('/apartments/' + aptID + '/messages/');
+             console.log('listenForMessages(reference):', reference);
+             reference.on('child_changed', alert('New Message!')).then(onChangeCallBack);
+             console.log('listenForMessages(out)');
+        });
      }
 }

@@ -1,3 +1,4 @@
+import DBManager from './dbManager.js';
 /**
  * Represents a Message.
  *
@@ -9,17 +10,18 @@ export default class Message {
      *
      * @method constructor
      * @constructor
-     * @param {string} sender - The User ID of message creator
+     * @param {string} userID - The ID of the user.
+     * @param {string} aptID - The ID of the apartment.
      * @param {Date} timeSent - The timestamp of when message was sent
      * @param {text} text - The actual text of message
      */
-    constructor(sender, timeSent, text, aptID) {
+    constructor(userID, aptID, timeSent, text) {
+        this._sender = userID;
+        this._aptID = aptID;
         this._messageID = null;
-        this._sender = sender;
         this._timeSent = timeSent;
         this._text = text;
         this._sent = false;
-        this._aptID = aptID;
     }
 
     /**

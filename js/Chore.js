@@ -10,19 +10,17 @@ export default class Chore {
      *
      * @constructor
      * @method constructor
+     * @param {string} userID - The ID of the user.
+     * @param {string} aptID - The ID of the apartment.
      * @param {string} category - The category of the Chore.
      * @param {Date} deadline - The deadline of the Chore.
      * @param {string} details - Additional details of the Chore.
      */
-    constructor(category, deadline, details) {
-        var manager = new DBManager();
+    constructor(userID, aptID, category, deadline, details) {
         this._choreID = null;
         this._category = category;
-        var userPromise = manager.getUser();
-        userPromise.then(function (user) {
-            this._createdBy = user.getUserID();
-            this._AptID = user.getAptID();
-        }.bind(this));
+        this._createdBy = userID;
+        this._aptID = aptID;
         this._deadline = deadline;
         this._details = details;
         this._assignedTo = null;
@@ -49,7 +47,7 @@ export default class Chore {
         chore._assignedTo = JSONObj._assignedTo;
         chore._createdOn = JSONObj._createdOn;
         chore.finishedBy = JSONObj._createdBy;
-        chore.AptID = JSONObj._AptID;
+        chore.aptID = JSONObj._aptID;
         return chore;
     }
 
@@ -106,7 +104,7 @@ export default class Chore {
      * @method getCategory
      * @return {string} - The category of the Chore
      */
-    getCategory() { return this._cateogry; }
+    getCategory() { return this._category; }
 
     /**
      * Gets the User ID of the creator of the Chore.

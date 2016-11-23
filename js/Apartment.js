@@ -117,4 +117,14 @@ export default class Apartment {
     addMessage(messageID) {
         this._messages.push(messageID);
     }
+
+    /**
+     * Adds a chore to the Apartment.
+     *
+     * @method addChore
+     * @param {string} choreID - The new message ID
+     */
+    addChore(choreID) {
+        this._chores.push(choreID);
+    }
 }
