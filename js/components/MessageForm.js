@@ -4,12 +4,21 @@ import DBManager from '../dbManager.js';
 import User from '../User.js';
 import Message from '../Message.js';
 
-/**
- * Represents a Message Form.
- *
- * @class React.Component.MessageForm
- * @extends React.Component
- */
+import RaisedButton from 'material-ui/RaisedButton';
+import {FormsyText} from 'formsy-material-ui/lib';
+import Formsy from 'formsy-react';
+
+import FloatingCard from './primitives/FloatingCard.js';
+import { CardActions, CardTitle, CardText} from 'material-ui/Card';
+
+/*import Formsy from 'formsy-react';
+import {FormsyText} from 'formsy-material-ui/lib';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton'; */
+
+
+
+
 export default class MessageForm extends React.Component {
     /**
      * Constructs a Message Form.
@@ -21,68 +30,57 @@ export default class MessageForm extends React.Component {
         super();
 
         this.state = {
-            items: [],
-            listItems: {},
-        }
+            value: ''
+        };
 
         this.addItem = this.addItem.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        //this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     addItem(e) {
+        console.log(e.messageText);
+        console.log("about to add message");
         var manager = new DBManager();
-        var uid = "ZNfb868cZATuNgsI1kYLA1QxjWi2";
-        var aptid = "ASD77SDF70";
+        manager.signIn("bob@gmail.com","password").then(function(){
+            manager.getUser().then(function(user){
+                console.log("meow");
+                console.log(e.messageText);
+                var message = new Message(user.getUserID(),user.getAptID(), new Date(), e.messageText);
+                manager.addMessage(message);
+            });
+        }.bind(this));
+        console.log("added message");
+        this.state.value="";
+        //e.preventDefault();
+        }
+        /*if (this._inputElement.value != ""){ //if empty, don't create note
+            var context = this;
+            console.log("about to add a message");
+            var manager = new DBManager();
+            //console.log(this._inputElement.value);;
+            manager.signIn("bob@gmail.com", "password").then(function () {
+                manager.getUser().then(function(user) {
+                    console.log(context._inputElement.value);
+                    var message = new Message(user.getUserID(),user.getAptID(), new Date(), context._inputElement.value);
+                    manager.addMessage(message);
+                });
+            });
 
-        var testUser = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
-        testUser.setUserID(uid);
-        testUser.setAptID(aptid);
-        manager.addUser(testUser);
-
-        if (this._inputElement.value == ""){ //if empty, don't create note
+            console.log("added message");
+            //return message has been sucessfully added or if empty do nothing
+            this._inputElement.value="";
+            e.preventDefault();
+        }else{
             e.preventDefault();
             return;
-        }
+        }*/
+    //}
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
 
-        var newMessage = new Message("Kristen",this.generateDate(),this._inputElement.value, 1234);
-        manager.addMessage(newMessage);
-        console.log("added message");
-        //return message has been sucessfully added or if empty do nothing
-
-        var itemArray = this.state.items;
-
-        itemArray.unshift({ //newest message at top
-            text: this._inputElement.value,
-            time: this.generateDate(),
-            user: "Kristen", //replace with user's name
-            key: 1234} //should replace this with apartment id
-        );
-
-        this.setState({items: itemArray});
-        this._inputElement.value="";
-        e.preventDefault();
-    }
-
-    /**
-     * Generates a Date.
-     *
-     * @method generateDate
-     * @return {string} - The generated date
-     */
-    generateDate() {
-        var date = new Date();
-        var year = date.getUTCFullYear();
-        var month = date.getUTCMonth();
-        var day = date.getUTCDate();
-        //month 2 digits
-        month = ("0" + (month + 1)).slice(-2);
-
-       //year 2 digits
-        year = year.toString().substr(2,2);
-
-        var formattedDate = month + '/' + day + "/" + year;
-        return formattedDate;
-    }
 
     /**
      * Renders a Message Form.
@@ -90,18 +88,39 @@ export default class MessageForm extends React.Component {
      * @method render
      */
 
-    render() {
-        return (
-            <div>
-                <div>
+  render() {
+    return (
+        <FloatingCard>
+        <CardTitle title="Add a new Message" subtitle="asmdk" />
+        <CardText>
+        <Formsy.Form ref="addMessage" onValidSubmit={this.addItem} >
+            <FormsyText required={true}  name="messageText" floatingLabelText={'Enter note'} multiLine={true} rows={3}/>
+            <CardActions>
+                <RaisedButton fullWidth={false} type="submit" label="Send Message" primary={false} secondary={true} />
+            </CardActions>
+        </Formsy.Form>
+        </CardText>
+        </FloatingCard>
+    );
+  }
+}
+
+
+
+
+/*
                     <form onSubmit={this.addItem}>
                         <input ref={(a) => this._inputElement = a} //inputElement property stores reference to input element
                             placeholder="Enter note">
                         </input>
                         <button type="submit">+</button>
                     </form>
-                </div>
-            </div>
-        );
-    }
-}
+*/
+
+/*        <form onSubmit={this.addItem}>
+            <input ref={(a) => this._inputElement = a} //inputElement property stores reference to input element
+                placeholder="Enter note">
+            </input>
+            <button type="submit">+</button>
+        </form>
+        */

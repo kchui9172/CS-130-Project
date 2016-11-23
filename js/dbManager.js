@@ -37,13 +37,13 @@ export default class DBManager {
      * @constructor
      */
     constructor() {
-        console.log('dbManager.constructor :' );
-        console.log('DBManager.getInstance: (old dbm_instance :', (dbm_instance != null))
+        //console.log('dbManager.constructor :' );
+        //console.log('DBManager.getInstance: (old dbm_instance :', (dbm_instance != null))
         if(dbm_instance == null){
             dbm_instance = this;
             console.log('DBManager.onCreate: [new dbm_instance]');
         }
-        console.log('DBManager.getInstance: (new dbm_instance :', (dbm_instance != null))
+        //console.log('DBManager.getInstance: (new dbm_instance :', (dbm_instance != null))
         return dbm_instance;
     }
 
@@ -362,5 +362,16 @@ export default class DBManager {
                  return apt;
              });
          }.bind(this));
+     }
+
+    listenForMessages(onChangeCallBack){
+        var aptIDPromise = this.getApartment().then(function(apt) {return apt.getAptID()});
+        aptIDPromise.then(function(aptID) {
+            console.log('listenForMessages(aptID):', aptID);
+             var reference = firebase.database().ref('/apartments/' + aptID + '/messages/');
+             console.log('listenForMessages(reference):', reference);
+             reference.on('child_changed', alert('New Message!')).then(onChangeCallBack);
+             console.log('listenForMessages(out)');
+        });
      }
 }
