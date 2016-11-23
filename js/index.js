@@ -50,7 +50,12 @@ ReactDOM.render(
     document.querySelector('.messages')
 );
 
-ReactDOM.render(<PaymentComponent />, document.querySelector('.payments'));
+ReactDOM.render( 
+  <MuiThemeProvider muiTheme={muiTheme} >
+    <PaymentComponent />
+  </MuiThemeProvider>, 
+  document.querySelector('.payments')
+);
 
 //document.body.style.backgroundColor = '#f4f0e8';
 document.body.style.margin = '0';

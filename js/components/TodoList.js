@@ -25,69 +25,7 @@ export default class TodoList extends Component {
             listItems: {},
         }
 
-   	  this.addItem = this.addItem.bind(this);
     };
-
-    addItem(e) {
-        var itemArray = this.state.items;
-	   //itemArray.push(this._inputElement.value);
-        if (this._inputElement.value == ""){ //if empty, don't create note
-            e.preventDefault();
-            return;
-        }
-    	itemArray.unshift({ //newest message at top
-    	    text: this._inputElement.value,
-    	    time: this.generateDate(),
-                user: "Kristen", //replace with user's name
-    	    key: this.generateId()} //should replace this with apartment id
-    	);
-
-    	this.setState({items: itemArray});
-    	this._inputElement.value="";
-    	e.preventDefault();
-    }
-
-    /**
-     * Generates an ID.
-     *
-     * @method generateID
-     * @return {int} - The generated ID
-     */
-    generateId() {
-        return Math.floor(Math.random() * 90000) + 10000;
-    }
-
-    /**
-     * Generates a Date.
-     *
-     * @method generateDate
-     * @return {string} - The generated date
-     */
-    generateDate() {
-      var date = new Date();
-    	var year = date.getUTCFullYear();
-    	var month = date.getUTCMonth();
-    	var day = date.getUTCDate();
-    	//month 2 digits
-    	month = ("0" + (month + 1)).slice(-2);
-
-	   //year 2 digits
-        year = year.toString().substr(2,2);
-
-    	var formattedDate = month + '/' + day + "/" + year;
-    	return formattedDate;
-    }
-
-
-    /*handleRemove(key){
-	var itemArray = this.state.items;
-	itemArray = itemArray.filter(function (el){
-	        return el.key !== key;
-            }
-	)
-	this.setState({items: itemArray});
-    }*/
-
 
     TestMessages() {
       // Create a test user & add messages

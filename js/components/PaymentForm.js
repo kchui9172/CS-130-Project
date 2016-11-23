@@ -4,6 +4,16 @@ import DBManager from '../dbManager.js';
 import User from '../User.js';
 import Payment from '../Payment.js';
 
+import RaisedButton from 'material-ui/RaisedButton';
+import MenuItem from 'material-ui/MenuItem';
+import DatePicker from 'material-ui/DatePicker';
+import {FormsyText, FormsyRadio,FormsyRadioGroup,FormsySelect,FormsyDate} from 'formsy-material-ui/lib';
+
+import Formsy from 'formsy-react';
+
+/*import FloatingCard from './primitives/FloatingCard.js';
+import { CardActions, CardTitle, CardText} from 'material-ui/Card';*/
+
 /**
  * Represents a PaymentForm.
  *
@@ -47,13 +57,21 @@ export default class PaymentForm extends React.Component {
 //need function to check validity of due date 
 
     addPayment(e){
-        var description = this._description.value;
-        var category = this._category.value;
-        var loaner = this._loaner.value;
-        var loanee = this._loanee.value;
-        var amount = parseFloat(this._amount.value);
-        var dueDate = this._dueDate.value;
-        var recurring = this._recurring.value;
+        var description = e.paymentDescription;
+        var category = e.paymentCategory;
+        var loaner = e.loaner;
+        var loanee = e.loanee;
+        var amount = e.paymentAmount;//parseFloat(this._amount.value);
+        var dueDate = e.dueDate;
+        var recurring = e.recurringPeriod;
+        console.log(description);
+        console.log(category);
+        console.log(loaner);
+        console.log(loanee);
+        console.log(amount);
+        console.log(dueDate);
+        console.log(recurring);
+
 
         //console.log(amount);
         /*var regex  = /^\d+(?:\.\d{0,2})$/;
@@ -62,7 +80,7 @@ export default class PaymentForm extends React.Component {
         console.log(isNaN(n));
         console.log(parseFloat(amount));*/
 
-        var today = new Date().toJSON().slice(0,10);
+        /*var today = new Date().toJSON().slice(0,10);
         console.log(today);
 
         if (isNaN(amount)){
@@ -88,7 +106,7 @@ export default class PaymentForm extends React.Component {
         this._amount.value="";
         this._dueDate.value="";
         this._recurring.value="";
-        e.preventDefault();
+        e.preventDefault();*/
     }
 
     /**
@@ -99,58 +117,82 @@ export default class PaymentForm extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.addPayment}>
-                    <div>
-                        <label> Payment Description </label>
-                        <input ref={(a) => this._description = a} placeholder = "I.e. Ralphs"></input>
-                    </div>
-                    <div>
-                        <label> Payment Category </label>
-                        <input ref={(b) => this._category = b} placeholder ="I.e. groceries"></input>
-                    </div>
+                <Formsy.Form ref="addPayment" onValidSubmit={this.addPayment} >
+                    <h3> Payment Description</h3>
+                    <FormsyText required={true}  name="paymentDescription" floatingLabelText={'Enter description'} multiLine={true} rows={2}/>
 
-                    <div>
-                        <label> Loaner </label>
-                        <select ref={(c) => this._loaner = c} name="cars">
-                            <option value="Roommate 1">Roommate 1</option>
-                            <option value="Roommate 2">Roommate 2</option>
-                            <option value="Roommate 3">Roommate 3</option>
-                            <option value="Roommate 4">Roommate 4</option>
-                        </select>
-                    </div>
+                    <h3> Payment Category</h3>
+                    <FormsyRadioGroup name="paymentCategory" defaultSelected="groceries">
+                      <FormsyRadio
+                        value="groceries"
+                        label="Groceries"
+                      />
+                      <FormsyRadio
+                        value="meals"
+                        label="Meals"
+                      />
+                      <FormsyRadio
+                        value="rent"
+                        label="Rent or Utilities"
+                      />
+                      <FormsyRadio
+                        value="misc"
+                        label="Misc"
+                      />
+                    </FormsyRadioGroup>
 
-                    <div>
-                        <label> Loanee </label>
-                        <select ref={(d) => this._loanee = d} name="cars">
-                            <option value="Roommate 1">Roommate 1</option>
-                            <option value="Roommate 2">Roommate 2</option>
-                            <option value="Roommate 3">Roommate 3</option>
-                            <option value="Roommate 4">Roommate 4</option>
-                        </select>
-                    </div>
+                    <h3> Loaner</h3>
+                    <FormsySelect
+                      name="loaner"
+                      required
+                      floatingLabelText="Select Loaner"
+                      menuItems={this.selectFieldItems}
+                    >
+                      <MenuItem value={'roommate1Loaner'} primaryText="Roommate 1" />
+                      <MenuItem value={'roommate2Loaner'} primaryText="Roommate 2" />
+                      <MenuItem value={'roommate3Loaner'} primaryText="Roommate 3" />
+                      <MenuItem value={'roommate4Loaner'} primaryText="Roommate 4" />
+                    </FormsySelect>
 
-                    <div>
-                        <label> Amount </label>
-                        <input ref={(m) => this._amount = m} type="text" min="0.01" max="100000"/>
-                    </div>
 
-                    <div>
-                        <label> Due Date (leave empty if no date specified) </label>
-                        <input ref={(f) => this._dueDate = f} type="date"/>
-                    </div>
+                    <h3> Loanee</h3>
+                    <FormsySelect
+                      name="loanee"
+                      required
+                      floatingLabelText="Select Loaner"
+                      menuItems={this.selectFieldItems}
+                    >
+                      <MenuItem value={'roommate1Loanee'} primaryText="Roommate 1" />
+                      <MenuItem value={'roommate2Loanee'} primaryText="Roommate 2" />
+                      <MenuItem value={'roommate3Loanee'} primaryText="Roommate 3" />
+                      <MenuItem value={'roommate4Loanee'} primaryText="Roommate 4" />
+                    </FormsySelect>
 
-                    <div>
-                        <label> Recurring Payment </label>
-                        <select ref={(e) => this._recurring = e} name="recurring">
-                            <option value="once">Once</option>
-                            <option value="weekly">Weekly</option>
-                            <option value="biweekly">Biweekly</option>
-                            <option value="monthly">Monthly</option>
-                        </select>
-                    </div>
+                    <h3>Amount</h3>
+                    <FormsyText required={true}  name="paymentAmount" floatingLabelText={'Enter amount'}/>
 
-                    <button type="submit"> Submit </button>
-                </form>
+                    <h3>Due date </h3>
+                    <FormsyDate
+                      name="dueDate"
+                      required
+                      floatingLabelText="Due Date"
+                    />
+
+                    <h3>Recurring Period </h3>
+                    <FormsySelect
+                      name="recurringPeriod"
+                      required
+                      floatingLabelText="Select recurring period"
+                      menuItems={this.selectFieldItems}
+                    >
+                      <MenuItem value={'once'} primaryText="Once" />
+                      <MenuItem value={'weekly'} primaryText="Weekly" />
+                      <MenuItem value={'biweekly'} primaryText="Biweekly" />
+                      <MenuItem value={'monthly'} primaryText="Monthly" />
+                    </FormsySelect>
+
+                    <RaisedButton fullWidth={false} type="submit" label="Add Payment" primary={false} secondary={true} />
+                </Formsy.Form>
             </div>
         );
     }
