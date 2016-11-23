@@ -5,7 +5,10 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {cyan500,cyan700,grey400,grey500,grey300,darkBlack,fullBlack, white} from 'material-ui/styles/colors';
+
 import App from './components/index.js';
+import MessageComponent from './components/MessageComponent';
+import PaymentComponent from './components/PaymentComponent';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -39,6 +42,15 @@ ReactDOM.render(
   </MuiThemeProvider>,
     document.querySelector('#appBar')
 );
+
+ReactDOM.render(
+<MuiThemeProvider muiTheme={muiTheme} >
+	<MessageComponent />
+</MuiThemeProvider>,
+    document.querySelector('.messages')
+);
+
+ReactDOM.render(<PaymentComponent />, document.querySelector('.payments'));
 
 document.body.style.backgroundColor = '#f4f0e8';
 document.body.style.margin = '0';
