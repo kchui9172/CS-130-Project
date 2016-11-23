@@ -15,12 +15,25 @@
         body {
             font-size: 13px;
             line-height: 20px;
+            background-image: -webkit-gradient(linear,right bottom,right top, color-stop(0, #70DBFF),color-stop(1, #9385FF));
+            background-image: -o-linear-gradient(top, #70DBFF 0%, #9385FF 100%);
+            background-image: -moz-linear-gradient(top, #70DBFF 0%, #9385FF 100%);
+            background-image: -webkit-linear-gradient(top, #70DBFF 0%, #9385FF 100%);
+            background-image: -ms-linear-gradient(top, #70DBFF 0%, #9385FF 100%);
+            background-image: linear-gradient(to top, #70DBFF 0%, #9385FF 100%);
         }
 
         .dialogHack > div:first-child {
           border-radius: 6px !important;
         }
 
+        .rounded {
+          border-radius: 6px !important;
+        }
+
+        .blurred{
+          background-color:rgba(255,255,255,1) !important;
+        }
 
         @supports (-webkit-backdrop-filter:blur(4px)) {
           .dialogHack > div:first-child {
@@ -28,13 +41,16 @@
             background-color:rgba(255,255,255,0.80) !important;
             -webkit-backdrop-filter:blur(4px);
           }
+
           .blurred{
             background-color:rgba(255,255,255,0.85) !important;
             -webkit-backdrop-filter:blur(4px);
           }
+
           .frosted{
             -webkit-backdrop-filter:blur(4px);
           }
+
         }
     </style>
 </head>

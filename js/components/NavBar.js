@@ -6,8 +6,9 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import ActionAndroid from 'material-ui/svg-icons/action/android';
 import FontIcon from 'material-ui/FontIcon';
+import Code from 'material-ui/svg-icons/action/code';
+import ActionAndroid from 'material-ui/svg-icons/action/android';
 import NavigationClose from 'material-ui/svg-icons/social/whatshot';
 
 import DBManager from '../dbManager.js';
@@ -18,6 +19,7 @@ const style = {
     position:'fixed',
     marginBottom:'48px',
     textTransform:'uppercase',
+    paddingLeft:'20px',
     // backgroundColor:'rgba(133, 110, 198, 0.85 )',
   },
   container : {
@@ -39,11 +41,10 @@ class NavLinks extends Component {
   render() {
     return (
       <div>
-      <FlatButton {...this.props} label="API Docs" />
-      <FlatButton {...this.props} label="GitHub"   style={style.button} href="https://github.com/kchui9172/CS-130-Project/tree/new-master"
-      target="_blank"
-      secondary={true}
-      icon={<FontIcon className="muidocs-icon-custom-github" />} />
+      <FlatButton {...this.props} label="GitHub" style={style.button}
+      href="https://github.com/kchui9172/CS-130-Project/tree/master"
+      target="_blank" secondary={true} icon={<Code />} />
+      <FlatButton {...this.props} label="API Documentation" />
       </div>
     );
   }

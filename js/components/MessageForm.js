@@ -90,21 +90,13 @@ export default class MessageForm extends React.Component {
 
   render() {
     return (
-        <FloatingCard>
-        <CardTitle title="Add a new Message" subtitle="asmdk" />
-        <CardText>
         <Formsy.Form ref="addMessage" onValidSubmit={this.addItem} >
             <FormsyText required={true}  name="messageText" floatingLabelText={'Enter note'} multiLine={true} rows={3}/>
-            <CardActions>
-                <RaisedButton fullWidth={false} type="submit" label="Send Message" primary={false} secondary={true} />
-            </CardActions>
+            <RaisedButton fullWidth={false} type="submit" label="Send Message" primary={false} secondary={true} />
         </Formsy.Form>
-        </CardText>
-        </FloatingCard>
     );
   }
 }
-
 
 
 

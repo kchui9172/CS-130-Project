@@ -52,5 +52,6 @@ ReactDOM.render(
 
 ReactDOM.render(<PaymentComponent />, document.querySelector('.payments'));
 
-document.body.style.backgroundColor = '#f4f0e8';
+//document.body.style.backgroundColor = '#f4f0e8';
 document.body.style.margin = '0';
+//document.body.style.background = 'linear-gradient(to bottom, #59E6D1 0%, #8840CF 100%)';//linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)';

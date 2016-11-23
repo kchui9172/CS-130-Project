@@ -29,7 +29,7 @@ const styleSmall = {
 const BigView = (
   <div style={styleBig}>
   <FloatingCard>
-    <CardTitle title="CardTitle"/>
+    <CardTitle title="Chores"/>
     <CardText style={style.text}>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa.
     </CardText>

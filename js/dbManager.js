@@ -181,6 +181,14 @@ export default class DBManager {
     }
 
     /**
+    * Logs the current user out, if logged in
+    * @return {uid} - current user id
+    */
+    static LogOut() {
+      return (this.isLoggedIn()) ? firebase.auth().signOut() : null;
+    }
+
+    /**
      * Adds an apartment.
      *
      * @method addApartment

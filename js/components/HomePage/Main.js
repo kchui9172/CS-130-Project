@@ -13,37 +13,38 @@ import MessagesCard from './Cards/MessagesCard.js';
 import PaymentsCard from './Cards/PaymentsCard.js';
 import ChoresCard   from './Cards/ChoresCard.js';
 
+import MessageEditor from './Cards/MessageEditor.js';
+
 export default class HomePage extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      openDrawer: true,
+      openEditor: false,
     };
   };
 
-  handleDrawerToggle = () => this.setState({openDrawer: !this.state.openDrawer});
+  handleDrawerToggle = () => {
+      this.setState({openEditor: true});
+      console.log('FAB : ', true);
+  };
 
   render() {
     return (
-
       <div>
-        <FAB onTouchTap={this.handleDrawerToggle}/>
-        <NavDrawer>
-          <NavList/>
-        </NavDrawer>
-
+        <NavDrawer><NavList/></NavDrawer>
+        <FAB/>
+        <div>{this.state.openEditor ? <MessageEditor/> : <br/>}</div>
         <div>
           <Grid breakpoints={[3]} flexible={true} columnWidth={300} gutterWidth={20} onChange={breakpoint => {}} >
             <Row>
-              <Column width="1/3" ><PaymentsCard/></Column>
+              <Column width="1/3"><PaymentsCard/></Column>
               <Column width="1/3"><MessagesCard/></Column>
-              <Column width="1/3"> <ChoresCard /> </Column>
+              <Column width="1/3"><ChoresCard  /></Column>
             </Row>
             <br/>
           </Grid>
         </div>
-
       </div>
     );
   }
