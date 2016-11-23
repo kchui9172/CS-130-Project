@@ -42,14 +42,14 @@ export default class MessageForm extends React.Component {
         console.log(e.messageText);
         console.log("about to add message");
         var manager = new DBManager();
-        manager.signIn("bob@gmail.com","password").then(function(){
-            manager.getUser().then(function(user){
-                console.log("meow");
-                console.log(e.messageText);
-                var message = new Message(user.getUserID(),user.getAptID(), new Date(), e.messageText);
-                manager.addMessage(message);
-            });
-        }.bind(this));
+        // manager.signIn("bob@gmail.com","password").then(function(){
+        //     manager.getUser().then(function(user){
+        //         console.log("meow");
+        //         console.log(e.messageText);
+        //         var message = new Message(user.getUserID(),user.getAptID(), new Date(), e.messageText);
+        //         manager.addMessage(message);
+        //     });
+        // }.bind(this));
         console.log("added message");
         this.state.value="";
         //e.preventDefault();

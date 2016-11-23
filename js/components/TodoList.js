@@ -113,13 +113,13 @@ export default class TodoList extends Component {
       var messages = this.createMessages(ids);*/
 
 
-      var manager = new DBManager();
-      manager.signIn("bob@gmail.com", "password").then(function () {
-        manager.getUser().then(function(user) {
-          var message = new Message(user.getUserID(),user.getAptID(), new Date(), "Hello this is a test");
-          manager.addMessage(message);
-        });
-      });
+      // var manager = new DBManager();
+      // manager.signIn("bob@gmail.com", "password").then(function () {
+      //   manager.getUser().then(function(user) {
+      //     var message = new Message(user.getUserID(),user.getAptID(), new Date(), "Hello this is a test");
+      //     manager.addMessage(message);
+      //   });
+      // });
 
       manager.getMessageIDs().then(function (messages) {
       messages.forEach(function (value) {
@@ -159,18 +159,18 @@ export default class TodoList extends Component {
     }
 
     showMessages(){
-      var manager = new DBManager();
-      manager.signIn("bob@gmail.com","password").then(function(){
-        manager.getMessageIDs().then(function (messages){
-          console.log('on_getMessageIDs::', messages);
-          this.pullMessages(messages);
-          }.bind(this))
-        }.bind(this));
+      // var manager = new DBManager();
+      // manager.signIn("bob@gmail.com","password").then(function(){
+      //   manager.getMessageIDs().then(function (messages){
+      //     console.log('on_getMessageIDs::', messages);
+      //     this.pullMessages(messages);
+      //     }.bind(this))
+      //   }.bind(this));
       }
       //var ids = manager.getMessageIDs();
       //return this.createMessages(ids);
-    
-//this.messageListener = 
+
+//this.messageListener =
      componentDidMount() {
       this.showMessages();
         //this.showMessages().bind(this);
@@ -179,7 +179,7 @@ export default class TodoList extends Component {
       //   db.signIn("bob@gmail.com","password").then(function(){
       //   //db.listenForMessages();
       //   //this.listener = db.listenForMessages(this.showMessages());
-      //   console.log('ComponentMounted'); 
+      //   console.log('ComponentMounted');
       // }.bind(this));
       //  this.forceUpdate();
      }
@@ -198,5 +198,5 @@ export default class TodoList extends Component {
     	    </div>
     	);
     }
-} 
+}
 //<button disabled={true} onClick={this.reshowMessages()}/>
