@@ -33,47 +33,16 @@ export default class PaymentForm extends React.Component {
        	this.addPayment = this.addPayment.bind(this);
     };
 
-    /**
-     * Generates a Date.
-     *
-     * @method generateDate
-     * @return {string} - The generated date
-     */
-    generateDate() {
-        var date = new Date();
-    	var year = date.getUTCFullYear();
-    	var month = date.getUTCMonth();
-    	var day = date.getUTCDate();
-    	//month 2 digits
-    	month = ("0" + (month + 1)).slice(-2);
-
-	   //year 2 digits
-        year = year.toString().substr(2,2);
-
-    	var formattedDate = month + '/' + day + "/" + year;
-    	return formattedDate;
-    }
-
-//need function to check validity of due date 
 
     addPayment(e){
-        var description = e.paymentDescription;
-        var category = e.paymentCategory;
-        var loaner = e.loaner;
-        var loanee = e.loanee;
-        var amount = e.paymentAmount;//parseFloat(this._amount.value);
-        var dueDate = e.dueDate;
-        var recurring = e.recurringPeriod;
-        console.log(description);
-        console.log(category);
-        console.log(loaner);
-        console.log(loanee);
-        console.log(amount);
-        console.log(dueDate);
-        console.log(recurring);
+        var manager = new DBManager();
+        manager.signIn("bob@gmail.com","password").then(function(){
+            var payment = new Payment(e.paymentAmount,e.loaner,e.loanee, new Date(), null, e.dueDate, e.paymentDescription,e.paymentCategory,e.recurringPeriod);
+            manager.addPayment(payment);
+            console.log("added payment");
+        }.bind(this));
 
-
-        //console.log(amount);
+       
         /*var regex  = /^\d+(?:\.\d{0,2})$/;
         console.log(regex.test(amount));
         var n = +amount;
@@ -109,6 +78,21 @@ export default class PaymentForm extends React.Component {
         e.preventDefault();*/
     }
 
+    GetTenants(){
+        console.log("hello");
+        var manager = new DBManager();
+        manager.signIn("bob@gmail.com","password").then(function(){
+            console.log("in");
+            manager.getApartment().then(function (apt){
+                console.log("what");
+                var tenants = apt.getTenantIDs();
+                console.log(tenants);
+                //If this actually worked, then would render form here and generate loaners/loanee dropdown here?
+                //have a separate function so that when get to loaner/loanee renders dropdown options using for loop?
+            })
+        });
+    }
+
     /**
      * Renders a Balance between two users.
      *
@@ -117,82 +101,84 @@ export default class PaymentForm extends React.Component {
     render() {
         return (
             <div>
-                <Formsy.Form ref="addPayment" onValidSubmit={this.addPayment} >
-                    <h3> Payment Description</h3>
-                    <FormsyText required={true}  name="paymentDescription" floatingLabelText={'Enter description'} multiLine={true} rows={2}/>
+            <Formsy.Form ref="addPayment" onValidSubmit={this.addPayment} >
+                <h3> Payment Description</h3>
+                <FormsyText required={true}  name="paymentDescription" floatingLabelText={'Enter description'} multiLine={true} rows={2}/>
 
-                    <h3> Payment Category</h3>
-                    <FormsyRadioGroup name="paymentCategory" defaultSelected="groceries">
-                      <FormsyRadio
-                        value="groceries"
-                        label="Groceries"
-                      />
-                      <FormsyRadio
-                        value="meals"
-                        label="Meals"
-                      />
-                      <FormsyRadio
-                        value="rent"
-                        label="Rent or Utilities"
-                      />
-                      <FormsyRadio
-                        value="misc"
-                        label="Misc"
-                      />
-                    </FormsyRadioGroup>
+                <h3> Payment Category</h3>
+                <FormsyRadioGroup name="paymentCategory" defaultSelected="groceries">
+                  <FormsyRadio
+                    value="groceries"
+                    label="Groceries"
+                  />
+                  <FormsyRadio
+                    value="meals"
+                    label="Meals"
+                  />
+                  <FormsyRadio
+                    value="rent"
+                    label="Rent or Utilities"
+                  />
+                  <FormsyRadio
+                    value="misc"
+                    label="Misc"
+                  />
+                </FormsyRadioGroup>
 
-                    <h3> Loaner</h3>
-                    <FormsySelect
-                      name="loaner"
-                      required
-                      floatingLabelText="Select Loaner"
-                      menuItems={this.selectFieldItems}
-                    >
-                      <MenuItem value={'roommate1Loaner'} primaryText="Roommate 1" />
-                      <MenuItem value={'roommate2Loaner'} primaryText="Roommate 2" />
-                      <MenuItem value={'roommate3Loaner'} primaryText="Roommate 3" />
-                      <MenuItem value={'roommate4Loaner'} primaryText="Roommate 4" />
-                    </FormsySelect>
+                <h3> Loaner</h3>
+                <FormsySelect
+                  name="loaner"
+                  required
+                  floatingLabelText="Select Loaner"
+                  menuItems={this.selectFieldItems}
+                >
+                  <MenuItem value={'roommate1Loaner'} primaryText="Roommate 1" />
+                  <MenuItem value={'roommate2Loaner'} primaryText="Roommate 2" />
+                  <MenuItem value={'roommate3Loaner'} primaryText="Roommate 3" />
+                  <MenuItem value={'roommate4Loaner'} primaryText="Roommate 4" />
+                </FormsySelect>
 
 
-                    <h3> Loanee</h3>
-                    <FormsySelect
-                      name="loanee"
-                      required
-                      floatingLabelText="Select Loaner"
-                      menuItems={this.selectFieldItems}
-                    >
-                      <MenuItem value={'roommate1Loanee'} primaryText="Roommate 1" />
-                      <MenuItem value={'roommate2Loanee'} primaryText="Roommate 2" />
-                      <MenuItem value={'roommate3Loanee'} primaryText="Roommate 3" />
-                      <MenuItem value={'roommate4Loanee'} primaryText="Roommate 4" />
-                    </FormsySelect>
+                <h3> Loanee</h3>
+                <FormsySelect
+                  name="loanee"
+                  required
+                  floatingLabelText="Select Loaner"
+                  menuItems={this.selectFieldItems}
+                >
+                  <MenuItem value={'roommate1Loanee'} primaryText="Roommate 1" />
+                  <MenuItem value={'roommate2Loanee'} primaryText="Roommate 2" />
+                  <MenuItem value={'roommate3Loanee'} primaryText="Roommate 3" />
+                  <MenuItem value={'roommate4Loanee'} primaryText="Roommate 4" />
+                </FormsySelect>
 
-                    <h3>Amount</h3>
-                    <FormsyText required={true}  name="paymentAmount" floatingLabelText={'Enter amount'}/>
+                <h3>Amount</h3>
+                <FormsyText required={true}  name="paymentAmount" floatingLabelText={'Enter amount'}/>
 
-                    <h3>Due date </h3>
-                    <FormsyDate
-                      name="dueDate"
-                      required
-                      floatingLabelText="Due Date"
-                    />
+                <h3>Due date </h3>
+                <FormsyDate
+                  name="dueDate"
+                  required
+                  floatingLabelText="Due Date"
+                />
 
-                    <h3>Recurring Period </h3>
-                    <FormsySelect
-                      name="recurringPeriod"
-                      required
-                      floatingLabelText="Select recurring period"
-                      menuItems={this.selectFieldItems}
-                    >
-                      <MenuItem value={'once'} primaryText="Once" />
-                      <MenuItem value={'weekly'} primaryText="Weekly" />
-                      <MenuItem value={'biweekly'} primaryText="Biweekly" />
-                      <MenuItem value={'monthly'} primaryText="Monthly" />
-                    </FormsySelect>
+                <h3>Recurring Period </h3>
+                <FormsySelect
+                  name="recurringPeriod"
+                  required
+                  floatingLabelText="Select recurring period"
+                  menuItems={this.selectFieldItems}
+                >
+                  <MenuItem value={'once'} primaryText="Once" />
+                  <MenuItem value={'weekly'} primaryText="Weekly" />
+                  <MenuItem value={'biweekly'} primaryText="Biweekly" />
+                  <MenuItem value={'monthly'} primaryText="Monthly" />
+                </FormsySelect>
 
-                    <RaisedButton fullWidth={false} type="submit" label="Add Payment" primary={false} secondary={true} />
-                </Formsy.Form>
+                <RaisedButton fullWidth={false} type="submit" label="Add Payment" primary={false} secondary={true} />
+            </Formsy.Form>
+
+            <button onClick={this.GetTenants.bind(this)}>Test Getting Apartment Mates</button>
             </div>
         );
     }
