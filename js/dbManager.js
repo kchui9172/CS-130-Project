@@ -365,6 +365,31 @@ export default class DBManager {
     }
 
     /**
+     * Gets all the payment IDs
+     *
+     * @method getPaymentIDs
+     * @returns {array{PaymentIDs}}
+     */
+    getPaymentIDs() {
+        return this.getUser().then(function (user) {
+            return user.getPaymentIDs();
+        })
+    }
+
+    /**
+     * Gets the payment with the speicifed ID
+     *
+     * @method getPayment
+     * @param paymentID - Payment ID to find payment
+     * @return {Payment}
+     */
+    getPayment(paymentID) {
+         return firebase.database().ref('/payments/' + paymentID).once('value').then(function(snapshot) {
+             return Payment.JSONtoPayment(snapshot.val());
+         });
+     }
+
+    /**
      *
      * Bind Apartment and User
      * @param {string} aptID - The apartment to bind
