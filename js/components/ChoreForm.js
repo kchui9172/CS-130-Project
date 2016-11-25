@@ -26,11 +26,6 @@ export default class ChoreForm extends React.Component {
     constructor() {
         super();
 
-        this.state = {
-            numberOccurrences: 1,
-            repeatFrequency: 7
-        };
-
         this.enableSubmit = this.enableSubmit.bind(this);
         this.disableSubmit = this.disableSubmit.bind(this);
         this.addChore = this.addChore.bind(this);
@@ -103,8 +98,8 @@ export default class ChoreForm extends React.Component {
         this.addChore(data.choreName, data.choreFirstDueDate, data.choreDetails,
                 data.choreAssignee);
         var assignedDate = data.choreFirstDueDate;
-        for(var i = 2; i <= data.choreNumberOccurrences; i++) {
-            assignedDate.setDate(assignedDate.getDate() + data.choreRepeatFrequency);
+        for(var i = 2; i <= parseInt(data.choreNumberOccurrences); i++) {
+            assignedDate.setDate(assignedDate.getDate() + parseInt(data.choreRepeatFrequency));
             this.addChore(data.choreName, assignedDate, data.choreDetails,
                     data.choreAssignee);
         }
@@ -128,27 +123,22 @@ export default class ChoreForm extends React.Component {
                     onValidSubmit={this.handleSubmit}
                     onInvalidSubmit={this.handleInvalidSubmit} >
                     Chore Name: <FormsyText
-                        value={this.state.choreName}
                         name="choreName"
                         required={true} />
                     <br />
                     Assignee: <FormsyText
-                        value={this.state.assignee}
                         name="choreAssignee"
                         required={true} />
                     <br />
                     First Due Date: <FormsyDate
-                        value={this.state.dueDate}
                         name="choreFirstDueDate"
                         required={true} />
                     <br />
                     Number of Occurrences: <FormsyText
-                        value={this.state.numberOccurrences}
                         name="choreNumberOccurrences"
                         required={true} />
                     <br />
                     Repeat Frequency (in Days): <FormsyText
-                        value={this.state.repeatFrequency}
                         name="choreRepeatFrequency"
                         required={true} />
                     <br />
@@ -156,7 +146,6 @@ export default class ChoreForm extends React.Component {
                         multiline={true}
                         rows={3} 
                         cols={50} 
-                        value={this.state.details}
                         name="choreDetails" />
                     <br />
                     <RaisedButton fullWidth={false} 
