@@ -26,12 +26,18 @@ export default class ChoreForm extends React.Component {
     constructor() {
         super();
 
+        this.errorMessages = {
+            wordsError: "Please only use letters",
+            numericError: "Please provide a number"
+        };
+
         this.enableSubmit = this.enableSubmit.bind(this);
         this.disableSubmit = this.disableSubmit.bind(this);
         this.addChore = this.addChore.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInvalidSubmit = this.handleInvalidSubmit.bind(this);
     }
+
 
     /**
      * Enables form submission
@@ -85,6 +91,30 @@ export default class ChoreForm extends React.Component {
     }
 
     /**
+     * Validates data submitted through the form
+     *
+     * @method validateData
+     * @param {Obj} data - The form data
+     */
+    validateData(data) {
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        if (yesterday >= data.choreFirstDueDate) {
+            console.error('Cannot assign chores due in the past');
+            return false;
+        }
+        if (data.choreRepeatFrequency < 1 || data.choreRepeatFrequency > 365) {
+            console.error('Repeat frequency must be between 1 and 365, inclusive');
+            return false;
+        }
+        if (data.choreNumberOccurrences < 1 || data.choreNumberOccurrences > 100) {
+            console.error('Number of occurrences must be between 1 and 100, inclusive');
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Handles when Chore Form is submitted by pushing the 
      * desired Chore(s) to the database
      *
@@ -95,13 +125,15 @@ export default class ChoreForm extends React.Component {
         console.log("submitting chore");
         console.log(data);
 
-        this.addChore(data.choreName, data.choreFirstDueDate, data.choreDetails,
-                data.choreAssignee);
-        var assignedDate = data.choreFirstDueDate;
-        for(var i = 2; i <= parseInt(data.choreNumberOccurrences); i++) {
-            assignedDate.setDate(assignedDate.getDate() + parseInt(data.choreRepeatFrequency));
-            this.addChore(data.choreName, assignedDate, data.choreDetails,
+        if (this.validateData(data)) {
+            this.addChore(data.choreName, data.choreFirstDueDate, data.choreDetails,
                     data.choreAssignee);
+            var assignedDate = data.choreFirstDueDate;
+            for (var i = 2; i <= parseInt(data.choreNumberOccurrences); i++) {
+                assignedDate.setDate(assignedDate.getDate() + parseInt(data.choreRepeatFrequency));
+                this.addChore(data.choreName, assignedDate, data.choreDetails,
+                        data.choreAssignee);
+            }
         }
     }
 
@@ -124,10 +156,14 @@ export default class ChoreForm extends React.Component {
                     onInvalidSubmit={this.handleInvalidSubmit} >
                     Chore Name: <FormsyText
                         name="choreName"
+                        validations="isWords"
+                        validationError={this.errorMessages.wordsError}
                         required={true} />
                     <br />
                     Assignee: <FormsyText
                         name="choreAssignee"
+                        validations="isWords"
+                        validationError={this.errorMessages.wordsError}
                         required={true} />
                     <br />
                     First Due Date: <FormsyDate
@@ -136,10 +172,14 @@ export default class ChoreForm extends React.Component {
                     <br />
                     Number of Occurrences: <FormsyText
                         name="choreNumberOccurrences"
+                        validations="isNumeric"
+                        validationError={this.errorMessages.numericError}
                         required={true} />
                     <br />
                     Repeat Frequency (in Days): <FormsyText
                         name="choreRepeatFrequency"
+                        validations="isNumeric"
+                        validationError={this.errorMessages.numericError}
                         required={true} />
                     <br />
                     Additional Details: <FormsyText
