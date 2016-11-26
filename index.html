@@ -7,65 +7,13 @@
     <meta name="description" content="Rockmates Project">
     <!-- Use minimum-scale=1 to enable GPU rasterization -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
-    <style>
-    html {
-        font-family: 'Roboto', sans-serif;
-    }
-
-    body {
-        margin: 0px;
-        font-size: 13px;
-        line-height: 20px;
-        background-color: #f4f0e8;
-    }
-
-    .dialogHack > div:first-child {
-      border-radius: 6px !important;
-    }
-
-    .rounded {
-      border-radius: 6px !important;
-    }
-
-    .blurred{
-      background-color:rgba(255,255,255,1) !important;
-    }
-
-    @supports (-webkit-backdrop-filter:blur(4px)) {
-      .dialogHack > div:first-child {
-        border-radius: 6px !important;
-        background-color:rgba(255,255,255,0.80) !important;
-        -webkit-backdrop-filter:blur(4px);
-      }
-
-      .blurred{
-        background-color:rgba(255,255,255,0.85) !important;
-        -webkit-backdrop-filter:blur(4px);
-      }
-
-      .frosted{
-        -webkit-backdrop-filter:blur(4px);
-      }
-    }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 </head>
 <body>
     <div id="app"></div>
     <div class="messages"></div>
     <div class="chores"></div>
     <div class="payments"></div>
-    <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
-    <script>
-        var WebFontConfig = {google: {families:['Roboto:400,300,500:latin' ]}};
-        (function() {
-            var wf = document.createElement('script');
-            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
     <script src="/dist/bundle.js"></script>
 </body>
 </html>

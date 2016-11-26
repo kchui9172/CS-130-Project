@@ -4,36 +4,12 @@ import {FormsyText} from 'formsy-material-ui/lib'
 import RaisedButton from 'material-ui/RaisedButton';
 import {CardMedia, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
-
 import User from '../../User.js';
 import Chore from '../../Chore.js';
 import Message from '../../Message.js';
 import DBManager from '../../dbManager.js';
 import Apartment from '../../Apartment.js';
 
-const style = {
-  titles:{
-    //backgroundColor:'rgba(0,0,255,0.85)',
-  },
-
-  dialog:{
-
-  },
-
-  contents:{
-      textAlign: 'center',
-      width: '480px',
-  },
-
-  overlay:{
-
-  },
-
-  bodys:{
-    //backgroundColor:'rgba(255,0,255,0.85)',
-    // WebkitBackdropFilter:'blur(4px)',
-  },
-};
 
 /**
  * A modal dialog can only be closed by selecting one of the actions.
@@ -43,7 +19,7 @@ export default class AddAptDialog extends React.Component {
   constructor(props, context) {
       super(props, context);
       this.state = {
-        modalOpen: true,
+        modalOpen: false,
         submitEnabled: true,
         hasSubmitted: false,
       };
@@ -65,8 +41,8 @@ export default class AddAptDialog extends React.Component {
     this.setState({submitEnabled:false});
   };
 
-  submitForm = (data) => {
 
+  submitForm = (data) => {
     if(data.invite_code=="") {
         return this.notifyFormError(data);
     }
@@ -77,7 +53,7 @@ export default class AddAptDialog extends React.Component {
     });
 
     console.log('submit_bind:', data);
-    this.unitTest_bindApartment();
+    //this.unitTest_bindApartment();
     //var dbManager = new DBManager();
     //var result = dbManager.bindApartment(data.invite_code).catch(this.notifyRequestError);
     // result.then(function(data){
@@ -85,10 +61,6 @@ export default class AddAptDialog extends React.Component {
     // }).catch(function(data){
     //   console.log('submit_bind_failed:', data);
     // });
-  };
-
-  checkAptBinding() {
-
   };
 
   unitTest_bindApartment(aptID) {
@@ -124,18 +96,26 @@ export default class AddAptDialog extends React.Component {
     });
   };
 
+  checkAptBinding() {
+    var db = new DBManager();
+    db.getApartment().then(function(apt) {
+      var aptExists = (apt!=null) && (apt.getAptID()!=null);
+      this.setState({modalOpen: !aptExists});
+      console.log('Apt binding:', aptExists, apt);
+    }.bind(this));
+  };
+
+  componentDidMount() {
+    console.log('checking Apt Binding...');
+    this.checkAptBinding();
+  };
 
   render() {
     return (
         <Dialog
-          title="Invite Code"
           modal={true}
-          style={style.dialog}
-          contentClassName="dialogHack"
-          contentStyle={style.contents}
-          overlayStyle={style.overlay}
-          bodyStyle={style.bodys}
-          titleStyle={style.titles}
+          title="Invite Code"
+          className="frosted"
           open={this.state.modalOpen}
         >
         <Formsy.Form ref="InviteCode"
@@ -158,10 +138,10 @@ export default class AddAptDialog extends React.Component {
             label="Add Apartment"
             primary={true}
             secondary={false}
-            disabled={false}//{!this.state.canSubmit||this.state.hasSubmitted}
+            disabled={false}
           />
       </Formsy.Form>
     </Dialog>
     );
-  }
+  };
 }

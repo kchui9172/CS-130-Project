@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CircularProgress from 'material-ui/CircularProgress';
 import { Match, BrowserRouter, Link, Miss, Redirect } from 'react-router';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
@@ -82,7 +83,7 @@ export default class App extends Component {
   }
 
   render() {
-    return (this.state.loading === true ? <h1>loadingModal</h1> : (
+    return (this.state.loading === true ? <CircularProgress size={80} thickness={7} /> : (
       <div>
       <Router history={browserHistory}>
         <Route path="/" component={NavBar} >

@@ -31,7 +31,7 @@ const style = {
 
   drawerToggle:{
     width: 48,
-   height: 48,
+    height: 48,
   }
 };
 

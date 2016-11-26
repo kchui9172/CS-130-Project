@@ -5,6 +5,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 
 import DBManager from '../../dbManager.js';
+import FloatingDialog from '../primitives/FloatingDialog.js';
+
 
 const style = {
   image: {
@@ -64,15 +66,26 @@ const SignUpForm = React.createClass({
 
     console.log('submitSignUp:', data);
     var dbManager = new DBManager();
-    var result = (dbManager.signUp(data.email, data.password));
-    console.log('resultSignUp:', result);
-    result.then(function (result){
+    var result = dbManager.signUp(data.email, data.password, data.firstname, data.lastname, this.notifySignupError);
+    result.then(function (results){
+      console.log('resultSignUp:', results);
       var signInresult = dbManager.signIn(data.email, data.password);
       result.then(function(data){
         console.log('resultLogin:', data);
         console.log('loggedIn:', DBManager.isLoggedIn());
       });
     });
+  },
+
+  notifySignupError(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.error(errorCode);
+    this.setState({
+      errorDialog: true,
+      errorText: errorMessage,
+    });
+    return null;
   },
 
   notifyFormError(data) {
@@ -83,6 +96,11 @@ const SignUpForm = React.createClass({
       passwordInvalid: (data.password==""),
       password2Invalid: (data.repassword==""),
     });
+  },
+
+  resetSignupForm() {
+    this.setState(this.getInitialState());
+    this.refs.signup.reset();
   },
 
   getInitialState() {
@@ -104,6 +122,9 @@ const SignUpForm = React.createClass({
 
       hasSubmitted: false,
       canSubmit: true,
+
+      errorText: null,
+      errorDialog: false,
     };
   },
 
@@ -198,6 +219,9 @@ const SignUpForm = React.createClass({
         </CardActions>
       </Formsy.Form>
       </CardText>
+      <FloatingDialog title={"Signup Failed!"} modal={false} open={this.state.errorDialog} onRequestClose={this.resetSignupForm}>
+        {this.state.errorText}
+      </FloatingDialog>
     </div>
   );
 },

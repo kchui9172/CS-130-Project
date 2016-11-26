@@ -22,10 +22,6 @@ const style = {
   contents: {
     padding:'6px',
   },
-  square: {
-    border: '1px solid #77aaff',
-    boxShadow:  '-1px 1px #77aaff,-2px 2px #77aaff,-3px 3px #77aaff,-4px 4px #77aaff,-5px 5px #77aaff',
-  },
 };
 
 const LoginForm = React.createClass({
@@ -59,10 +55,6 @@ const LoginForm = React.createClass({
     console.log('submitLogin:', data);
     var dbManager = new DBManager();
     var result = dbManager.signIn(data.email, data.password, this.notifyLoginError);
-    result.then(function(data){
-      console.log('resultLogin:', data);
-      console.log('loggedIn:', DBManager.isLoggedIn());
-    });
   },
 
   notifyLoginError(error) {
@@ -73,6 +65,7 @@ const LoginForm = React.createClass({
       errorDialog: true,
       errorText: errorMessage,
     });
+    return null;
   },
 
   resetLoginForm() {
@@ -138,7 +131,7 @@ const LoginForm = React.createClass({
     return (
       <div>
       <CardMedia>
-        <img style={style.image} src='https://upload.wikimedia.org/wikipedia/en/4/4d/SpongeBob_SquarePants_characters_cast.png'/>
+        <img style={style.image} src={require('../../../static/assets/loginForm.jpg')} />
       </CardMedia>
       <CardTitle title="Hello Again!" subtitle="Login to your account" />
       <CardText style={style.contents}>

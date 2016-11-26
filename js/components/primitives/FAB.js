@@ -6,6 +6,7 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 import AttachMoney from 'material-ui/svg-icons/editor/attach-money';
 import EventNote from 'material-ui/svg-icons/notification/event-note';
 
+import {colors} from '../../config/MUI.js';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -71,9 +72,9 @@ const style = {
             style={style.popover}
           >
             <Menu>
-              <MenuItem primaryText="New Message" rightIcon={<ContentSend/>}/>
-              <MenuItem primaryText="New Payment" rightIcon={<AttachMoney/>}/>
-              <MenuItem primaryText="Add Chore"   rightIcon={<EventNote/>}/>
+              <MenuItem primaryText="New Message" rightIcon={<ContentSend  color={colors.message}/>}/>
+              <MenuItem primaryText="New Payment" rightIcon={<AttachMoney  color={colors.payment}/>}/>
+              <MenuItem primaryText="Add Chore"   rightIcon={<EventNote    color={colors.chore}  />}/>
             </Menu>
           </Popover>
           </div>

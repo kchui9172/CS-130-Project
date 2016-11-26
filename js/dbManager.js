@@ -7,25 +7,10 @@ import Chore from './Chore.js';
 import Payment from './Payment.js';
 import Apartment from './Apartment.js';
 
-// // Firebase API Credentials
-// var config = {
-//   apiKey: "AIzaSyCAFUnm_bsnpiRyziqTB41QZoLW3-OYp20",
-//   authDomain: "rockmates-d8edb.firebaseapp.com",
-//   databaseURL: "https://rockmates-d8edb.firebaseio.com",
-//   storageBucket: "rockmates-d8edb.appspot.com",
-//   messagingSenderId: "370968243217"
-// };
-// firebase.initializeApp(config);
-
 // Singleton Design Pattern... We only want one
 // instance of DBManager
 let dbm_instance = null;
 
-// Global Data for User & Apartment
-let user_cache = null; // User Object
-let apt_cache = null;  // Apt Object
-
-// Firebase Realtime checks before using cached version
 /**
  * Represents a Database Manager.
  *
@@ -39,13 +24,10 @@ export default class DBManager {
      * @constructor
      */
     constructor() {
-        //console.log('dbManager.constructor :' );
-        //console.log('DBManager.getInstance: (old dbm_instance :', (dbm_instance != null))
         if(dbm_instance == null){
             dbm_instance = this;
             console.log('DBManager.onCreate: [new dbm_instance]');
         }
-        //console.log('DBManager.getInstance: (new dbm_instance :', (dbm_instance != null))
         return dbm_instance;
     }
 
@@ -86,19 +68,12 @@ export default class DBManager {
           }
          }
         }
-        var signInPromise = firebase.auth().signInWithEmailAndPassword(email, password).catch(onFailCallback);
-
-        return signInPromise.then(function(signedInUser)
-        { user_cache=true;
-          console.log('db.signIn: firebaseCurrentUser: ', (null !== firebase.auth().currentUser));return true;/*DBManager.getUser(signedInUser.uid)*/});
-        // TODO : should return promise of User object (but it should never be none, or if its, the other side should handle that case)
-        // TODO : Also, don't forget about firebase.auth().onAuthStateChanged(function(user) {
-        //   if (user) {
-        //     // User is signed in.
-        //   } else {
-        //     // No user is signed in.
-        //   }
-        // });
+        var signInPromise = firebase.auth().signInWithEmailAndPassword(email, password)
+                            .then(function(signedInUser) {
+                              var validSignIn = (null !== firebase.auth().currentUser) && (signedInUser === firebase.auth().currentUser);
+                              console.log('db.signIn: firebaseCurrentUser: ', validSignIn);
+                              return validSignIn;
+                            }).catch(onFailCallback);
     }
 
     /**
@@ -111,21 +86,42 @@ export default class DBManager {
      * @return {Promise} Promise of a nonNull Firebase user
      * @throws {Error} - A possible authentication error
      */
-    signUp(email, password, onFailCallback) {
-        return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-            switch (error.code) {
-                case 'auth/email-already-in-use':
-                    alert("Email is already in user.");
-                    break;
-                case 'auth/invalid-email':
-                    alert("Email is invalid.");
-                    break;
-                default:
-                    alert("Error signing up.");
-            }
-        });
+    signUp(email, password, firstname, lastname, onFailCallback) {
+      if(onFailCallback == null) {
+        /* Default error handler */
+        onFailCallback = function(error) {
+          switch (error.code) {
+              case 'auth/email-already-in-use':
+                  alert("Email is already in user.");
+                  break;
+              case 'auth/invalid-email':
+                  alert("Email is invalid.");
+                  break;
+              default:
+                  alert("Error signing up.");
+          }
+        }
+       }
+
+       var signUpPromise = firebase.auth().createUserWithEmailAndPassword(email, password)
+                           .then(function(signedUpUser) {
+                             console.log('signedUpUser:', signedUpUser.uid);
+                             newUser = new User(email, firstname, lastname, "");
+                             newUser.setUserID(signedUpUser.uid);
+                             return this.addUser(newUser);
+                           }).catch(onFailCallback);
     }
 
+
+    /*DBManager.getUser(signedInUser.uid)*/
+    // TODO : should return promise of User object (but it should never be none, or if its, the other side should handle that case)
+    // TODO : Also, don't forget about firebase.auth().onAuthStateChanged(function(user) {
+    //   if (user) {
+    //     // User is signed in.
+    //   } else {
+    //     // No user is signed in.
+    //   }
+    // });
     /**
      * Adds a user to the database.
      *
@@ -134,8 +130,8 @@ export default class DBManager {
      * @return {string} - The User ID of the added user
      */
     addUser(user) {
-        this.user_cache = user;
-        firebase.database().ref('users/' + user.getUserID()).set(JSON.stringify(user));
+        console.log('addUser:', user.uid, user);
+        return firebase.database().ref('users/' + user.getUserID()).set(JSON.stringify(user));
     }
 
     /**
@@ -174,6 +170,7 @@ export default class DBManager {
 
     /**
     * Checks current auth state
+    * @method isLoggedIn
     * @return {uid} - current user id
     */
     static isLoggedIn() {
@@ -182,7 +179,8 @@ export default class DBManager {
 
     /**
     * Logs the current user out, if logged in
-    * @return {uid} - current user id
+    * @method LogOut
+    * @return {Promise} - LogOut promise
     */
     static LogOut() {
       return (this.isLoggedIn()) ? firebase.auth().signOut() : null;
