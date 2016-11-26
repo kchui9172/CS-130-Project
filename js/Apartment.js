@@ -109,7 +109,7 @@ export default class Apartment {
     }
 
     /**
-     * Adds a tenant to the Apartment.
+     * Adds a message to the Apartment.
      *
      * @method addMessage
      * @param {string} messageID - The new message ID
@@ -122,7 +122,7 @@ export default class Apartment {
      * Adds a chore to the Apartment.
      *
      * @method addChore
-     * @param {string} choreID - The new message ID
+     * @param {string} choreID - The new chore ID
      */
     addChore(choreID) {
         this._chores.push(choreID);

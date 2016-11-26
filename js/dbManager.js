@@ -236,18 +236,22 @@ export default class DBManager {
      *
      * @method addChore
      * @param {Chore} chore - The chore to be added.
+     * @param {function} callback - The optional callback function
      * @throws {Error} - Possible failure to add Chore
      */
-    addChore(chore) {
+    addChore(chore, callback=null) {
         console.log("Adding Chore");
         var choresRef = firebase.database().ref('chores');
         var newChoreRef = choresRef.push();
         chore.setChoreID(newChoreRef.getKey());
         newChoreRef.set(JSON.stringify(chore));
-        // Add to Chore to Apartment
+        // Add the Chore to Apartment
         this.getApartment().then(function (apt) {
             apt.addChore(newChoreRef.getKey());
             this.updateApartment(apt);
+            if (callback) {
+                callback();
+            }
         }.bind(this));
     }
 
@@ -275,11 +279,11 @@ export default class DBManager {
     }
 
     /**
-     * Gets all chores.
+     * Gets a chore.
      *
-     * @method getChores
+     * @method getChore
      * @param {string} choreID - The id of the chore to get.
-     * @returns {Array{Chores}}
+     * @returns {Chore}
      */
     getChore(choreID) {
         return firebase.database().ref('/chores/' + choreID).once('value').then(function(snapshot) {

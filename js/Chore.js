@@ -15,15 +15,16 @@ export default class Chore {
      * @param {string} category - The category of the Chore.
      * @param {Date} deadline - The deadline of the Chore.
      * @param {string} details - Additional details of the Chore.
+     * @param {string} assignee - The assignee of the Chore.
      */
-    constructor(userID, aptID, category, deadline, details) {
+    constructor(userID, aptID, category, deadline, details, assignee) {
         this._choreID = null;
         this._category = category;
         this._createdBy = userID;
         this._aptID = aptID;
         this._deadline = deadline;
         this._details = details;
-        this._assignedTo = null;
+        this._assignedTo = assignee;
         this._createdOn = new Date();
         this._finishedBy = null;
     }

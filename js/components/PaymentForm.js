@@ -130,7 +130,6 @@ export default class PaymentForm extends React.Component {
                   name="loaner"
                   required
                   floatingLabelText="Select Loaner"
-                  menuItems={this.selectFieldItems}
                 >
                   <MenuItem value={'roommate1Loaner'} primaryText="Roommate 1" />
                   <MenuItem value={'roommate2Loaner'} primaryText="Roommate 2" />
@@ -144,7 +143,6 @@ export default class PaymentForm extends React.Component {
                   name="loanee"
                   required
                   floatingLabelText="Select Loaner"
-                  menuItems={this.selectFieldItems}
                 >
                   <MenuItem value={'roommate1Loanee'} primaryText="Roommate 1" />
                   <MenuItem value={'roommate2Loanee'} primaryText="Roommate 2" />
@@ -167,7 +165,6 @@ export default class PaymentForm extends React.Component {
                   name="recurringPeriod"
                   required
                   floatingLabelText="Select recurring period"
-                  menuItems={this.selectFieldItems}
                 >
                   <MenuItem value={'once'} primaryText="Once" />
                   <MenuItem value={'weekly'} primaryText="Weekly" />

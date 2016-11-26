@@ -23,9 +23,10 @@ export default class ChoreForm extends React.Component {
      *
      * @method constructor
      * @constructor
+     * @param {Object} props - Properties passed by parent
      */
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.errorMessages = {
             wordsError: "Please only use letters",
@@ -34,9 +35,12 @@ export default class ChoreForm extends React.Component {
 
         this.enableSubmit = this.enableSubmit.bind(this);
         this.disableSubmit = this.disableSubmit.bind(this);
-        this.addChore = this.addChore.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInvalidSubmit = this.handleInvalidSubmit.bind(this);
+        this.loopAddChores = this.loopAddChores.bind(this);
+        this.addChore = this.addChore.bind(this);
+
+        this.choreIterator = 0;
     }
 
 
@@ -63,35 +67,6 @@ export default class ChoreForm extends React.Component {
     }
 
     /**
-     * Create a new Chore and set fields as needed
-     * and then add the chore to the database
-     *
-     * @method createChore
-     * @param {dbManager} manager - The database manager
-     * @param {string} choreName - The name of the chore
-     * @param {Date} dueDate - The due date of the chore
-     * @param {string} details - Additional details of the chore
-     * @param {string} assignee - The assignee of the chore
-     */
-    addChore(choreName, dueDate, details, assignee) {
-        console.log("adding a chore");
-        console.log("Category: ", choreName);
-        console.log("Due date: ", dueDate);
-        console.log("Details: ", details);
-        console.log("Assignee: ", assignee);
-
-        var manager = new DBManager();
-        var aptID = manager.getApartment().then(function(apt){return apt.getAptID()});
-        var UID = manager.getUser().then(function(user){return user.getUserID()});
-        Promise.all([UID, aptID]).then(values => {
-          var newChore = new Chore(values[0], values[1], choreName, dueDate, details);
-          newChore.setAssignment(assignee);
-          console.log('evaluating chore for:',values[0], values[1]);
-          manager.addChore(newChore);
-        });
-    }
-
-    /**
      * Validates data submitted through the form
      *
      * @method validateData
@@ -101,18 +76,50 @@ export default class ChoreForm extends React.Component {
         var yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         if (yesterday >= data.choreFirstDueDate) {
-            console.error('Cannot assign chores due in the past');
+            console.log('Cannot assign chores due in the past');
             return false;
         }
-        if (data.choreRepeatFrequency < 1 || data.choreRepeatFrequency > 365) {
-            console.error('Repeat frequency must be between 1 and 365, inclusive');
+        var repeatFrequency = parseInt(data.choreRepeatFreqency);
+        if (repeatFrequency < 1 || repeatFrequency > 365) {
+            console.log('Repeat frequency must be between 1 and 365, inclusive');
             return false;
         }
-        if (data.choreNumberOccurrences < 1 || data.choreNumberOccurrences > 100) {
-            console.error('Number of occurrences must be between 1 and 100, inclusive');
+        var numberOccurrences = parseInt(data.choreNumberOccurrences);
+        if (numberOccurrences < 1 || numberOccurrences > 100) {
+            console.log('Number of occurrences must be between 1 and 100, inclusive');
             return false;
         }
         return true;
+    }
+
+    /**
+     * Loops through chores and adds them to database
+     * Uses callbacks to avoid using stale caches
+     *
+     * @method loopAddChores
+     * @param {Array[Chore]} chores - Chores to be added
+     */
+    loopAddChores(chores) {
+        this.addChore(chores[this.choreIterator], function() {
+            this.choreIterator += 1;
+
+            if (this.choreIterator < chores.length) {
+                this.loopAddChores(chores);
+            }
+        }.bind(this));
+    }
+
+    /**
+     * Adds a chore to the database and calls the callback
+     * function after successfully adding it
+     *
+     * @method addChore
+     * @param {Chore} newChore - The chore to be added
+     * @param {function} callback - The callback function
+     */
+    addChore(newChore, callback) {
+        var manager = new DBManager();
+        manager.addChore(newChore, callback);
     }
 
     /**
@@ -120,24 +127,48 @@ export default class ChoreForm extends React.Component {
      * desired Chore(s) to the database
      *
      * @method handleSubmit
-     * @param {Event} e - Event triggered by adding chore
+     * @param {Object} data - Chore data to be added to database
      */
     handleSubmit(data) {
-        console.log("submitting chore");
-        console.log(data);
+        this.choreIterator = 0;
 
         if (this.validateData(data)) {
-            this.addChore(data.choreName, data.choreFirstDueDate, data.choreDetails,
-                    data.choreAssignee);
-            var assignedDate = data.choreFirstDueDate;
-            for (var i = 2; i <= parseInt(data.choreNumberOccurrences); i++) {
-                assignedDate.setDate(assignedDate.getDate() + parseInt(data.choreRepeatFrequency));
-                this.addChore(data.choreName, assignedDate, data.choreDetails,
-                        data.choreAssignee);
-            }
+            console.log("submitting chore");
+            console.log(data);
+
+            var name = data.choreName;
+            var assignee = data.choreAssignee;
+            var firstDueDate = data.choreFirstDueDate;
+            var numberOccurrences = parseInt(data.choreNumberOccurrences);
+            var repeatFrequency = parseInt(data.choreRepeatFrequency);
+            var details = data.choreDetails;
+
+            var manager = new DBManager();
+            var aptID = manager.getApartment().then(function (apt) {
+                return apt.getAptID();
+            });
+            var UID = manager.getUser().then(function (user) {
+                return user.getUserID()
+            });
+            Promise.all([UID, aptID]).then(values => {
+                var newChores = [];
+                do {
+                    var assignedDueDate = new Date();
+                    assignedDueDate.setDate(firstDueDate.getDate() + (newChores.length * repeatFrequency));
+                    newChores.push(new Chore(values[0], values[1], name, assignedDueDate, details, assignee));
+                    console.log('evaluating chore for:',values[0], values[1]);
+                } while (newChores.length < numberOccurrences);
+                this.loopAddChores(newChores);
+            });
         }
     }
 
+    /**
+     * Handles invalid form submission
+     *
+     * @method handleInvalidSubmit
+     * @param {Object} data - The invalid data submitted
+     */
     handleInvalidSubmit(data) {
         console.error("Received invalid submit: ", data);
     }

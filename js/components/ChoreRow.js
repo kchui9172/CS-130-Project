@@ -26,15 +26,17 @@ export default class ChoreRow extends React.Component {
      */
     render() {
         var chore = this.props.chore;
-        <tr>
-            <td>{chore.getChoreID()}</td>
-            <td>{chore.getCategory()}</td>
-            <td>{chore.getCreator()}</td>
-            <td>{chore.getDeadline()}</td>
-            <td>{chore.getDetails()}</td>
-            <td>{chore.getAssignment()}</td>
-            <td>{chore.getCreationDate()}</td>
-            <td>{chore.getCompletionDate()}</td>
-        </tr>
+        return (
+            <tr>
+                <td>{chore.getChoreID()}</td>
+                <td>{chore.getCategory()}</td>
+                <td>{chore.getCreator()}</td>
+                <td>{chore.getDeadline()}</td>
+                <td>{chore.getDetails()}</td>
+                <td>{chore.getAssignment()}</td>
+                <td>{chore.getCreationDate()}</td>
+                <td>{chore.getCompletionDate()}</td>
+            </tr>
+        );
     }
 }

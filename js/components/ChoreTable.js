@@ -38,17 +38,26 @@ export default class ChoreTable extends React.Component {
 
         return (
             <table className="choreTable">
-                <tr>
-                    <th>Chore ID</th>
-                    <th>Category</th>
-                    <th>Creator</th>
-                    <th>Deadline</th>
-                    <th>Details</th>
-                    <th>Assignee</th>
-                    <th>Creation Date</th>
-                    <th>Completion Date</th>
-                </tr>
-                {choreItems}
+                <thead>
+                    <tr>
+                        <th>Chore ID</th>
+                        <th>Category</th>
+                        <th>Creator</th>
+                        <th>Deadline</th>
+                        <th>Details</th>
+                        <th>Assignee</th>
+                        <th>Creation Date</th>
+                        <th>Completion Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.props.choreList.map(
+                        function(chore) {
+                            return (<ChoreRow chore={chore} 
+                                        key={chore.getChoreID()} />);
+                        })
+                    }
+                </tbody>
             </table>
         );
     }
