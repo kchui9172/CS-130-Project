@@ -36,8 +36,8 @@ const colors = {
   primaryHover : 'rgba(151, 86, 177, 1)',
   listHover:'rgba(151, 86, 177, 0.3)',
   red:'rgb(216, 15, 4)',
-  messageBlue:'rgb(56, 158, 255)',
-  choreOrange:'rgb(60, 179, 113)',
+  messageBlue:'#80cbc4',//'rgb(56, 158, 255)',
+  choreOrange:'rgb(56, 158, 255)',//'rgb(60, 179, 113)',
   paymentGray:'#607D8B',
 };
 

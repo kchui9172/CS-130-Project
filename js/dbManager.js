@@ -157,7 +157,7 @@ export default class DBManager {
      * @return {User} - The corresponding User
      */
     getUser(userID) {
-        var ID = (userID!=null) ? userID : this.isLoggedIn();
+        var ID = (userID!=null) ? userID : DBManager.isLoggedIn();
 
         console.log('db.getUser: firebaseCurrentUser: ', (null !== firebase.auth().currentUser));
 

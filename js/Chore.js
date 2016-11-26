@@ -24,8 +24,8 @@ export default class Chore {
         this._deadline = deadline;
         this._details = details;
         this._assignedTo = null;
-        this._createdOn = null;
-        this.finishedBy = null;
+        this._createdOn = new Date();
+        this._finishedBy = null;
     }
 
     /**
@@ -46,8 +46,8 @@ export default class Chore {
         chore._details = JSONObj._details;
         chore._assignedTo = JSONObj._assignedTo;
         chore._createdOn = JSONObj._createdOn;
-        chore.finishedBy = JSONObj._createdBy;
-        chore.aptID = JSONObj._aptID;
+        chore._finishedBy = JSONObj._finishedBy;
+        chore._aptID = JSONObj._aptID;
         return chore;
     }
 
@@ -88,7 +88,7 @@ export default class Chore {
      *
      * @method complete
      */
-    complete() { this._finishedBy = getDate(); }
+    complete() { this._finishedBy = new Date(); }
 
     /**
      * Gets the Chore ID
@@ -97,6 +97,14 @@ export default class Chore {
      * @return {string} - The Chore ID
      */
     getChoreID() { return this._choreID; }
+
+    /**
+     * Gets the Apartment ID of the chore.
+     *
+     * @method getAptID
+     * @return {string} - The Apt ID
+     */
+    getAptID() { return this._aptID; }
 
     /**
      * Gets the category of the Chore.
