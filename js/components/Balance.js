@@ -31,10 +31,13 @@ export default class Balance extends React.Component {
     */
 
     calculateBalance(){
+        console.log("calculating balance");
         var manager = new DBManager();
-        var owed = manager.getOwedPayments();
-        var owe = manager.getOwePayments();
-        var roommates = manager.getRoommates();
+        var payments = manager.getPaymentIDs();
+        console.log(payments);
+        //var owed = manager.getOwedPayments();
+        //var owe = manager.getOwePayments();
+        var roommates = manager.getApartment();
         // create 2 arrays:
         //     Array1 = holds total balance of owed/owe between two ppl (position corresponds to roommate)
         //     Array2 = holds description of balance owed/owe (description of payment and amount) between two ppl (position corresponds to rommate)

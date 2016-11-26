@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import DBManager from '../dbManager.js';
 import User from '../User.js';
@@ -20,27 +20,27 @@ import { CardActions, CardTitle, CardText} from 'material-ui/Card';*/
  * @class React.Component.PaymentForm
  * @extends React.Component
  */
-export default class PaymentForm extends React.Component {
+const PaymentForm = React.createClass({
     /**
      * Constructs a Payment Form.
      *
      * @method constructor
      * @constructor
      */
-    constructor() {
+    /*constructor() {
         super();
 
        	this.addPayment = this.addPayment.bind(this);
-    };
+    };*/
 
 
     addPayment(e){
         var manager = new DBManager();
-        manager.signIn("bob@gmail.com","password").then(function(){
+        //manager.signIn("bob@gmail.com","password").then(function(){
             var payment = new Payment(e.paymentAmount,e.loaner,e.loanee, new Date(), null, e.dueDate, e.paymentDescription,e.paymentCategory,e.recurringPeriod);
             manager.addPayment(payment);
             console.log("added payment");
-        }.bind(this));
+        //}.bind(this));
 
        
         /*var regex  = /^\d+(?:\.\d{0,2})$/;
@@ -76,7 +76,26 @@ export default class PaymentForm extends React.Component {
         this._dueDate.value="";
         this._recurring.value="";
         e.preventDefault();*/
-    }
+    },
+
+    getInitialState(){
+      return{
+        validateAmount: true,
+      };
+    },
+
+    enableAmountValidation(){
+      this.setState({
+        validateAmount: true,
+      });
+    },
+
+    disableAmountValidation(){
+      this.setState({
+        validateAmount: false,
+      });
+    },
+
 
     GetTenants(){
         console.log("hello");
@@ -91,7 +110,7 @@ export default class PaymentForm extends React.Component {
                 //have a separate function so that when get to loaner/loanee renders dropdown options using for loop?
             })
         });
-    }
+    },
 
     /**
      * Renders a Balance between two users.
@@ -125,38 +144,50 @@ export default class PaymentForm extends React.Component {
                   />
                 </FormsyRadioGroup>
 
-                <h3> Loaner</h3>
+                <h3>Are you the loaner or loanee?</h3>
                 <FormsySelect
-                  name="loaner"
+                  name="userPos"
                   required
-                  floatingLabelText="Select Loaner"
+                  floatingLabelText="Choose an option"
                 >
-                  <MenuItem value={'roommate1Loaner'} primaryText="Roommate 1" />
-                  <MenuItem value={'roommate2Loaner'} primaryText="Roommate 2" />
-                  <MenuItem value={'roommate3Loaner'} primaryText="Roommate 3" />
-                  <MenuItem value={'roommate4Loaner'} primaryText="Roommate 4" />
+                  <MenuItem value={'loaner'} primaryText="Loaner" />
+                  <MenuItem value={'loanee'} primaryText="Loanee" />
                 </FormsySelect>
 
-
-                <h3> Loanee</h3>
+                <h3> Other person involved in transaction</h3>
                 <FormsySelect
-                  name="loanee"
+                  name="otherPos"
                   required
-                  floatingLabelText="Select Loaner"
+                  floatingLabelText="Choose an option"
                 >
                   <MenuItem value={'roommate1Loanee'} primaryText="Roommate 1" />
                   <MenuItem value={'roommate2Loanee'} primaryText="Roommate 2" />
                   <MenuItem value={'roommate3Loanee'} primaryText="Roommate 3" />
-                  <MenuItem value={'roommate4Loanee'} primaryText="Roommate 4" />
                 </FormsySelect>
 
                 <h3>Amount</h3>
-                <FormsyText required={true}  name="paymentAmount" floatingLabelText={'Enter amount'}/>
+                <FormsyText required={true}  
+                  name="paymentAmount" 
+                  onBlur={this.enableAmountValidation}
+                  onFocus={this.disableAmountValidation}
+                  validations={this.state.validateAmount ? {isFloat:true} : {isExisty:true}}
+                  validationError="Please provide a valid number" 
+                  floatingLabelText={'Enter amount'}
+                />
 
                 <h3>Due date </h3>
                 <FormsyDate
                   name="dueDate"
                   required
+                  validations={{
+                    checkDate: function(values,chosenDate){
+                      if (chosenDate != null){
+                        var date = (new Date(chosenDate.toDateString()+" 12:00:00 +0000")).toISOString().substring(0,10);  
+                        var curDate = new Date().toISOString().substring(0,10);
+                        return curDate <= date ? true : 'Invalid date: cannot choose date from past';
+                      }
+                    }
+                  }}
                   floatingLabelText="Due Date"
                 />
 
@@ -178,14 +209,11 @@ export default class PaymentForm extends React.Component {
             <button onClick={this.GetTenants.bind(this)}>Test Getting Apartment Mates</button>
             </div>
         );
-    }
-}
+    },
+});
 
+export default PaymentForm;
 
-/*
-Things to change/check:
-- put restriction of choosing due date after present time
-*/
 
 
 
