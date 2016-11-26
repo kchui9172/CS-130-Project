@@ -35,6 +35,7 @@ export default class Balance extends React.Component {
         var manager = new DBManager();
         var payments = manager.getPaymentIDs();
         console.log(payments);
+
         //var owed = manager.getOwedPayments();
         //var owe = manager.getOwePayments();
         var roommates = manager.getApartment();

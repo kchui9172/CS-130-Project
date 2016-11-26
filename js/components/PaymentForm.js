@@ -41,41 +41,6 @@ const PaymentForm = React.createClass({
             manager.addPayment(payment);
             console.log("added payment");
         //}.bind(this));
-
-       
-        /*var regex  = /^\d+(?:\.\d{0,2})$/;
-        console.log(regex.test(amount));
-        var n = +amount;
-        console.log(isNaN(n));
-        console.log(parseFloat(amount));*/
-
-        /*var today = new Date().toJSON().slice(0,10);
-        console.log(today);
-
-        if (isNaN(amount)){
-            console.log("invalid amount entered");
-        }
-
-        //check that due date is not before today's date 
-        else if (dueDate == "" || today <= dueDate){
-            //add payment
-            var db = new DBManager();
-            var p = new Payment(amount,loaner,loanee,today,null,dueDate,description,category,recurring);
-            console.log("payment added!");
-        //IS DB OR USER IN CHARGE OF KEEPING TRACK OF PAYMENTS?
-        }
-        else{
-            console.log("Can't set due date in past");           
-        }
-        //reset form
-        this._description.value="";
-        this._category.value="";
-        this._loaner.value="";
-        this._loanee.value="";
-        this._amount.value="";
-        this._dueDate.value="";
-        this._recurring.value="";
-        e.preventDefault();*/
     },
 
     getInitialState(){
