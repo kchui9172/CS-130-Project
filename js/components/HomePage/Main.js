@@ -107,7 +107,6 @@ export default class HomePage extends React.Component {
         </SelectableList>
         </NavDrawer>
         <FAB/>
-        <div style={style.editorview}>{this.state.editorView}</div>
         <div style={style.mainview}>{this.state.mainView}</div>
       </div>
     )
