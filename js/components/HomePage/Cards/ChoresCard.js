@@ -10,49 +10,25 @@ const style = {
     textAlign:'justify',
     paddingLeft:'16px',
   },
+
+  card: {
+    width:256,
+    height:256,
+    textAlign:'center',
+    borderRadius: '6px',
+  },
 }
-const styleBig = {
-    width:300,
-    height:160,
-};
 
-const styleSmall = {
-    zDepth:2,
-    padding: '18px',
-    textAlign: 'center',
-    borderRadius: '18px',
-    minWidth:320,
-    filter: 'invert(100%)',
-    maxWidth:320,
-};
-
-const BigView = (
-  <div style={styleBig}>
-  <FloatingCard>
-    <CardTitle title="Chores"/>
-    <CardText style={style.text}>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa.
-    </CardText>
-  </FloatingCard>
-  </div>
-);
-
-const SmallView = (
-    <Card style={styleSmall} zDepth={styleSmall.zDepth}>
-      <CardMedia>
-        <img src='https://upload.wikimedia.org/wikipedia/en/4/4d/SpongeBob_SquarePants_characters_cast.png'/>
-      </CardMedia>
-    </Card>);
-
-export default class SummaryInfo extends React.Component {
-  static propTypes = {
-    colWidth: React.PropTypes.number // How wide is this component in “grid units”?
-  };
+export default class ChoresCard extends React.Component {
 
   render() {
-  //  const view = (this.props.colWidth >= 0 ) ? (<div>{BigView}</div>) : (<div>{SmallView}</div>);
-    return (<div>{BigView}</div>);//(view);
+    return (
+        <FloatingCard style={style.card}>
+          <CardTitle title="Chore"/>
+          <CardText style={style.text}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </CardText>
+        </FloatingCard>
+  );
   }
 };
-
-//observeGrid

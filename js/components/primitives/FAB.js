@@ -13,7 +13,7 @@ import {List, ListItem} from 'material-ui/List';
 
 const style = {
   button: {
-    margin: 20,
+    margin: 40,
     position:'fixed',
     right:0,
     bottom:0,

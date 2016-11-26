@@ -20,10 +20,9 @@ const style = {
     marginBottom:'48px',
     textTransform:'uppercase',
     paddingLeft:'20px',
-    // backgroundColor:'rgba(133, 110, 198, 0.85 )',
   },
   container : {
-    paddingBottom: 96,
+    paddingBottom: 76,
   },
   button: {
     marginTop:-2,
@@ -41,10 +40,8 @@ class NavLinks extends Component {
   render() {
     return (
       <div>
-      <FlatButton {...this.props} label="GitHub" style={style.button}
-      href="https://github.com/kchui9172/CS-130-Project/tree/master"
-      target="_blank" secondary={true} icon={<Code />} />
-      <FlatButton {...this.props} label="API Documentation" />
+      <FlatButton {...this.props} label="GitHub" href="https://github.com/kchui9172/CS-130-Project/tree/master" target="_blank" secondary={true} icon={<Code />} />
+      <FlatButton {...this.props} label="API Documentation"  href="https://github.com/kchui9172/CS-130-Project/tree/master" target="_blank" secondary={true} icon={<Code />} />
       </div>
     );
   }
