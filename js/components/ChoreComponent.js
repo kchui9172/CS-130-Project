@@ -34,13 +34,12 @@ export default class Chores extends React.Component {
     setChoresList() {
         var manager = new DBManager();
         var myChoresList = [];
-        manager.signIn("bob@gmail.com", "password").then(function () {
-            manager.getChoreIDs().then(function (choreIDs) {
-                choreIDs.forEach(function (choreID) {
-                    manager.getChore(choreID).then(function (chore) {
-                        myChoresList.push(chore);
-                        this.setState({choresList: myChoresList});
-                    }.bind(this))
+        manager.getChoreIDs().then(function (choreIDs) {
+            console.log(choreIDs);
+            choreIDs.forEach(function (choreID) {
+                manager.getChore(choreID).then(function (chore) {
+                    myChoresList.push(chore);
+                    this.setState({choresList: myChoresList});
                 }.bind(this))
             }.bind(this))
         }.bind(this));
