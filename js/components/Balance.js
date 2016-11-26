@@ -19,7 +19,7 @@ export default class Balance extends React.Component {
      */
     constructor() {
         super();
-
+        this.state = { balances: [] };
         this.calculateBalance = this.calculateBalance.bind(this);
     };
 
@@ -32,15 +32,14 @@ export default class Balance extends React.Component {
 
     calculateBalance(){
         var manager = new DBManager();
-        /*
         var owed = manager.getOwedPayments();
         var owe = manager.getOwePayments();
         var roommates = manager.getRoommates();
-        create 2 arrays:
-            Array1 = holds total balance of owed/owe between two ppl (position corresponds to roommate)
-            Array2 = holds description of balance owed/owe (description of payment and amount) between two ppl (position corresponds to rommate)
-            render per roommate 
-        */
+        // create 2 arrays:
+        //     Array1 = holds total balance of owed/owe between two ppl (position corresponds to roommate)
+        //     Array2 = holds description of balance owed/owe (description of payment and amount) between two ppl (position corresponds to rommate)
+        //     render per roommate
+        // */
         return (
             <div>
                 <p>Your current balance:</p>
@@ -51,8 +50,9 @@ export default class Balance extends React.Component {
         );
     }
 
-    
-
+    componentDidMount() {
+      this.calculateBalance();
+    }
 
     /**
      * Renders a Balance between two users.
@@ -60,17 +60,8 @@ export default class Balance extends React.Component {
      * @method render
      */
     render() {
-        //var w = this.calculateBalance();
-        //console.log(w);
         return (
-            <div>
-                {this.calculateBalance()}
-            </div>
+            <div> {this.state.balances} </div>
         );
     }
 }
-
-
-
-
-

@@ -22,23 +22,23 @@ ReactDOM.render(
     document.querySelector('#app')
 );
 
-ReactDOM.render(
-  <MuiThemeProvider muiTheme={purple_light} >
-    <MessageComponent />
-  </MuiThemeProvider>,
-  document.querySelector('.messages')
-);
-
-ReactDOM.render(
-  <MuiThemeProvider muiTheme={purple_light} >
-    <ChoreComponent />
-  </MuiThemeProvider>,
-  document.querySelector('.chores')
-);
-
-ReactDOM.render(
-  <MuiThemeProvider muiTheme={purple_light} >
-    <PaymentComponent />
-  </MuiThemeProvider>,
-  document.querySelector('.payments')
-);
+// ReactDOM.render(
+//   <MuiThemeProvider muiTheme={purple_light} >
+//     <MessageComponent />
+//   </MuiThemeProvider>,
+//   document.querySelector('.messages')
+// );
+//
+// ReactDOM.render(
+//   <MuiThemeProvider muiTheme={purple_light} >
+//     <ChoreComponent />
+//   </MuiThemeProvider>,
+//   document.querySelector('.chores')
+// );
+//
+// ReactDOM.render(
+//   <MuiThemeProvider muiTheme={purple_light} >
+//     <PaymentComponent />
+//   </MuiThemeProvider>,
+//   document.querySelector('.payments')
+// );

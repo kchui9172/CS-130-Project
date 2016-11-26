@@ -22,12 +22,20 @@ export default class ChoreTable extends React.Component {
         super(props);
     }
 
+
     /**
      * Renders a Chore Table
      *
      * @method render
      */
     render() {
+
+      function drawChores(chore) {
+          return (<ChoreRow chore={chore} />);
+      }
+      var choreEntries = this.props.choreList;
+      var choreItems = choreEntries.map(drawChores);
+
         return (
             <table className="choreTable">
                 <tr>
@@ -40,11 +48,7 @@ export default class ChoreTable extends React.Component {
                     <th>Creation Date</th>
                     <th>Completion Date</th>
                 </tr>
-                {this.props.choreList.map(
-                    function(chore) {
-                        return (<ChoreRow chore={chore} />);
-                    })
-                }
+                {choreItems}
             </table>
         );
     }

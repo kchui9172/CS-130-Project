@@ -106,22 +106,9 @@ export default class DBManager {
        var signUpPromise = firebase.auth().createUserWithEmailAndPassword(email, password)
                            .then(function(signedUpUser) {
                              console.log('signedUpUser:', signedUpUser.uid);
-                             newUser = new User(email, firstname, lastname, "");
-                             newUser.setUserID(signedUpUser.uid);
-                             return this.addUser(newUser);
+                             return signedUpUser;
                            }).catch(onFailCallback);
     }
-
-
-    /*DBManager.getUser(signedInUser.uid)*/
-    // TODO : should return promise of User object (but it should never be none, or if its, the other side should handle that case)
-    // TODO : Also, don't forget about firebase.auth().onAuthStateChanged(function(user) {
-    //   if (user) {
-    //     // User is signed in.
-    //   } else {
-    //     // No user is signed in.
-    //   }
-    // });
     /**
      * Adds a user to the database.
      *
@@ -130,7 +117,7 @@ export default class DBManager {
      * @return {string} - The User ID of the added user
      */
     addUser(user) {
-        console.log('addUser:', user.uid, user);
+        console.log('addUser:', user.getUserID(), user);
         return firebase.database().ref('users/' + user.getUserID()).set(JSON.stringify(user));
     }
 
@@ -175,6 +162,15 @@ export default class DBManager {
     */
     static isLoggedIn() {
       return (null !== firebase.auth().currentUser) ? firebase.auth().currentUser.uid : null;
+    }
+
+    /**
+    * Checks current auth state
+    * @method isLoggedIn
+    * @return {uid} - current user id
+    */
+    static currentUser() {
+      return firebase.auth().currentUser;
     }
 
     /**

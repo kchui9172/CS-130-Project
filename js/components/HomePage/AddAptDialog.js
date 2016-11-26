@@ -51,39 +51,14 @@ export default class AddAptDialog extends React.Component {
       hasSubmitted: true,
       submitEnabled: false,
     });
-
     console.log('submit_bind:', data);
-    //this.unitTest_bindApartment();
-    //var dbManager = new DBManager();
-    //var result = dbManager.bindApartment(data.invite_code).catch(this.notifyRequestError);
-    // result.then(function(data){
-    //   console.log('onSubmit_bind:', data);
-    // }).catch(function(data){
-    //   console.log('submit_bind_failed:', data);
-    // });
+
+    var bindRequest= new DBManager().bindApartment(data.invite_code)
+                     .then(function(apt){
+                        console.log('onSubmit_bind:', data);
+                        this.setState({modalOpen: false});}.bind(this))
+                     .catch(this.notifyRequestError);
   };
-
-  unitTest_bindApartment(aptID) {
-    console.log('on_UnitTest_bindApartment');
-    // Create a test user & add messages
-    var manager = new DBManager();
-    var uid = "GNfb868cZATuNgsI1kYLA1QxjWi2";
-    var user = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
-    user.setUserID(uid);
-
-    manager.signIn("bob@gmail.com", "password").then(function () {
-    var message = new Message("ABCDEFGHIJK", "1112333", "HELLOW WORLD", "aasdfasdf");
-    var chore = new Chore("random", "23/23/23", "Do this task well");
-    var apartment = new Apartment("Apt. 311 | 715 Gayley | Los Angeles, CA 92203");
-    // apartment.addTenant(uid);
-    manager.addUser(user);
-    manager.addMessage(message);
-    manager.addChore(chore);
-    var id = manager.addApartment(apartment);
-    console.log('apartment ID:', id);
-    manager.bindApartment(id);
-  });
-};
 
   notifyRequestError(error) {
     console.log('onSubmit_error:');
@@ -97,16 +72,31 @@ export default class AddAptDialog extends React.Component {
   };
 
   checkAptBinding() {
-    var db = new DBManager();
-    db.getApartment().then(function(apt) {
-      var aptExists = (apt!=null) && (apt.getAptID()!=null);
-      this.setState({modalOpen: !aptExists});
-      console.log('Apt binding:', aptExists, apt);
+    new DBManager().getApartment()
+    .then(function(apt){console.log('Apt Binding looks OK', apt.getAptID());})
+    .catch(function(err) {
+      console.log('Apt Binding looks corrupt..prompting', err);
+      this.setState({modalOpen: true});
     }.bind(this));
   };
 
+  checkUserBinding() {
+    var user = DBManager.currentUser();
+    var db = new DBManager();
+    var userPromise = db.getUser()
+                      .then(function(_user){console.log('User Binding looks OK', _user.getUserID());})
+                      .catch(function(err){
+                        console.log('User Binding looks corrupt..fixing');
+                        var newUser = new User(user.email, user.displayName, "", "");
+                        newUser.setUserID(user.uid);
+                        db.addUser(newUser).then(function(addedUser){
+                          console.log('addedUser:', addedUser);
+                        });
+                      });
+  };
+
   componentDidMount() {
-    console.log('checking Apt Binding...');
+    this.checkUserBinding();
     this.checkAptBinding();
   };
 
@@ -145,3 +135,26 @@ export default class AddAptDialog extends React.Component {
     );
   };
 }
+
+
+// unitTest_bindApartment(aptID) {
+//   console.log('on_UnitTest_bindApartment');
+//   // Create a test user & add messages
+//   var manager = new DBManager();
+//   var uid = "GNfb868cZATuNgsI1kYLA1QxjWi2";
+//   var user = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
+//   user.setUserID(uid);
+//
+//   manager.signIn("bob@gmail.com", "password").then(function () {
+//   var message = new Message("ABCDEFGHIJK", "1112333", "HELLOW WORLD", "aasdfasdf");
+//   var chore = new Chore("random", "23/23/23", "Do this task well");
+//   var apartment = new Apartment("Apt. 311 | 715 Gayley | Los Angeles, CA 92203");
+//   // apartment.addTenant(uid);
+//   manager.addUser(user);
+//   manager.addMessage(message);
+//   manager.addChore(chore);
+//   var id = manager.addApartment(apartment);
+//   console.log('apartment ID:', id);
+//   manager.bindApartment(id);
+// });
+// };

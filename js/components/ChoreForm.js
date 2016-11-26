@@ -5,6 +5,7 @@ import DBManager from '../dbManager.js';
 
 import User from '../User.js';
 import Chore from '../Chore.js';
+import Apartment from '../Apartment.js';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import {FormsyText, FormsyDate} from 'formsy-material-ui/lib';
@@ -78,15 +79,15 @@ export default class ChoreForm extends React.Component {
         console.log("Due date: ", dueDate);
         console.log("Details: ", details);
         console.log("Assignee: ", assignee);
-        // TODO: replace the userid and aptid appropriately
-        var newChore = new Chore("Zach", "Zach_Apt", choreName, dueDate, details);
-        newChore.setAssignment(assignee);
-        
-        // TODO: actually add the chore to DB
+
         var manager = new DBManager();
-        manager.signIn("bob@gmail.com", "password").then(function () {
-            console.log("signed in");
-            manager.addChore(newChore);
+        var aptID = manager.getApartment().then(function(apt){return apt.getAptID()});
+        var UID = manager.getUser().then(function(user){return user.getUserID()});
+        Promise.all([UID, aptID]).then(values => {
+          var newChore = new Chore(values[0], values[1], choreName, dueDate, details);
+          newChore.setAssignment(assignee);
+          console.log('evaluating chore for:',values[0], values[1]);
+          manager.addChore(newChore);
         });
     }
 
@@ -115,7 +116,7 @@ export default class ChoreForm extends React.Component {
     }
 
     /**
-     * Handles when Chore Form is submitted by pushing the 
+     * Handles when Chore Form is submitted by pushing the
      * desired Chore(s) to the database
      *
      * @method handleSubmit
@@ -149,7 +150,7 @@ export default class ChoreForm extends React.Component {
     render() {
         return (
             <div>
-                <Formsy.Form ref="addChores" 
+                <Formsy.Form ref="addChores"
                     onValid={this.enableSubmit}
                     onInvalid={this.disableSubmit}
                     onValidSubmit={this.handleSubmit}
@@ -184,12 +185,12 @@ export default class ChoreForm extends React.Component {
                     <br />
                     Additional Details: <FormsyText
                         multiline={true}
-                        rows={3} 
-                        cols={50} 
+                        rows={3}
+                        cols={50}
                         name="choreDetails" />
                     <br />
-                    <RaisedButton fullWidth={false} 
-                        type="submit" 
+                    <RaisedButton fullWidth={false}
+                        type="submit"
                         label="Send chores"
                         primary={false}
                         secondary={true} />

@@ -17,14 +17,7 @@ export default class TodoItem extends React.Component {
      */
     constructor(props) {
         super(props);
-
-        //this.removeNode = this.removeNode.bind(this);
     };
-
-    /*removeNode(key){
-        e.preventDefault();
-        this.props.removeNode(key);
-    }*/
 
     /**
      * Renders a To-Do Item

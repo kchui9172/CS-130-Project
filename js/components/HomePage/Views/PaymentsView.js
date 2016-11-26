@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Grid, Row, Column} from 'react-cellblock';
-import MessagesCard from '../Cards/MessagesCard.js';
+
+import PaymentComponent from '../../../components/PaymentComponent.js';
+
 /**
  * Represents the Messages page.
  *
@@ -17,7 +19,7 @@ export default class MessagesView extends React.Component {
   return(
     <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >
           <Row>
-            <Column offset="1/16" width="7/8"><MessagesCard /></Column>
+            <Column offset="1/16" width="7/8"><PaymentComponent /></Column>
           </Row>
         </Grid>
     );

@@ -19,11 +19,8 @@ export default class Chores extends React.Component {
      */
     constructor() {
         super();
-        
         this.state = { choresList: [] };
-
         this.setChoresList = this.setChoresList.bind(this);
-
     };
 
     setChoresList() {
@@ -33,10 +30,15 @@ export default class Chores extends React.Component {
             choreIDs.forEach(function (choreID) {
                 manager.getChore(choreID).then(function (chore) {
                     choresList.push(chore);
+                    console.log('pushing chore :', chore);
                 })
             })
         });
         this.setState({choresList: choresList});
+    }
+
+    componentDidMount() {
+      this.setChoresList();
     }
 
     /**
@@ -45,12 +47,11 @@ export default class Chores extends React.Component {
      * @method render
      */
     render() {
-        //this.setChoresList();
         return (
             <div>
                 <h1>Chores</h1>
                 <ChoreForm />
-                //<ChoreTable choreList={this.state.choresList} />
+                <ChoreTable choreList={this.state.choresList} />
             </div>
         );
     }

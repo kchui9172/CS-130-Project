@@ -67,14 +67,6 @@ const SignUpForm = React.createClass({
     console.log('submitSignUp:', data);
     var dbManager = new DBManager();
     var result = dbManager.signUp(data.email, data.password, data.firstname, data.lastname, this.notifySignupError);
-    result.then(function (results){
-      console.log('resultSignUp:', results);
-      var signInresult = dbManager.signIn(data.email, data.password);
-      result.then(function(data){
-        console.log('resultLogin:', data);
-        console.log('loggedIn:', DBManager.isLoggedIn());
-      });
-    });
   },
 
   notifySignupError(error) {
