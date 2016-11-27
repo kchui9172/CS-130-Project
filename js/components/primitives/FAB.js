@@ -12,7 +12,9 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import {List, ListItem} from 'material-ui/List';
 
-import editMessage from '../HomePage/Cards/MessageEditor.js';
+import PaymentForm from '../../components/PaymentForm.js';
+import MessageForm from '../../components/MessageForm.js';
+import ChoreForm from '../../components/ChoreForm.js';
 
 const style = {
 
@@ -22,18 +24,29 @@ const style = {
     right:0,
     bottom:0,
     zIndex:10,
+    transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
   },
 
   popover: {
     backgroundColor:'rgba(102,67,167,0.45)',
   },
 
-  editorview: {
-    margin: 40,
+  editorVisible: {
+    margin: 100,
     position:'fixed',
     right:0,
     bottom:0,
     zIndex:10,
+    transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
+  },
+
+  editorInvisible: {
+    margin: 100,
+    position:'fixed',
+    right:0,
+    bottom:-512,
+    zIndex:10,
+    transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
   },
 };
 
@@ -49,6 +62,7 @@ const style = {
      this.state = {
        open: false,
        editView: null,
+       editorPosition: style.editorInvisible,
      };
    }
 
@@ -67,13 +81,36 @@ const style = {
      });
    };
 
-
+   messageEditor() {
+     this.setState({
+      editorPosition: style.editorVisible,
+     });
+     console.log('editMessage');
+   };
     render() {
+        var _icon = null;
+        var _color = null;
+        var _view = null;
+        if (this.props.view == 1) {
+          _icon  = <ContentSend />
+          _color = colors.message
+          _view = <MessageForm />
+        }
+        else if (this.props.view == 2) {
+          _icon  = <EventNote />
+          _color = colors.chore
+          _view = <ChoreForm />
+        }
+        else if (this.props.view == 3) {
+          _icon  = <AttachMoney />
+          _color = colors.payment
+          _view  = <PaymentForm />
+        }
         return (
           <div>
-          <div style={style.editorview}>{this.state.editView}</div>
-          <FloatingActionButton secondary={true} style={style.button} {...this.props} onTouchTap={this.handleTouchTap}>
-            <Create />
+
+          <FloatingActionButton backgroundColor={_color} style={style.button} onTouchTap={this.handleTouchTap}>
+            {_icon}
           </FloatingActionButton>
           <Popover
             open={this.state.open}
@@ -81,16 +118,20 @@ const style = {
             anchorOrigin={{horizontal: 'left', vertical: 'top'}}
             targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
             onRequestClose={this.handleRequestClose}
-            className="blurred rounded"
+            className="blurred rounded-more"
             style={style.popover}
           >
-            <Menu>
-              <MenuItem primaryText="New Message" onTouchTap={function(){this.setState({editView: <editMessage />});console.log('editMessage');}.bind(this)} rightIcon={<ContentSend color={colors.message}/>}/>
-              <MenuItem primaryText="New Payment" onTouchTap={function(){this.setState({editView: <editPayment />});console.log('editPayment');}.bind(this)} rightIcon={<AttachMoney color={colors.payment}/>}/>
-              <MenuItem primaryText="Add Chore"   onTouchTap={function(){this.setState({editView: <editChore   />});console.log('editChore');  }.bind(this)} rightIcon={<EventNote   color={colors.chore}  />}/>
-            </Menu>
+          {_view}
           </Popover>
           </div>
         );
     }
 }
+// // <Create />
+// <Menu>
+// <MessageEditor />
+// </Menu>
+//<MessageEditor style={this.state.editorPosition} />
+// <MenuItem primaryText="New Message" onTouchTap={function(){this.messageEditor()}.bind(this)} rightIcon={<ContentSend color={colors.message}/>}/>
+// <MenuItem primaryText="New Payment" onTouchTap={function(){this.setState({editView: <editPayment />});console.log('editPayment');}.bind(this)} rightIcon={<AttachMoney color={colors.payment}/>}/>
+// <MenuItem primaryText="Add Chore"   onTouchTap={function(){this.setState({editView: <editChore   />});console.log('editChore');  }.bind(this)} rightIcon={<EventNote   color={colors.chore}  />}/>

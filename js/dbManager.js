@@ -105,9 +105,13 @@ export default class DBManager {
 
        var signUpPromise = firebase.auth().createUserWithEmailAndPassword(email, password)
                            .then(function(signedUpUser) {
-                             console.log('signedUpUser:', signedUpUser.uid);
-                             return signedUpUser;
-                           }).catch(onFailCallback);
+                             var new_user = new User(email, firstname, lastname, "");
+                             new_user.setUserID(signedUpUser.uid);
+                             console.log('signedUpUser:', new_user);
+                             this.addUser(new_user).then(function(addedUser) {
+                               return signedUpUser;
+                             }.bind(this));
+                           }.bind(this)).catch(onFailCallback);
     }
     /**
      * Adds a user to the database.
@@ -310,10 +314,13 @@ export default class DBManager {
         var newMessageRef = messagesRef.push();
         message.setMessageID(newMessageRef.getKey());
         newMessageRef.set(JSON.stringify(message));
-        this.getApartment().then(function (apt) {
+        return this.getApartment().then(function (apt) {
             apt.addMessage(newMessageRef.getKey());
             this.updateApartment(apt);
-        }.bind(this));
+            return true;
+        }.bind(this),function (err) {
+          return false;
+        });
     }
 
     /**

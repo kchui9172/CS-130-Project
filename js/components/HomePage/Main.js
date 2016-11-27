@@ -81,6 +81,7 @@ export default class HomePage extends React.Component {
       menuFAB:  false,
       mainView: null,
       editorView: null,
+      viewIndex:0,
     };
   };
 
@@ -96,26 +97,37 @@ export default class HomePage extends React.Component {
   };
 
   render() {
+    var currentView = null;
+    if (this.state.viewIndex == 1)
+      currentView = <MessagesView />;
+    else if (this.state.viewIndex == 2)
+      currentView = <ChoresView />;
+    else if (this.state.viewIndex == 3)
+      currentView = <PaymentsView />;
+    else if (this.state.viewIndex == 4)
+      currentView = <SettingsView />;
+
     return ((this.state.loading) ? <Loading style={style.loading}/> :
     (
       <div>
         <AddAptDialog/>
         <NavDrawer>
         <SelectableList ref="navigation" defaultValue={0} >
-          <ListItem onTouchTap={function(){this.setState({mainView: <MessagesView />})}.bind(this)} value={1} primaryText="Messages" leftIcon={<Email     color={colors.message} />} style={style.firstItem} />
-          <ListItem onTouchTap={function(){this.setState({mainView: <ChoresView   />})}.bind(this)} value={2} primaryText="Chores"   leftIcon={<EventNote color={colors.chore}   />}  />
-          <ListItem onTouchTap={function(){this.setState({mainView: <PaymentsView />})}.bind(this)} value={3} primaryText="Payments" leftIcon={<Payment   color={colors.payment} />}  />
+          <ListItem onTouchTap={function(){this.setState({viewIndex: 1})}.bind(this)} value={1} primaryText="Messages" leftIcon={<Email     color={colors.message} />} style={style.firstItem} />
+          <ListItem onTouchTap={function(){this.setState({viewIndex: 2})}.bind(this)} value={2} primaryText="Chores"   leftIcon={<EventNote color={colors.chore}   />}  />
+          <ListItem onTouchTap={function(){this.setState({viewIndex: 3})}.bind(this)} value={3} primaryText="Payments" leftIcon={<Payment   color={colors.payment} />}  />
         <Divider />
-          <ListItem onTouchTap={function(){this.setState({mainView: <SettingsView />})}.bind(this)} value={4} primaryText="Settings" leftIcon={<Settings  color={colors.primary}     />} />
+          <ListItem onTouchTap={function(){this.setState({viewIndex: 4})}.bind(this)} value={4} primaryText="Settings" leftIcon={<Settings  color={colors.primary}     />} />
           <ListItem onTouchTap={function(){DBManager.LogOut()}}                                     value={5} primaryText="Logout"   leftIcon={<Exit      color={colors.red}         />} />
         </SelectableList>
         </NavDrawer>
-        <FAB/>
-        <div style={style.mainview}>{this.state.mainView}</div>
+        <FAB view={this.state.viewIndex}/>
+        <div style={style.mainview}>{currentView}</div>
+        <div ref="snacker"></div>
       </div>
     )
     );
   }
 }
 
-//
+//this.setState({mainView: <MessagesView />})
