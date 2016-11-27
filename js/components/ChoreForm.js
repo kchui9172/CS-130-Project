@@ -8,7 +8,8 @@ import Chore from '../Chore.js';
 import Apartment from '../Apartment.js';
 
 import RaisedButton from 'material-ui/RaisedButton';
-import {FormsyText, FormsyDate} from 'formsy-material-ui/lib';
+import MenuItem from 'material-ui/MenuItem';
+import {FormsyText, FormsyDate, FormsySelect} from 'formsy-material-ui/lib';
 import Formsy from 'formsy-react';
 
 /**
@@ -33,6 +34,11 @@ export default class ChoreForm extends React.Component {
             numericError: "Please provide a number"
         };
 
+        this.state = {
+            tenants: []  
+        };
+
+        this.setTenantsList = this.setTenantsList.bind(this);
         this.enableSubmit = this.enableSubmit.bind(this);
         this.disableSubmit = this.disableSubmit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,6 +49,33 @@ export default class ChoreForm extends React.Component {
         this.choreIterator = 0;
     }
 
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
+    componentDidMount() {
+        this.setTenantsList();
+    }
+
+    /**
+     * Sets the tenants list in state.
+     *
+     * @method setTenantsList
+     */
+    setTenantsList() {
+        var manager = new DBManager();
+        var tenants = [];
+        manager.getApartment().then(function(apartment) {
+            var tenantIDs = apartment.getTenantIDs();
+            tenantIDs.forEach(function(tenantID) {
+                manager.getUser(tenantID).then(function(user) {
+                    tenants.push(user);
+                    this.setState({tenants: tenants});
+                }.bind(this));
+            }.bind(this));
+        }.bind(this));
+    }
 
     /**
      * Enables form submission.
@@ -155,9 +188,12 @@ export default class ChoreForm extends React.Component {
                 var newChores = [];
                 do {
                     var assignedDueDate = new Date();
+                    assignedDueDate.setFullYear(firstDueDate.getFullYear());
+                    assignedDueDate.setMonth(firstDueDate.getMonth());
                     assignedDueDate.setDate(firstDueDate.getDate() + (newChores.length * repeatFrequency));
-                    newChores.push(new Chore(values[0], values[1], name, assignedDueDate, details, assignee));
-                    console.log('evaluating chore for:',values[0], values[1]);
+                    var newChore = new Chore(values[0], values[1], name, assignedDueDate, details, assignee);
+                    newChores.push(newChore);
+                    console.log(newChore);
                 } while (newChores.length < numberOccurrences);
                 this.loopAddChores(newChores);
             });
@@ -187,39 +223,62 @@ export default class ChoreForm extends React.Component {
                     onInvalid={this.disableSubmit}
                     onValidSubmit={this.handleSubmit}
                     onInvalidSubmit={this.handleInvalidSubmit} >
-                    Chore Name: <FormsyText
+                    <FormsyText
                         name="choreName"
                         validations="isWords"
                         validationError={this.errorMessages.wordsError}
-                        required={true} />
+                        required={true} 
+                        floatingLabelText="Enter the chore's name"
+                    />
                     <br />
-                    Assignee: <FormsyText
+                    <FormsySelect
                         name="choreAssignee"
-                        validations="isWords"
-                        validationError={this.errorMessages.wordsError}
-                        required={true} />
+                        required={true}
+                        floatingLabelText="Choose the chore's assignee"
+                    >
+                        {
+                            this.state.tenants.map(function(tenant) {
+                                return (
+                                    <MenuItem
+                                        value={tenant.getUserID()}
+                                        primaryText={tenant.getName()}
+                                    />
+                                );
+                            })
+                        }
+                    </FormsySelect>
                     <br />
-                    First Due Date: <FormsyDate
+                    <FormsyDate
                         name="choreFirstDueDate"
-                        required={true} />
+                        required={true} 
+                        floatingLabelText="Choose the chore's first due date"
+                    />
                     <br />
-                    Number of Occurrences: <FormsyText
+                    <FormsyText
                         name="choreNumberOccurrences"
                         validations="isNumeric"
                         validationError={this.errorMessages.numericError}
-                        required={true} />
+                        required={true} 
+                        floatingLabelText="Enter the total number of chore occurrences"
+                    />
                     <br />
-                    Repeat Frequency (in Days): <FormsyText
+                    <br />
+                    <FormsyText
                         name="choreRepeatFrequency"
                         validations="isNumeric"
                         validationError={this.errorMessages.numericError}
-                        required={true} />
+                        required={true} 
+                        floatingLabelText="Enter how often the chore should repeat (in Days)"
+                    />
                     <br />
-                    Additional Details: <FormsyText
+                    <br />
+                    <FormsyText
                         multiline={true}
                         rows={3}
                         cols={50}
-                        name="choreDetails" />
+                        name="choreDetails" 
+                        floatingLabelText="Optional: Enter additional details"
+                    />
                     <br />
                     <RaisedButton fullWidth={false}
                         type="submit"

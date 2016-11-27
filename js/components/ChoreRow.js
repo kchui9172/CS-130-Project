@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import Formsy from 'formsy-react';
 import { FormsyToggle } from 'formsy-material-ui/lib';
 
-import ToggleButton from './ToggleButton.js'
+import DBManager from '../dbManager.js';
+import ToggleButton from './ToggleButton.js';
 
 /**
  * Represents a Chore Row.
@@ -22,7 +23,29 @@ export default class ChoreRow extends React.Component {
      */
     constructor(props) {
         super(props);
-    };
+
+        this.state = {
+            assigneeName: ""   
+        };
+
+        this.setAssigneeName = this.setAssigneeName.bind(this);
+    }
+
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
+    componentDidMount() {
+        this.setAssigneeName();
+    }
+
+    setAssigneeName() {
+        var manager = new DBManager();
+        manager.getUser(this.props.chore.getAssignment()).then(function(user) {
+            this.setState({assigneeName: user.getName()});
+        }.bind(this));
+    }
 
     /**
      * Renders a Chore Row.

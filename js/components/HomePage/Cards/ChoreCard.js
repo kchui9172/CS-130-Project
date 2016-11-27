@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 import FloatingCard from '../../primitives/FloatingCard.js';
-
+import DBManager from '../../../dbManager.js';
 import Chore from '../../../Chore.js';
 import ToggleButton from '../../ToggleButton.js';
 
@@ -38,6 +38,33 @@ export default class ChoreCard extends React.Component {
      */
     constructor(props) {
         super(props);
+
+        this.state = {
+            assigneeName: ""
+        };
+
+        this.setAssigneeName = this.setAssigneeName.bind(this);
+    }
+
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
+    componentDidMount() {
+        this.setAssigneeName();
+    }
+
+    /**
+     * Sets assigneeName in state.
+     *
+     * @method setAssigneeName
+     */
+    setAssigneeName() {
+        var manager = new DBManager();
+        manager.getUser(this.props.chore.getAssignment()).then(function(user) {
+            this.setState({assigneeName: user.getName()});
+        }.bind(this));
     }
 
     /**
@@ -60,7 +87,7 @@ export default class ChoreCard extends React.Component {
                             toggledObject={chore}
                             label="Completed? "
                         />
-                        <p>Assignment: {chore.getAssignment()}</p>
+                        <p>Assignment: {this.state.assigneeName}</p>
                         <p>Deadline: {chore.getDeadline()}</p>
                         <p>Category: {chore.getCategory()}</p>
                         <p>Details: {chore.getCategory()}</p>
