@@ -29,17 +29,11 @@ export default class ChoreTable extends React.Component {
      * @method render
      */
     render() {
-
-      function drawChores(chore) {
-          return (<ChoreRow chore={chore} />);
-      }
-      var choreEntries = this.props.choreList;
-      var choreItems = choreEntries.map(drawChores);
-
         return (
             <table className="choreTable">
                 <thead>
                     <tr>
+                        <th>Mark Completed?</th>
                         <th>Chore ID</th>
                         <th>Category</th>
                         <th>Creator</th>
@@ -53,8 +47,21 @@ export default class ChoreTable extends React.Component {
                 <tbody>
                     {this.props.choreList.map(
                         function(chore) {
+                            var onCompletion = function() {
+                                chore.complete();
+                                var manager = new DBManager();
+                                manager.updateChore(chore);
+                            }
+                            var onUncompletion = function() {
+                                chore.uncomplete();
+                                var manager = new DBManager();
+                                manager.updateChore(chore);
+                            }
                             return (<ChoreRow chore={chore} 
-                                        key={chore.getChoreID()} />);
+                                        key={chore.getChoreID()} 
+                                        onCompletion={onCompletion} 
+                                        onUncompletion={onUncompletion}
+                                    />);
                         })
                     }
                 </tbody>
