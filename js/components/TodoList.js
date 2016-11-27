@@ -27,6 +27,11 @@ export default class TodoList extends Component {
 
     };
 
+    /**
+     * Tests messages
+     *
+     * @method TestMessages
+     */
     TestMessages() {
       // Create a test user & add messages
       /*var manager = new DBManager();
@@ -70,6 +75,13 @@ export default class TodoList extends Component {
     });
     }
 
+    /**
+     * Pulls a message from the database.
+     *
+     * @method pullMessage
+     * @param {string} id - The id of the message to be pulled
+     * @return {Object} - The message data
+     */
     pullMessage(id) {
       var manager = new DBManager();
       var message = manager.getMessage(id);
@@ -82,6 +94,12 @@ export default class TodoList extends Component {
     }
 
 // Extracts information to make message
+    /**
+     * Pulls messages from the database
+     *
+     * @method pullMessages
+     * @param {array{string}} ids - The ids of the messages to be pulled
+     */
     pullMessages(ids) {
         console.log('start createMessages (ids)', ids.length, ids);
         var itemArray = [];
@@ -96,6 +114,11 @@ export default class TodoList extends Component {
         }
     }
 
+    /**
+     * Shows the Messages.
+     *
+     * @method showMessages
+     */
     showMessages(){
       // var manager = new DBManager();
       // manager.signIn("bob@gmail.com","password").then(function(){
@@ -109,6 +132,11 @@ export default class TodoList extends Component {
       //return this.createMessages(ids);
 
 //this.messageListener =
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
      componentDidMount() {
       this.showMessages();
         //this.showMessages().bind(this);

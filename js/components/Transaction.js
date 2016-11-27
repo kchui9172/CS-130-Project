@@ -9,18 +9,18 @@ import ReactDOM from 'react-dom';
  */
 export default class Transaction extends React.Component {
     /**
-     * Constructs a Transaction Item
+     * Constructs a Transaction Item.
      *
      * @method constructor
      * @constructor
-     * @params {Object} props - Properties passed by parent
+     * @param {Object} props - Properties passed by parent
      */
     constructor(props) {
         super(props);
     };
 
     /**
-     * Renders a Transaction Item
+     * Renders a Transaction Item.
      *
      * @method render
      */

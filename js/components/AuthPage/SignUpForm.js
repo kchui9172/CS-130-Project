@@ -40,20 +40,41 @@ const validationChecks = {
   },
 }
 
+/**
+ * Represents a Sign-Up Form
+ *
+ * @class React.Component.SignUpForm
+ * @extends React.Component
+ */
 const SignUpForm = React.createClass({
-
+  /**
+   * Enables the sign-up button.
+   *
+   * @method enableButton
+   */
   enableButton() {
     this.setState({
       canSubmit: true,
     });
   },
 
+  /**
+   * Disables the sign-up button.
+   *
+   * @method disableButton
+   */
   disableButton() {
     this.setState({
       canSubmit: false,
     });
   },
 
+  /**
+   * Submits the Sign-Up Form to the database.
+   *
+   * @method submitForm
+   * @param {Object} data - The data in the Sign-Up Form
+   */
   submitForm(data) {
     if(data.firstname=="" || data.email=="" || data.password=="" || data.repassword=="") {
         return this.notifyFormError(data);
@@ -69,6 +90,12 @@ const SignUpForm = React.createClass({
     var result = dbManager.signUp(data.email, data.password, data.firstname, data.lastname, this.notifySignupError);
   },
 
+  /**
+   * Notifies that a sign-up error has occurred.
+   *
+   * @method notifySignUpError
+   * @param {Error} error - The error
+   */
   notifySignupError(error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -80,6 +107,12 @@ const SignUpForm = React.createClass({
     return null;
   },
 
+  /**
+   * Notifies that there is an error in the Sign-Up Form.
+   *
+   * @method notifyFormError
+   * @param {Object} data - The data in the Sign-Up Form
+   */
   notifyFormError(data) {
     console.error('Form error:', data);
     this.setState({
@@ -90,11 +123,21 @@ const SignUpForm = React.createClass({
     });
   },
 
+  /**
+   * Resets the Sign-Up Form.
+   *
+   * @method resetSignupForm
+   */
   resetSignupForm() {
     this.setState(this.getInitialState());
     this.refs.signup.reset();
   },
 
+  /**
+   * Gets the initial state of the Sign-Up Form.
+   *
+   * @method getInitialState
+   */
   getInitialState() {
     return {
       validateFirstName: true,
@@ -120,6 +163,11 @@ const SignUpForm = React.createClass({
     };
   },
 
+  /**
+   * Enables first name validation.
+   *
+   * @method enableFirstNameValidation
+   */
   enableFirstNameValidation() {
     this.setState({
       validateFirstName: true,
@@ -127,6 +175,11 @@ const SignUpForm = React.createClass({
     console.log('validateFirstName:', 'true');
   },
 
+  /**
+   * Disables first name validation.
+   *
+   * @method disableFirstNameValidation
+   */
   disableFirstNameValidation() {
     this.setState({
       validateFirstName: false,
@@ -135,6 +188,11 @@ const SignUpForm = React.createClass({
     console.log('validateFirstName:', 'false');
   },
 
+  /**
+   * Enables last name validation.
+   *
+   * @method enableLastNameValidation
+   */
   enableLastNameValidation() {
     this.setState({
       validateLastName: true,
@@ -142,6 +200,11 @@ const SignUpForm = React.createClass({
     console.log('validateLastName:', 'true');
   },
 
+  /**
+   * Disables last name validation
+   *
+   * @method disableLastNameValidation
+   */
   disableLastNameValidation() {
     this.setState({
       validateLastName: false,
@@ -150,6 +213,11 @@ const SignUpForm = React.createClass({
     console.log('validateLastName:', 'false');
   },
 
+  /**
+   * Enables password validation.
+   *
+   * @method enablePasswordValidation
+   */
   enablePasswordValidation() {
     this.setState({
       validatePassword: true,
@@ -157,6 +225,11 @@ const SignUpForm = React.createClass({
     console.log('validatePassword:', 'true');
   },
 
+  /**
+   * Disables password validation.
+   *
+   * @method disablePasswordValidation
+   */
   disablePasswordValidation() {
     this.setState({
       validatePassword: false,
@@ -165,6 +238,11 @@ const SignUpForm = React.createClass({
     console.log('validatePassword:', 'false');
   },
 
+  /**
+   * Enables re-entered password validation.
+   * 
+   * @method enablePassword2Validation
+   */
   enablePassword2Validation() {
     this.setState({
       validatePassword2: true,
@@ -172,6 +250,11 @@ const SignUpForm = React.createClass({
     console.log('validatePassword2:', 'true');
   },
 
+  /**
+   * Disables re-entered password validation.
+   *
+   * @method disablePassword2Validation
+   */
   disablePassword2Validation() {
     this.setState({
       validatePassword2: false,
@@ -179,7 +262,12 @@ const SignUpForm = React.createClass({
     });
     console.log('validatePassword2:', 'false');
   },
-
+  
+  /**
+   * Enables email validation.
+   *
+   * @method enableEmailValidation
+   */
   enableEmailValidation() {
     this.setState({
       validateEmail: true,
@@ -187,6 +275,11 @@ const SignUpForm = React.createClass({
     console.log('validateEmail:', 'true');
   },
 
+  /**
+   * Disables email validation.
+   *
+   * @method disableEmailValidation
+   */
   disableEmailValidation() {
     this.setState({
       validateEmail: false,
@@ -195,6 +288,11 @@ const SignUpForm = React.createClass({
     console.log('validateEmail:', 'false');
   },
 
+  /**
+   * Renders a Sign-Up Form.
+   *
+   * @method render
+   */
   render() {
     return (
       <div>

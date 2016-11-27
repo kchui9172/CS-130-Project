@@ -16,7 +16,7 @@ export default class Chores extends React.Component {
      *
      * @method constructor
      * @constructor
-     * @param {Object} props - Properties passed by parent
+     * @param {Object} props - Properties passed by parent. See propTypes
      */
     constructor(props) {
         super(props);

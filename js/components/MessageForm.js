@@ -28,7 +28,6 @@ const style = {
   },
 };
 
-
 export default class MessageForm extends React.Component {
     /**
      * Constructs a Message Form.
@@ -50,9 +49,12 @@ export default class MessageForm extends React.Component {
         //this.handleSubmit = this.handleSubmit.bind(this);
     };
 
-    isEmptyString() {
-        return String(this).replace(/^\s+|\s+$/g, '');
-    }
+    /**
+     * Adds a Message to the database
+     *
+     * @method addItem
+     * @param {Object} e - The submitted object with the message text
+     */
     addItem(e) {
 
         if(e.messageText.trim() === '')
@@ -72,17 +74,17 @@ export default class MessageForm extends React.Component {
             this.setState({sending:false, sent:false});
           }.bind(this));
         });
-        //         console.log("meow");
-        //         console.log(e.messageText);
-        //         var message = new Message(user.getUserID(),user.getAptID(), new Date(), e.messageText);
-        //         manager.addMessage(message);
-        //     });
-        // }.bind(this));
       //  snack('adding message', 1000)
         this.state.value="";
         //e.preventDefault();
         }
 
+  /**
+   * Handles change in the message text box.
+   *
+   * @method handleChange
+   * @param {Event} event - The event triggered on change
+   */
   handleChange(event) {
     this.setState({value: event.target.value});
   }
@@ -112,25 +114,3 @@ export default class MessageForm extends React.Component {
     );
   }
 }
-/*if (this._inputElement.value != ""){ //if empty, don't create note
-    var context = this;
-    console.log("about to add a message");
-    var manager = new DBManager();
-    //console.log(this._inputElement.value);;
-    manager.signIn("bob@gmail.com", "password").then(function () {
-        manager.getUser().then(function(user) {
-            console.log(context._inputElement.value);
-            var message = new Message(user.getUserID(),user.getAptID(), new Date(), context._inputElement.value);
-            manager.addMessage(message);
-        });
-    });
-
-    console.log("added message");
-    //return message has been sucessfully added or if empty do nothing
-    this._inputElement.value="";
-    e.preventDefault();
-}else{
-    e.preventDefault();
-    return;
-}*/
-//}

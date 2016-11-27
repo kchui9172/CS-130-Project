@@ -13,6 +13,7 @@ let dbm_instance = null;
 
 /**
  * Represents a Database Manager.
+ * Uses the Singleton design pattern.
  *
  * @class DBManager
  */
@@ -155,18 +156,22 @@ export default class DBManager {
     }
 
     /**
-    * Checks current auth state
+    * Checks current authentication state.
+    *
+    * @static
     * @method isLoggedIn
-    * @return {uid} - current user id
+    * @return {uid} - The current user id
     */
     static isLoggedIn() {
       return (null !== firebase.auth().currentUser) ? firebase.auth().currentUser.uid : null;
     }
 
     /**
-    * Checks current auth state
-    * @method isLoggedIn
-    * @return {uid} - current user id
+    * Gets the current user.
+    *
+    * @static
+    * @method currentUser
+    * @return {string} - The current user id
     */
     static currentUser() {
       return firebase.auth().currentUser;
@@ -174,6 +179,8 @@ export default class DBManager {
 
     /**
     * Logs the current user out, if logged in
+    *
+    * @static
     * @method LogOut
     * @return {Promise} - LogOut promise
     */
@@ -280,7 +287,7 @@ export default class DBManager {
      * Gets all chore ids.
      *
      * @method getChoreIDs
-     * @returns {Array{ChoreIDs}}
+     * @return {Array{string}} - An array containing the chore ids
      */
     getChoreIDs() {
         return this.getApartment().then(function (apt) {
@@ -292,8 +299,8 @@ export default class DBManager {
      * Gets a chore.
      *
      * @method getChore
-     * @param {string} choreID - The id of the chore to get.
-     * @returns {Chore}
+     * @param {string} choreID - The id of the chore to get
+     * @return {Chore} - The chore
      */
     getChore(choreID) {
         return firebase.database().ref('/chores/' + choreID).once('value').then(function(snapshot) {
@@ -305,7 +312,7 @@ export default class DBManager {
      * Adds a message.
      *
      * @method addMessage
-     * @param {Message} message - The message to be added.
+     * @param {Message} message - The message to be added
      * @throws {Exception} - Possible failure to add Message
      */
     addMessage(message) {
@@ -327,7 +334,7 @@ export default class DBManager {
      * Gets all message ids.
      *
      * @method getMessageIDs
-     * @returns {Array{MessageIDs}}
+     * @return {Array{string}} - An array containing the message ids
      */
     getMessageIDs() {
         return this.getApartment().then(function (apt) {
@@ -339,8 +346,8 @@ export default class DBManager {
      * Gets a message by its id.
      *
      * @method getMessage
-     * @param {string} messageID - The id of the message to get.
-     * @returns {Message}
+     * @param {string} messageID - The id of the message to get
+     * @return {Message} - The message
      */
     getMessage(messageID) {
         return firebase.database().ref('/messages/' + messageID).once('value').then(function(snapshot) {
@@ -393,7 +400,7 @@ export default class DBManager {
      * Gets all the payment IDs
      *
      * @method getPaymentIDs
-     * @returns {array{PaymentIDs}}
+     * @return {array{PaymentIDs}} - An array containing the payment IDs
      */
     getPaymentIDs() {
         return this.getUser().then(function (user) {
@@ -415,9 +422,10 @@ export default class DBManager {
      }
 
     /**
+     * Binds an Apartment and a User.
      *
-     * Bind Apartment and User
-     * @param {string} aptID - The apartment to bind
+     * @method bindApartment
+     * @param {string} aptID - The id of the Apartment to bind
      * @throws {Exception} - Possible failure to bind Apartment
      */
      bindApartment(aptID) {
@@ -434,6 +442,12 @@ export default class DBManager {
          }.bind(this));
      }
 
+    /**
+     * Listens for changes in Messages.
+     *
+     * @method listenForMessages
+     * @param {function} onChangeCallBack - The callback when change occurs
+     */
     listenForMessages(onChangeCallBack){
         var aptIDPromise = this.getApartment().then(function(apt) {return apt.getAptID()});
         aptIDPromise.then(function(aptID) {

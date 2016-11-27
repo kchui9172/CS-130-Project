@@ -35,8 +35,19 @@ const style = {
   }
 };
 
+/**
+ * Represents Navigation Links
+ *
+ * @class React.Component.NavLinks
+ * @extends React.Component
+ */
 class NavLinks extends Component {
   static muiName = 'FlatButton';
+  /**
+   * Renders Navigation Links
+   *
+   * @method render
+   */
   render() {
     return (
       <div>
@@ -47,13 +58,24 @@ class NavLinks extends Component {
   }
 }
 
-/**
+/*
  * This example is taking advantage of the composability of the `AppBar`
  * to render different components depending on the application state.
  */
 //export default class NavBar extends Component {
+/**
+ * Represents a Navigation Bar.
+ *
+ * @class React.Component.NavBar
+ * @extends React.Component
+ */
 const NavBar = React.createClass({
 
+  /**
+   * Gets the initial state.
+   *
+   * @method getInitialState
+   */
   getInitialState() {
     return {
       contextVars: {
@@ -61,7 +83,12 @@ const NavBar = React.createClass({
       },
     };
   },
-
+  
+  /** 
+   * Renders the Navigation Bar.
+   *
+   * @method render
+   */
   render() {
     return (
       <div>

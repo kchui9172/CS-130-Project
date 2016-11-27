@@ -56,12 +56,23 @@ function requireNoAuth(nextState, replace) {
   console.log('requireAuth: loggedIn? =>', loggedIn);
 }
 
+/**
+ * Represents the Main App.
+ *
+ * @class React.Component.App.Main
+ * @extends React.Component
+ */
 export default class App extends Component {
   state = {
     authed: false,
     loading: true,
   }
 
+  /**
+   * Function called when the component mounts.
+   *
+   * @method componentDidMount
+   */
   componentDidMount () {
     this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
       if (user) {
@@ -78,10 +89,21 @@ export default class App extends Component {
       }
     })
   }
+
+  /**
+   * Function called when the component unmounts.
+   *
+   * @method componentWillUnmount
+   */
   componentWillUnmount () {
     this.removeListener()
   }
 
+  /**
+   * Renders the Main App.
+   *
+   * @method render
+   */
   render() {
     return (this.state.loading === true ? <CircularProgress size={80} thickness={7} /> : (
       <div>

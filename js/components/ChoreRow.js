@@ -7,14 +7,14 @@ import { FormsyToggle } from 'formsy-material-ui/lib';
 import ToggleButton from './ToggleButton.js'
 
 /**
- * Represents a Chore Row
+ * Represents a Chore Row.
  *
  * @class React.Component.ChoreRow
  * @extends React.Component
  */
 export default class ChoreRow extends React.Component {
     /**
-     * Constructs a Chore Row
+     * Constructs a Chore Row.
      *
      * @method constructor
      * @constructor
@@ -25,7 +25,7 @@ export default class ChoreRow extends React.Component {
     };
 
     /**
-     * Renders a Chore Row
+     * Renders a Chore Row.
      *
      * @method render
      */

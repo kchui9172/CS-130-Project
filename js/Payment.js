@@ -130,30 +130,27 @@ export default class Payment {
      * Sets the date the payment was repaid.
      *
      * @method setDatePaid
-     * @param {Date} date
-     * @return {void}
+     * @param {Date} date - The date payment was paid
      */
     setDatePaid(date){
         this._datePaid = date;
     }
 
     /**
-     * Sets the Loaner ID
+     * Sets the Loaner ID.
      *
      * @method setLoanerID
-     * @param {string} loanerID
-     * @return {void}
+     * @param {string} loanerID - The ID of the loaner
      */
     setLoanerID(loanerID){
         this._loaner = loanerID;
     }
 
     /**
-     * Sets the Loanee ID
+     * Sets the Loanee ID.
      *
      * @method setLoaneeID
-     * @param {string} loaneeID
-     * @return {void}
+     * @param {string} loaneeID - The ID of the loanee
      */
     setLoaneeID(loaneeID){
         this._loanee = loaneeID;

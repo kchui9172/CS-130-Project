@@ -28,9 +28,8 @@ export default class Balance extends React.Component {
     /**
     * Sorts Payments related to User
     *
-    *@method sortPayments
-    *@param {Payment} - array of payments related to user
-    *@return {void}
+    * @method sortPayments
+    * @param {Array[Payment]} - array of payments related to user
     */
     sortPayments(payments){
         console.log("sorting payments");
@@ -52,10 +51,10 @@ export default class Balance extends React.Component {
     }
 
     /**
-     *Calculate balances that user owes or is owed here!
+     * Calculate balances that user owes or is owed here!
      *
-     *@method calculateBalance
-     *@return balance
+     * @method calculateBalance
+     * @return {decimal} - The balance
     */
 
     calculateBalance(){

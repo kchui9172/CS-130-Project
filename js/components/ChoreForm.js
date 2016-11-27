@@ -23,7 +23,7 @@ export default class ChoreForm extends React.Component {
      *
      * @method constructor
      * @constructor
-     * @param {Object} props - Properties passed by parent
+     * @param {Object} props - Properties passed by parent. See propTypes
      */
     constructor(props) {
         super(props);
@@ -45,7 +45,7 @@ export default class ChoreForm extends React.Component {
 
 
     /**
-     * Enables form submission
+     * Enables form submission.
      *
      * @method enableSubmit
      */
@@ -56,7 +56,7 @@ export default class ChoreForm extends React.Component {
     }
 
     /**
-     * Disables form submission
+     * Disables form submission.
      *
      * @method disableSubmit
      */
@@ -67,10 +67,11 @@ export default class ChoreForm extends React.Component {
     }
 
     /**
-     * Validates data submitted through the form
+     * Validates data submitted through the form.
      *
      * @method validateData
      * @param {Obj} data - The form data
+     * @return {boolean} - Whether form is valid or not
      */
     validateData(data) {
         var yesterday = new Date();
@@ -93,8 +94,8 @@ export default class ChoreForm extends React.Component {
     }
 
     /**
-     * Loops through chores and adds them to database
-     * Uses callbacks to avoid using stale caches
+     * Loops through chores and adds them to database.
+     * Uses callbacks to avoid using stale caches.
      *
      * @method loopAddChores
      * @param {Array[Chore]} chores - Chores to be added
@@ -111,7 +112,7 @@ export default class ChoreForm extends React.Component {
 
     /**
      * Adds a chore to the database and calls the callback
-     * function after successfully adding it
+     * function after successfully adding it.
      *
      * @method addChore
      * @param {Chore} newChore - The chore to be added
@@ -124,7 +125,7 @@ export default class ChoreForm extends React.Component {
 
     /**
      * Handles when Chore Form is submitted by pushing the
-     * desired Chore(s) to the database
+     * desired Chore(s) to the database.
      *
      * @method handleSubmit
      * @param {Object} data - Chore data to be added to database
@@ -164,7 +165,7 @@ export default class ChoreForm extends React.Component {
     }
 
     /**
-     * Handles invalid form submission
+     * Handles invalid form submission.
      *
      * @method handleInvalidSubmit
      * @param {Object} data - The invalid data submitted

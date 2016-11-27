@@ -42,9 +42,45 @@
                                 <li><a href="../classes/Chore.html">Chore</a></li>
                                 <li><a href="../classes/DBManager.html">DBManager</a></li>
                                 <li><a href="../classes/Message.html">Message</a></li>
+                                <li><a href="../classes/Payment.html">Payment</a></li>
+                                <li><a href="../classes/React.Component.AddAptDialog.html">React.Component.AddAptDialog</a></li>
+                                <li><a href="../classes/React.Component.App.Main.html">React.Component.App.Main</a></li>
+                                <li><a href="../classes/React.Component.AuthPage.html">React.Component.AuthPage</a></li>
+                                <li><a href="../classes/React.Component.Balance.html">React.Component.Balance</a></li>
+                                <li><a href="../classes/React.Component.ChoreCard.html">React.Component.ChoreCard</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardGrid.html">React.Component.ChoreCardGrid</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardRow.html">React.Component.ChoreCardRow</a></li>
+                                <li><a href="../classes/React.Component.ChoreForm.html">React.Component.ChoreForm</a></li>
+                                <li><a href="../classes/React.Component.ChoreRow.html">React.Component.ChoreRow</a></li>
+                                <li><a href="../classes/React.Component.Chores.html">React.Component.Chores</a></li>
+                                <li><a href="../classes/React.Component.ChoresView.html">React.Component.ChoresView</a></li>
+                                <li><a href="../classes/React.Component.ChoreTable.html">React.Component.ChoreTable</a></li>
+                                <li><a href="../classes/React.Component.CredentialCard.html">React.Component.CredentialCard</a></li>
+                                <li><a href="../classes/React.Component.FAB.html">React.Component.FAB</a></li>
+                                <li><a href="../classes/React.Component.FloatingCard.html">React.Component.FloatingCard</a></li>
+                                <li><a href="../classes/React.Component.FloatingDialog.html">React.Component.FloatingDialog</a></li>
+                                <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
+                                <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
+                                <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
+                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
+                                <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
+                                <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
+                                <li><a href="../classes/React.Component.MessagesEditor.html">React.Component.MessagesEditor</a></li>
+                                <li><a href="../classes/React.Component.MessagesView.html">React.Component.MessagesView</a></li>
+                                <li><a href="../classes/React.Component.NavBar.html">React.Component.NavBar</a></li>
+                                <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
+                                <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
+                                <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
+                                <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
+                                <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
+                                <li><a href="../classes/React.Component.SummaryInfo.html">React.Component.SummaryInfo</a></li>
                                 <li><a href="../classes/React.Component.TodoItem.html">React.Component.TodoItem</a></li>
                                 <li><a href="../classes/React.Component.TodoList.html">React.Component.TodoList</a></li>
+                                <li><a href="../classes/React.Component.ToggleButton.html">React.Component.ToggleButton</a></li>
+                                <li><a href="../classes/React.Component.Transaction.html">React.Component.Transaction</a></li>
                                 <li><a href="../classes/User.html">User</a></li>
                             </ul>
                 
@@ -87,28 +123,22 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-var firebase = require(&quot;firebase&quot;);
+import { ref, firebaseHandle } from &#x27;./config/firebase.js&#x27;
+var firebase = firebaseHandle;
 
-// Firebase API Credentials
-var config = {
-  apiKey: &quot;AIzaSyCAFUnm_bsnpiRyziqTB41QZoLW3-OYp20&quot;,
-  authDomain: &quot;rockmates-d8edb.firebaseapp.com&quot;,
-  databaseURL: &quot;https://rockmates-d8edb.firebaseio.com&quot;,
-  storageBucket: &quot;rockmates-d8edb.appspot.com&quot;,
-  messagingSenderId: &quot;370968243217&quot;
-};
+import Message from &#x27;./Message.js&#x27;;
+import User from &#x27;./User.js&#x27;;
+import Chore from &#x27;./Chore.js&#x27;;
+import Payment from &#x27;./Payment.js&#x27;;
+import Apartment from &#x27;./Apartment.js&#x27;;
 
 // Singleton Design Pattern... We only want one
 // instance of DBManager
 let dbm_instance = null;
 
-// Global Data for User &amp; Apartment
-let user_cache = null; // User Object
-let apt_cache = null;  // Apt Object
-
-// Firebase Realtime checks before using cached version
 /**
  * Represents a Database Manager.
+ * Uses the Singleton design pattern.
  *
  * @class DBManager
  */
@@ -120,12 +150,17 @@ export default class DBManager {
      * @constructor
      */
     constructor() {
-        if(!dbm_instance){
+        if(dbm_instance == null){
             dbm_instance = this;
-            firebase.initializeApp(config);
+            console.log(&#x27;DBManager.onCreate: [new dbm_instance]&#x27;);
         }
         return dbm_instance;
     }
+
+    getAuthHandle() {
+      return firebase.auth();
+    }
+
 
     /**
      * Attempts to sign a user in.
@@ -133,14 +168,14 @@ export default class DBManager {
      * @method signIn
      * @param {string} email - The user&#x27;s email
      * @param {string} password - The user&#x27;s password
+     * @param {function} onFailCallback - Asynchronous exception handler
+     * @return {Promise} Promise of a non-null User object (newly signed in)
      * @throws {Error} - A possible authentication error
      */
-    signIn(email, password) {
-        firebase.auth().signInWithEmailAndPassword(email, password)
-        .catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
+    signIn(email, password, onFailCallback) {
+        if(onFailCallback == null) {
+          /* Default error handler */
+          onFailCallback = function(error) {
             switch (error.code) {
                 case &#x27;auth/invalid-email&#x27;:
                     alert(&quot;Invalid email.&quot;);
@@ -155,9 +190,16 @@ export default class DBManager {
                     alert(&quot;Wrong password&quot;);
                     break;
                 default:
-                    alert(&quot;Error signing in.&quot;);
-            }
-        });
+                    alert(error.message);
+          }
+         }
+        }
+        var signInPromise = firebase.auth().signInWithEmailAndPassword(email, password)
+                            .then(function(signedInUser) {
+                              var validSignIn = (null !== firebase.auth().currentUser) &amp;&amp; (signedInUser === firebase.auth().currentUser);
+                              console.log(&#x27;db.signIn: firebaseCurrentUser: &#x27;, validSignIn);
+                              return validSignIn;
+                            }).catch(onFailCallback);
     }
 
     /**
@@ -166,23 +208,33 @@ export default class DBManager {
      * @method signUp
      * @param {string} email - The user&#x27;s email
      * @param {string} password - The user&#x27;s password
+     * @param {function} onFailCallback - Asynchronous exception handler
+     * @return {Promise} Promise of a nonNull Firebase user
      * @throws {Error} - A possible authentication error
      */
-    signUp(email, password) {
-        return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-            switch (error.code) {
-                case &#x27;auth/email-already-in-use&#x27;:
-                    alert(&quot;Email is already in user.&quot;);
-                    break;
-                case &#x27;auth/invalid-email&#x27;:
-                    alert(&quot;Email is invalid.&quot;);
-                    break;
-                default:
-                    alert(&quot;Error signing up.&quot;);
-            }
-        });
-    }
+    signUp(email, password, firstname, lastname, onFailCallback) {
+      if(onFailCallback == null) {
+        /* Default error handler */
+        onFailCallback = function(error) {
+          switch (error.code) {
+              case &#x27;auth/email-already-in-use&#x27;:
+                  alert(&quot;Email is already in user.&quot;);
+                  break;
+              case &#x27;auth/invalid-email&#x27;:
+                  alert(&quot;Email is invalid.&quot;);
+                  break;
+              default:
+                  alert(&quot;Error signing up.&quot;);
+          }
+        }
+       }
 
+       var signUpPromise = firebase.auth().createUserWithEmailAndPassword(email, password)
+                           .then(function(signedUpUser) {
+                             console.log(&#x27;signedUpUser:&#x27;, signedUpUser.uid);
+                             return signedUpUser;
+                           }).catch(onFailCallback);
+    }
     /**
      * Adds a user to the database.
      *
@@ -191,70 +243,339 @@ export default class DBManager {
      * @return {string} - The User ID of the added user
      */
     addUser(user) {
-        var data = JSON.stringify(user);
-        firebase.database().ref(&#x27;users/&#x27; + user.getUserID()).set(data);
+        console.log(&#x27;addUser:&#x27;, user.getUserID(), user);
+        return firebase.database().ref(&#x27;users/&#x27; + user.getUserID()).set(JSON.stringify(user));
     }
+
+    /**
+     * Updates a user in the database.
+     *
+     * @method updateUser
+     * @param {User} - The User Object to be updated
+     */
+    /*updateUser(user) {
+        var messagesRef = firebase.database().ref(&quot;users/&quot; + user.getUserID());
+        messagesRef.set(JSON.stringify(user));
+    }*/
 
     /**
      * Gets the user.
      *
      * @method getUser
-     * @param {string} [user=user_cache.getID()] - The user ID
+     * @param {string} [userID=user_cache.getID()] - The user ID
      * @return {User} - The corresponding User
      */
-    getUser(user=user_cache.getID()) {}
+    getUser(userID) {
+        var ID = (userID!=null) ? userID : DBManager.isLoggedIn();
+        if(ID) {
+          return firebase.database().ref(&#x27;/users/&#x27; + ID).once(&#x27;value&#x27;).then(function(snapshot) {
+              return User.JSONtoUser(snapshot.val());
+            });
+        } else {
+          return null;
+        }
+    }
+
+    /**
+    * Checks current authentication state.
+    *
+    * @static
+    * @method isLoggedIn
+    * @return {uid} - The current user id
+    */
+    static isLoggedIn() {
+      return (null !== firebase.auth().currentUser) ? firebase.auth().currentUser.uid : null;
+    }
+
+    /**
+    * Gets the current user.
+    *
+    * @static
+    * @method currentUser
+    * @return {string} - The current user id
+    */
+    static currentUser() {
+      return firebase.auth().currentUser;
+    }
+
+    /**
+    * Logs the current user out, if logged in
+    *
+    * @static
+    * @method LogOut
+    * @return {Promise} - LogOut promise
+    */
+    static LogOut() {
+      return (this.isLoggedIn()) ? firebase.auth().signOut() : null;
+    }
 
     /**
      * Adds an apartment.
-     * 
+     *
      * @method addApartment
      * @param {Apartment} apartment - The apartment to be added
-     * @throws {Error} - Possible failure to add Apartment
+     * @return {string} - The apartment ID of the added apartment
      */
-    addApartment(apartment) {}
+    addApartment(apartment) {
+        var apartmentsRef = firebase.database().ref(&#x27;apartments&#x27;);
+        var newApartmentRef = apartmentsRef.push();
+        apartment.setAptID(newApartmentRef.getKey());
+        newApartmentRef.set(JSON.stringify(apartment));
+        return newApartmentRef.getKey();
+    }
+
+    /**
+     * Updates an apartment.
+     *
+     * @method updateApartment
+     * @param {Apartment} apartment - Apartment
+     * @throws {error} - Possible failure to update Apartment
+     */
+    updateApartment(apartment) {
+        var apartmentRef = firebase.database().ref(&quot;apartments/&quot; + apartment.getAptID());
+        apartmentRef.set(JSON.stringify(apartment));
+    }
 
     /**
      * Gets an apartment.
      *
-     * @method getApt
-     * @param {string} apartment - The apartment ID
+     * @method getApartment
+     * @param {string} aptID - The apartment ID
      * @return {Apartment} - The corresponding Apartment
      */
-    getApt(apartment) {}
+    getApartment(aptID=null) {
+        // Get User-&gt;Get-Apt-ID-&gt;Get Apartment
+        if (!aptID) {
+            return this.getUser().then(function (user) {
+                return firebase.database().ref(&#x27;/apartments/&#x27; + user.getAptID()).once(&#x27;value&#x27;).then(function(snapshot) {
+                    return Apartment.JSONtoApartment(snapshot.val());
+                });
+            });
+        } else {
+            return firebase.database().ref(&#x27;/apartments/&#x27; + aptID).once(&#x27;value&#x27;).then(function(snapshot) {
+                return Apartment.JSONtoApartment(snapshot.val());
+            });
+        }
+    }
 
     /**
      * Adds a chore.
      *
      * @method addChore
      * @param {Chore} chore - The chore to be added.
+     * @param {function} callback - The optional callback function
      * @throws {Error} - Possible failure to add Chore
      */
-    addChore(chore) {}
+    addChore(chore, callback=null) {
+        console.log(&quot;Adding Chore&quot;);
+        var choresRef = firebase.database().ref(&#x27;chores&#x27;);
+        var newChoreRef = choresRef.push();
+        chore.setChoreID(newChoreRef.getKey());
+        newChoreRef.set(JSON.stringify(chore));
+        // Add the Chore to Apartment
+        this.getApartment().then(function (apt) {
+            apt.addChore(newChoreRef.getKey());
+            this.updateApartment(apt);
+            if (callback) {
+                callback();
+            }
+        }.bind(this));
+    }
 
     /**
-     * Gets all chores.
+     * Updates a chore in the database.
      *
-     * @method getChores
-     * @returns {Array{Chores}}
+     * @method updateChore
+     * @param {Chore} - The Chore Object to be updated
      */
-    getChores() {}
+    updateChore(chore) {
+        var choresRef = firebase.database().ref(&quot;chores/&quot; + chore.getChoreID());
+        choresRef.set(JSON.stringify(chore));
+    }
+
+    /**
+     * Updates a user in the database.
+     *
+     * @method updateUser
+     * @param {User} - The User Object to be updated
+     */
+    updateUser(user) {
+        var messagesRef = firebase.database().ref(&quot;users/&quot; + user.getUserID());
+        messagesRef.set(JSON.stringify(user));
+    }
+
+    /**
+     * Gets all chore ids.
+     *
+     * @method getChoreIDs
+     * @return {Array{string}} - An array containing the chore ids
+     */
+    getChoreIDs() {
+        return this.getApartment().then(function (apt) {
+            return apt.getChoreIDs();
+        });
+    }
+
+    /**
+     * Gets a chore.
+     *
+     * @method getChore
+     * @param {string} choreID - The id of the chore to get
+     * @return {Chore} - The chore
+     */
+    getChore(choreID) {
+        return firebase.database().ref(&#x27;/chores/&#x27; + choreID).once(&#x27;value&#x27;).then(function(snapshot) {
+            return Chore.JSONtoChore(snapshot.val());
+        });
+    }
 
     /**
      * Adds a message.
      *
      * @method addMessage
-     * @param {Message} message - The message to be added.
+     * @param {Message} message - The message to be added
      * @throws {Exception} - Possible failure to add Message
      */
-    addMessage(message) {}
+    addMessage(message) {
+        console.log(&quot;Adding Message&quot;);
+        var messagesRef = firebase.database().ref(&#x27;messages&#x27;);
+        var newMessageRef = messagesRef.push();
+        message.setMessageID(newMessageRef.getKey());
+        newMessageRef.set(JSON.stringify(message));
+        this.getApartment().then(function (apt) {
+            apt.addMessage(newMessageRef.getKey());
+            this.updateApartment(apt);
+        }.bind(this));
+    }
 
     /**
-     * Gets all messages.
+     * Gets all message ids.
      *
-     * @method getMessages
-     * @returns {Array{Message}}
+     * @method getMessageIDs
+     * @return {Array{string}} - An array containing the message ids
      */
-    getMessages() {}
+    getMessageIDs() {
+        return this.getApartment().then(function (apt) {
+            return apt.getMessageIDs();
+        });
+    }
+
+    /**
+     * Gets a message by its id.
+     *
+     * @method getMessage
+     * @param {string} messageID - The id of the message to get
+     * @return {Message} - The message
+     */
+    getMessage(messageID) {
+        return firebase.database().ref(&#x27;/messages/&#x27; + messageID).once(&#x27;value&#x27;).then(function(snapshot) {
+            return Message.JSONtoMessage(snapshot.val());
+        });
+    }
+
+    /**
+     * Updates a message in the database.
+     *
+     * @method updateMessage
+     * @param {Message} - The message Object to be updated
+     */
+    updateMessage(message) {
+        var messagesRef = firebase.database().ref(&quot;messages/&quot; + message.getMessageID());
+        messagesRef.set(JSON.stringify(message));
+    }
+
+    /**
+     * Adds a payment.
+     *
+     * @method addPayment
+     * @param {Payment} payment - The payment to be added
+     * @throws {Exception} - Possible failure to add Payment
+     */
+    addPayment(payment){
+        console.log(&quot;in db manager add payment&quot;);
+        var paymentsRef = firebase.database().ref(&#x27;payments&#x27;);
+        var newPaymentRef = paymentsRef.push();
+        newPaymentRef.set(JSON.stringify(payment));
+        this.getUser().then(function (user) {
+            var context = this;
+            var pay1 = payment;
+            user.addPayment(payment);
+            this.updateUser(user);
+            // Switch loaner and loanee and save to other user
+            var loanerID = payment.getLoaner();
+            payment.setLoanerID(payment.getLoanee());
+            payment.setLoaneeID(loanerID);
+            console.log(&quot;loaner: &quot;, payment.getLoaner());
+            console.log(&quot;loanee: &quot;, payment.getLoanee());
+            this.getUser(payment.getLoaner()).then(function (user2) {
+                user2.addPayment(payment);
+                context.updateUser(user2);
+            });
+        }.bind(this));
+    }
+
+    /**
+     * Gets all the payment IDs
+     *
+     * @method getPaymentIDs
+     * @return {array{PaymentIDs}} - An array containing the payment IDs
+     */
+    getPaymentIDs() {
+        return this.getUser().then(function (user) {
+            return user.getPaymentIDs();
+        })
+    }
+
+    /**
+     * Gets the payment with the speicifed ID
+     *
+     * @method getPayment
+     * @param paymentID - Payment ID to find payment
+     * @return {Payment}
+     */
+    getPayment(paymentID) {
+         return firebase.database().ref(&#x27;/payments/&#x27; + paymentID).once(&#x27;value&#x27;).then(function(snapshot) {
+             return Payment.JSONtoPayment(snapshot.val());
+         });
+     }
+
+    /**
+     * Binds an Apartment and a User.
+     *
+     * @method bindApartment
+     * @param {string} aptID - The id of the Apartment to bind
+     * @throws {Exception} - Possible failure to bind Apartment
+     */
+     bindApartment(aptID) {
+         return this.getUser().then(function (user) {
+             var context = this;
+             console.log(&quot;FIRST CONTEXT: &quot;, this);
+             user.setAptID(aptID);
+             this.updateUser(user);
+             this.getApartment(aptID).then(function(apt) {
+                 apt.addTenant(user.getUserID());
+                 context.updateApartment(apt);
+                 return apt;
+             });
+         }.bind(this));
+     }
+
+    /**
+     * Listens for changes in Messages.
+     *
+     * @method listenForMessages
+     * @param {function} onChangeCallBack - The callback when change occurs
+     */
+    listenForMessages(onChangeCallBack){
+        var aptIDPromise = this.getApartment().then(function(apt) {return apt.getAptID()});
+        aptIDPromise.then(function(aptID) {
+            console.log(&#x27;listenForMessages(aptID):&#x27;, aptID);
+             var reference = firebase.database().ref(&#x27;/apartments/&#x27; + aptID + &#x27;/messages/&#x27;);
+             console.log(&#x27;listenForMessages(reference):&#x27;, reference);
+             reference.on(&#x27;child_changed&#x27;, alert(&#x27;New Message!&#x27;)).then(onChangeCallBack);
+             console.log(&#x27;listenForMessages(out)&#x27;);
+        });
+     }
 }
 
     </pre>

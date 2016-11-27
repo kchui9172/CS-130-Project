@@ -11,11 +11,24 @@ import DBManager from '../../dbManager.js';
 import Apartment from '../../Apartment.js';
 
 
-/**
+/*
  * A modal dialog can only be closed by selecting one of the actions.
  */
+/**
+ * Represents an Add Apartment Dialog.
+ *
+ * @class React.Component.AddAptDialog
+ * @extends React.Component
+ */
 export default class AddAptDialog extends React.Component {
-
+  /** 
+   * Constructs an Add Apartment Dialog.
+   *
+   * @method constructor
+   * @constructor
+   * @param {Object} props - Properties passed by parent
+   * @param {Object{ context - Context passed by parent
+   */
   constructor(props, context) {
       super(props, context);
       this.state = {
@@ -25,23 +38,49 @@ export default class AddAptDialog extends React.Component {
       };
   };
 
+  /**
+   * Handles opening the Add Apartment Dialog.
+   *
+   * @method handleOpen
+   */ 
   handleOpen = () => {
     this.setState({modalOpen: true});
   };
 
+  /**
+   * Handles closing the Add Apartment Dialog.
+   *
+   * @method handleClose
+   */
   handleClose = () => {
     this.setState({modalOpen: false});
   };
 
+  /**
+   * Enables the submit button.
+   *
+   * @method enableButton
+   */
   enableButton = () => {
     this.setState({submitEnabled:true});
   };
 
+  /**
+   * Disables the submit button.
+   *
+   * @method disableButton
+   */
   disableButton = () => {
     this.setState({submitEnabled:false});
   };
 
 
+  /**
+   * Submits the Add Apartment Dialog form.
+   *
+   * @method submitForm
+   * @param {Object} data - The data in the form.
+   */
   submitForm = (data) => {
     if(data.invite_code=="") {
         return this.notifyFormError(data);
@@ -60,6 +99,12 @@ export default class AddAptDialog extends React.Component {
                      .catch(this.notifyRequestError);
   };
 
+  /**
+   * Notifies that submit error has occurred.
+   *
+   * @method notifyRequestError
+   * @param {Error} error - The error
+   */
   notifyRequestError(error) {
     console.log('onSubmit_error:');
     var errorCode = error.code;
@@ -71,6 +116,11 @@ export default class AddAptDialog extends React.Component {
     });
   };
 
+  /**
+   * Checks the apartment binding in the database.
+   *
+   * @method checkAptBinding
+   */
   checkAptBinding() {
     new DBManager().getApartment()
     .then(function(apt){console.log('Apt Binding looks OK', apt.getAptID());})
@@ -80,6 +130,11 @@ export default class AddAptDialog extends React.Component {
     }.bind(this));
   };
 
+  /**
+   * Checks the user binding in the database.
+   *
+   * @method checkUserBinding
+   */
   checkUserBinding() {
     var user = DBManager.currentUser();
     var db = new DBManager();
@@ -95,11 +150,21 @@ export default class AddAptDialog extends React.Component {
                       });
   };
 
+  /**
+   * Function called when the component mounts.
+   *
+   * @method componentDidMount
+   */
   componentDidMount() {
     this.checkUserBinding();
     this.checkAptBinding();
   };
 
+  /**
+   * Renders an Add Apartment Dialog.
+   *
+   * @method render
+   */
   render() {
     return (
         <Dialog

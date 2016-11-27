@@ -42,9 +42,45 @@
                                 <li><a href="../classes/Chore.html">Chore</a></li>
                                 <li><a href="../classes/DBManager.html">DBManager</a></li>
                                 <li><a href="../classes/Message.html">Message</a></li>
+                                <li><a href="../classes/Payment.html">Payment</a></li>
+                                <li><a href="../classes/React.Component.AddAptDialog.html">React.Component.AddAptDialog</a></li>
+                                <li><a href="../classes/React.Component.App.Main.html">React.Component.App.Main</a></li>
+                                <li><a href="../classes/React.Component.AuthPage.html">React.Component.AuthPage</a></li>
+                                <li><a href="../classes/React.Component.Balance.html">React.Component.Balance</a></li>
+                                <li><a href="../classes/React.Component.ChoreCard.html">React.Component.ChoreCard</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardGrid.html">React.Component.ChoreCardGrid</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardRow.html">React.Component.ChoreCardRow</a></li>
+                                <li><a href="../classes/React.Component.ChoreForm.html">React.Component.ChoreForm</a></li>
+                                <li><a href="../classes/React.Component.ChoreRow.html">React.Component.ChoreRow</a></li>
+                                <li><a href="../classes/React.Component.Chores.html">React.Component.Chores</a></li>
+                                <li><a href="../classes/React.Component.ChoresView.html">React.Component.ChoresView</a></li>
+                                <li><a href="../classes/React.Component.ChoreTable.html">React.Component.ChoreTable</a></li>
+                                <li><a href="../classes/React.Component.CredentialCard.html">React.Component.CredentialCard</a></li>
+                                <li><a href="../classes/React.Component.FAB.html">React.Component.FAB</a></li>
+                                <li><a href="../classes/React.Component.FloatingCard.html">React.Component.FloatingCard</a></li>
+                                <li><a href="../classes/React.Component.FloatingDialog.html">React.Component.FloatingDialog</a></li>
+                                <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
+                                <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
+                                <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
+                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
+                                <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
+                                <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
+                                <li><a href="../classes/React.Component.MessagesEditor.html">React.Component.MessagesEditor</a></li>
+                                <li><a href="../classes/React.Component.MessagesView.html">React.Component.MessagesView</a></li>
+                                <li><a href="../classes/React.Component.NavBar.html">React.Component.NavBar</a></li>
+                                <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
+                                <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
+                                <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
+                                <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
+                                <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
+                                <li><a href="../classes/React.Component.SummaryInfo.html">React.Component.SummaryInfo</a></li>
                                 <li><a href="../classes/React.Component.TodoItem.html">React.Component.TodoItem</a></li>
                                 <li><a href="../classes/React.Component.TodoList.html">React.Component.TodoList</a></li>
+                                <li><a href="../classes/React.Component.ToggleButton.html">React.Component.ToggleButton</a></li>
+                                <li><a href="../classes/React.Component.Transaction.html">React.Component.Transaction</a></li>
                                 <li><a href="../classes/User.html">User</a></li>
                             </ul>
                 
@@ -87,6 +123,7 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
+import DBManager from &#x27;./dbManager.js&#x27;;
 /**
  * Represents a Chore.
  *
@@ -98,27 +135,61 @@ export default class Chore {
      *
      * @constructor
      * @method constructor
-     * @param {string} category - The category of the Chore.
-     * @param {Date} deadline - The deadline of the Chore.
-     * @param {string} details - Additional details of the Chore.
+     * @param {string} userID - The ID of the user
+     * @param {string} aptID - The ID of the apartment
+     * @param {string} category - The category of the Chore
+     * @param {Date} deadline - The deadline of the Chore
+     * @param {string} details - Additional details of the Chore
+     * @param {string} assignee - The assignee of the Chore
      */
-    constructor(category, deadline, details) {
+    constructor(userID, aptID, category, deadline, details, assignee) {
         this._choreID = null;
         this._category = category;
-        this._createdBy = getUser().getUserID();
+        this._createdBy = userID;
+        this._aptID = aptID;
         this._deadline = deadline;
         this._details = details;
-        this._assignedTo = null;
-        this._createdOn = getDate();
-        this.finishedBy = null;
-        this.AptID = getUser().getAptID();
+        this._assignedTo = assignee;
+        this._createdOn = new Date();
+        this._finishedBy = null;
+    }
+
+    /**
+     * Creates a Chore from input JSON.
+     *
+     * @method JSONtoChore
+     * @static
+     * @param {string} - JSON representing a Chore
+     * @return {Chore} - The Chore represented by the JSON
+     */
+    static JSONtoChore(data) {
+        var chore = new Chore();
+        var JSONObj = JSON.parse(data);
+        chore._choreID = JSONObj._choreID;
+        chore._category = JSONObj._category;
+        chore._createdBy = JSONObj._createdBy;
+        chore._deadline = JSONObj._deadline;
+        chore._details = JSONObj._details;
+        chore._assignedTo = JSONObj._assignedTo;
+        chore._createdOn = JSONObj._createdOn;
+        chore._finishedBy = JSONObj._finishedBy;
+        chore._aptID = JSONObj._aptID;
+        return chore;
     }
 
     /**
      * Sets a user assignment to the Chore.
      *
      * @method setAssignment
-     * @param {string} userID - The User ID of the assignee of the Chore.
+     * @param {string} choreID - The Chore ID
+     */
+    setChoreID(choreID) { this._choreID = choreID; }
+
+    /**
+     * Sets a user assignment to the Chore.
+     *
+     * @method setAssignment
+     * @param {string} userID - The User ID of the assignee of the Chore
      */
     setAssignment(userID) { this._assignedTo = userID; }
 
@@ -126,7 +197,7 @@ export default class Chore {
      * Sets the deadline for the chore.
      *
      * @method setDeadline
-     * @param {Date} deadline - The deadline of the Chore.
+     * @param {Date} deadline - The deadline of the Chore
      */
     setDeadline(deadline) { this._deadline = deadline; }
 
@@ -134,16 +205,39 @@ export default class Chore {
      * Sets the details for the chore.
      *
      * @method setDetails
-     * @param {string} details - The details of the Chore.
+     * @param {string} details - The details of the Chore
      */
     setDetails(detail) { this._details = details; }
 
-    /** 
-     * Sets the completion date of the finished Chore.
+    /**
+     * Sets the completion date of the finished Chore
      *
      * @method complete
      */
-    complete() { this._finishedBy = getDate(); }
+    complete() { this._finishedBy = new Date(); }
+
+    /**
+     * Sets the completion date of the Chore to null.
+     *
+     * @method uncomplete
+     */
+    uncomplete() { this._finishedBy = null; }
+
+    /**
+     * Gets the Chore ID.
+     *
+     * @method getChoreID
+     * @return {string} - The Chore ID
+     */
+    getChoreID() { return this._choreID; }
+
+    /**
+     * Gets the Apartment ID of the chore.
+     *
+     * @method getAptID
+     * @return {string} - The Apt ID
+     */
+    getAptID() { return this._aptID; }
 
     /**
      * Gets the category of the Chore.
@@ -151,11 +245,11 @@ export default class Chore {
      * @method getCategory
      * @return {string} - The category of the Chore
      */
-    getCategory() { return this._cateogry; }
+    getCategory() { return this._category; }
 
     /**
      * Gets the User ID of the creator of the Chore.
-     * 
+     *
      * @method getCreator
      * @return {string} - The creator of the Chore
      */

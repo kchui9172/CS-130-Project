@@ -5,17 +5,29 @@ import MessagesCard from '../Cards/MessagesCard.js';
 import TodoList from '../../../components/TodoList.js';
 
 /**
- * Represents the Messages page.
+ * Represents a Messages View.
  *
- * @class React.Component.Messages
+ * @class React.Component.MessagesView
  * @extends React.Component
  */
 export default class MessagesView extends React.Component {
-
+  /**
+   * Constructs a Messages View.
+   *
+   * @method constructor
+   * @constructor
+   * @param {Object} props - Properties passed by parent
+   * @param {Object} context - Context passed by parent
+   */
   constructor(props, context) {
       super(props, context);
   }
 
+  /** 
+   * Renders a Messages View.
+   *
+   * @method render
+   */
   render() {
   return(
     <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >

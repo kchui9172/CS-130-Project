@@ -4,17 +4,29 @@ import {Grid, Row, Column} from 'react-cellblock';
 import PaymentComponent from '../../../components/PaymentComponent.js';
 
 /**
- * Represents the Messages page.
+ * Represents a Payments View.
  *
- * @class React.Component.Messages
+ * @class React.Component.PaymentsView
  * @extends React.Component
  */
-export default class MessagesView extends React.Component {
-
+export default class PaymentsView extends React.Component {
+  /**
+   * Constructs a Payments View.
+   *
+   * @method constructor
+   * @constructor
+   * @param {Object} props - Properties passed by parent
+   * @param {Object} context - Context passed by parent
+   */
   constructor(props, context) {
       super(props, context);
   }
 
+  /**
+   * Renders a Payments View.
+   *
+   * @method render
+   */
   render() {
   return(
     <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >

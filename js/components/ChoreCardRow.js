@@ -3,11 +3,29 @@ import {Row, Column} from 'react-cellblock';
 
 import ChoreCard from './HomePage/Cards/ChoreCard.js';
 
+/**
+ * Represents a Chore Card Row.
+ *
+ * @class React.Component.ChoreCardRow
+ * @extends React.Component
+ */
 export default class ChoreCardRow extends React.Component {
+    /**
+     * Constructs a Chore Card Row.
+     *
+     * @method constructor
+     * @constructor
+     * @param {Object} props - Properites passed by parent. See propTypes
+     */
     constructor(props) {
         super(props);
     }
 
+    /**
+     * Renders a Chore Card Row.
+     *
+     * @method render
+     */
     render() {
         if (this.props.choreList &&
             this.props.choreList.length > 0) {
