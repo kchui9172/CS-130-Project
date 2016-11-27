@@ -92,6 +92,13 @@ export default class Chore {
     complete() { this._finishedBy = new Date(); }
 
     /**
+     * Sets the completion date of the Chore to null.
+     *
+     * @method uncomplete
+     */
+    uncomplete() { this._finishedBy = null; }
+
+    /**
      * Gets the Chore ID
      *
      * @method getChoreID

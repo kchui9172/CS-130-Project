@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import DBManager from '../dbManager.js';
 import User from '../User.js';
 import Payment from '../Payment.js';
+import Transaction from './Transaction.js';
 
 /**
  * Represents a Balance.
@@ -19,24 +20,33 @@ export default class Balance extends React.Component {
      */
     constructor() {
         super();
-        this.state = { balance0: [], balance1: [], balance2:[], balance3:[], balance4:[], tenants: [] };
+        this.state = { balance: [], tenants: [] };
         this.calculateBalance = this.calculateBalance.bind(this);
     };
 
+
+    /**
+    * Sorts Payments related to User
+    *
+    *@method sortPayments
+    *@param {Payment} - array of payments related to user
+    *@return {void}
+    */
     sortPayments(payments){
         console.log("sorting payments");
         console.log(payments); //shows all payments for a user
         console.log(this.state.tenants); //shows all tenants in apartment
-        console.log("tis is it: ",payments[0]);
+        //go through each payment and assign to particular balance
         for (var i = 0; i < payments.length; i++){
-            //go through each payment and assign to particular balance
-            console.log("what is this");
-            if (payments[i].getLoaner() == "roommateLoaner1"){
-                console.log("add to loaner1's balance");
+            var pay = payments[i];
+            for (var j = 0; j < this.state.tenants.length; j++){
+                if (pay._loaner == this.state.tenants[j] || pay._loanee == this.state.tenants[j]){
+                    //console.log("pushing");
+                    //console.log(pay._amount);
+                    this.state.balance[j].push(pay);
+                }
             }
-            else{
-                console.log("repeat with else-if statements to check other tenants");
-            }
+            //console.log(this.state.balance);
         }
         console.log("done sorting");
     }
@@ -56,16 +66,20 @@ export default class Balance extends React.Component {
         manager.getPaymentIDs().then(function(payments){
             //get all tenants of apartment
             manager.getApartment().then(function (apt){
+                console.log("payments: ",payments);
                 var tenants = apt.getTenantIDs();
                 console.log("Tenants: ",tenants);
                 console.log("num tenants: ",tenants.length);
                 var tenantArray = [];
+                var balanceArray = [];
                 //create tenant array: match position of tenant in tenant array with balancex which stores payments related to that user
                 for (var i = 0; i < tenants.length; i++){
                     console.log("meow");
                     console.log(tenants[i]);
                     tenantArray.unshift(tenants[i]);
+                    balanceArray[i] = [];
                     this.setState({tenants: tenantArray});
+                    this.setState({balance: balanceArray});
                 }
                 console.log("what");
 
@@ -74,21 +88,6 @@ export default class Balance extends React.Component {
 
             }.bind(this))
         }.bind(this));
-
-
-        // create 2 arrays:
-        //     Array1 = holds total balance of owed/owe between two ppl (position corresponds to roommate)
-        //     Array2 = holds description of balance owed/owe (description of payment and amount) between two ppl (position corresponds to rommate)
-        //     render per roommate
-        // */
-        return (
-            <div>
-                <p>Your current balance:</p>
-                <p>Balance between you and Roommate 1: </p>
-                <p>Balance between you and Roommate 2: </p>
-                <p>Balance between you and Roommate 3: </p>
-            </div>
-        );
     }
 
     componentDidMount() {
@@ -102,7 +101,9 @@ export default class Balance extends React.Component {
      */
     render() {
         return (
-            <div> {this.state.balances} </div>
+            <div> 
+                <Transaction t={this.state.balance} />
+            </div>
         );
     }
 }
