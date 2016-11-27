@@ -42,9 +42,45 @@
                                 <li><a href="../classes/Chore.html">Chore</a></li>
                                 <li><a href="../classes/DBManager.html">DBManager</a></li>
                                 <li><a href="../classes/Message.html">Message</a></li>
+                                <li><a href="../classes/Payment.html">Payment</a></li>
+                                <li><a href="../classes/React.Component.AddAptDialog.html">React.Component.AddAptDialog</a></li>
+                                <li><a href="../classes/React.Component.App.Main.html">React.Component.App.Main</a></li>
+                                <li><a href="../classes/React.Component.AuthPage.html">React.Component.AuthPage</a></li>
+                                <li><a href="../classes/React.Component.Balance.html">React.Component.Balance</a></li>
+                                <li><a href="../classes/React.Component.ChoreCard.html">React.Component.ChoreCard</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardGrid.html">React.Component.ChoreCardGrid</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardRow.html">React.Component.ChoreCardRow</a></li>
+                                <li><a href="../classes/React.Component.ChoreForm.html">React.Component.ChoreForm</a></li>
+                                <li><a href="../classes/React.Component.ChoreRow.html">React.Component.ChoreRow</a></li>
+                                <li><a href="../classes/React.Component.Chores.html">React.Component.Chores</a></li>
+                                <li><a href="../classes/React.Component.ChoresView.html">React.Component.ChoresView</a></li>
+                                <li><a href="../classes/React.Component.ChoreTable.html">React.Component.ChoreTable</a></li>
+                                <li><a href="../classes/React.Component.CredentialCard.html">React.Component.CredentialCard</a></li>
+                                <li><a href="../classes/React.Component.FAB.html">React.Component.FAB</a></li>
+                                <li><a href="../classes/React.Component.FloatingCard.html">React.Component.FloatingCard</a></li>
+                                <li><a href="../classes/React.Component.FloatingDialog.html">React.Component.FloatingDialog</a></li>
+                                <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
+                                <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
+                                <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
+                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
+                                <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
+                                <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
+                                <li><a href="../classes/React.Component.MessagesEditor.html">React.Component.MessagesEditor</a></li>
+                                <li><a href="../classes/React.Component.MessagesView.html">React.Component.MessagesView</a></li>
+                                <li><a href="../classes/React.Component.NavBar.html">React.Component.NavBar</a></li>
+                                <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
+                                <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
+                                <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
+                                <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
+                                <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
+                                <li><a href="../classes/React.Component.SummaryInfo.html">React.Component.SummaryInfo</a></li>
                                 <li><a href="../classes/React.Component.TodoItem.html">React.Component.TodoItem</a></li>
                                 <li><a href="../classes/React.Component.TodoList.html">React.Component.TodoList</a></li>
+                                <li><a href="../classes/React.Component.ToggleButton.html">React.Component.ToggleButton</a></li>
+                                <li><a href="../classes/React.Component.Transaction.html">React.Component.Transaction</a></li>
                                 <li><a href="../classes/User.html">User</a></li>
                             </ul>
                 
@@ -87,27 +123,50 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
+import DBManager from &#x27;./dbManager.js&#x27;;
 /**
  * Represents a Message.
  *
  * @class Message
  */
-export default class Message { 
+export default class Message {
     /**
      * Represents a message.
      *
      * @method constructor
      * @constructor
-     * @param {string} sender - The User ID of message creator
+     * @param {string} userID - The ID of the user
+     * @param {string} aptID - The ID of the apartment
      * @param {Date} timeSent - The timestamp of when message was sent
      * @param {text} text - The actual text of message
      */
-    constructor(sender, timeSent, text) {
-        this._sender = this.;
+    constructor(userID, aptID, timeSent, text) {
+        this._sender = userID;
+        this._aptID = aptID;
+        this._messageID = null;
         this._timeSent = timeSent;
         this._text = text;
         this._sent = false;
-        this._aptID = getUser().getAptID();
+    }
+
+    /**
+     * Creates a Message from input JSON.
+     *
+     * @method JSONtoMessage
+     * @static
+     * @param {string} - JSON representing a User
+     * @return {Message} - The Message represented by the JSON
+     */
+    static JSONtoMessage(data) {
+        var message = new Message();
+        var JSONObj = JSON.parse(data);
+        message._messageID = JSONObj._messageID;
+        message._sender = JSONObj._sender;
+        message._timeSent = JSONObj._timeSent;
+        message._text = JSONObj._text;
+        message._sent = JSONObj._sent;
+        message._aptID = JSONObj._aptID;
+        return message;
     }
 
     /**
@@ -116,6 +175,14 @@ export default class Message {
      * @method confirmSend
      */
     confirmSend() { this._sent = true; }
+
+
+    /**
+     * Gets the Message ID
+     *
+     * @method getMessageID
+     */
+    getMessageID() { return this._messageID; }
 
     /**
      * Gets the user id of the creator of the Message.
@@ -140,6 +207,13 @@ export default class Message {
      * @return {string} - The text of the Message
      */
     getText() { return this._text; }
+
+    /**
+     * Sets the Message ID
+     *
+     * @method setMessageID
+     */
+    setMessageID(messageID) { this._messageID = messageID; }
 }
 
     </pre>

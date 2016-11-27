@@ -42,9 +42,45 @@
                                 <li><a href="../classes/Chore.html">Chore</a></li>
                                 <li><a href="../classes/DBManager.html">DBManager</a></li>
                                 <li><a href="../classes/Message.html">Message</a></li>
+                                <li><a href="../classes/Payment.html">Payment</a></li>
+                                <li><a href="../classes/React.Component.AddAptDialog.html">React.Component.AddAptDialog</a></li>
+                                <li><a href="../classes/React.Component.App.Main.html">React.Component.App.Main</a></li>
+                                <li><a href="../classes/React.Component.AuthPage.html">React.Component.AuthPage</a></li>
+                                <li><a href="../classes/React.Component.Balance.html">React.Component.Balance</a></li>
+                                <li><a href="../classes/React.Component.ChoreCard.html">React.Component.ChoreCard</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardGrid.html">React.Component.ChoreCardGrid</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardRow.html">React.Component.ChoreCardRow</a></li>
+                                <li><a href="../classes/React.Component.ChoreForm.html">React.Component.ChoreForm</a></li>
+                                <li><a href="../classes/React.Component.ChoreRow.html">React.Component.ChoreRow</a></li>
+                                <li><a href="../classes/React.Component.Chores.html">React.Component.Chores</a></li>
+                                <li><a href="../classes/React.Component.ChoresView.html">React.Component.ChoresView</a></li>
+                                <li><a href="../classes/React.Component.ChoreTable.html">React.Component.ChoreTable</a></li>
+                                <li><a href="../classes/React.Component.CredentialCard.html">React.Component.CredentialCard</a></li>
+                                <li><a href="../classes/React.Component.FAB.html">React.Component.FAB</a></li>
+                                <li><a href="../classes/React.Component.FloatingCard.html">React.Component.FloatingCard</a></li>
+                                <li><a href="../classes/React.Component.FloatingDialog.html">React.Component.FloatingDialog</a></li>
+                                <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
+                                <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
+                                <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
+                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
+                                <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
+                                <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
+                                <li><a href="../classes/React.Component.MessagesEditor.html">React.Component.MessagesEditor</a></li>
+                                <li><a href="../classes/React.Component.MessagesView.html">React.Component.MessagesView</a></li>
+                                <li><a href="../classes/React.Component.NavBar.html">React.Component.NavBar</a></li>
+                                <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
+                                <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
+                                <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
+                                <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
+                                <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
+                                <li><a href="../classes/React.Component.SummaryInfo.html">React.Component.SummaryInfo</a></li>
                                 <li><a href="../classes/React.Component.TodoItem.html">React.Component.TodoItem</a></li>
                                 <li><a href="../classes/React.Component.TodoList.html">React.Component.TodoList</a></li>
+                                <li><a href="../classes/React.Component.ToggleButton.html">React.Component.ToggleButton</a></li>
+                                <li><a href="../classes/React.Component.Transaction.html">React.Component.Transaction</a></li>
                                 <li><a href="../classes/User.html">User</a></li>
                             </ul>
                 
@@ -88,7 +124,7 @@
 
 
         <div class="foundat">
-            Defined in: <a href="../files/js_dbManager.js.html#l21"><code>js&#x2F;dbManager.js:21</code></a>
+            Defined in: <a href="../files/js_dbManager.js.html#l14"><code>js&#x2F;dbManager.js:14</code></a>
         </div>
 
 
@@ -96,7 +132,8 @@
 
 
 <div class="box intro">
-    <p>Represents a Database Manager.</p>
+    <p>Represents a Database Manager.
+Uses the Singleton design pattern.</p>
 
 </div>
 
@@ -129,7 +166,15 @@
 
                             </li>
                             <li class="index-item method">
+                                <a href="#method_addPayment">addPayment</a>
+
+                            </li>
+                            <li class="index-item method">
                                 <a href="#method_addUser">addUser</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_bindApartment">bindApartment</a>
 
                             </li>
                             <li class="index-item method">
@@ -137,15 +182,36 @@
 
                             </li>
                             <li class="index-item method">
-                                <a href="#method_getApt">getApt</a>
+                                <a href="#method_currentUser">currentUser</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getApartment">getApartment</a>
 
                             </li>
                             <li class="index-item method">
-                                <a href="#method_getChores">getChores</a>
+                                <a href="#method_getChore">getChore</a>
 
                             </li>
                             <li class="index-item method">
-                                <a href="#method_getMessages">getMessages</a>
+                                <a href="#method_getChoreIDs">getChoreIDs</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getMessage">getMessage</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getMessageIDs">getMessageIDs</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getPayment">getPayment</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getPaymentIDs">getPaymentIDs</a>
 
                             </li>
                             <li class="index-item method">
@@ -153,11 +219,45 @@
 
                             </li>
                             <li class="index-item method">
+                                <a href="#method_isLoggedIn">isLoggedIn</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_listenForMessages">listenForMessages</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_LogOut">LogOut</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
                                 <a href="#method_signIn">signIn</a>
 
                             </li>
                             <li class="index-item method">
                                 <a href="#method_signUp">signUp</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_updateApartment">updateApartment</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_updateChore">updateChore</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_updateMessage">updateMessage</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_updateUser">updateUser</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_updateUser">updateUser</a>
 
                             </li>
                     </ul>
@@ -181,6 +281,9 @@
             </ul><span class="paren">)</span>
         </div>
 
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
 
 
 
@@ -191,7 +294,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l118"><code>js&#x2F;dbManager.js:118</code></a>
+        <a href="../files/js_dbManager.js.html#l187"><code>js&#x2F;dbManager.js:187</code></a>
         </p>
 
 
@@ -223,18 +326,18 @@
             </ul>
         </div>
 
+        <div class="returns">
+            <h4>Returns:</h4>
 
-        <div class="throws">
-            <h4>Throws:</h4>
-
-            <div class="throws-description">
-                        <span class="type">Error</span>:
+            <div class="returns-description">
+                        <span class="type">String</span>:
                     <ul>
-<li>Possible failure to add Apartment</li>
+<li>The apartment ID of the added apartment</li>
 </ul>
 
             </div>
         </div>
+
 
 </div>
 <div id="method_addChore" class="method item">
@@ -244,6 +347,9 @@
             <span class="paren">(</span><ul class="args-list inline commas">
                 <li class="arg">
                         <code>chore</code>
+                </li>
+                <li class="arg">
+                        <code>callback</code>
                 </li>
             </ul><span class="paren">)</span>
         </div>
@@ -258,7 +364,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l136"><code>js&#x2F;dbManager.js:136</code></a>
+        <a href="../files/js_dbManager.js.html#l236"><code>js&#x2F;dbManager.js:236</code></a>
         </p>
 
 
@@ -282,6 +388,19 @@
                     <div class="param-description">
                         <ul>
 <li>The chore to be added.</li>
+</ul>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">callback</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>The optional callback function</li>
 </ul>
 
                     </div>
@@ -325,7 +444,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l153"><code>js&#x2F;dbManager.js:153</code></a>
+        <a href="../files/js_dbManager.js.html#l307"><code>js&#x2F;dbManager.js:307</code></a>
         </p>
 
 
@@ -348,7 +467,7 @@
 
                     <div class="param-description">
                         <ul>
-<li>The message to be added.</li>
+<li>The message to be added</li>
 </ul>
 
                     </div>
@@ -365,6 +484,73 @@
                         <span class="type">Exception</span>:
                     <ul>
 <li>Possible failure to add Message</li>
+</ul>
+
+            </div>
+        </div>
+
+</div>
+<div id="method_addPayment" class="method item">
+    <h3 class="name"><code>addPayment</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>payment</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l362"><code>js&#x2F;dbManager.js:362</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Adds a payment.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">payment</code>
+                        <span class="type"><a href="../classes/Payment.html" class="crosslink">Payment</a></span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>The payment to be added</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="throws">
+            <h4>Throws:</h4>
+
+            <div class="throws-description">
+                        <span class="type">Exception</span>:
+                    <ul>
+<li>Possible failure to add Payment</li>
 </ul>
 
             </div>
@@ -395,7 +581,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l97"><code>js&#x2F;dbManager.js:97</code></a>
+        <a href="../files/js_dbManager.js.html#l113"><code>js&#x2F;dbManager.js:113</code></a>
         </p>
 
 
@@ -439,6 +625,73 @@
 
 
 </div>
+<div id="method_bindApartment" class="method item">
+    <h3 class="name"><code>bindApartment</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>aptID</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l417"><code>js&#x2F;dbManager.js:417</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Binds an Apartment and a User.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">aptID</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>The id of the Apartment to bind</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="throws">
+            <h4>Throws:</h4>
+
+            <div class="throws-description">
+                        <span class="type">Exception</span>:
+                    <ul>
+<li>Possible failure to bind Apartment</li>
+</ul>
+
+            </div>
+        </div>
+
+</div>
 <div id="method_constructor" class="method item">
     <h3 class="name"><code>constructor</code></h3>
 
@@ -454,7 +707,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l27"><code>js&#x2F;dbManager.js:27</code></a>
+        <a href="../files/js_dbManager.js.html#l21"><code>js&#x2F;dbManager.js:21</code></a>
         </p>
 
 
@@ -470,13 +723,59 @@
 
 
 </div>
-<div id="method_getApt" class="method item">
-    <h3 class="name"><code>getApt</code></h3>
+<div id="method_currentUser" class="method item">
+    <h3 class="name"><code>currentUser</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l165"><code>js&#x2F;dbManager.js:165</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Gets the current user.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">String</span>:
+                    <ul>
+<li>The current user id</li>
+</ul>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getApartment" class="method item">
+    <h3 class="name"><code>getApartment</code></h3>
 
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
                 <li class="arg">
-                        <code>apartment</code>
+                        <code>aptID</code>
                 </li>
             </ul><span class="paren">)</span>
         </div>
@@ -494,7 +793,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l127"><code>js&#x2F;dbManager.js:127</code></a>
+        <a href="../files/js_dbManager.js.html#l214"><code>js&#x2F;dbManager.js:214</code></a>
         </p>
 
 
@@ -511,7 +810,7 @@
 
             <ul class="params-list">
                 <li class="param">
-                        <code class="param-name">apartment</code>
+                        <code class="param-name">aptID</code>
                         <span class="type">String</span>
 
 
@@ -540,13 +839,19 @@
 
 
 </div>
-<div id="method_getChores" class="method item">
-    <h3 class="name"><code>getChores</code></h3>
+<div id="method_getChore" class="method item">
+    <h3 class="name"><code>getChore</code></h3>
 
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>choreID</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
 
         <span class="returns-inline">
-            <span class="type">ArrayChores</span>
+            <span class="type"><a href="../classes/Chore.html" class="crosslink">Chore</a></span>
         </span>
 
 
@@ -558,7 +863,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l145"><code>js&#x2F;dbManager.js:145</code></a>
+        <a href="../files/js_dbManager.js.html#l294"><code>js&#x2F;dbManager.js:294</code></a>
         </p>
 
 
@@ -566,30 +871,51 @@
     </div>
 
     <div class="description">
-        <p>Gets all chores.</p>
+        <p>Gets a chore.</p>
 
     </div>
 
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">choreID</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>The id of the chore to get</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
 
         <div class="returns">
             <h4>Returns:</h4>
 
             <div class="returns-description">
-                        <span class="type">ArrayChores</span>:
-                    <p>}</p>
+                        <span class="type"><a href="../classes/Chore.html" class="crosslink">Chore</a></span>:
+                    <ul>
+<li>The chore</li>
+</ul>
 
             </div>
         </div>
 
 
 </div>
-<div id="method_getMessages" class="method item">
-    <h3 class="name"><code>getMessages</code></h3>
+<div id="method_getChoreIDs" class="method item">
+    <h3 class="name"><code>getChoreIDs</code></h3>
 
         <span class="paren">()</span>
 
         <span class="returns-inline">
-            <span class="type">ArrayMessage</span>
+            <span class="type">Arraystring</span>
         </span>
 
 
@@ -601,7 +927,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l162"><code>js&#x2F;dbManager.js:162</code></a>
+        <a href="../files/js_dbManager.js.html#l282"><code>js&#x2F;dbManager.js:282</code></a>
         </p>
 
 
@@ -609,7 +935,7 @@
     </div>
 
     <div class="description">
-        <p>Gets all messages.</p>
+        <p>Gets all chore ids.</p>
 
     </div>
 
@@ -618,8 +944,230 @@
             <h4>Returns:</h4>
 
             <div class="returns-description">
-                        <span class="type">ArrayMessage</span>:
-                    <p>}</p>
+                        <span class="type">Arraystring</span>:
+                    <p>} - An array containing the chore ids</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getMessage" class="method item">
+    <h3 class="name"><code>getMessage</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>messageID</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Message.html" class="crosslink">Message</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l338"><code>js&#x2F;dbManager.js:338</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Gets a message by its id.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">messageID</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>The id of the message to get</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/Message.html" class="crosslink">Message</a></span>:
+                    <ul>
+<li>The message</li>
+</ul>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getMessageIDs" class="method item">
+    <h3 class="name"><code>getMessageIDs</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Arraystring</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l326"><code>js&#x2F;dbManager.js:326</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Gets all message ids.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Arraystring</span>:
+                    <p>} - An array containing the message ids</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getPayment" class="method item">
+    <h3 class="name"><code>getPayment</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>paymentID</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Payment.html" class="crosslink">Payment</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l404"><code>js&#x2F;dbManager.js:404</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Gets the payment with the speicifed ID</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">paymentID</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>Payment ID to find payment</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/Payment.html" class="crosslink">Payment</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getPaymentIDs" class="method item">
+    <h3 class="name"><code>getPaymentIDs</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">ArrayPaymentIDs</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l392"><code>js&#x2F;dbManager.js:392</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Gets all the payment IDs</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">ArrayPaymentIDs</span>:
+                    <p>} - An array containing the payment IDs</p>
 
             </div>
         </div>
@@ -632,7 +1180,7 @@
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
                 <li class="arg">
-                        <code class="optional">[user=user_cache.getID()]</code>
+                        <code class="optional">[userID=user_cache.getID()]</code>
                 </li>
             </ul><span class="paren">)</span>
         </div>
@@ -650,7 +1198,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l109"><code>js&#x2F;dbManager.js:109</code></a>
+        <a href="../files/js_dbManager.js.html#l136"><code>js&#x2F;dbManager.js:136</code></a>
         </p>
 
 
@@ -667,7 +1215,7 @@
 
             <ul class="params-list">
                 <li class="param">
-                        <code class="param-name optional">[user=user_cache.getID()]</code>
+                        <code class="param-name optional">[userID=user_cache.getID()]</code>
                         <span class="type">String</span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
 
@@ -697,16 +1245,59 @@
 
 
 </div>
-<div id="method_signIn" class="method item">
-    <h3 class="name"><code>signIn</code></h3>
+<div id="method_isLoggedIn" class="method item">
+    <h3 class="name"><code>isLoggedIn</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Uid</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l154"><code>js&#x2F;dbManager.js:154</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Checks current authentication state.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Uid</span>:
+                    <ul>
+<li>The current user id</li>
+</ul>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_listenForMessages" class="method item">
+    <h3 class="name"><code>listenForMessages</code></h3>
 
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
                 <li class="arg">
-                        <code>email</code>
-                </li>
-                <li class="arg">
-                        <code>password</code>
+                        <code>onChangeCallBack</code>
                 </li>
             </ul><span class="paren">)</span>
         </div>
@@ -721,7 +1312,118 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l41"><code>js&#x2F;dbManager.js:41</code></a>
+        <a href="../files/js_dbManager.js.html#l438"><code>js&#x2F;dbManager.js:438</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Listens for changes in Messages.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">onChangeCallBack</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>The callback when change occurs</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_LogOut" class="method item">
+    <h3 class="name"><code>LogOut</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l176"><code>js&#x2F;dbManager.js:176</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Logs the current user out, if logged in</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Promise</span>:
+                    <ul>
+<li>LogOut promise</li>
+</ul>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_signIn" class="method item">
+    <h3 class="name"><code>signIn</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>email</code>
+                </li>
+                <li class="arg">
+                        <code>password</code>
+                </li>
+                <li class="arg">
+                        <code>onFailCallback</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l40"><code>js&#x2F;dbManager.js:40</code></a>
         </p>
 
 
@@ -763,9 +1465,31 @@
                     </div>
 
                 </li>
+                <li class="param">
+                        <code class="param-name">onFailCallback</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>Asynchronous exception handler</li>
+</ul>
+
+                    </div>
+
+                </li>
             </ul>
         </div>
 
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Promise</span>:
+                    <p>Promise of a non-null User object (newly signed in)</p>
+
+            </div>
+        </div>
 
         <div class="throws">
             <h4>Throws:</h4>
@@ -791,9 +1515,15 @@
                 <li class="arg">
                         <code>password</code>
                 </li>
+                <li class="arg">
+                        <code>onFailCallback</code>
+                </li>
             </ul><span class="paren">)</span>
         </div>
 
+        <span class="returns-inline">
+            <span class="type">Promise</span>
+        </span>
 
 
 
@@ -804,7 +1534,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_dbManager.js.html#l74"><code>js&#x2F;dbManager.js:74</code></a>
+        <a href="../files/js_dbManager.js.html#l80"><code>js&#x2F;dbManager.js:80</code></a>
         </p>
 
 
@@ -846,9 +1576,31 @@
                     </div>
 
                 </li>
+                <li class="param">
+                        <code class="param-name">onFailCallback</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>Asynchronous exception handler</li>
+</ul>
+
+                    </div>
+
+                </li>
             </ul>
         </div>
 
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Promise</span>:
+                    <p>Promise of a nonNull Firebase user</p>
+
+            </div>
+        </div>
 
         <div class="throws">
             <h4>Throws:</h4>
@@ -861,6 +1613,289 @@
 
             </div>
         </div>
+
+</div>
+<div id="method_updateApartment" class="method item">
+    <h3 class="name"><code>updateApartment</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>apartment</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l202"><code>js&#x2F;dbManager.js:202</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Updates an apartment.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">apartment</code>
+                        <span class="type"><a href="../classes/Apartment.html" class="crosslink">Apartment</a></span>
+
+
+                    <div class="param-description">
+                        <ul>
+<li>Apartment</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="throws">
+            <h4>Throws:</h4>
+
+            <div class="throws-description">
+                        <span class="type">Error</span>:
+                    <ul>
+<li>Possible failure to update Apartment</li>
+</ul>
+
+            </div>
+        </div>
+
+</div>
+<div id="method_updateChore" class="method item">
+    <h3 class="name"><code>updateChore</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>-</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l260"><code>js&#x2F;dbManager.js:260</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Updates a chore in the database.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">-</code>
+                        <span class="type"><a href="../classes/Chore.html" class="crosslink">Chore</a></span>
+
+
+                    <div class="param-description">
+                        <p>The Chore Object to be updated</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_updateMessage" class="method item">
+    <h3 class="name"><code>updateMessage</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>-</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l351"><code>js&#x2F;dbManager.js:351</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Updates a message in the database.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">-</code>
+                        <span class="type"><a href="../classes/Message.html" class="crosslink">Message</a></span>
+
+
+                    <div class="param-description">
+                        <p>The message Object to be updated</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_updateUser" class="method item">
+    <h3 class="name"><code>updateUser</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>-</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l271"><code>js&#x2F;dbManager.js:271</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Updates a user in the database.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">-</code>
+                        <span class="type"><a href="../classes/User.html" class="crosslink">User</a></span>
+
+
+                    <div class="param-description">
+                        <p>The User Object to be updated</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_updateUser" class="method item">
+    <h3 class="name"><code>updateUser</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>-</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_dbManager.js.html#l125"><code>js&#x2F;dbManager.js:125</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Updates a user in the database.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">-</code>
+                        <span class="type"><a href="../classes/User.html" class="crosslink">User</a></span>
+
+
+                    <div class="param-description">
+                        <p>The User Object to be updated</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
 
 </div>
             </div>

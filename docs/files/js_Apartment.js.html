@@ -42,9 +42,45 @@
                                 <li><a href="../classes/Chore.html">Chore</a></li>
                                 <li><a href="../classes/DBManager.html">DBManager</a></li>
                                 <li><a href="../classes/Message.html">Message</a></li>
+                                <li><a href="../classes/Payment.html">Payment</a></li>
+                                <li><a href="../classes/React.Component.AddAptDialog.html">React.Component.AddAptDialog</a></li>
+                                <li><a href="../classes/React.Component.App.Main.html">React.Component.App.Main</a></li>
+                                <li><a href="../classes/React.Component.AuthPage.html">React.Component.AuthPage</a></li>
+                                <li><a href="../classes/React.Component.Balance.html">React.Component.Balance</a></li>
+                                <li><a href="../classes/React.Component.ChoreCard.html">React.Component.ChoreCard</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardGrid.html">React.Component.ChoreCardGrid</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardRow.html">React.Component.ChoreCardRow</a></li>
+                                <li><a href="../classes/React.Component.ChoreForm.html">React.Component.ChoreForm</a></li>
+                                <li><a href="../classes/React.Component.ChoreRow.html">React.Component.ChoreRow</a></li>
+                                <li><a href="../classes/React.Component.Chores.html">React.Component.Chores</a></li>
+                                <li><a href="../classes/React.Component.ChoresView.html">React.Component.ChoresView</a></li>
+                                <li><a href="../classes/React.Component.ChoreTable.html">React.Component.ChoreTable</a></li>
+                                <li><a href="../classes/React.Component.CredentialCard.html">React.Component.CredentialCard</a></li>
+                                <li><a href="../classes/React.Component.FAB.html">React.Component.FAB</a></li>
+                                <li><a href="../classes/React.Component.FloatingCard.html">React.Component.FloatingCard</a></li>
+                                <li><a href="../classes/React.Component.FloatingDialog.html">React.Component.FloatingDialog</a></li>
+                                <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
+                                <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
+                                <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
+                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
+                                <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
+                                <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
+                                <li><a href="../classes/React.Component.MessagesEditor.html">React.Component.MessagesEditor</a></li>
+                                <li><a href="../classes/React.Component.MessagesView.html">React.Component.MessagesView</a></li>
+                                <li><a href="../classes/React.Component.NavBar.html">React.Component.NavBar</a></li>
+                                <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
+                                <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
+                                <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
+                                <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
+                                <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
+                                <li><a href="../classes/React.Component.SummaryInfo.html">React.Component.SummaryInfo</a></li>
                                 <li><a href="../classes/React.Component.TodoItem.html">React.Component.TodoItem</a></li>
                                 <li><a href="../classes/React.Component.TodoList.html">React.Component.TodoList</a></li>
+                                <li><a href="../classes/React.Component.ToggleButton.html">React.Component.ToggleButton</a></li>
+                                <li><a href="../classes/React.Component.Transaction.html">React.Component.Transaction</a></li>
                                 <li><a href="../classes/User.html">User</a></li>
                             </ul>
                 
@@ -93,7 +129,6 @@
  * @class Apartment
  */
 export default class Apartment {
-
     /**
      * Constructs an Apartment.
      *
@@ -104,8 +139,28 @@ export default class Apartment {
     constructor (address) {
         this._aptID = null;
         this._tenants = new Array(0);
-        // Parse address
+        this._messages = new Array(0);
+        this._chores = new Array(0);
         this._address = address;
+    }
+
+    /**
+     * Creates an Apartment from input JSON.
+     *
+     * @method JSONtoApartment
+     * @static
+     * @param {string} - JSON representing an Apartment
+     * @return {Apartment} - The Apartment represented by the JSON
+     */
+    static JSONtoApartment(data) {
+        var apartment = new Apartment();
+        var JSONObj = JSON.parse(data);
+        apartment._aptID = JSONObj._aptID;
+        apartment._tenants = JSONObj._tenants;
+        apartment._messages = JSONObj._messages;
+        apartment._chores = JSONObj._chores;
+        apartment._address = JSONObj._address;
+        return apartment;
     }
 
     /**
@@ -139,23 +194,63 @@ export default class Apartment {
     }
 
     /**
+      * Gets the ids of all the messages sent in the Apartment.
+      *
+      * @method getMessageIDs
+      * @return {Array{string}}
+      */
+    getMessageIDs() {
+        return this._messages;
+    }
+
+    /**
+      * Gets the ids of all the chores in the Apartment.
+      *
+      * @method getChoreIDs
+      * @return {Array{string}}
+      */
+    getChoreIDs() {
+        return this._chores;
+    }
+
+    /**
      * Sets the Apartment ID.
      *
      * @method setAptID
-     * @param {string} aptId - The new Apartment ID
-     */ 
+     * @param {string} aptID - The new Apartment ID
+     */
     setAptID(aptID) {
         this._aptID = aptID;
     }
 
-    /** 
+    /**
      * Adds a tenant to the Apartment.
      *
      * @method addTenant
-     * @param {string} tenant - The new tenant&#x27;s ID
+     * @param {string} userID - The new tenant&#x27;s ID
      */
-    addTenant(tenant) {
-        this._tenants.push(tenant);
+    addTenant(userID) {
+        this._tenants.push(userID);
+    }
+
+    /**
+     * Adds a message to the Apartment.
+     *
+     * @method addMessage
+     * @param {string} messageID - The new message ID
+     */
+    addMessage(messageID) {
+        this._messages.push(messageID);
+    }
+
+    /**
+     * Adds a chore to the Apartment.
+     *
+     * @method addChore
+     * @param {string} choreID - The new chore ID
+     */
+    addChore(choreID) {
+        this._chores.push(choreID);
     }
 }
 
