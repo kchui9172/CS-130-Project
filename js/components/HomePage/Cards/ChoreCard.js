@@ -68,6 +68,16 @@ export default class ChoreCard extends React.Component {
     }
 
     /**
+     * Gets Date from DateTime string.
+     *
+     * @method getDateOnly
+     * @param {string} dateTime - The DateTime to extract from
+     */
+    getDateOnly(dateTime) {
+        return dateTime.split('T')[0];
+    }
+
+    /**
      * Renders a Chore Card.
      *
      * @method render
@@ -88,7 +98,7 @@ export default class ChoreCard extends React.Component {
                             label="Completed? "
                         />
                         <p>Assignment: {this.state.assigneeName}</p>
-                        <p>Deadline: {chore.getDeadline()}</p>
+                        <p>Deadline: {this.getDateOnly(chore.getDeadline())}</p>
                         <p>Category: {chore.getCategory()}</p>
                         <p>Details: {chore.getCategory()}</p>
                     </CardText>

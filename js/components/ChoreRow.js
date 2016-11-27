@@ -25,10 +25,12 @@ export default class ChoreRow extends React.Component {
         super(props);
 
         this.state = {
-            assigneeName: ""   
+            assigneeName: "",
+            creatorName: ""
         };
 
         this.setAssigneeName = this.setAssigneeName.bind(this);
+        this.setCreatorName = this.setCreatorName.bind(this);
     }
 
     /**
@@ -38,13 +40,41 @@ export default class ChoreRow extends React.Component {
      */
     componentDidMount() {
         this.setAssigneeName();
+        this.setCreatorName();
     }
 
+    /**
+     * Sets the assignee name in state.
+     *
+     * @method setAssigneeName
+     */
     setAssigneeName() {
         var manager = new DBManager();
         manager.getUser(this.props.chore.getAssignment()).then(function(user) {
             this.setState({assigneeName: user.getName()});
         }.bind(this));
+    }
+    
+    /**
+     * Sets the creator name in state.
+     *
+     * @method setCreatorName
+     */
+    setCreatorName() {
+        var manager = new DBManager();
+        manager.getUser(this.props.chore.getCreator()).then(function(user) {
+            this.setState({creatorName: user.getName()});
+        }.bind(this));
+    }
+
+    /**
+     * Gets Date from DateTime string.
+     *
+     * @method getDateOnly
+     * @param {string} dateTime - The DateTime to extract from
+     */
+    getDateOnly(dateTime) {
+        return dateTime.split('T')[0];
     }
 
     /**
@@ -67,12 +97,12 @@ export default class ChoreRow extends React.Component {
                 </td>
                 <td>{chore.getChoreID()}</td>
                 <td>{chore.getCategory()}</td>
-                <td>{chore.getCreator()}</td>
-                <td>{chore.getDeadline()}</td>
+                <td>{this.state.creatorName}</td>
+                <td>{this.getDateOnly(chore.getDeadline())}</td>
                 <td>{chore.getDetails()}</td>
-                <td>{chore.getAssignment()}</td>
-                <td>{chore.getCreationDate()}</td>
-                <td>{chore.getCompletionDate()}</td>
+                <td>{this.state.assigneeName}</td>
+                <td>{this.getDateOnly(chore.getCreationDate())}</td>
+                <td>{this.getDateOnly(chore.getCompletionDate())}</td>
             </tr>
         );
     }
