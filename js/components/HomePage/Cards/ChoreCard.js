@@ -5,7 +5,8 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 
 import FloatingCard from '../../primitives/FloatingCard.js';
 
-import Chore from '../../../Chore.js'
+import Chore from '../../../Chore.js';
+import ToggleButton from '../../ToggleButton.js';
 
 const style = {
   text: {
@@ -15,7 +16,7 @@ const style = {
 
   card: {
     width:256,
-    height:256,
+    height:384,
     textAlign:'center',
     borderRadius: '6px',
   },
@@ -31,8 +32,15 @@ export default class ChoreCard extends React.Component {
         if (chore) {
             return (
                 <FloatingCard style={style.card}>
-                    <CardTitle title="Chore"/>
+                    <CardTitle title="Chore"></CardTitle>
                     <CardText style={style.text}>
+                        <ToggleButton
+                            onCompletion={this.props.onCompletion}
+                            onUncompletion={this.props.onUncompletion}
+                            getDefaultToggle={this.props.getDefaultToggle}
+                            toggledObject={chore}
+                            label="Completed? "
+                        />
                         <p>Assignment: {chore.getAssignment()}</p>
                         <p>Deadline: {chore.getDeadline()}</p>
                         <p>Category: {chore.getCategory()}</p>
@@ -45,4 +53,12 @@ export default class ChoreCard extends React.Component {
             return null;
         }
     }
+};
+
+ChoreCard.propTypes = {
+    chore: React.PropTypes.object.isRequired,
+    key: React.PropTypes.string.isRequired,
+    onCompletion: React.PropTypes.func.isRequired,
+    onUncompletion: React.PropTypes.func.isRequired,
+    getDefaultToggle: React.PropTypes.func.isRequired
 };

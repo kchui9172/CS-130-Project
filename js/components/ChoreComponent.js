@@ -32,8 +32,20 @@ export default class Chores extends React.Component {
             <div>
                 <h1>Chores</h1>
                 <ChoreForm />
-                <ChoreTable choreList={this.props.choreList} />
+                <ChoreTable 
+                    choreList={this.props.choreList}
+                    onCompletion={this.props.onCompletion}
+                    onUncompletion={this.props.onUncompletion}
+                    getDefaultToggle={this.props.getDefaultToggle}
+                />
             </div>
         );
     }
-}
+};
+
+Chores.propTypes = {
+    choreList: React.PropTypes.array.isRequired,
+    onCompletion: React.PropTypes.func.isRequired,
+    onUncompletion: React.PropTypes.func.isRequired,
+    getDefaultToggle: React.PropTypes.func.isRequired
+};

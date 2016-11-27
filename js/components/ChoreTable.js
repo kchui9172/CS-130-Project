@@ -22,7 +22,6 @@ export default class ChoreTable extends React.Component {
         super(props);
     }
 
-
     /**
      * Renders a Chore Table
      *
@@ -47,25 +46,23 @@ export default class ChoreTable extends React.Component {
                 <tbody>
                     {this.props.choreList.map(
                         function(chore) {
-                            var onCompletion = function() {
-                                chore.complete();
-                                var manager = new DBManager();
-                                manager.updateChore(chore);
-                            }
-                            var onUncompletion = function() {
-                                chore.uncomplete();
-                                var manager = new DBManager();
-                                manager.updateChore(chore);
-                            }
                             return (<ChoreRow chore={chore} 
                                         key={chore.getChoreID()} 
-                                        onCompletion={onCompletion} 
-                                        onUncompletion={onUncompletion}
+                                        onCompletion={this.props.onCompletion} 
+                                        onUncompletion={this.props.onUncompletion}
+                                        getDefaultToggle={this.props.getDefaultToggle}
                                     />);
-                        })
+                        }.bind(this))
                     }
                 </tbody>
             </table>
         );
     }
-}
+};
+
+ChoreTable.propTypes = {
+    choreList: React.PropTypes.array.isRequired,
+    onCompletion: React.PropTypes.func.isRequired,
+    onUncompletion: React.PropTypes.func.isRequired,
+    getDefaultToggle: React.PropTypes.func.isRequired
+};
