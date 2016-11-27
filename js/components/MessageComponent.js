@@ -21,9 +21,9 @@ export default class Messages extends React.Component{
     };
 
     /**
-     * Renders the Messages page
+     * Renders the Messages page.
      *
-     * @render
+     * @method render
      */
     render(){
         return (

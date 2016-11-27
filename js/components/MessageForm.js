@@ -16,9 +16,12 @@ import {FormsyText} from 'formsy-material-ui/lib';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton'; */
 
-
-
-
+/**
+ * Represents a Message Form.
+ *
+ * @class React.Component.MessageForm
+ * @extends React.Component
+ */
 export default class MessageForm extends React.Component {
     /**
      * Constructs a Message Form.
@@ -38,6 +41,12 @@ export default class MessageForm extends React.Component {
         //this.handleSubmit = this.handleSubmit.bind(this);
     };
 
+    /**
+     * Adds a Message to the database
+     *
+     * @method addItem
+     * @param {Object} e - The submitted object with the message text
+     */
     addItem(e) {
         console.log(e.messageText);
         console.log("about to add message");
@@ -77,6 +86,12 @@ export default class MessageForm extends React.Component {
         }*/
     //}
 
+  /**
+   * Handles change in the message text box.
+   *
+   * @method handleChange
+   * @param {Event} event - The event triggered on change
+   */
   handleChange(event) {
     this.setState({value: event.target.value});
   }

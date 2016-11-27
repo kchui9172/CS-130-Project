@@ -44,6 +44,7 @@ const SmallView = (
       </CardMedia>
     </Card>);
 
+/* TODO: this is the same as the other SummaryInfo? */
 export default class SummaryInfo extends React.Component {
   static propTypes = {
     colWidth: React.PropTypes.number // How wide is this component in “grid units”?

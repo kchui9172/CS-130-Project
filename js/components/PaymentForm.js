@@ -37,6 +37,12 @@ export default class PaymentForm extends React.Component {
         this.setTenantsList = this.setTenantsList.bind(this);
     };
 
+    /**
+     * Adds a Payment to the database.
+     *
+     * @method addPayment
+     * @param {Object} e - The data sent on form submission
+     */
     addPayment(e){
         var manager = new DBManager();
         if (e.userPos == "loaner"){
@@ -62,24 +68,44 @@ export default class PaymentForm extends React.Component {
         //}.bind(this));
     }
 
+    /**
+     * Gets the initial state.
+     *
+     * @method getInitialState
+     */
     getInitialState(){
       return{
         validateAmount: true,
       };
     }
 
+    /**
+     * Enables amount validation.
+     *
+     * @method enableAmountValidation
+     */
     enableAmountValidation(){
       this.setState({
         validateAmount: true,
       });
     }
 
+    /**
+     * Disables amount validation.
+     *
+     * @method disableAmountValidation
+     */
     disableAmountValidation(){
       this.setState({
         validateAmount: false,
       });
     }
 
+    /**
+     * Sets tenant list in state.
+     *
+     * @method setTenantsList
+     */
     setTenantsList() {
       var db = new DBManager();
       var tenants = [];
@@ -95,6 +121,11 @@ export default class PaymentForm extends React.Component {
       }.bind(this));
     }
 
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
     componentDidMount() {
       this.setTenantsList();
     }

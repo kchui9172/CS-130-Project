@@ -14,18 +14,33 @@ const style={
     textAlign:'center',
     padding:'128px',
   },
+
 };
+/**
+ * Represents a Messages Table.
+ *
+ * @class React.Component.Messagesable
+ * @extends React.Component
+ */
 class MessagesTable extends React.Component {
     /**
-     * Constructs a MessagesTable
+     * Constructs a MessagesTable.
      *
      * @method constructor
      * @constructor
+     * @param {Object} props - Properties passed by parent
      */
     constructor(props) {
         super(props);
     }
 
+    /**
+     * Creates a row for a Message.
+     *
+     * @method composeRow
+     * @param {Message} message - The message
+     * @return {Object} - A renderable component
+     */
     composeRow(message) {
         var date = new Date(message.getTimeSent());
         return (
@@ -38,7 +53,7 @@ class MessagesTable extends React.Component {
     }
 
     /**
-     * Renders a MessagesTable
+     * Renders a Messages Table.
      *
      * @method render
      */
@@ -62,8 +77,20 @@ class MessagesTable extends React.Component {
     }
 }
 
+/**
+ * Represents a Messages Card.
+ *
+ * @class React.Component.MessagesCard
+ * @extends React.Component
+ */
 export default class MessagesCard extends React.Component {
-
+  /**
+   * Constructs a Messages Card.
+   *
+   * @method constructor
+   * @constructor
+   * @param {Object} props - Properties passed by parent
+   */
   constructor(props) {
       super(props);
       this.state = {
@@ -71,6 +98,11 @@ export default class MessagesCard extends React.Component {
       }
   }
 
+  /**
+   * Fetches messages from the database.
+   *
+   * @method fetchMessages
+   */
   fetchMessages() {
     var newMessages = [];
     var db = new DBManager();
@@ -94,10 +126,20 @@ export default class MessagesCard extends React.Component {
     }.bind(this));
   }
 
+  /**
+   * Function called when the component mounts.
+   *
+   * @method componentDidMount
+   */
   componentDidMount() {
     this.fetchMessages();
   }
 
+  /**
+   * Renders a Messages Card.
+   *
+   * @method render
+   */
   render() {
   return(
     <Card className='rounded blurred'>

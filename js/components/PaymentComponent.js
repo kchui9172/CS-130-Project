@@ -21,9 +21,9 @@ export default class PaymentComponent extends React.Component{
     };
 
     /**
-     * Renders the Payments page
+     * Renders the Payments page.
      *
-     * @render
+     * @method render
      */
     render(){
         return (

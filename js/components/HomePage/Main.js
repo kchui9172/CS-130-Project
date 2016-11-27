@@ -71,8 +71,20 @@ function wrapState(ComposedComponent) {
 
 let SelectableList = wrapState(makeSelectable(List));
 
+/**
+ * Represents a Home Page.
+ *
+ * @class React.Component.HomePage
+ * @extends React.Component
+ */
 export default class HomePage extends React.Component {
-
+  /** 
+   * Constructs a Home Page.
+   *
+   * @method constructor
+   * @constructor
+   * @param {Object} props - Properties passed by parent
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -84,17 +96,32 @@ export default class HomePage extends React.Component {
     };
   };
 
+  /**
+   * Function called when component mounts.
+   *
+   * @method componentDidMount
+   */
   componentDidMount () {
     this.setState({
           loading: false,
     });
   }
 
+  /**
+   * Handles drawer toggle.
+   *
+   * @method handleDrawerToggle
+   */
   handleDrawerToggle = () => {
       this.setState({menuFAB: true});
       console.log('FAB : ', true);
   };
 
+  /**
+   * Renders a Home Page.
+   *
+   * @method render
+   */
   render() {
     return ((this.state.loading) ? <Loading style={style.loading}/> :
     (

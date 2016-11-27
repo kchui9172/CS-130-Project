@@ -10,8 +10,8 @@ export default class Message {
      *
      * @method constructor
      * @constructor
-     * @param {string} userID - The ID of the user.
-     * @param {string} aptID - The ID of the apartment.
+     * @param {string} userID - The ID of the user
+     * @param {string} aptID - The ID of the apartment
      * @param {Date} timeSent - The timestamp of when message was sent
      * @param {text} text - The actual text of message
      */

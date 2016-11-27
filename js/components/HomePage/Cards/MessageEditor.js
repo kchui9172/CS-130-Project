@@ -26,17 +26,30 @@ const style = {
 };
 
 /**
- * Represents the Messages page.
+ * Represents a Messages Editor.
  *
- * @class React.Component.Messages
+ * @class React.Component.MessagesEditor
  * @extends React.Component
  */
 export default class MessageEditor extends React.Component {
 
+  /**
+   * Constructs a Messages Editor.
+   *
+   * @method constructor
+   * @constructor
+   * @param {Object} props - Properties passed by parent
+   * @param {Object} context - Context passed by parent
+   */
   constructor(props, context) {
       super(props, context);
   }
 
+  /**
+   * Renders a Messages Editor.
+   *
+   * @method render
+   */
   render() {
   return(
     <div style={style.card}>

@@ -5,18 +5,18 @@ import Formsy from 'formsy-react';
 import { FormsyToggle } from 'formsy-material-ui/lib';
 
 /**
- * Represents a Toggle Button
+ * Represents a Toggle Button.
  *
  * @class React.Component.ToggleButton
  * @extends React.Component
  */
 export default class ToggleButton extends React.Component {
     /**
-     * Constructs a Toggle Button
+     * Constructs a Toggle Button.
      *
      * @method constructor
      * @constructor
-     * @param {Object} props - Properties passed by parent
+     * @param {Object} props - Properties passed by parent. See propTypes
      */
     constructor(props) {
         super(props);
@@ -25,7 +25,7 @@ export default class ToggleButton extends React.Component {
     };
 
     /**
-     * Handle toggle to complete chore
+     * Handles toggle to complete chore.
      *
      * @method handleToggle
      * @param {Event} e - Event fired when toggle
@@ -43,7 +43,7 @@ export default class ToggleButton extends React.Component {
     }
 
     /**
-     * Renders a Toggle Button
+     * Renders a Toggle Button.
      *
      * @method render
      */

@@ -15,15 +15,32 @@ const style = {
 };
 
 const ResponsiveSummary = (SummaryInfo);
-export default class AuthPage extends React.Component {
 
+/** 
+ * Represents an Authentication Page.
+ *
+ * @class React.Component.AuthPage
+ * @extends React.Component
+ */
+export default class AuthPage extends React.Component {
+  /**
+   * Constructs an Authentication Page.
+   *
+   * @method constructor
+   * @constructor
+   * @param {Object} props - Properties passed by parent
+   */  
   constructor(props) {
     super(props);
     this.state = {
     };
   };
 
-
+  /**
+   * Renders an Authenticatio Page.
+   *
+   * @method render
+   */
   render() {
     return (
         <div style={style.contents} >

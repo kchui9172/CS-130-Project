@@ -9,18 +9,18 @@ import ReactDOM from 'react-dom';
  */
 export default class TodoItem extends React.Component {
     /**
-     * Constructs a To-Do Item
+     * Constructs a To-Do Item.
      *
      * @method constructor
      * @constructor
-     * @params {Object} props - Properties passed by parent
+     * @param {Object} props - Properties passed by parent
      */
     constructor(props) {
         super(props);
     };
 
     /**
-     * Renders a To-Do Item
+     * Renders a To-Do Item.
      *
      * @method render
      */

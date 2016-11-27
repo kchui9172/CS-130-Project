@@ -10,12 +10,12 @@ export default class Chore {
      *
      * @constructor
      * @method constructor
-     * @param {string} userID - The ID of the user.
-     * @param {string} aptID - The ID of the apartment.
-     * @param {string} category - The category of the Chore.
-     * @param {Date} deadline - The deadline of the Chore.
-     * @param {string} details - Additional details of the Chore.
-     * @param {string} assignee - The assignee of the Chore.
+     * @param {string} userID - The ID of the user
+     * @param {string} aptID - The ID of the apartment
+     * @param {string} category - The category of the Chore
+     * @param {Date} deadline - The deadline of the Chore
+     * @param {string} details - Additional details of the Chore
+     * @param {string} assignee - The assignee of the Chore
      */
     constructor(userID, aptID, category, deadline, details, assignee) {
         this._choreID = null;
@@ -64,7 +64,7 @@ export default class Chore {
      * Sets a user assignment to the Chore.
      *
      * @method setAssignment
-     * @param {string} userID - The User ID of the assignee of the Chore.
+     * @param {string} userID - The User ID of the assignee of the Chore
      */
     setAssignment(userID) { this._assignedTo = userID; }
 
@@ -72,7 +72,7 @@ export default class Chore {
      * Sets the deadline for the chore.
      *
      * @method setDeadline
-     * @param {Date} deadline - The deadline of the Chore.
+     * @param {Date} deadline - The deadline of the Chore
      */
     setDeadline(deadline) { this._deadline = deadline; }
 
@@ -80,12 +80,12 @@ export default class Chore {
      * Sets the details for the chore.
      *
      * @method setDetails
-     * @param {string} details - The details of the Chore.
+     * @param {string} details - The details of the Chore
      */
     setDetails(detail) { this._details = details; }
 
     /**
-     * Sets the completion date of the finished Chore.
+     * Sets the completion date of the finished Chore
      *
      * @method complete
      */
@@ -99,7 +99,7 @@ export default class Chore {
     uncomplete() { this._finishedBy = null; }
 
     /**
-     * Gets the Chore ID
+     * Gets the Chore ID.
      *
      * @method getChoreID
      * @return {string} - The Chore ID

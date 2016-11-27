@@ -24,23 +24,45 @@ const style = {
   },
 };
 
+/**
+ * Represents a Login Form.
+ *
+ * @class React.Component.LoginForm
+ * @extends React.Component
+ */
 const LoginForm = React.createClass({
   contextTypes: {
       router: React.PropTypes.object.isRequired
   },
 
+  /**
+   * Enables the login button.
+   *
+   * @method enableButton
+   */
   enableButton() {
     this.setState({
       canSubmit: true,
     });
   },
 
+  /**
+   * Disables the login button.
+   *
+   * @method disableButton
+   */
   disableButton() {
     this.setState({
       canSubmit: false,
     });
   },
 
+  /**
+   * Submits the Login Form to the database
+   *
+   * @method submitForm
+   * @param {Object} data - The Login Form data
+   */
   submitForm(data) {
 
     if(data.email=="" || data.password=="") {
@@ -57,6 +79,12 @@ const LoginForm = React.createClass({
     var result = dbManager.signIn(data.email, data.password, this.notifyLoginError);
   },
 
+  /**
+   * Notifies that login error has occurred.
+   *
+   * @method notifyLoginError
+   * @param {Error} error - The error
+   */
   notifyLoginError(error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -68,11 +96,22 @@ const LoginForm = React.createClass({
     return null;
   },
 
+  /**
+   * Resets the Login Form.
+   *
+   * @method resetLoginForm
+   */
   resetLoginForm() {
     this.setState(this.getInitialState());
     this.refs.login.reset();
   },
 
+  /**
+   * Notifies that there is an error in the Login Form
+   *
+   * @method notifyFormError
+   * @param {Object} data - The current data in the form
+   */
   notifyFormError(data) {
     console.error('Form error:', data);
     this.setState({
@@ -81,6 +120,11 @@ const LoginForm = React.createClass({
     });
   },
 
+  /**
+   * Gets the initial state of the Login Form.
+   *
+   * @method getInitialState
+   */
   getInitialState() {
     return {
       validateEmail: true,
@@ -97,6 +141,11 @@ const LoginForm = React.createClass({
     };
   },
 
+  /**
+   * Enables password validation.
+   *
+   * @method enablePasswordValidation
+   */
   enablePasswordValidation() {
     this.setState({
       validatePassword: true,
@@ -104,6 +153,11 @@ const LoginForm = React.createClass({
     console.log('validatePassword:', 'true');
   },
 
+  /**
+   * Disables password validation.
+   *
+   * @method disabePasswordValidation
+   */
   disablePasswordValidation() {
     this.setState({
       validatePassword: false,
@@ -112,6 +166,11 @@ const LoginForm = React.createClass({
     console.log('validatePassword:', 'false');
   },
 
+  /**
+   * Enables email validation.
+   *
+   * @method enableEmailValidation
+   */
   enableEmailValidation() {
     this.setState({
       validateEmail: true,
@@ -119,6 +178,11 @@ const LoginForm = React.createClass({
     console.log('validateEmail:', 'true');
   },
 
+  /**
+   * Disables email validation.
+   *
+   * @method disableEmailValidation
+   */
   disableEmailValidation() {
     this.setState({
       validateEmail: false,
@@ -127,6 +191,11 @@ const LoginForm = React.createClass({
     console.log('validateEmail:', 'false');
   },
 
+  /**
+   * Renders a Login Form.
+   *
+   * @method render
+   */
   render() {
     return (
       <div>

@@ -69,7 +69,7 @@ export default class Apartment {
     }
 
     /**
-      * Gets the ids of all the messages sent in the Apartment
+      * Gets the ids of all the messages sent in the Apartment.
       *
       * @method getMessageIDs
       * @return {Array{string}}
@@ -79,7 +79,7 @@ export default class Apartment {
     }
 
     /**
-      * Gets the ids of all the chores in the Apartment
+      * Gets the ids of all the chores in the Apartment.
       *
       * @method getChoreIDs
       * @return {Array{string}}

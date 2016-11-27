@@ -23,7 +23,7 @@ export default class ChoreTable extends React.Component {
     }
 
     /**
-     * Renders a Chore Table
+     * Renders a Chore Table.
      *
      * @method render
      */

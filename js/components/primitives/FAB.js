@@ -37,13 +37,26 @@ const style = {
   },
 };
 
-/**
+/*
  * Default size and `mini` FABs, in primary (default), `secondary` and `disabled` colors.
+ */
+/**
+ * Represents a Floating Action Button.
+ *
+ * @class React.Component.FAB
+ * @extends React.Component
  */
  export default class FAB extends React.Component {
 
    static muiName = 'FloatingActionButton';
 
+   /**
+    * Constructs a Floating Action Button.
+    *
+    * @method constructor
+    * @constructor
+    * @param {Object} props - Properties passed by parent
+    */
    constructor(props) {
      super(props);
      this.state = {
@@ -52,6 +65,12 @@ const style = {
      };
    }
 
+   /**
+    * Handles touch tap event.
+    *
+    * @method handleTouchTap
+    * @param {Event} event - The event triggered on touch tap
+    */
    handleTouchTap = (event) => {
      // This prevents ghost click.
      event.preventDefault();
@@ -61,13 +80,22 @@ const style = {
      });
    };
 
+   /**
+    * Handles request to close Floating Action Button
+    *
+    * @method handleRequestClose
+    */
    handleRequestClose = () => {
      this.setState({
        open: false,
      });
    };
 
-
+    /**
+     * Renders a Floating Action Button.
+     *
+     * @method render
+     */
     render() {
         return (
           <div>

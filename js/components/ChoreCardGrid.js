@@ -3,11 +3,29 @@ import {Grid} from 'react-cellblock';
 
 import ChoreCardRow from './ChoreCardRow.js';
 
+/**
+ * Represents a Chore Card Grid.
+ *
+ * @class React.Component.ChoreCardGrid
+ * @extends React.Component
+ */
 export default class ChoreCardGrid extends React.Component {
+    /**
+     * Constructs a Chore Card Grid.
+     *
+     * @method constructor
+     * @constructor
+     * @param {Object} props - Properties passed by parent. See propTypes
+     */
     constructor(props) {
         super(props);
     }
 
+    /**
+     * Renders a Chore Card Grid.
+     *
+     * @method render
+     */
     render() {
         if (this.props.choreList && 
             this.props.choreList.length > 0) {

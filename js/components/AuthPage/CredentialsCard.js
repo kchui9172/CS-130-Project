@@ -17,8 +17,21 @@ const style = {
   }
 };
 
+/**
+ * Represents a Credentials Card.
+ *
+ * @class React.Component.CredentialCard
+ * @extends React.Component
+ */
 export default class CredentialsCard extends React.Component {
-
+  /**
+   * Constructs a Credentials Card.
+   *
+   * @method constructor
+   * @constructor
+   * @param {Object} props - Properties passed by parent
+   * @param {Object} context - Context passed by parent
+   */
   constructor(props, context) {
       super(props, context);
       this.state = {
@@ -26,12 +39,23 @@ export default class CredentialsCard extends React.Component {
       };
     }
 
+  /**
+   * Handles event where Credentials Card is changed.
+   *
+   * @method handleChange
+   * @param {Object} value - The new, changed value
+   */
   handleChange = (value) => {
     this.setState({
       slideIndex: value,
     });
   };
 
+  /**
+   * Renders a Credentials Card.
+   *
+   * @method render
+   */
   render() {
   return(
     <div style={style.card}>

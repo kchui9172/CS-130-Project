@@ -22,11 +22,29 @@ const style = {
   },
 }
 
+/**
+ * Represents a Chore Card.
+ *
+ * @class React.Component.ChoreCard
+ * @extends React.Component
+ */
 export default class ChoreCard extends React.Component {
+    /**
+     * Constructs a Chore Card.
+     *
+     * @method constructor
+     * @constructor
+     * @param {Object} props - Properties passed by parent. See propTypes
+     */
     constructor(props) {
         super(props);
     }
 
+    /**
+     * Renders a Chore Card.
+     *
+     * @method render
+     */
     render() {
         var chore = this.props.chore;
         if (chore) {
