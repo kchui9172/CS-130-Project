@@ -18,12 +18,17 @@ export default class ChoreCardRow extends React.Component {
                         function (chore) {
                             return (
                                 <Column width="1/4">
-                                    <ChoreCard chore={chore}
-                                        key={chore.getChoreID()} />
+                                    <ChoreCard 
+                                        chore={chore}
+                                        key={chore.getChoreID()}
+                                        onCompletion={this.props.onCompletion}
+                                        onUncompletion={this.props.onUncompletion}
+                                        getDefaultToggle={this.props.getDefaultToggle}
+                                    />
                                 </Column>
                             );
-                        })
-                    }
+                        }.bind(this))
+                    } 
                     </Row>
                     <br/>
                     <br/>

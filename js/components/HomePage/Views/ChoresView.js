@@ -21,6 +21,22 @@ export default class ChoresView extends React.Component {
         this.setChoresLists = this.setChoresLists.bind(this);
     }
 
+    onCompletion(chore) {
+        chore.complete();
+        var manager = new DBManager();
+        manager.updateChore(chore);
+    }
+
+    onUncompletion(chore) {
+        chore.uncomplete();
+        var manager = new DBManager();
+        manager.updateChore(chore);
+    }
+
+    getDefaultToggle(chore) {
+        return chore.getCompletionDate() ? true : false;
+    }
+
     findInsertionIndex(choreList, chore) {
         var index = 0;
         while (index < choreList.length) {
@@ -67,15 +83,29 @@ export default class ChoresView extends React.Component {
 
 
     render() {
+        var allChoresList = this.state.allChoresList;
+        var completeChoresList = this.state.completeChoresList;
+        var incompleteChoresList = this.state.incompleteChoresList;
+        
         if (this.state.allChoresList &&
             this.state.allChoresList.length > 0)
             return (
                 <div>
-                    <ChoreCardGrid choreList={this.state.incompleteChoresList} />
+                    <ChoreCardGrid 
+                        choreList={incompleteChoresList} 
+                        onCompletion={this.onCompletion}
+                        onUncompletion={this.onUncompletion}
+                        getDefaultToggle={this.getDefaultToggle}
+                    />
                     <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >
                         <Row>
                             <Column offset="1/16" width="7/8">
-                                <ChoreComponent choreList={this.state.allChoresList} />
+                                <ChoreComponent 
+                                    choreList={(incompleteChoresList.slice(12)).concat(completeChoresList)} 
+                                    onCompletion={this.onCompletion}
+                                    onUncompletion={this.onUncompletion}
+                                    getDefaultToggle={this.getDefaultToggle}
+                                />
                             </Column>
                         </Row>
                     </Grid>

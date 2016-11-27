@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 
 import Formsy from 'formsy-react';
 import { FormsyToggle } from 'formsy-material-ui/lib';
+
+import ToggleButton from './ToggleButton.js'
+
 /**
  * Represents a Chore Row
  *
- * @class React.Componet.ChoreRow
+ * @class React.Component.ChoreRow
  * @extends React.Component
  */
 export default class ChoreRow extends React.Component {
@@ -15,29 +18,11 @@ export default class ChoreRow extends React.Component {
      *
      * @method constructor
      * @constructor
-     * @params {Object} props - Properties passed by parent
+     * @param {Object} props - Properties passed by parent
      */
     constructor(props) {
         super(props);
-
-        this.handleToggle = this.handleToggle.bind(this);
     };
-
-    /**
-     * Handle toggle to complete chore
-     *
-     * @method handleToggle
-     * @param {Event} e - Event fired when toggle
-     * @param {boolean} value - Whether button is toggled or not
-     */
-    handleToggle(e, value) {
-        if (value) {
-            this.props.onCompletion();
-        }
-        else {
-            this.props.onUncompletion();
-        }
-    }
 
     /**
      * Renders a Chore Row
@@ -46,19 +31,16 @@ export default class ChoreRow extends React.Component {
      */
     render() {
         var chore = this.props.chore;
-        var checkbox = (
-                <Formsy.Form>
-                    <FormsyToggle
-                        name="isCompleted"
-                        label=""
-                        defaultToggled={chore.getCompletionDate() ? true : false}
-                        onChange={this.handleToggle}
-                    />
-                </Formsy.Form>
-            );
         return (
             <tr>
-                <td>{checkbox}</td>
+                <td>
+                    <ToggleButton 
+                        onCompletion={this.props.onCompletion}
+                        onUncompletion={this.props.onUncompletion}
+                        getDefaultToggle={this.props.getDefaultToggle}
+                        toggledObject={chore}
+                    />
+                </td>
                 <td>{chore.getChoreID()}</td>
                 <td>{chore.getCategory()}</td>
                 <td>{chore.getCreator()}</td>
