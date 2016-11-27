@@ -60,3 +60,11 @@ export default class ToggleButton extends React.Component {
         );
     }
 };
+
+ToggleButton.propTypes = {
+    onCompletion: React.PropTypes.func.isRequired,
+    onUncompletion: React.PropTypes.func.isRequired,
+    getDefaultToggle: React.PropTypes.func.isRequired,
+    toggledObject: React.PropTypes.object.isRequired,
+    label: React.PropTypes.string
+};

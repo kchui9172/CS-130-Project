@@ -52,4 +52,11 @@ export default class ChoreRow extends React.Component {
             </tr>
         );
     }
-}
+};
+
+ChoreRow.propTypes = {
+    chore: React.PropTypes.object.isRequired,
+    onCompletion: React.PropTypes.func.isRequired,
+    onUncompletion: React.PropTypes.func.isRequired,
+    getDefaultToggle: React.PropTypes.func.isRequired
+};

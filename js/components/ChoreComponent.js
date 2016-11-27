@@ -41,4 +41,11 @@ export default class Chores extends React.Component {
             </div>
         );
     }
-}
+};
+
+Chores.propTypes = {
+    choreList: React.PropTypes.array.isRequired,
+    onCompletion: React.PropTypes.func.isRequired,
+    onUncompletion: React.PropTypes.func.isRequired,
+    getDefaultToggle: React.PropTypes.func.isRequired
+};

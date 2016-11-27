@@ -38,4 +38,11 @@ export default class ChoreCardGrid extends React.Component {
             return null;
         }
     }
-} 
+};
+
+ChoreCardGrid.propTypes = {
+    choreList: React.PropTypes.array.isRequired,
+    onCompletion: React.PropTypes.func.isRequired,
+    onUncompletion: React.PropTypes.func.isRequired,
+    getDefaultToggle: React.PropTypes.func.isRequired
+};

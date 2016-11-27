@@ -22,7 +22,6 @@ export default class ChoreTable extends React.Component {
         super(props);
     }
 
-
     /**
      * Renders a Chore Table
      *
@@ -59,4 +58,11 @@ export default class ChoreTable extends React.Component {
             </table>
         );
     }
-}
+};
+
+ChoreTable.propTypes = {
+    choreList: React.PropTypes.array.isRequired,
+    onCompletion: React.PropTypes.func.isRequired,
+    onUncompletion: React.PropTypes.func.isRequired,
+    getDefaultToggle: React.PropTypes.func.isRequired
+};

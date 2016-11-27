@@ -39,4 +39,11 @@ export default class ChoreCardRow extends React.Component {
             return null;
         }
     }
-}
+};
+
+ChoreCardRow.propTypes = {
+    choreList: React.PropTypes.array.isRequired,
+    onCompletion: React.PropTypes.func.isRequired,
+    onUncompletion: React.PropTypes.func.isRequired,
+    getDefaultToggle: React.PropTypes.func.isRequired
+};
