@@ -36,10 +36,26 @@ const PaymentForm = React.createClass({
 
     addPayment(e){
         var manager = new DBManager();
-        //manager.signIn("bob@gmail.com","password").then(function(){
-            var payment = new Payment(e.paymentAmount,e.loaner,e.loanee, new Date(), null, e.dueDate, e.paymentDescription,e.paymentCategory,e.recurringPeriod);
+        if (e.userPos == "loaner"){
+          console.log("user is loaner");
+          manager.getUser().then(function(user){
+            var uid = user.getUserID();
+            console.log("uid: ",uid);
+            var payment = new Payment(e.paymentAmount,uid,e.otherPos, new Date(),null,e.dueDate,e.paymentDescription,e.paymentCategory,e.recurringPeriod);
             manager.addPayment(payment);
-            console.log("added payment");
+          });
+        }
+        else{
+          console.log("user is loanee");
+          manager.getUser().then(function(user){
+            var uid = user.getUserID();
+            var payment = new Payment(e.paymentAmount, e.otherPos, uid, new Date(),null,e.dueDate,e.paymentDescription,e.paymentCategory,e.recurringPeriod);
+            manager.addPayment(payment);
+          });
+        }
+        //var payment = new Payment(e.paymentAmount,e.loaner,e.loanee, new Date(), null, e.dueDate, e.paymentDescription,e.paymentCategory,e.recurringPeriod);
+        //manager.addPayment(payment);
+        console.log("added payment");
         //}.bind(this));
     },
 

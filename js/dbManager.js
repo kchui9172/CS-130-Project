@@ -343,6 +343,7 @@ export default class DBManager {
      * @throws {Exception} - Possible failure to add Payment
      */
     addPayment(payment){
+        console.log("in db manager add payment");
         var paymentsRef = firebase.database().ref('payments');
         var newPaymentRef = paymentsRef.push();
         newPaymentRef.set(JSON.stringify(payment));
@@ -353,8 +354,10 @@ export default class DBManager {
             this.updateUser(user);
             // Switch loaner and loanee and save to other user
             var loanerID = payment.getLoaner();
-            payment.setLoanerID(payment.getLoanee);
+            payment.setLoanerID(payment.getLoanee());
             payment.setLoaneeID(loanerID);
+            console.log("loaner: ", payment.getLoaner());
+            console.log("loanee: ", payment.getLoanee());
             this.getUser(payment.getLoaner()).then(function (user2) {
                 user2.addPayment(payment);
                 context.updateUser(user2);
