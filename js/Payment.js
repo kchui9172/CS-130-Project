@@ -20,6 +20,7 @@ export default class Payment {
      * @param {int} recurringPaymentPeriod - How often this payment is made
      */
     constructor(amount, loaner, loanee, dateLoaned, datePaid, dateDue, paymentDescription, paymentCategory, recurringPaymentPeriod) {
+        this._paymentID = null;
         this._amount = amount;
         this._loaner = loaner;
         this._loanee = loanee;
@@ -42,6 +43,7 @@ export default class Payment {
     static JSONtoPayment(data) {
         var payment = new Payment();
         var JSONObj = JSON.parse(data);
+        payment._paymentID = JSONObj._paymentID;
         payment._amount = JSONObj._amount;
         payment._loaner = JSONObj._loaner;
         payment._loanee = JSONObj._loanee;
@@ -53,6 +55,22 @@ export default class Payment {
         payment._recurringPaymentPeriod = JSONObj._recurringPaymentPeriod;
         return payment;
     }
+
+    /**
+     * Gets the ID associated with this payment.
+     *
+     * @method getPaymentID
+     * @return {string} - Payment ID
+     */
+    getPaymentID() { return this._paymentID; }
+
+    /**
+     * Sets the ID associated with a payment
+     *
+     * @method setPaymentID
+     * @param paymentID {string} - ID associated with payment
+     */
+    setPaymentID(paymentID) { this._paymentID = paymentID; }
 
     /**
      * Gets amount for this payment.
