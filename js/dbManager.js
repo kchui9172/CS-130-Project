@@ -256,6 +256,17 @@ export default class DBManager {
     }
 
     /**
+     * Updates a chore in the database.
+     *
+     * @method updateChore
+     * @param {Chore} - The Chore Object to be updated
+     */
+    updateChore(chore) {
+        var choresRef = firebase.database().ref("chores/" + chore.getChoreID());
+        choresRef.set(JSON.stringify(chore));
+    }
+
+    /**
      * Updates a user in the database.
      *
      * @method updateUser
@@ -333,6 +344,17 @@ export default class DBManager {
         return firebase.database().ref('/messages/' + messageID).once('value').then(function(snapshot) {
             return Message.JSONtoMessage(snapshot.val());
         });
+    }
+
+    /**
+     * Updates a message in the database.
+     *
+     * @method updateMessage
+     * @param {Message} - The message Object to be updated
+     */
+    updateMessage(message) {
+        var messagesRef = firebase.database().ref("messages/" + message.getMessageID());
+        messagesRef.set(JSON.stringify(message));
     }
 
     /**
