@@ -136,12 +136,13 @@ const style = {
             {_icon}
           </FloatingActionButton>
           <Popover
+            zDepth={5}
             open={this.state.open}
             anchorEl={this.state.anchorEl}
             anchorOrigin={{horizontal: 'left', vertical: 'top'}}
             targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
             onRequestClose={this.handleRequestClose}
-            className="blurred rounded-more"
+            className="blurred-more rounded-more"
             style={style.popover}
           >
           {_view}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
+import Divider from 'material-ui/Divider';
 import {FormsyText} from 'formsy-material-ui/lib'
 import RaisedButton from 'material-ui/RaisedButton';
 import {CardMedia, CardActions, CardTitle, CardText} from 'material-ui/Card';
@@ -11,6 +12,12 @@ import DBManager from '../../dbManager.js';
 import Apartment from '../../Apartment.js';
 
 
+const style = {
+  dialog:{
+    width:'400px',
+    textAlign:'justify',
+  },
+};
 /*
  * A modal dialog can only be closed by selecting one of the actions.
  */
@@ -21,7 +28,7 @@ import Apartment from '../../Apartment.js';
  * @extends React.Component
  */
 export default class AddAptDialog extends React.Component {
-  /** 
+  /**
    * Constructs an Add Apartment Dialog.
    *
    * @method constructor
@@ -42,7 +49,7 @@ export default class AddAptDialog extends React.Component {
    * Handles opening the Add Apartment Dialog.
    *
    * @method handleOpen
-   */ 
+   */
   handleOpen = () => {
     this.setState({modalOpen: true});
   };
@@ -156,10 +163,13 @@ export default class AddAptDialog extends React.Component {
    * @method componentDidMount
    */
   componentDidMount() {
+    this.checkBindings();
+  };
+
+  checkBindings(){
     this.checkUserBinding();
     this.checkAptBinding();
   };
-
   /**
    * Renders an Add Apartment Dialog.
    *
@@ -169,10 +179,17 @@ export default class AddAptDialog extends React.Component {
     return (
         <Dialog
           modal={true}
-          title="Invite Code"
+          title={"Welcome !"}
           className="frosted"
+          contentStyle={style.dialog}
           open={this.state.modalOpen}
         >
+
+        <p>
+          Before we begin, you must associate an apartment with your account.
+          We currently offer sign-up by invitation only.
+        </p>
+        <p> Please enter an invite code below.</p>
         <Formsy.Form ref="InviteCode"
             onValid={this.enableButton}
             onInvalid={this.disableButton}
@@ -181,10 +198,11 @@ export default class AddAptDialog extends React.Component {
         >
         <FormsyText
           required={true}
+          fullWidth={true}
           name="invite_code"
           validations={{isExisty:true}}
           validationError="Please provide a valid invite code"
-          floatingLabelText={'Invite Code'}
+          floatingLabelText={'Invite Code :: -KXc3TKTGn2MVIW3fqbR'}
           disabled={this.state.hasSubmitted}
         />
           <RaisedButton

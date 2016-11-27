@@ -10,11 +10,25 @@ import DBManager from '../../../dbManager.js';
 import Loading from '../../primitives/Loading.js';
 
 const style={
+  card:{
+    padding:'0px',
+    overflow:'hidden',
+  },
   loading:{
     textAlign:'center',
     padding:'128px',
   },
-
+  table: {
+    height:'512px',
+    overflow:'hidden',
+    padding:'0px',
+  },
+  header:{
+    fontSize:'24px',
+    fontWeight:'bold',
+    backgroundColor:'rgba(101, 86, 177, 0.80)',
+    color:'white',
+  },
 };
 /**
  * Represents a Messages Table.
@@ -44,7 +58,7 @@ class MessagesTable extends React.Component {
     composeRow(message) {
         var date = new Date(message.getTimeSent());
         return (
-          <TableRow>
+          <TableRow  className='transparent'>
             <TableRowColumn>{message.getSender()}</TableRowColumn>
             <TableRowColumn><Chip backgroundColor={colors.timestamp} ><Time value={date} format="YYYY/MM/DD hh:mm a"/></Chip></TableRowColumn>
             <TableRowColumn>{message.getText()    }</TableRowColumn>
@@ -61,15 +75,15 @@ class MessagesTable extends React.Component {
       var messageEntries = this.props.messages;
       var messageItems = (messageEntries && messageEntries.length!=0) ? messageEntries.map(this.composeRow) : (<Loading style={style.loading}/>);
         return (
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHeaderColumn tooltip="The Sender">Sender</TableHeaderColumn>
-                <TableHeaderColumn tooltip="Creation Time">Time Sent</TableHeaderColumn>
-                <TableHeaderColumn tooltip="Content">Content</TableHeaderColumn>
+          <Table className='rounded transparent'  height={style.table.height} fixedHeader={true} >
+            <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={style.header}  className='transparent frosted'>
+              <TableRow >
+                <TableHeaderColumn tooltip="The Sender"><h3>Sender</h3></TableHeaderColumn>
+                <TableHeaderColumn tooltip="Creation Time"><h3>Time Sent</h3></TableHeaderColumn>
+                <TableHeaderColumn tooltip="Content"><h3>Content</h3></TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody>
+            <TableBody displayRowCheckbox={false} showRowHover={true} preScanRows={false} className='transparent'>
               {messageItems}
             </TableBody>
           </Table>
@@ -142,10 +156,8 @@ export default class MessagesCard extends React.Component {
    */
   render() {
   return(
-    <Card className='rounded blurred'>
-      <CardText>
-        <MessagesTable messages={this.state.messages}/>
-      </CardText>
+    <Card className='rounded blurred' style={style.card}>
+      <MessagesTable messages={this.state.messages}/>
     </Card>
     );
   }

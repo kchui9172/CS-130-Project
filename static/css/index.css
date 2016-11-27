@@ -25,6 +25,10 @@ body {
   background-color:rgba(255,255,255,1) !important;
 }
 
+.blurred-more{
+  background-color:rgba(255,255,255,1) !important;
+}
+
 .transparent {
   background-color: rgba(0,0,0,0);
 }
@@ -38,6 +42,11 @@ body {
 
   .blurred{
     background-color:rgba(255,255,255,0.85) !important;
+    -webkit-backdrop-filter:blur(4px);
+  }
+
+  .blurred-more{
+    background-color:rgba(255,255,255,0.6) !important;
     -webkit-backdrop-filter:blur(4px);
   }
 
