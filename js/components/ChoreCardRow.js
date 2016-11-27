@@ -9,7 +9,7 @@ export default class ChoreCardRow extends React.Component {
     }
 
     render() {
-        if (this.props.choreList && 
+        if (this.props.choreList &&
             this.props.choreList.length > 0) {
             return (
                 <div>
@@ -23,8 +23,10 @@ export default class ChoreCardRow extends React.Component {
                                 </Column>
                             );
                         })
-                    } 
+                    }
                     </Row>
+                    <br/>
+                    <br/>
                 </div>
             )
         }

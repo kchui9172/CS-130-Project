@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Grid, Row, Column} from 'react-cellblock';
 import MessagesCard from '../Cards/MessagesCard.js';
 
-import MessageComponent from '../../../components/MessageComponent.js';
+import TodoList from '../../../components/TodoList.js';
 
 /**
  * Represents the Messages page.
@@ -22,10 +22,11 @@ export default class MessagesView extends React.Component {
           <Row>
             <Column offset="1/16" width="7/8"><MessagesCard /></Column>
           </Row>
-          <Row>
-            <Column offset="1/16" width="7/8"><MessageComponent /></Column>
-          </Row>
     </Grid>
     );
   }
 };
+
+// <Row>
+//   <Column offset="1/16" width="7/8"><TodoList /></Column>
+// </Row>

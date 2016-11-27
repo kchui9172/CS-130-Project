@@ -86,23 +86,3 @@ export default class ChoresView extends React.Component {
         }
     }
 };
-// <Grid breakpoints={[4]} flexible={true} columnWidth={280} gutterWidth={20} onChange={breakpoint => {}} >
-//   <Row>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//   </Row>
-//   <br/>
-//   <Row>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//   </Row>
-//   <br/>
-//   <Row>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//     <Column width="1/4"> <ChoresCard /> </Column>
-//   </Row>
-// </Grid>
