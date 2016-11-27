@@ -31,6 +31,10 @@ const style = {
   firstItem: {
     marginTop:48,
   },
+  loading:{
+      textAlign:'center',
+      padding:'512px',
+  },
 };
 
 function wrapState(ComposedComponent) {
@@ -92,7 +96,7 @@ export default class HomePage extends React.Component {
   };
 
   render() {
-    return ((this.state.loading) ? <Loading /> :
+    return ((this.state.loading) ? <Loading style={style.loading}/> :
     (
       <div>
         <AddAptDialog/>

@@ -7,7 +7,14 @@ import Chip from 'material-ui/Chip';
 import Message from '../../../Message.js';
 import {colors} from '../../../config/MUI.js';
 import DBManager from '../../../dbManager.js';
+import Loading from '../../primitives/Loading.js';
 
+const style={
+  loading:{
+    textAlign:'center',
+    padding:'128px',
+  },
+};
 class MessagesTable extends React.Component {
     /**
      * Constructs a MessagesTable
@@ -37,7 +44,7 @@ class MessagesTable extends React.Component {
      */
     render() {
       var messageEntries = this.props.messages;
-      var messageItems = (messageEntries) ? messageEntries.map(this.composeRow) : null;
+      var messageItems = (messageEntries && messageEntries.length!=0) ? messageEntries.map(this.composeRow) : (<Loading style={style.loading}/>);
         return (
           <Table>
             <TableHeader>
