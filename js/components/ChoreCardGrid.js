@@ -26,6 +26,7 @@ export default class ChoreCardGrid extends React.Component {
                                         onCompletion={this.props.onCompletion}
                                         onUncompletion={this.props.onUncompletion}
                                         getDefaultToggle={this.props.getDefaultToggle}
+                                        toggleCallback={this.props.toggleCallback}
                                     />
                                 );
                             }.bind(this))
@@ -44,5 +45,6 @@ ChoreCardGrid.propTypes = {
     choreList: React.PropTypes.array.isRequired,
     onCompletion: React.PropTypes.func.isRequired,
     onUncompletion: React.PropTypes.func.isRequired,
-    getDefaultToggle: React.PropTypes.func.isRequired
+    getDefaultToggle: React.PropTypes.func.isRequired,
+    toggleCallback: React.PropTypes.func.isRequired
 };

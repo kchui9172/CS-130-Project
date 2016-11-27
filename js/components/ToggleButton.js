@@ -39,6 +39,7 @@ export default class ToggleButton extends React.Component {
         else {
             this.props.onUncompletion(toggledObject);
         }
+        this.props.toggleCallback();
     }
 
     /**
@@ -65,6 +66,7 @@ ToggleButton.propTypes = {
     onCompletion: React.PropTypes.func.isRequired,
     onUncompletion: React.PropTypes.func.isRequired,
     getDefaultToggle: React.PropTypes.func.isRequired,
+    toggleCallback: React.PropTypes.func.isRequired,
     toggledObject: React.PropTypes.object.isRequired,
     label: React.PropTypes.string
 };

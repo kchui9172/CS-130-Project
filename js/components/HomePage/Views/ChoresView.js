@@ -96,6 +96,7 @@ export default class ChoresView extends React.Component {
                         onCompletion={this.onCompletion}
                         onUncompletion={this.onUncompletion}
                         getDefaultToggle={this.getDefaultToggle}
+                        toggleCallback={this.setChoresLists}
                     />
                     <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >
                         <Row>
@@ -105,6 +106,7 @@ export default class ChoresView extends React.Component {
                                     onCompletion={this.onCompletion}
                                     onUncompletion={this.onUncompletion}
                                     getDefaultToggle={this.getDefaultToggle}
+                                    toggleCallback={this.setChoresLists}
                                 />
                             </Column>
                         </Row>
