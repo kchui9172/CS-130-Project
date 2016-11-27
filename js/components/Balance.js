@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import DBManager from '../dbManager.js';
 import User from '../User.js';
 import Payment from '../Payment.js';
+import Transaction from './Transaction.js';
 
 /**
  * Represents a Balance.
@@ -65,6 +66,7 @@ export default class Balance extends React.Component {
         manager.getPaymentIDs().then(function(payments){
             //get all tenants of apartment
             manager.getApartment().then(function (apt){
+                console.log("payments: ",payments);
                 var tenants = apt.getTenantIDs();
                 console.log("Tenants: ",tenants);
                 console.log("num tenants: ",tenants.length);
@@ -100,7 +102,7 @@ export default class Balance extends React.Component {
     render() {
         return (
             <div> 
-                {this.state.balance} 
+                <Transaction t={this.state.balance} />
             </div>
         );
     }
