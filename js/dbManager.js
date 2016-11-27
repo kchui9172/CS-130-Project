@@ -141,16 +141,11 @@ export default class DBManager {
      */
     getUser(userID) {
         var ID = (userID!=null) ? userID : DBManager.isLoggedIn();
-
-        console.log('db.getUser: firebaseCurrentUser: ', (null !== firebase.auth().currentUser));
-
         if(ID) {
-          console.log('db.getUser', ID);
           return firebase.database().ref('/users/' + ID).once('value').then(function(snapshot) {
               return User.JSONtoUser(snapshot.val());
             });
         } else {
-          console.log('getUser','Not Logged In');
           return null;
         }
     }

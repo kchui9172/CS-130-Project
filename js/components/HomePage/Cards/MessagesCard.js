@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
-import DBManager from '../../../dbManager.js';
+import Time from 'react-time';
+import Chip from 'material-ui/Chip';
 import Message from '../../../Message.js';
+import {colors} from '../../../config/MUI.js';
+import DBManager from '../../../dbManager.js';
 
 class MessagesTable extends React.Component {
     /**
@@ -17,10 +20,11 @@ class MessagesTable extends React.Component {
     }
 
     composeRow(message) {
+        var date = new Date(message.getTimeSent());
         return (
           <TableRow>
-            <TableRowColumn>{message.getSender()  }</TableRowColumn>
-            <TableRowColumn>{message.getTimeSent()}</TableRowColumn>
+            <TableRowColumn>{message.getSender()}</TableRowColumn>
+            <TableRowColumn><Chip backgroundColor={colors.timestamp} ><Time value={date} format="YYYY/MM/DD hh:mm a"/></Chip></TableRowColumn>
             <TableRowColumn>{message.getText()    }</TableRowColumn>
           </TableRow>
         );
@@ -33,14 +37,13 @@ class MessagesTable extends React.Component {
      */
     render() {
       var messageEntries = this.props.messages;
-      console.log(messageEntries);
       var messageItems = (messageEntries) ? messageEntries.map(this.composeRow) : null;
         return (
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHeaderColumn tooltip="The Sender">Sender</TableHeaderColumn>
-                <TableHeaderColumn tooltip="The Name">Time Sent</TableHeaderColumn>
+                <TableHeaderColumn tooltip="Creation Time">Time Sent</TableHeaderColumn>
                 <TableHeaderColumn tooltip="Content">Content</TableHeaderColumn>
               </TableRow>
             </TableHeader>
@@ -69,9 +72,16 @@ export default class MessagesCard extends React.Component {
     Promise_MessageIDs.then(function(IDs) {
       IDs.forEach(function (ID) {
         db.getMessage(ID).then(function(message){
-          newMessages.unshift(message);
+          db.getUser(message.getSender()).then(function(user){
+            var readableMessage = new Message(user.getName(), null, message.getTimeSent(), message.getText());
+            newMessages.unshift(readableMessage);
+            this.setState({messages: newMessages});
+            console.log('getMessage:', message);
+          }.bind(this),function(err){
+          console.log('getReadableUserFailed:', err);
           this.setState({messages: newMessages});
           console.log('getMessage:', message);
+        });
         }.bind(this),function(err){console.log('getMessageFailed:', err);});
       }.bind(this));
     }.bind(this));

@@ -29,4 +29,5 @@ export const colors = {
   message:'#80cbc4',//'rgb(56, 158, 255)',
   chore:'rgb(56, 158, 255)',//'rgb(60, 179, 113)',
   payment:'#607D8B',
+  timestamp:'rgba(213, 147, 156, 0.3)',
 };
