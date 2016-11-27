@@ -20,19 +20,22 @@ import { CardActions, CardTitle, CardText} from 'material-ui/Card';*/
  * @class React.Component.PaymentForm
  * @extends React.Component
  */
-const PaymentForm = React.createClass({
+
+export default class PaymentForm extends React.Component {
     /**
      * Constructs a Payment Form.
      *
      * @method constructor
      * @constructor
      */
-    /*constructor() {
+    constructor() {
         super();
 
-       	this.addPayment = this.addPayment.bind(this);
-    };*/
+        this.state = { items: [] };
 
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.setTenantsList = this.setTenantsList.bind(this);
+    };
 
     addPayment(e){
         var manager = new DBManager();
@@ -57,41 +60,44 @@ const PaymentForm = React.createClass({
         //manager.addPayment(payment);
         console.log("added payment");
         //}.bind(this));
-    },
+    }
 
     getInitialState(){
       return{
         validateAmount: true,
       };
-    },
+    }
 
     enableAmountValidation(){
       this.setState({
         validateAmount: true,
       });
-    },
+    }
 
     disableAmountValidation(){
       this.setState({
         validateAmount: false,
       });
-    },
+    }
 
+    setTenantsList() {
+      var db = new DBManager();
+      var tenants = [];
+      db.getApartment().then(function(apt) {
+        var tenantIDs = apt.getTenantIDs();
+        console.log(tenantIDs);
+        tenantIDs.forEach(function (tenantID) {
+            db.getUser(tenantID).then(function (user) {
+                tenants.push(user);
+                this.setState({items: tenants});
+            }.bind(this))
+        }.bind(this))
+      }.bind(this));
+    }
 
-    GetTenants(){
-        console.log("hello");
-        var manager = new DBManager();
-        manager.signIn("bob@gmail.com","password").then(function(){
-            console.log("in");
-            manager.getApartment().then(function (apt){
-                console.log("what");
-                var tenants = apt.getTenantIDs();
-                console.log(tenants);
-                //If this actually worked, then would render form here and generate loaners/loanee dropdown here?
-                //have a separate function so that when get to loaner/loanee renders dropdown options using for loop?
-            })
-        });
-    },
+    componentDidMount() {
+      this.setTenantsList();
+    }
 
     /**
      * Renders a Balance between two users.
@@ -141,9 +147,11 @@ const PaymentForm = React.createClass({
                   required
                   floatingLabelText="Choose an option"
                 >
-                  <MenuItem value={'roommate1Loanee'} primaryText="Roommate 1" />
-                  <MenuItem value={'roommate2Loanee'} primaryText="Roommate 2" />
-                  <MenuItem value={'roommate3Loanee'} primaryText="Roommate 3" />
+                  {this.state.items.map(
+                    function(tenant) {
+                      return (<MenuItem value={tenant.getUserID()} primaryText={tenant.getName()}/>);
+                    }
+                  )}
                 </FormsySelect>
 
                 <h3>Amount</h3>
@@ -187,13 +195,10 @@ const PaymentForm = React.createClass({
                 <RaisedButton fullWidth={false} type="submit" label="Add Payment" primary={false} secondary={true} />
             </Formsy.Form>
 
-            <button onClick={this.GetTenants.bind(this)}>Test Getting Apartment Mates</button>
             </div>
         );
-    },
-});
-
-export default PaymentForm;
+    }
+}
 
 
 
