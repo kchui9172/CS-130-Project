@@ -6,8 +6,9 @@ import Formsy from 'formsy-react';
 import Apartment from '../Apartment.js';
 import DBManager from '../dbManager.js';
 import Divider from 'material-ui/Divider';
+import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-import {FormsyText, FormsyDate} from 'formsy-material-ui/lib';
+import {FormsyText, FormsyDate, FormsySelect} from 'formsy-material-ui/lib';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 
@@ -188,6 +189,7 @@ export default class ChoreForm extends React.Component {
 
             var name = data.choreName;
             var assignee = data.choreAssignee;
+            var category = data.choreCategory;
             var firstDueDate = data.choreFirstDueDate;
             var numberOccurrences = parseInt(data.choreNumberOccurrences);
             var repeatFrequency = parseInt(data.choreRepeatFrequency);
@@ -207,7 +209,7 @@ export default class ChoreForm extends React.Component {
                     assignedDueDate.setFullYear(firstDueDate.getFullYear());
                     assignedDueDate.setMonth(firstDueDate.getMonth());
                     assignedDueDate.setDate(firstDueDate.getDate() + (newChores.length * repeatFrequency));
-                    var newChore = new Chore(values[0], values[1], name, assignedDueDate, details, assignee);
+                    var newChore = new Chore(values[0], values[1], name, category, assignedDueDate, details, assignee);
                     newChores.push(newChore);
                     console.log(newChore);
                 } while (newChores.length < numberOccurrences);
@@ -249,12 +251,20 @@ export default class ChoreForm extends React.Component {
                           validationError={this.errorMessages.wordsError}
                           required={true} />
                       <FormsyText
-                          name="choreAssignee"
-                          floatingLabelText="Assignee"
+                          name="choreCategory"
+                          floatingLabelText="Category Labels"
                           fullWidth={true}
                           validations="isWords"
                           validationError={this.errorMessages.wordsError}
                           required={true} />
+                          <FormsySelect
+                              name="choreAssignee"
+                              floatingLabelText="Assignee"
+                              fullWidth={true}
+                              required={true}
+                          >
+                              {this.state.tenants.map(function(tenant) {return (<MenuItem value={tenant.getUserID()} primaryText={tenant.getName()}/>);})}
+                          </FormsySelect>
                       <FormsyDate
                           name="choreFirstDueDate"
                           floatingLabelText="Due Date"

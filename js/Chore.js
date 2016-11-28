@@ -12,12 +12,14 @@ export default class Chore {
      * @method constructor
      * @param {string} userID - The ID of the user
      * @param {string} aptID - The ID of the apartment
+     * @param {string} name - The name of the Chore
      * @param {string} category - The category of the Chore
      * @param {Date} deadline - The deadline of the Chore
      * @param {string} details - Additional details of the Chore
      * @param {string} assignee - The assignee of the Chore
      */
-    constructor(userID, aptID, category, deadline, details, assignee) {
+     constructor(userID, aptID, name, category, deadline, details, assignee) {
+        this._name = name;
         this._choreID = null;
         this._category = category;
         this._createdBy = userID;
@@ -40,6 +42,7 @@ export default class Chore {
     static JSONtoChore(data) {
         var chore = new Chore();
         var JSONObj = JSON.parse(data);
+        chore._name = JSONObj._name;
         chore._choreID = JSONObj._choreID;
         chore._category = JSONObj._category;
         chore._createdBy = JSONObj._createdBy;
@@ -105,6 +108,13 @@ export default class Chore {
      * @return {string} - The Chore ID
      */
     getChoreID() { return this._choreID; }
+
+    /** Gets the Chore Name.
+     *
+     * @method getName
+     * @return {string} - The Chore Name
+     */
+    getName() { return this._name; }
 
     /**
      * Gets the Apartment ID of the chore.

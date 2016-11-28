@@ -76,6 +76,7 @@ export default class ChoreCard extends React.Component {
 
         this.state = {
             assigneeName: "",
+            name:"",
             deadline:"",
             overdue:"",
             assignment:"",
@@ -104,11 +105,13 @@ export default class ChoreCard extends React.Component {
       var _date = new Date(chore.getDeadline());
       var _assignment = chore.getAssignment();
       var _details = chore.getDetails();
+      var _name = chore.getName();
       var _chips = [];
       var categoryTokens = (chore.getCategory()).split(" ").forEach(function(category){_chips.unshift(<Chip style={style.chip}>{category}</Chip>);});
       var _chipColor = (now > _date) ? colors.timestampOverdue : colors.timestampFuture;
       var _dueText = (now > _date) ? "Overdue" : null;
       this.setState({
+        name:_name,
         deadline:_date,
         overdue:_dueText,
         deadlineLabel:_chipColor,
@@ -125,8 +128,7 @@ export default class ChoreCard extends React.Component {
     setAssigneeName() {
         var manager = new DBManager();
         manager.getUser(this.props.chore.getAssignment()).then(function(user) {
-            this.setState({assigneeName: user.getName(),loading:false});
-        }.bind(this));
+            this.setState({assigneeName: user.getName(),loading:false})}.bind(this), function(err) {console.log('error on evaluating name for assigner', err);this.setState({assigneeName: "",loading:false});}.bind(this));
     }
 
     /**
@@ -145,14 +147,14 @@ export default class ChoreCard extends React.Component {
      * @method render
      */
     render() {
-            var contents = (this.props.chore && !this.state.loading) ? (
+            var contents = (!this.state.loading) ? (
                             <div><CardHeader style={style.header} avatar={<ToggleButton
                                   onCompletion={this.props.onCompletion}
                                   onUncompletion={this.props.onUncompletion}
                                   getDefaultToggle={this.props.getDefaultToggle}
                                   toggleCallback={this.props.toggleCallback}
                                   toggledObject={this.props.chore}
-                              />}></CardHeader><CardTitle style={style.title} title={this.state.assignment} />
+                              />}></CardHeader><CardTitle style={style.title} title={this.state.name} />
                               <CardText style={style.text}>
                               <div>
                                 <Chip style={style.chip2} ><Avatar backgroundColor={colors.profile} icon={<AccountCircle />} />{this.state.assigneeName}</Chip>

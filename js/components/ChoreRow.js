@@ -54,7 +54,7 @@ export default class ChoreRow extends React.Component {
             this.setState({assigneeName: user.getName()});
         }.bind(this));
     }
-    
+
     /**
      * Sets the creator name in state.
      *
@@ -74,6 +74,8 @@ export default class ChoreRow extends React.Component {
      * @param {string} dateTime - The DateTime to extract from
      */
     getDateOnly(dateTime) {
+        if(dateTime == null)
+          return null;
         return dateTime.split('T')[0];
     }
 
@@ -87,7 +89,7 @@ export default class ChoreRow extends React.Component {
         return (
             <tr>
                 <td>
-                    <ToggleButton 
+                    <ToggleButton
                         onCompletion={this.props.onCompletion}
                         onUncompletion={this.props.onUncompletion}
                         getDefaultToggle={this.props.getDefaultToggle}
