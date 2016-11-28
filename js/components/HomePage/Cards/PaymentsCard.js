@@ -30,7 +30,21 @@ const style={
     backgroundColor:colors.payment,
     color:'white',
   },
-
+  column1:{
+    width:'20%',
+  },
+  column2:{
+    width:'20%',
+  },
+  column3:{
+    width:'20%',
+  },
+  column5:{
+    width:'10%',
+  },
+  column5:{
+    width:'30%',
+  },
 };
 
 /**
@@ -78,11 +92,11 @@ class PaymentsTable extends React.Component {
       //(this.props.currentuser == null) ? ('transparent'): (payment.getLoaner() === this.props.currentuser) ? 'red' : 'green';
         return (
           <TableRow>
-            <TableRowColumn><Chip backgroundColor={colors.timestamp} ><Time value={date} format="MM/DD hh:mm a"/></Chip></TableRowColumn>
-            <TableRowColumn>{payment.getAmount()}</TableRowColumn>
-            <TableRowColumn>{payment.getLoaner()}</TableRowColumn>
-            <TableRowColumn>{payment.getLoanee()}</TableRowColumn>
-            <TableRowColumn>{payment.getPaymentDescription()}</TableRowColumn>
+            <TableRowColumn style={style.column2}><Chip backgroundColor={colors.timestamp} ><Time value={date} format="MM/DD hh:mm a"/></Chip></TableRowColumn>
+            <TableRowColumn style={style.column2}>{payment.getAmount()}</TableRowColumn>
+            <TableRowColumn style={style.column3}>{payment.getLoaner()}</TableRowColumn>
+            <TableRowColumn style={style.column4}>{payment.getLoanee()}</TableRowColumn>
+            <TableRowColumn style={style.column5}>{payment.getPaymentDescription()}</TableRowColumn>
           </TableRow>
         );
     }
@@ -99,11 +113,11 @@ class PaymentsTable extends React.Component {
           <Table className='rounded transparent'  height={style.table.height} fixedHeader={true} >
             <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={style.header}  className='transparent frosted'>
               <TableRow >
-                <TableHeaderColumn tooltip="Payment Deadline"><h3>Deadline</h3></TableHeaderColumn>
-                <TableHeaderColumn tooltip="Amount"><h3>Amount</h3></TableHeaderColumn>
-                <TableHeaderColumn tooltip="Loaner"><h3>Loaner</h3></TableHeaderColumn>
-                <TableHeaderColumn tooltip="Loanee"><h3>Loanee</h3></TableHeaderColumn>
-                <TableHeaderColumn tooltip="Details"><h3>Details</h3></TableHeaderColumn>
+                <TableHeaderColumn style={style.column1} tooltip="Payment Deadline"><h3>Deadline</h3></TableHeaderColumn>
+                <TableHeaderColumn style={style.column2} tooltip="Amount"><h3>Amount</h3></TableHeaderColumn>
+                <TableHeaderColumn style={style.column3} tooltip="Loaner"><h3>Loaner</h3></TableHeaderColumn>
+                <TableHeaderColumn style={style.column4} tooltip="Loanee"><h3>Loanee</h3></TableHeaderColumn>
+                <TableHeaderColumn style={style.column5} tooltip="Details"><h3>Details</h3></TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false} showRowHover={true} preScanRows={false} className='transparent'>

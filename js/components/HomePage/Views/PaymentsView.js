@@ -2,6 +2,13 @@ import React, {Component} from 'react';
 import {Grid, Row, Column} from 'react-cellblock';
 import PaymentsCard from '../Cards/PaymentsCard.js';
 
+const style = {
+  heading: {
+      marginLeft: '267px',
+      fontWeight: '400',
+      fontSize: '24px',
+  },
+};
 
 /**
  * Represents a Payments View.
@@ -29,11 +36,14 @@ export default class PaymentsView extends React.Component {
    */
   render() {
   return(
-    <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >
+      <div>
+        <h1 style={style.heading}> PAYMENTS </h1>
+        <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >
           <Row>
             <Column offset="1/16" width="7/8"><PaymentsCard /></Column>
           </Row>
         </Grid>
+      </div>
     );
   }
 };

@@ -7,6 +7,14 @@ import ChoreComponent from '../../ChoreComponent.js';
 import ChoreCardGrid from '../../ChoreCardGrid.js';
 import DBManager from '../../../dbManager.js';
 
+const style = {
+  heading: {
+      marginLeft: '94px',
+      fontWeight: '400',
+      fontSize: '24px',
+  },
+};
+
 /**
  * Represents a Chores View.
  *
@@ -153,6 +161,7 @@ export default class ChoresView extends React.Component {
         if (this.state.allChoresList && this.state.allChoresList.length > 0)
             return (
                 <div>
+                    <h1 style={style.heading}> CHORES </h1>
                     <ChoreCardGrid
                         choreList={incompleteChoresList}
                         onCompletion={this.onCompletion}

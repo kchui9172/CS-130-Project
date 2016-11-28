@@ -97,7 +97,7 @@ export default class ChoreRow extends React.Component {
                         toggledObject={chore}
                     />
                 </td>
-                <td>{chore.getChoreID()}</td>
+
                 <td>{chore.getCategory()}</td>
                 <td>{this.state.creatorName}</td>
                 <td>{this.getDateOnly(chore.getDeadline())}</td>

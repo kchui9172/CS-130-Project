@@ -33,7 +33,6 @@ export default class ChoreTable extends React.Component {
                 <thead>
                     <tr>
                         <th>Mark Completed?</th>
-                        <th>Chore ID</th>
                         <th>Category</th>
                         <th>Creator</th>
                         <th>Deadline</th>
@@ -46,9 +45,9 @@ export default class ChoreTable extends React.Component {
                 <tbody>
                     {this.props.choreList.map(
                         function(chore) {
-                            return (<ChoreRow chore={chore} 
-                                        key={chore.getChoreID()} 
-                                        onCompletion={this.props.onCompletion} 
+                            return (<ChoreRow chore={chore}
+                                        key={chore.getChoreID()}
+                                        onCompletion={this.props.onCompletion}
                                         onUncompletion={this.props.onUncompletion}
                                         getDefaultToggle={this.props.getDefaultToggle}
                                         toggleCallback={this.props.toggleCallback}
