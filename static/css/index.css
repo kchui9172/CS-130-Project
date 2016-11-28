@@ -13,6 +13,10 @@ body {
   border-radius: 6px !important;
 }
 
+.button-card {
+  width:256px;
+  height:256px;
+}
 .rounded {
   border-radius: 6px !important;
 }

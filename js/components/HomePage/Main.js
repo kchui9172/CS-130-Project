@@ -6,6 +6,8 @@ import Loading from '../primitives/Loading.js';
 import NavDrawer from '../primitives/NavDrawer.js';
 
 import AddAptDialog from './AddAptDialog.js';
+
+import HomeView from './Views/HomeView.js';
 import ChoresView from './Views/ChoresView.js';
 import MessagesView from './Views/MessagesView.js';
 import PaymentsView from './Views/PaymentsView.js';
@@ -78,7 +80,7 @@ let SelectableList = wrapState(makeSelectable(List));
  * @extends React.Component
  */
 export default class HomePage extends React.Component {
-  /** 
+  /**
    * Constructs a Home Page.
    *
    * @method constructor
@@ -91,7 +93,6 @@ export default class HomePage extends React.Component {
       loading:  true,
       aptModal: false,
       menuFAB:  false,
-      mainView: null,
       editorView: null,
       viewIndex:0,
     };
@@ -125,7 +126,9 @@ export default class HomePage extends React.Component {
    */
   render() {
     var currentView = null;
-    if (this.state.viewIndex == 1)
+    if (this.state.viewIndex == 0)
+      currentView = <HomeView />;
+    else if (this.state.viewIndex == 1)
       currentView = <MessagesView />;
     else if (this.state.viewIndex == 2)
       currentView = <ChoresView />;
@@ -145,7 +148,7 @@ export default class HomePage extends React.Component {
           <ListItem onTouchTap={function(){this.setState({viewIndex: 3})}.bind(this)} value={3} primaryText="Payments" leftIcon={<Payment   color={colors.payment} />}  />
         <Divider />
           <ListItem onTouchTap={function(){this.setState({viewIndex: 4})}.bind(this)} value={4} primaryText="Settings" leftIcon={<Settings  color={colors.primary}     />} />
-          <ListItem onTouchTap={function(){DBManager.LogOut()}}                                     value={5} primaryText="Logout"   leftIcon={<Exit      color={colors.red}         />} />
+          <ListItem onTouchTap={function(){DBManager.LogOut()}}                       value={5} primaryText="Logout"   leftIcon={<Exit      color={colors.red}         />} />
         </SelectableList>
         </NavDrawer>
         <FAB view={this.state.viewIndex}/>

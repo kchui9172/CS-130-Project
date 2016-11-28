@@ -10,7 +10,7 @@ import FloatingCard from '../../primitives/FloatingCard.js';
 import DBManager from '../../../dbManager.js';
 import Chore from '../../../Chore.js';
 import ToggleButton from '../../ToggleButton.js';
-
+import Loading from '../../primitives/Loading.js';
 import Time from 'react-time';
 import Chip from 'material-ui/Chip';
 import {colors} from '../../../config/MUI.js';
@@ -56,6 +56,7 @@ const style = {
   },
 }
 
+
 /**
  * Represents a Chore Card.
  *
@@ -74,7 +75,14 @@ export default class ChoreCard extends React.Component {
         super(props);
 
         this.state = {
-            assigneeName: ""
+            assigneeName: "",
+            deadline:"",
+            overdue:"",
+            assignment:"",
+            deadlineLabel:"",
+            details:[],
+            categoryLabels:[],
+            loading: true,
         };
 
         this.setAssigneeName = this.setAssigneeName.bind(this);
@@ -87,8 +95,28 @@ export default class ChoreCard extends React.Component {
      */
     componentDidMount() {
         this.setAssigneeName();
+        this.populateLabels();
     }
 
+    populateLabels() {
+      var chore = this.props.chore;
+      var now = new Date();
+      var _date = new Date(chore.getDeadline());
+      var _assignment = chore.getAssignment();
+      var _details = chore.getDetails();
+      var _chips = [];
+      var categoryTokens = (chore.getCategory()).split(" ").forEach(function(category){_chips.unshift(<Chip style={style.chip}>{category}</Chip>);});
+      var _chipColor = (now > _date) ? colors.timestampOverdue : colors.timestampFuture;
+      var _dueText = (now > _date) ? "Overdue" : null;
+      this.setState({
+        deadline:_date,
+        overdue:_dueText,
+        deadlineLabel:_chipColor,
+        assignment:_assignment,
+        details:_details,
+        categoryLabels:_chips,
+      });
+    }
     /**
      * Sets assigneeName in state.
      *
@@ -97,7 +125,7 @@ export default class ChoreCard extends React.Component {
     setAssigneeName() {
         var manager = new DBManager();
         manager.getUser(this.props.chore.getAssignment()).then(function(user) {
-            this.setState({assigneeName: user.getName()});
+            this.setState({assigneeName: user.getName(),loading:false});
         }.bind(this));
     }
 
@@ -117,42 +145,27 @@ export default class ChoreCard extends React.Component {
      * @method render
      */
     render() {
-        var chore = this.props.chore;
-        var now = new Date();
-        var date = new Date(chore.getDeadline());
-        var chips = [];
-        var categoryTokens = (chore.getCategory()).split(" ").forEach(function(category){
-          chips.unshift(<Chip style={style.chip}>{category}</Chip>);
-        });
-        var chipColor = (now > date) ? colors.timestampOverdue : colors.timestampFuture;
-        var dueText = (now < date) ? "Overdue" : "";
-
-        if (chore) {
+            var contents = (this.props.chore && !this.state.loading) ? (
+                            <div><CardHeader style={style.header} avatar={<ToggleButton
+                                  onCompletion={this.props.onCompletion}
+                                  onUncompletion={this.props.onUncompletion}
+                                  getDefaultToggle={this.props.getDefaultToggle}
+                                  toggleCallback={this.props.toggleCallback}
+                                  toggledObject={this.props.chore}
+                              />}></CardHeader><CardTitle style={style.title} title={this.state.assignment} />
+                              <CardText style={style.text}>
+                              <div>
+                                <Chip style={style.chip2} ><Avatar backgroundColor={colors.profile} icon={<AccountCircle />} />{this.state.assigneeName}</Chip>
+                                <Chip style={style.chip2} backgroundColor={this.state.deadlineLabel} ><Avatar backgroundColor={colors.chore} icon={<Event />} /><Time value={this.state.deadline} format="YYYY/MM/DD hh:mm a"/></Chip>
+                              </div>
+                              <p style={style.messagebody}>{this.state.details}</p>
+                              <div style={style.chips}>{this.state.categoryLabels}</div>
+                              </CardText></div>) : (<Loading />);
             return (
                 <FloatingCard style={style.card}>
-                <CardHeader style={style.header} avatar={<ToggleButton
-                      onCompletion={this.props.onCompletion}
-                      onUncompletion={this.props.onUncompletion}
-                      getDefaultToggle={this.props.getDefaultToggle}
-                      toggleCallback={this.props.toggleCallback}
-                      toggledObject={chore}
-                  />}>
-                </CardHeader>
-                    <CardTitle style={style.title} title={chore.getAssignment()} />
-                    <CardText style={style.text}>
-                    <div>
-                      <Chip style={style.chip2} ><Avatar backgroundColor={colors.profile} icon={<AccountCircle />} />{this.state.assigneeName}</Chip>
-                      <Chip style={style.chip2} backgroundColor={chipColor} ><Avatar backgroundColor={colors.chore} icon={<Event />} /><Time value={date} format="YYYY/MM/DD hh:mm a"/></Chip>
-                    </div>
-                    <p style={style.messagebody}>{chore.getDetails()}</p>
-                    <div style={style.chips}>{chips}</div>
-                    </CardText>
+                  {contents}
                 </FloatingCard>
             );
-        }
-        else {
-            return null;
-        }
     }
 };
 
