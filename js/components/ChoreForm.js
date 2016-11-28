@@ -130,7 +130,7 @@ export default class ChoreForm extends React.Component {
             console.log('Cannot assign chores due in the past');
             return false;
         }
-        var repeatFrequency = parseInt(data.choreRepeatFreqency);
+        var repeatFrequency = parseInt(data.choreRepeatFrequency);
         if (repeatFrequency < 1 || repeatFrequency > 365) {
             console.log('Repeat frequency must be between 1 and 365, inclusive');
             return false;
