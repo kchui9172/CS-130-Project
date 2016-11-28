@@ -114,8 +114,12 @@ export default class PaymentForm extends React.Component {
         console.log(tenantIDs);
         tenantIDs.forEach(function (tenantID) {
             db.getUser(tenantID).then(function (user) {
-                tenants.push(user);
-                this.setState({items: tenants});
+                db.getUser().then(function (curUser) {
+                  if(curUser.getUserID() != user.getUserID()) {
+                    tenants.push(user);
+                    this.setState({items:tenants});
+                  }
+                }.bind(this))
             }.bind(this))
         }.bind(this))
       }.bind(this));
