@@ -5,10 +5,9 @@ import ReactDOM from 'react-dom';
 import Formsy from 'formsy-react';
 import Apartment from '../Apartment.js';
 import DBManager from '../dbManager.js';
-import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
-import {FormsyText, FormsyDate, FormsySelect} from 'formsy-material-ui/lib';
+import {FormsyText, FormsyDate} from 'formsy-material-ui/lib';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 
@@ -123,6 +122,7 @@ export default class ChoreForm extends React.Component {
      * @return {boolean} - Whether form is valid or not
      */
     validateData(data) {
+        console.log("data: ",data);
         var yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         if (yesterday >= data.choreFirstDueDate) {
@@ -248,23 +248,13 @@ export default class ChoreForm extends React.Component {
                           validations="isWords"
                           validationError={this.errorMessages.wordsError}
                           required={true} />
-                      <FormsySelect
+                      <FormsyText
                           name="choreAssignee"
                           floatingLabelText="Assignee"
                           fullWidth={true}
-                          required={true} 
-                      >
-                          {
-                              this.state.tenants.map(function(tenant) {
-                                  return (
-                                      <MenuItem
-                                          value={tenant.getUserID()}
-                                          primaryText={tenant.getName()}
-                                      />
-                                  );
-                              })
-                          }
-                      </FormsySelect>
+                          validations="isWords"
+                          validationError={this.errorMessages.wordsError}
+                          required={true} />
                       <FormsyDate
                           name="choreFirstDueDate"
                           floatingLabelText="Due Date"

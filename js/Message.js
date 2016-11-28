@@ -56,6 +56,7 @@ export default class Message {
      * Gets the Message ID
      *
      * @method getMessageID
+     * @return {string} - The ID of the message
      */
     getMessageID() { return this._messageID; }
 
