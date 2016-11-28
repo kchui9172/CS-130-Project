@@ -1,16 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-import DBManager from '../dbManager.js';
-
 import User from '../User.js';
 import Chore from '../Chore.js';
+import ReactDOM from 'react-dom';
+import Formsy from 'formsy-react';
 import Apartment from '../Apartment.js';
-
+import DBManager from '../dbManager.js';
+import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import {FormsyText, FormsyDate} from 'formsy-material-ui/lib';
-import Formsy from 'formsy-react';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
+
+
+const style = {
+  chorebox: {
+    width:256,
+    minHeight:384,
+    textAlign:'center',
+    padding:'12px',
+  },
+  messagebody: {
+    minHeight:'80px',
+    borderRadius: '6px',
+    padding:'6px',
+    backgroundColor:'rgba(135,125,102,0.1)',
+    border:'2px solid rgba(224, 224, 224,0.8)',
+  },
+};
 /**
  * Represents a Chore Form.
  *
@@ -180,54 +196,73 @@ export default class ChoreForm extends React.Component {
      * @method render
      */
     render() {
-        return (
-            <div>
-                <Formsy.Form ref="addChores"
-                    onValid={this.enableSubmit}
-                    onInvalid={this.disableSubmit}
-                    onValidSubmit={this.handleSubmit}
-                    onInvalidSubmit={this.handleInvalidSubmit} >
-                    Chore Name: <FormsyText
-                        name="choreName"
-                        validations="isWords"
-                        validationError={this.errorMessages.wordsError}
-                        required={true} />
-                    <br />
-                    Assignee: <FormsyText
-                        name="choreAssignee"
-                        validations="isWords"
-                        validationError={this.errorMessages.wordsError}
-                        required={true} />
-                    <br />
-                    First Due Date: <FormsyDate
-                        name="choreFirstDueDate"
-                        required={true} />
-                    <br />
-                    Number of Occurrences: <FormsyText
-                        name="choreNumberOccurrences"
-                        validations="isNumeric"
-                        validationError={this.errorMessages.numericError}
-                        required={true} />
-                    <br />
-                    Repeat Frequency (in Days): <FormsyText
-                        name="choreRepeatFrequency"
-                        validations="isNumeric"
-                        validationError={this.errorMessages.numericError}
-                        required={true} />
-                    <br />
-                    Additional Details: <FormsyText
-                        multiline={true}
-                        rows={3}
-                        cols={50}
-                        name="choreDetails" />
-                    <br />
-                    <RaisedButton fullWidth={false}
-                        type="submit"
-                        label="Send chores"
-                        primary={false}
-                        secondary={true} />
-                </Formsy.Form>
-            </div>
-        );
+          return (
+              <div style={style.chorebox}>
+              <CardTitle title="Assign a Chore" />
+              <Divider />
+                  <Formsy.Form ref="addChores"
+                      onValid={this.enableSubmit}
+                      onInvalid={this.disableSubmit}
+                      onValidSubmit={this.handleSubmit}
+                      onInvalidSubmit={this.handleInvalidSubmit} >
+                      <FormsyText
+                          name="choreName"
+                          floatingLabelText="Chore Name"
+                          fullWidth={true}
+                          validations="isWords"
+                          validationError={this.errorMessages.wordsError}
+                          required={true} />
+                      <FormsyText
+                          name="choreAssignee"
+                          floatingLabelText="Assignee"
+                          fullWidth={true}
+                          validations="isWords"
+                          validationError={this.errorMessages.wordsError}
+                          required={true} />
+                      <FormsyDate
+                          name="choreFirstDueDate"
+                          floatingLabelText="Due Date"
+                          required={true} />
+                      <FormsyText
+                          name="choreNumberOccurrences"
+                          floatingLabelText="Number of Occurrences"
+                          validations="isNumeric"
+                          fullWidth={true}
+                          validationError={this.errorMessages.numericError}
+                          required={true} />
+                      <FormsyText
+                          name="choreRepeatFrequency"
+                          validations="isNumeric"
+                          floatingLabelText="Repeat Frequency (in Days)"
+                          fullWidth={true}
+                          validationError={this.errorMessages.numericError}
+                          required={true} />
+                      <FormsyText
+                          hintText="Additional Details"
+                          multiLine={true}
+                          fullWidth={true}
+                          rows={1}
+                          textareaStyle={style.messagebody}
+                          name="choreDetails" />
+                    <CardActions>
+                      <RaisedButton fullWidth={true}
+                          type="submit"
+                          label="Send chores"
+                          primary={false}
+                          secondary={true} />
+                    </CardActions>
+                  </Formsy.Form>
+              </div>
+          );
     }
 }
+
+          // var _label = this.state.sending ? "Sending..." : this.state.sent ? "Sent!" : "Send Message";
+          // <Formsy.Form ref="addMessage" onValidSubmit={this.addItem} >
+          //   <CardText>
+          //     <FormsyText required={true} fullWidth={true} name="messageText" hintText={"Type message here"} multiLine={true} rows={1} textareaStyle={style.messagebody} underlineDisabledStyle={null} errorText="Message Field cannot be empty"/>
+          //   </CardText>
+          //   <CardActions>
+          //   <RaisedButton fullWidth={true} type="submit" label={_label} primary={false} secondary={true} disabled={this.state.sent}/>
+          //   </CardActions>
+          // </Formsy.Form>

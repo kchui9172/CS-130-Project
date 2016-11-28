@@ -142,7 +142,7 @@ const style = {
             anchorOrigin={{horizontal: 'left', vertical: 'top'}}
             targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
             onRequestClose={this.handleRequestClose}
-            className="blurred-more rounded-more"
+            className="blurred rounded-more"
             style={style.popover}
           >
           {_view}

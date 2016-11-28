@@ -46,8 +46,8 @@ body {
   }
 
   .blurred-more{
-    background-color:rgba(255,255,255,0.6) !important;
-    -webkit-backdrop-filter:blur(4px);
+    background-color:rgba(255,255,255,0.75) !important;
+    -webkit-backdrop-filter:blur(6px);
   }
 
   .frosted{

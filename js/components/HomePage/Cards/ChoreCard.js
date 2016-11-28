@@ -8,6 +8,10 @@ import FloatingCard from '../../primitives/FloatingCard.js';
 import Chore from '../../../Chore.js';
 import ToggleButton from '../../ToggleButton.js';
 
+import Time from 'react-time';
+import Chip from 'material-ui/Chip';
+import {colors} from '../../../config/MUI.js';
+
 const style = {
   text: {
     textAlign:'justify',
@@ -61,7 +65,7 @@ export default class ChoreCard extends React.Component {
                             label="Completed? "
                         />
                         <p>Assignment: {chore.getAssignment()}</p>
-                        <p>Deadline: {chore.getDeadline()}</p>
+                        <p>Deadline: <Chip backgroundColor={colors.timestamp} ><Time value={chore.getDeadline()} format="YYYY/MM/DD hh:mm a"/></Chip></p>
                         <p>Category: {chore.getCategory()}</p>
                         <p>Details: {chore.getCategory()}</p>
                     </CardText>

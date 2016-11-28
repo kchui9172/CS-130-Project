@@ -30,9 +30,7 @@ export default class Chores extends React.Component {
     render() {
         return (
             <div>
-                <h1>Chores</h1>
-                <ChoreForm />
-                <ChoreTable 
+                <ChoreTable
                     choreList={this.props.choreList}
                     onCompletion={this.props.onCompletion}
                     onUncompletion={this.props.onUncompletion}
