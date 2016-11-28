@@ -1,16 +1,31 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import DBManager from '../dbManager.js';
 import User from '../User.js';
+import ReactDOM from 'react-dom';
+import Formsy from 'formsy-react';
 import Payment from '../Payment.js';
-
-import RaisedButton from 'material-ui/RaisedButton';
+import DBManager from '../dbManager.js';
+import Divider from 'material-ui/Divider';
 import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import {FormsyText, FormsyRadio,FormsyRadioGroup,FormsySelect,FormsyDate} from 'formsy-material-ui/lib';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-import Formsy from 'formsy-react';
-
+const style = {
+  paymentbox: {
+    width:256,
+    minHeight:384,
+    textAlign:'left',
+    padding:'12px',
+  },
+  paymentbody: {
+    minHeight:'80px',
+    borderRadius: '6px',
+    padding:'6px',
+    backgroundColor:'rgba(135,125,102,0.1)',
+    border:'2px solid rgba(224, 224, 224,0.8)',
+  },
+};
 /**
  * Represents a PaymentForm.
  *
@@ -138,46 +153,64 @@ export default class PaymentForm extends React.Component {
      */
     render() {
         return (
-            <div>
-            <Formsy.Form ref="addPayment" onValidSubmit={this.addPayment} >
-                <h3> Payment Description</h3>
-                <FormsyText required={true}  name="paymentDescription" floatingLabelText={'Enter description'} multiLine={true} rows={2}/>
+            <div style={style.paymentbox}>
+            <CardTitle title="Create a Payment" />
+            <Divider />
 
-                <h3> Payment Category</h3>
-                <FormsyRadioGroup name="paymentCategory" defaultSelected="groceries">
-                  <FormsyRadio
-                    value="groceries"
-                    label="Groceries"
-                  />
-                  <FormsyRadio
-                    value="meals"
-                    label="Meals"
-                  />
-                  <FormsyRadio
-                    value="rent"
-                    label="Rent or Utilities"
-                  />
-                  <FormsyRadio
-                    value="misc"
-                    label="Misc"
-                  />
+            <Formsy.Form ref="addPayment"
+                onValidSubmit={this.addPayment} >
+
+                <FormsyText
+                  required={true}
+                  name="paymentAmount"
+                  onBlur={this.enableAmountValidation}
+                  onFocus={this.disableAmountValidation}
+                  validations={this.state.validateAmount ? {isFloat:true} : {isExisty:true}}
+                  validationError="Please provide a valid number"
+                  floatingLabelText={'Enter amount'}
+                />
+                <FormsyText
+                    name="paymentDescription"
+                    floatingLabelText={'Enter description'}
+                    multiLine={true}
+                    rows={2}
+                    required={true} />
+
+                <FormsyRadioGroup
+                    name="paymentCategory"
+                    defaultSelected="groceries">
+                      <FormsyRadio
+                        value="groceries"
+                        label="Groceries"
+                      />
+                      <FormsyRadio
+                        value="meals"
+                        label="Meals"
+                      />
+                      <FormsyRadio
+                        value="rent"
+                        label="Rent or Utilities"
+                      />
+                      <FormsyRadio
+                        value="misc"
+                        label="Misc"
+                      />
                 </FormsyRadioGroup>
 
-                <h3>Are you the loaner or loanee?</h3>
                 <FormsySelect
                   name="userPos"
                   required
-                  floatingLabelText="Choose an option"
+                  floatingLabelText="Are you the loaner or loanee"
+                  ref="loanOption"
                 >
                   <MenuItem value={'loaner'} primaryText="Loaner" />
                   <MenuItem value={'loanee'} primaryText="Loanee" />
                 </FormsySelect>
 
-                <h3> Other person involved in transaction</h3>
                 <FormsySelect
                   name="otherPos"
                   required
-                  floatingLabelText="Choose an option"
+                  floatingLabelText="Choose a roommate"
                 >
                   {this.state.items.map(
                     function(tenant) {
@@ -186,24 +219,13 @@ export default class PaymentForm extends React.Component {
                   )}
                 </FormsySelect>
 
-                <h3>Amount</h3>
-                <FormsyText required={true}  
-                  name="paymentAmount" 
-                  onBlur={this.enableAmountValidation}
-                  onFocus={this.disableAmountValidation}
-                  validations={this.state.validateAmount ? {isFloat:true} : {isExisty:true}}
-                  validationError="Please provide a valid number" 
-                  floatingLabelText={'Enter amount'}
-                />
-
-                <h3>Due date </h3>
                 <FormsyDate
                   name="dueDate"
                   required
                   validations={{
                     checkDate: function(values,chosenDate){
                       if (chosenDate != null){
-                        var date = (new Date(chosenDate.toDateString()+" 12:00:00 +0000")).toISOString().substring(0,10);  
+                        var date = (new Date(chosenDate.toDateString()+" 12:00:00 +0000")).toISOString().substring(0,10);
                         var curDate = new Date().toISOString().substring(0,10);
                         return curDate <= date ? true : 'Invalid date: cannot choose date from past';
                       }
@@ -212,7 +234,6 @@ export default class PaymentForm extends React.Component {
                   floatingLabelText="Due Date"
                 />
 
-                <h3>Recurring Period </h3>
                 <FormsySelect
                   name="recurringPeriod"
                   required
@@ -231,7 +252,3 @@ export default class PaymentForm extends React.Component {
         );
     }
 }
-
-
-
-
