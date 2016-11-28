@@ -36,7 +36,13 @@ body {
 .transparent {
   background-color: rgba(0,0,0,0);
 }
+.red {
+    background-color: rgba(213, 147, 156, 0.3);
+}
 
+.green {
+  background-color: rgba(113, 247, 156, 0.3);
+}
 @supports (-webkit-backdrop-filter:blur(4px)) {
   .dialogHack > div:first-child {
     border-radius: 6px !important;

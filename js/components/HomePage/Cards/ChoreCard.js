@@ -44,7 +44,7 @@ const style = {
   },
 
   chip:{
-    margin:'3px',
+    margin:'2px',
   },
 
   chip2:{

@@ -27,7 +27,7 @@ const style={
   header:{
     fontSize:'24px',
     fontWeight:'bold',
-    backgroundColor:'rgba(101, 86, 177, 0.80)',
+    backgroundColor:colors.payment,
     color:'white',
   },
 
@@ -49,6 +49,21 @@ class PaymentsTable extends React.Component {
      */
     constructor(props) {
         super(props);
+        this.state = {
+            user:null,
+        };
+    }
+
+    getcurrentUser() {
+      var manager = new DBManager();
+      manager.getUser().then(function(user){
+        this.setState({currentUser: user.getName()});
+      }.bind(this), function(err) {
+        console.log('failed to fetch username', err);
+      }.bind(this));
+    }
+    componentDidMount() {
+      this.getcurrentUser();
     }
 
     /**
@@ -60,8 +75,9 @@ class PaymentsTable extends React.Component {
      */
     composeRow(payment) {
         var date = new Date(payment.getDateDue());
+      //(this.props.currentuser == null) ? ('transparent'): (payment.getLoaner() === this.props.currentuser) ? 'red' : 'green';
         return (
-          <TableRow  className='transparent'>
+          <TableRow>
             <TableRowColumn><Chip backgroundColor={colors.timestamp} ><Time value={date} format="MM/DD hh:mm a"/></Chip></TableRowColumn>
             <TableRowColumn>{payment.getAmount()}</TableRowColumn>
             <TableRowColumn>{payment.getLoaner()}</TableRowColumn>
@@ -174,13 +190,13 @@ export default class PaymentsCard extends React.Component {
      }.bind(this));
  }
 
+
   /**
    * Function called when the component mounts.
    *
    * @method componentDidMount
    */
    componentDidMount() {
-       console.log("Working!!!");
        this.showPayments();
    }
 

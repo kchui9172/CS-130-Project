@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Grid, Row, Column} from 'react-cellblock';
 import PaymentsCard from '../Cards/PaymentsCard.js';
 
-import PaymentList from '../../../components/PaymentList.js';
 
 /**
  * Represents a Payments View.

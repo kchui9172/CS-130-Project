@@ -134,8 +134,6 @@ export default class HomePage extends React.Component {
       currentView = <ChoresView />;
     else if (this.state.viewIndex == 3)
       currentView = <PaymentsView />;
-    else if (this.state.viewIndex == 4)
-      currentView = <SettingsView />;
 
     return ((this.state.loading) ? <Loading style={style.loading}/> :
     (
@@ -147,8 +145,7 @@ export default class HomePage extends React.Component {
           <ListItem onTouchTap={function(){this.setState({viewIndex: 2})}.bind(this)} value={2} primaryText="Chores"   leftIcon={<EventNote color={colors.chore}   />}  />
           <ListItem onTouchTap={function(){this.setState({viewIndex: 3})}.bind(this)} value={3} primaryText="Payments" leftIcon={<Payment   color={colors.payment} />}  />
         <Divider />
-          <ListItem onTouchTap={function(){this.setState({viewIndex: 4})}.bind(this)} value={4} primaryText="Settings" leftIcon={<Settings  color={colors.primary}     />} />
-          <ListItem onTouchTap={function(){DBManager.LogOut()}}                       value={5} primaryText="Logout"   leftIcon={<Exit      color={colors.red}         />} />
+          <ListItem onTouchTap={function(){DBManager.LogOut()}}                       value={4} primaryText="Logout"   leftIcon={<Exit      color={colors.red}     />} />
         </SelectableList>
         </NavDrawer>
         <FAB view={this.state.viewIndex}/>
@@ -161,3 +158,7 @@ export default class HomePage extends React.Component {
 }
 
 //this.setState({mainView: <MessagesView />})
+// else if (this.state.viewIndex == 4)
+//   currentView = <SettingsView />;
+//   <ListItem onTouchTap={function(){this.setState({viewIndex: 4})}.bind(this)} value={4} primaryText="Settings" leftIcon={<Settings  color={colors.primary} />} />
+//

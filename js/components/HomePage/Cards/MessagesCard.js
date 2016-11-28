@@ -29,6 +29,15 @@ const style={
     backgroundColor:'rgba(101, 86, 177, 0.80)',
     color:'white',
   },
+  column1:{
+    width:'20%',
+  },
+  column2:{
+    width:'20%',
+  },
+  column3:{
+    width:'60%',
+  },
 };
 /**
  * Represents a Messages Table.
@@ -59,9 +68,9 @@ class MessagesTable extends React.Component {
         var date = new Date(message.getTimeSent());
         return (
           <TableRow  className='transparent'>
-            <TableRowColumn>{message.getSender()}</TableRowColumn>
-            <TableRowColumn><Chip backgroundColor={colors.timestamp} ><Time value={date} format="YYYY/MM/DD hh:mm a"/></Chip></TableRowColumn>
-            <TableRowColumn>{message.getText()    }</TableRowColumn>
+            <TableRowColumn style={style.column1}>{message.getSender()}</TableRowColumn>
+            <TableRowColumn style={style.column2}><Chip backgroundColor={colors.timestamp} ><Time value={date} format="MM/DD hh:mm a"/></Chip></TableRowColumn>
+            <TableRowColumn style={style.column3}>{message.getText()    }</TableRowColumn>
           </TableRow>
         );
     }
@@ -78,9 +87,9 @@ class MessagesTable extends React.Component {
           <Table className='rounded transparent'  height={style.table.height} fixedHeader={true} >
             <TableHeader displaySelectAll={false} adjustForCheckbox={false} style={style.header}  className='transparent frosted'>
               <TableRow >
-                <TableHeaderColumn tooltip="The Sender"><h3>Sender</h3></TableHeaderColumn>
-                <TableHeaderColumn tooltip="Creation Time"><h3>Time Sent</h3></TableHeaderColumn>
-                <TableHeaderColumn tooltip="Content"><h3>Content</h3></TableHeaderColumn>
+                <TableHeaderColumn style={style.column1} tooltip="The Sender"><h3>Sender</h3></TableHeaderColumn>
+                <TableHeaderColumn style={style.column2} tooltip="Creation Time"><h3>Time Sent</h3></TableHeaderColumn>
+                <TableHeaderColumn style={style.column3} tooltip="Content"><h3>Content</h3></TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false} showRowHover={true} preScanRows={false} className='transparent'>
