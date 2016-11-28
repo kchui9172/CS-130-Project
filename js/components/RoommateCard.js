@@ -12,6 +12,10 @@ const style = {
     textAlign:'justify',
     paddingLeft:'16px',
   },
+  image: {
+    filter:'opacity(75%) saturate(70%) hue-rotate(3530deg)',
+    boxShadow:'0 1px 2px rgba(0,0,0,0.25)',
+  },
   title:{
     overflowWrap:'break-word',
     paddingTop:'0px',
@@ -112,9 +116,9 @@ export default class RoommateCard extends React.Component {
   
             var contents = <div>
                             <CardTitle style={style.title} title={this.props.name} />
-                              <CardText style={style.text}>
-                              <p style={style.messagebody}>Info here</p>
-                              </CardText></div>;
+                              <CardMedia>
+                                <img style={style.image} src={require('../../static/assets/spongebob.jpg')} />
+                              </CardMedia></div>;
             return(
               <FloatingCard style={style.card}>
                 {contents}

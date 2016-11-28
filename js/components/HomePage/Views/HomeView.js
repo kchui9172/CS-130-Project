@@ -31,6 +31,10 @@ const style={
   messages:{
     backgroundColor:colors.message,
   },
+  heading:{
+    textAlign: 'center',
+    padding: '16px',
+  }
 };
 /**
  * Represents a Payments View.
@@ -85,7 +89,7 @@ export default class HomeView extends React.Component {
    * @method render
    */
 
-  render() {
+  /*render() {
       var name = this.state.userName;
       var title = "Welcome " + name +"!";
       var i = this.state.tenants.indexOf(name);
@@ -113,9 +117,9 @@ export default class HomeView extends React.Component {
           </Row>
         </Grid>
     );
-  }
+  }*/
 
-  /*render() {
+  render() {
       var name = this.state.userName;
       var title = "Welcome " + name +"!";
       var i = this.state.tenants.indexOf(name);
@@ -136,18 +140,11 @@ export default class HomeView extends React.Component {
                       <CardTitle style={style.title} title={title}
                           subtitle={this.state.address}
                       />
-                      <Divider />
-                      <CardText style = {style.text}>
-                      <div> 
-                        <h1> Roommates </h1>
-                      </div>
-                      </CardText>
                       </Card>
                   </Column>
                 </Row>
             </Grid>
-
-            <Divider />
+            <h1 style={style.heading}> Roommates </h1>
             <Grid breakpoints={[4]} flexible={true} columnWidth={280} gutterWidth={20} onChange={breakpoint => {}} >
               {list.map(
                   function (roommate) {
@@ -164,7 +161,7 @@ export default class HomeView extends React.Component {
       }else{
         return null;
       }
-  }*/
+  }
 };
 
 
