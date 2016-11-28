@@ -50,6 +50,11 @@ export default class SummaryInfo extends React.Component {
     colWidth: React.PropTypes.number // How wide is this component in “grid units”?
   };
 
+  /**
+   * Renders a Payment Card.
+   *
+   * @method render
+   */
   render() {
   //  const view = (this.props.colWidth >= 0 ) ? (<div>{BigView}</div>) : (<div>{SmallView}</div>);
     return (<div>{BigView}</div>);//(view);

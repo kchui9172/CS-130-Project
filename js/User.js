@@ -30,7 +30,7 @@ export default class User {
      * @method JSONtoUser
      * @static
      * @param {string} - JSON representing a User
-     * @return {User} - The User represented by the JSOn
+     * @return {User} - The User represented by the JSON
      */
     static JSONtoUser(data) {
         var user = new User();

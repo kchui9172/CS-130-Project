@@ -28,54 +28,6 @@ export default class TodoList extends Component {
     };
 
     /**
-     * Tests messages
-     *
-     * @method TestMessages
-     */
-    TestMessages() {
-      // Create a test user & add messages
-      /*var manager = new DBManager();
-      var uid = "ZNfb868cZATuNgsI1kYLA1QxjWi2";
-      var aptid = "ASD77SDF70";
-
-      var testUser = new User("bob@gmail.com", "Bob", "Jones", "760-989-0632");
-      testUser.setUserID(uid);
-      testUser.setAptID(aptid);
-      manager.addUser(testUser);
-
-      console.log("done creating user");
-      var obj = new Message("ABCDEFGHIJK", "1112333", "HELLOW WORLD", "aasdfasdf")
-      manager.addMessage(obj);
-      manager.addMessage(obj);
-      manager.addMessage(obj);
-      manager.addMessage(obj);
-
-      console.log("get messages");
-      var ids = manager.getMessages();
-      console.log('ids :', ids);
-      var messages = this.createMessages(ids);*/
-
-
-      // var manager = new DBManager();
-      // manager.signIn("bob@gmail.com", "password").then(function () {
-      //   manager.getUser().then(function(user) {
-      //     var message = new Message(user.getUserID(),user.getAptID(), new Date(), "Hello this is a test");
-      //     manager.addMessage(message);
-      //   });
-      // });
-
-      manager.getMessageIDs().then(function (messages) {
-      messages.forEach(function (value) {
-        manager.getMessage(value).then(function (message) {
-            console.log('========================');
-            console.log(message.getText());
-            console.log(message.getTimeSent());
-        })
-      })
-    });
-    }
-
-    /**
      * Pulls a message from the database.
      *
      * @method pullMessage
@@ -93,7 +45,6 @@ export default class TodoList extends Component {
       });
     }
 
-// Extracts information to make message
     /**
      * Pulls messages from the database
      *
@@ -132,6 +83,7 @@ export default class TodoList extends Component {
       //return this.createMessages(ids);
 
 //this.messageListener =
+
     /**
      * Function called when component mounts.
      *
@@ -165,4 +117,3 @@ export default class TodoList extends Component {
     	);
     }
 }
-//<button disabled={true} onClick={this.reshowMessages()}/>

@@ -11,9 +11,6 @@ import {FormsyText, FormsyRadio,FormsyRadioGroup,FormsySelect,FormsyDate} from '
 
 import Formsy from 'formsy-react';
 
-/*import FloatingCard from './primitives/FloatingCard.js';
-import { CardActions, CardTitle, CardText} from 'material-ui/Card';*/
-
 /**
  * Represents a PaymentForm.
  *

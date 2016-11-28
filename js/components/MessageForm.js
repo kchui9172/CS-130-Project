@@ -46,7 +46,6 @@ export default class MessageForm extends React.Component {
 
         this.addItem = this.addItem.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        //this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     /**
