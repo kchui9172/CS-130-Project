@@ -3,6 +3,9 @@ import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
+import Avatar from 'material-ui/Avatar';
+import AccountCircle from 'material-ui/svg-icons/action/account-circle';
+import Event from 'material-ui/svg-icons/action/event';
 import FloatingCard from '../../primitives/FloatingCard.js';
 import DBManager from '../../../dbManager.js';
 import Chore from '../../../Chore.js';
@@ -17,12 +20,39 @@ const style = {
     textAlign:'justify',
     paddingLeft:'16px',
   },
-
+  title:{
+    overflowWrap:'break-word',
+    paddingTop:'0px',
+    paddingBottom:'0px',
+  },
+  header:{
+    paddingBottom:'0px',
+  },
   card: {
     width:256,
-    height:384,
+    minHeight:384,
     textAlign:'center',
     borderRadius: '6px',
+  },
+
+  messagebody: {
+    minHeight:'80px',
+    borderRadius: '6px',
+    padding:'6px',
+    backgroundColor:'rgba(135,125,102,0.1)',
+    border:'2px solid rgba(224, 224, 224,0.8)',
+  },
+
+  chip:{
+    margin:'3px',
+  },
+
+  chip2:{
+    margin:'6px',
+  },
+  chips:{
+    display: 'flex',
+   flexWrap: 'wrap',
   },
 }
 
@@ -88,23 +118,34 @@ export default class ChoreCard extends React.Component {
      */
     render() {
         var chore = this.props.chore;
+        var now = new Date();
+        var date = new Date(chore.getDeadline());
+        var chips = [];
+        var categoryTokens = (chore.getCategory()).split(" ").forEach(function(category){
+          chips.unshift(<Chip style={style.chip}>{category}</Chip>);
+        });
+        var chipColor = (now > date) ? colors.timestampOverdue : colors.timestampFuture;
+        var dueText = (now < date) ? "Overdue" : "";
+
         if (chore) {
             return (
                 <FloatingCard style={style.card}>
-                    <CardTitle title="Chore"></CardTitle>
+                <CardHeader style={style.header} avatar={<ToggleButton
+                      onCompletion={this.props.onCompletion}
+                      onUncompletion={this.props.onUncompletion}
+                      getDefaultToggle={this.props.getDefaultToggle}
+                      toggleCallback={this.props.toggleCallback}
+                      toggledObject={chore}
+                  />}>
+                </CardHeader>
+                    <CardTitle style={style.title} title={chore.getAssignment()} />
                     <CardText style={style.text}>
-                        <ToggleButton
-                            onCompletion={this.props.onCompletion}
-                            onUncompletion={this.props.onUncompletion}
-                            getDefaultToggle={this.props.getDefaultToggle}
-                            toggleCallback={this.props.toggleCallback}
-                            toggledObject={chore}
-                            label="Completed? "
-                        />
-                        <p>Assignment: {chore.getAssignment()}</p>
-                        <p>Deadline: <Chip backgroundColor={colors.timestamp} ><Time value={chore.getDeadline()} format="YYYY/MM/DD hh:mm a"/></Chip></p>
-                        <p>Category: {chore.getCategory()}</p>
-                        <p>Details: {chore.getCategory()}</p>
+                    <div>
+                      <Chip style={style.chip2} ><Avatar backgroundColor={colors.profile} icon={<AccountCircle />} />{this.state.assigneeName}</Chip>
+                      <Chip style={style.chip2} backgroundColor={chipColor} ><Avatar backgroundColor={colors.chore} icon={<Event />} /><Time value={date} format="YYYY/MM/DD hh:mm a"/></Chip>
+                    </div>
+                    <p style={style.messagebody}>{chore.getDetails()}</p>
+                    <div style={style.chips}>{chips}</div>
                     </CardText>
                 </FloatingCard>
             );

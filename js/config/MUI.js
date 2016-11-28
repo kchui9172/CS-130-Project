@@ -33,4 +33,9 @@ export const colors = {
   chore:'rgb(56, 158, 255)',//'rgb(60, 179, 113)',
   payment:'#607D8B',
   timestamp:'rgba(213, 147, 156, 0.3)',
+  timestampOverdue:'rgba(213, 147, 156, 0.7)',
+  timestampDone:'rgba(113, 247, 156, 0.3)',
+  timestampFuture:'rgba(113, 247, 156, 0.3)',
+  profile:'#607D8B',
+  profileChipIcon:'rgb(124, 30, 255, 1)',
 };
