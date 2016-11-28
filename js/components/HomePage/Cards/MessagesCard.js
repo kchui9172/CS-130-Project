@@ -19,7 +19,7 @@ const style={
     padding:'128px',
   },
   table: {
-    height:'512px',
+    minHeight:'200px',
     overflow:'hidden',
     padding:'0px',
   },

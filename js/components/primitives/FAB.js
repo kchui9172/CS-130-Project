@@ -27,6 +27,15 @@ const style = {
     transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
   },
 
+  buttonHidden:{
+    margin: 40,
+    position:'fixed',
+    right:'-100px',
+    bottom:0,
+    zIndex:10,
+    transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
+  },
+
   popover: {
     backgroundColor:'rgba(102,67,167,0.45)',
   },
@@ -114,6 +123,7 @@ const style = {
         var _icon = null;
         var _color = null;
         var _view = null;
+        var _buttonView = (this.props.view == 0) ? style.buttonHidden : style.button;
         if (this.props.view == 1) {
           _icon  = <ContentSend />
           _color = colors.message
@@ -132,7 +142,7 @@ const style = {
         return (
           <div>
 
-          <FloatingActionButton backgroundColor={_color} style={style.button} onTouchTap={this.handleTouchTap}>
+          <FloatingActionButton backgroundColor={_color} style={_buttonView} onTouchTap={this.handleTouchTap}>
             {_icon}
           </FloatingActionButton>
           <Popover

@@ -44,7 +44,7 @@ const style = {
   },
 
   chip:{
-    margin:'2px',
+    margin:'1px',
   },
 
   chip2:{
@@ -52,7 +52,7 @@ const style = {
   },
   chips:{
     display: 'flex',
-   flexWrap: 'wrap',
+   overflowX: 'scroll',
   },
 }
 
