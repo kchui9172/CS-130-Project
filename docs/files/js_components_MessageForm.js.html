@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -133,20 +135,26 @@ import RaisedButton from &#x27;material-ui/RaisedButton&#x27;;
 import {FormsyText} from &#x27;formsy-material-ui/lib&#x27;;
 import Formsy from &#x27;formsy-react&#x27;;
 
-import FloatingCard from &#x27;./primitives/FloatingCard.js&#x27;;
+import Divider from &#x27;material-ui/Divider&#x27;;
 import { CardActions, CardTitle, CardText} from &#x27;material-ui/Card&#x27;;
 
-/*import Formsy from &#x27;formsy-react&#x27;;
-import {FormsyText} from &#x27;formsy-material-ui/lib&#x27;;
-import FlatButton from &#x27;material-ui/FlatButton&#x27;;
-import RaisedButton from &#x27;material-ui/RaisedButton&#x27;; */
+import {snack} from &#x27;./primitives/Snacker.js&#x27;;
 
-/**
- * Represents a Message Form.
- *
- * @class React.Component.MessageForm
- * @extends React.Component
- */
+const style = {
+  messagebox: {
+    textAlign:&#x27;center&#x27;,
+    padding:&#x27;12px&#x27;,
+    minWidth:&#x27;420px&#x27;,
+  },
+  messagebody: {
+    minHeight:&#x27;200px&#x27;,
+    borderRadius: &#x27;6px&#x27;,
+    padding:&#x27;6px&#x27;,
+    backgroundColor:&#x27;rgba(135,125,102,0.1)&#x27;,
+    border:&#x27;2px solid rgba(224, 224, 224,0.8)&#x27;,
+  },
+};
+
 export default class MessageForm extends React.Component {
     /**
      * Constructs a Message Form.
@@ -158,12 +166,13 @@ export default class MessageForm extends React.Component {
         super();
 
         this.state = {
-            value: &#x27;&#x27;
+            value: &#x27;&#x27;,
+            sending:false,
+            sent:false,
         };
 
         this.addItem = this.addItem.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        //this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     /**
@@ -173,43 +182,28 @@ export default class MessageForm extends React.Component {
      * @param {Object} e - The submitted object with the message text
      */
     addItem(e) {
-        console.log(e.messageText);
-        console.log(&quot;about to add message&quot;);
-        var manager = new DBManager();
-        // manager.signIn(&quot;bob@gmail.com&quot;,&quot;password&quot;).then(function(){
-        //     manager.getUser().then(function(user){
-        //         console.log(&quot;meow&quot;);
-        //         console.log(e.messageText);
-        //         var message = new Message(user.getUserID(),user.getAptID(), new Date(), e.messageText);
-        //         manager.addMessage(message);
-        //     });
-        // }.bind(this));
-        console.log(&quot;added message&quot;);
+
+        if(e.messageText.trim() === &#x27;&#x27;)
+          return;
+        this.setState({sending:true});
+        var now = new Date();
+        var db = new DBManager();
+        console.log(&quot;about to add message&quot;, e.messageText);
+        var apt_IDPromise = db.getApartment().then(function(apt) {return apt.getAptID()});
+        var userIDPromise = db.getUser().then(function(user) {return user.getUserID()});
+        Promise.all([userIDPromise, apt_IDPromise]).then(values =&gt; {
+          console.log(&#x27;onfetch userID, aptID&#x27;, values[0], values[1]);
+          var message = new Message(values[0], values[1], now, e.messageText);
+          db.addMessage(message).then(function(success) {
+            this.setState({sending:false, sent:true});
+          }.bind(this), function(err) {
+            this.setState({sending:false, sent:false});
+          }.bind(this));
+        });
+      //  snack(&#x27;adding message&#x27;, 1000)
         this.state.value=&quot;&quot;;
         //e.preventDefault();
         }
-        /*if (this._inputElement.value != &quot;&quot;){ //if empty, don&#x27;t create note
-            var context = this;
-            console.log(&quot;about to add a message&quot;);
-            var manager = new DBManager();
-            //console.log(this._inputElement.value);;
-            manager.signIn(&quot;bob@gmail.com&quot;, &quot;password&quot;).then(function () {
-                manager.getUser().then(function(user) {
-                    console.log(context._inputElement.value);
-                    var message = new Message(user.getUserID(),user.getAptID(), new Date(), context._inputElement.value);
-                    manager.addMessage(message);
-                });
-            });
-
-            console.log(&quot;added message&quot;);
-            //return message has been sucessfully added or if empty do nothing
-            this._inputElement.value=&quot;&quot;;
-            e.preventDefault();
-        }else{
-            e.preventDefault();
-            return;
-        }*/
-    //}
 
   /**
    * Handles change in the message text box.
@@ -229,33 +223,23 @@ export default class MessageForm extends React.Component {
      */
 
   render() {
+    var _label = this.state.sending ? &quot;Sending...&quot; : this.state.sent ? &quot;Sent!&quot; : &quot;Send Message&quot;;
     return (
+        &lt;div style={style.messagebox}&gt;
+        &lt;CardTitle title=&quot;New Message&quot; /&gt;
+        &lt;Divider /&gt;
         &lt;Formsy.Form ref=&quot;addMessage&quot; onValidSubmit={this.addItem} &gt;
-            &lt;FormsyText required={true}  name=&quot;messageText&quot; floatingLabelText={&#x27;Enter note&#x27;} multiLine={true} rows={3}/&gt;
-            &lt;RaisedButton fullWidth={false} type=&quot;submit&quot; label=&quot;Send Message&quot; primary={false} secondary={true} /&gt;
+          &lt;CardText&gt;
+            &lt;FormsyText required={true} fullWidth={true} name=&quot;messageText&quot; hintText={&quot;Type message here&quot;} multiLine={true} rows={1} textareaStyle={style.messagebody} underlineDisabledStyle={null} errorText=&quot;Message Field cannot be empty&quot;/&gt;
+          &lt;/CardText&gt;
+          &lt;CardActions&gt;
+          &lt;RaisedButton fullWidth={true} type=&quot;submit&quot; label={_label} primary={false} secondary={true} disabled={this.state.sent}/&gt;
+          &lt;/CardActions&gt;
         &lt;/Formsy.Form&gt;
+        &lt;/div&gt;
     );
   }
 }
-
-
-
-/*
-                    &lt;form onSubmit={this.addItem}&gt;
-                        &lt;input ref={(a) =&gt; this._inputElement = a} //inputElement property stores reference to input element
-                            placeholder=&quot;Enter note&quot;&gt;
-                        &lt;/input&gt;
-                        &lt;button type=&quot;submit&quot;&gt;+&lt;/button&gt;
-                    &lt;/form&gt;
-*/
-
-/*        &lt;form onSubmit={this.addItem}&gt;
-            &lt;input ref={(a) =&gt; this._inputElement = a} //inputElement property stores reference to input element
-                placeholder=&quot;Enter note&quot;&gt;
-            &lt;/input&gt;
-            &lt;button type=&quot;submit&quot;&gt;+&lt;/button&gt;
-        &lt;/form&gt;
-        */
 
     </pre>
 </div>

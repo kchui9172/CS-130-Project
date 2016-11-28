@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -127,6 +129,7 @@ import React, {Component} from &#x27;react&#x27;;
 import {Grid, Row, Column} from &#x27;react-cellblock&#x27;;
 
 import Chore from &#x27;../../../Chore.js&#x27;
+import Loading from &#x27;../../primitives/Loading.js&#x27;;
 import ChoreComponent from &#x27;../../ChoreComponent.js&#x27;;
 import ChoreCardGrid from &#x27;../../ChoreCardGrid.js&#x27;;
 import DBManager from &#x27;../../../dbManager.js&#x27;;
@@ -173,7 +176,7 @@ export default class ChoresView extends React.Component {
 
     /**
      * Function called when chore is marked not complete.
-     * 
+     *
      * @method onUncompletion
      * @param {Chore} chore - The incomplete chore
      */
@@ -273,13 +276,12 @@ export default class ChoresView extends React.Component {
         var allChoresList = this.state.allChoresList;
         var completeChoresList = this.state.completeChoresList;
         var incompleteChoresList = this.state.incompleteChoresList;
-        
-        if (this.state.allChoresList &amp;&amp;
-            this.state.allChoresList.length &gt; 0)
+
+        if (this.state.allChoresList &amp;&amp; this.state.allChoresList.length &gt; 0)
             return (
                 &lt;div&gt;
-                    &lt;ChoreCardGrid 
-                        choreList={incompleteChoresList} 
+                    &lt;ChoreCardGrid
+                        choreList={incompleteChoresList}
                         onCompletion={this.onCompletion}
                         onUncompletion={this.onUncompletion}
                         getDefaultToggle={this.getDefaultToggle}
@@ -288,8 +290,8 @@ export default class ChoresView extends React.Component {
                     &lt;Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint =&gt; {}} &gt;
                         &lt;Row&gt;
                             &lt;Column offset=&quot;1/16&quot; width=&quot;7/8&quot;&gt;
-                                &lt;ChoreComponent 
-                                    choreList={(incompleteChoresList.slice(12)).concat(completeChoresList)} 
+                                &lt;ChoreComponent
+                                    choreList={(incompleteChoresList.slice(12)).concat(completeChoresList)}
                                     onCompletion={this.onCompletion}
                                     onUncompletion={this.onUncompletion}
                                     getDefaultToggle={this.getDefaultToggle}
@@ -301,7 +303,7 @@ export default class ChoresView extends React.Component {
                 &lt;/div&gt;
             );
         else {
-            return null;
+            return (&lt;Loading /&gt;);
         }
     }
 };

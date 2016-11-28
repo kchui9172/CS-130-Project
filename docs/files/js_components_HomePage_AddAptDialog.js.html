@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -125,6 +127,7 @@
     <pre class="code prettyprint linenums">
 import React from &#x27;react&#x27;;
 import Dialog from &#x27;material-ui/Dialog&#x27;;
+import Divider from &#x27;material-ui/Divider&#x27;;
 import {FormsyText} from &#x27;formsy-material-ui/lib&#x27;
 import RaisedButton from &#x27;material-ui/RaisedButton&#x27;;
 import {CardMedia, CardActions, CardTitle, CardText} from &#x27;material-ui/Card&#x27;;
@@ -136,6 +139,12 @@ import DBManager from &#x27;../../dbManager.js&#x27;;
 import Apartment from &#x27;../../Apartment.js&#x27;;
 
 
+const style = {
+  dialog:{
+    width:&#x27;400px&#x27;,
+    textAlign:&#x27;justify&#x27;,
+  },
+};
 /*
  * A modal dialog can only be closed by selecting one of the actions.
  */
@@ -146,7 +155,7 @@ import Apartment from &#x27;../../Apartment.js&#x27;;
  * @extends React.Component
  */
 export default class AddAptDialog extends React.Component {
-  /** 
+  /**
    * Constructs an Add Apartment Dialog.
    *
    * @method constructor
@@ -167,7 +176,7 @@ export default class AddAptDialog extends React.Component {
    * Handles opening the Add Apartment Dialog.
    *
    * @method handleOpen
-   */ 
+   */
   handleOpen = () =&gt; {
     this.setState({modalOpen: true});
   };
@@ -281,10 +290,13 @@ export default class AddAptDialog extends React.Component {
    * @method componentDidMount
    */
   componentDidMount() {
+    this.checkBindings();
+  };
+
+  checkBindings(){
     this.checkUserBinding();
     this.checkAptBinding();
   };
-
   /**
    * Renders an Add Apartment Dialog.
    *
@@ -294,10 +306,17 @@ export default class AddAptDialog extends React.Component {
     return (
         &lt;Dialog
           modal={true}
-          title=&quot;Invite Code&quot;
+          title={&quot;Welcome !&quot;}
           className=&quot;frosted&quot;
+          contentStyle={style.dialog}
           open={this.state.modalOpen}
         &gt;
+
+        &lt;p&gt;
+          Before we begin, you must associate an apartment with your account.
+          We currently offer sign-up by invitation only.
+        &lt;/p&gt;
+        &lt;p&gt; Please enter an invite code below.&lt;/p&gt;
         &lt;Formsy.Form ref=&quot;InviteCode&quot;
             onValid={this.enableButton}
             onInvalid={this.disableButton}
@@ -306,10 +325,11 @@ export default class AddAptDialog extends React.Component {
         &gt;
         &lt;FormsyText
           required={true}
+          fullWidth={true}
           name=&quot;invite_code&quot;
           validations={{isExisty:true}}
           validationError=&quot;Please provide a valid invite code&quot;
-          floatingLabelText={&#x27;Invite Code&#x27;}
+          floatingLabelText={&#x27;Invite Code :: -KXc3TKTGn2MVIW3fqbR&#x27;}
           disabled={this.state.hasSubmitted}
         /&gt;
           &lt;RaisedButton

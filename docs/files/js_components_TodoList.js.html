@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -153,54 +155,6 @@ export default class TodoList extends Component {
     };
 
     /**
-     * Tests messages
-     *
-     * @method TestMessages
-     */
-    TestMessages() {
-      // Create a test user &amp; add messages
-      /*var manager = new DBManager();
-      var uid = &quot;ZNfb868cZATuNgsI1kYLA1QxjWi2&quot;;
-      var aptid = &quot;ASD77SDF70&quot;;
-
-      var testUser = new User(&quot;bob@gmail.com&quot;, &quot;Bob&quot;, &quot;Jones&quot;, &quot;760-989-0632&quot;);
-      testUser.setUserID(uid);
-      testUser.setAptID(aptid);
-      manager.addUser(testUser);
-
-      console.log(&quot;done creating user&quot;);
-      var obj = new Message(&quot;ABCDEFGHIJK&quot;, &quot;1112333&quot;, &quot;HELLOW WORLD&quot;, &quot;aasdfasdf&quot;)
-      manager.addMessage(obj);
-      manager.addMessage(obj);
-      manager.addMessage(obj);
-      manager.addMessage(obj);
-
-      console.log(&quot;get messages&quot;);
-      var ids = manager.getMessages();
-      console.log(&#x27;ids :&#x27;, ids);
-      var messages = this.createMessages(ids);*/
-
-
-      // var manager = new DBManager();
-      // manager.signIn(&quot;bob@gmail.com&quot;, &quot;password&quot;).then(function () {
-      //   manager.getUser().then(function(user) {
-      //     var message = new Message(user.getUserID(),user.getAptID(), new Date(), &quot;Hello this is a test&quot;);
-      //     manager.addMessage(message);
-      //   });
-      // });
-
-      manager.getMessageIDs().then(function (messages) {
-      messages.forEach(function (value) {
-        manager.getMessage(value).then(function (message) {
-            console.log(&#x27;========================&#x27;);
-            console.log(message.getText());
-            console.log(message.getTimeSent());
-        })
-      })
-    });
-    }
-
-    /**
      * Pulls a message from the database.
      *
      * @method pullMessage
@@ -218,7 +172,6 @@ export default class TodoList extends Component {
       });
     }
 
-// Extracts information to make message
     /**
      * Pulls messages from the database
      *
@@ -257,6 +210,7 @@ export default class TodoList extends Component {
       //return this.createMessages(ids);
 
 //this.messageListener =
+
     /**
      * Function called when component mounts.
      *
@@ -290,7 +244,6 @@ export default class TodoList extends Component {
     	);
     }
 }
-//&lt;button disabled={true} onClick={this.reshowMessages()}/&gt;
 
     </pre>
 </div>

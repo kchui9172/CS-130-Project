@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -127,6 +129,9 @@ import React from &#x27;react&#x27;;
 import ReactDOM from &#x27;react-dom&#x27;;
 import PaymentForm from &#x27;./PaymentForm.js&#x27;;
 import Balance from &#x27;./Balance.js&#x27;;
+import Payment from &#x27;../Payment.js&#x27;;
+import DBManager from &#x27;../dbManager.js&#x27;;
+import PaymentList from &#x27;./PaymentList.js&#x27;;
 
 /**
  * Represents the Payments page.
@@ -150,17 +155,14 @@ export default class PaymentComponent extends React.Component{
      *
      * @method render
      */
-    render(){
-        return (
-            &lt;div&gt;
-                &lt;h1&gt; Payments &lt;/h1&gt;
-                    &lt;h2&gt; Add a Payment &lt;/h2&gt;
-                        &lt;PaymentForm /&gt;
-                    &lt;h2&gt; Balances &lt;/h2&gt;
-                        &lt;Balance /&gt;
-            &lt;/div&gt;
-	   );
-    }
+     render() {
+         return (
+             &lt;div&gt;
+                 &lt;h1&gt; Payments&lt;/h1&gt;
+                 &lt;PaymentList  /&gt;
+             &lt;/div&gt;
+         );
+     }
 }
 
     </pre>

@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -137,12 +139,14 @@ export default class Chore {
      * @method constructor
      * @param {string} userID - The ID of the user
      * @param {string} aptID - The ID of the apartment
+     * @param {string} name - The name of the Chore
      * @param {string} category - The category of the Chore
      * @param {Date} deadline - The deadline of the Chore
      * @param {string} details - Additional details of the Chore
      * @param {string} assignee - The assignee of the Chore
      */
-    constructor(userID, aptID, category, deadline, details, assignee) {
+     constructor(userID, aptID, name, category, deadline, details, assignee) {
+        this._name = name;
         this._choreID = null;
         this._category = category;
         this._createdBy = userID;
@@ -165,6 +169,7 @@ export default class Chore {
     static JSONtoChore(data) {
         var chore = new Chore();
         var JSONObj = JSON.parse(data);
+        chore._name = JSONObj._name;
         chore._choreID = JSONObj._choreID;
         chore._category = JSONObj._category;
         chore._createdBy = JSONObj._createdBy;
@@ -230,6 +235,13 @@ export default class Chore {
      * @return {string} - The Chore ID
      */
     getChoreID() { return this._choreID; }
+
+    /** Gets the Chore Name.
+     *
+     * @method getName
+     * @return {string} - The Chore Name
+     */
+    getName() { return this._name; }
 
     /**
      * Gets the Apartment ID of the chore.

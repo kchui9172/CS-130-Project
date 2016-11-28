@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -128,24 +130,59 @@ import Divider from &#x27;material-ui/Divider&#x27;;
 import FlatButton from &#x27;material-ui/RaisedButton&#x27;;
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from &#x27;material-ui/Card&#x27;;
 
+import Avatar from &#x27;material-ui/Avatar&#x27;;
+import AccountCircle from &#x27;material-ui/svg-icons/action/account-circle&#x27;;
+import Event from &#x27;material-ui/svg-icons/action/event&#x27;;
 import FloatingCard from &#x27;../../primitives/FloatingCard.js&#x27;;
-
+import DBManager from &#x27;../../../dbManager.js&#x27;;
 import Chore from &#x27;../../../Chore.js&#x27;;
 import ToggleButton from &#x27;../../ToggleButton.js&#x27;;
+import Loading from &#x27;../../primitives/Loading.js&#x27;;
+import Time from &#x27;react-time&#x27;;
+import Chip from &#x27;material-ui/Chip&#x27;;
+import {colors} from &#x27;../../../config/MUI.js&#x27;;
 
 const style = {
   text: {
     textAlign:&#x27;justify&#x27;,
     paddingLeft:&#x27;16px&#x27;,
   },
-
+  title:{
+    overflowWrap:&#x27;break-word&#x27;,
+    paddingTop:&#x27;0px&#x27;,
+    paddingBottom:&#x27;0px&#x27;,
+  },
+  header:{
+    paddingBottom:&#x27;0px&#x27;,
+  },
   card: {
     width:256,
-    height:384,
+    minHeight:384,
     textAlign:&#x27;center&#x27;,
     borderRadius: &#x27;6px&#x27;,
   },
+
+  messagebody: {
+    minHeight:&#x27;80px&#x27;,
+    borderRadius: &#x27;6px&#x27;,
+    padding:&#x27;6px&#x27;,
+    backgroundColor:&#x27;rgba(135,125,102,0.1)&#x27;,
+    border:&#x27;2px solid rgba(224, 224, 224,0.8)&#x27;,
+  },
+
+  chip:{
+    margin:&#x27;2px&#x27;,
+  },
+
+  chip2:{
+    margin:&#x27;6px&#x27;,
+  },
+  chips:{
+    display: &#x27;flex&#x27;,
+   flexWrap: &#x27;wrap&#x27;,
+  },
 }
+
 
 /**
  * Represents a Chore Card.
@@ -163,6 +200,72 @@ export default class ChoreCard extends React.Component {
      */
     constructor(props) {
         super(props);
+
+        this.state = {
+            assigneeName: &quot;&quot;,
+            name:&quot;&quot;,
+            deadline:&quot;&quot;,
+            overdue:&quot;&quot;,
+            assignment:&quot;&quot;,
+            deadlineLabel:&quot;&quot;,
+            details:[],
+            categoryLabels:[],
+            loading: true,
+        };
+
+        this.setAssigneeName = this.setAssigneeName.bind(this);
+    }
+
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
+    componentDidMount() {
+        this.setAssigneeName();
+        this.populateLabels();
+    }
+
+    populateLabels() {
+      var chore = this.props.chore;
+      var now = new Date();
+      var _date = new Date(chore.getDeadline());
+      var _assignment = chore.getAssignment();
+      var _details = chore.getDetails();
+      var _name = chore.getName();
+      var _chips = [];
+      var categoryTokens = (chore.getCategory()).split(&quot; &quot;).forEach(function(category){_chips.unshift(&lt;Chip style={style.chip}&gt;{category}&lt;/Chip&gt;);});
+      var _chipColor = (now &gt; _date) ? colors.timestampOverdue : colors.timestampFuture;
+      var _dueText = (now &gt; _date) ? &quot;Overdue&quot; : null;
+      this.setState({
+        name:_name,
+        deadline:_date,
+        overdue:_dueText,
+        deadlineLabel:_chipColor,
+        assignment:_assignment,
+        details:_details,
+        categoryLabels:_chips,
+      });
+    }
+    /**
+     * Sets assigneeName in state.
+     *
+     * @method setAssigneeName
+     */
+    setAssigneeName() {
+        var manager = new DBManager();
+        manager.getUser(this.props.chore.getAssignment()).then(function(user) {
+            this.setState({assigneeName: user.getName(),loading:false})}.bind(this), function(err) {console.log(&#x27;error on evaluating name for assigner&#x27;, err);this.setState({assigneeName: &quot;&quot;,loading:false});}.bind(this));
+    }
+
+    /**
+     * Gets Date from DateTime string.
+     *
+     * @method getDateOnly
+     * @param {string} dateTime - The DateTime to extract from
+     */
+    getDateOnly(dateTime) {
+        return dateTime.split(&#x27;T&#x27;)[0];
     }
 
     /**
@@ -171,31 +274,27 @@ export default class ChoreCard extends React.Component {
      * @method render
      */
     render() {
-        var chore = this.props.chore;
-        if (chore) {
+            var contents = (!this.state.loading) ? (
+                            &lt;div&gt;&lt;CardHeader style={style.header} avatar={&lt;ToggleButton
+                                  onCompletion={this.props.onCompletion}
+                                  onUncompletion={this.props.onUncompletion}
+                                  getDefaultToggle={this.props.getDefaultToggle}
+                                  toggleCallback={this.props.toggleCallback}
+                                  toggledObject={this.props.chore}
+                              /&gt;}&gt;&lt;/CardHeader&gt;&lt;CardTitle style={style.title} title={this.state.name} /&gt;
+                              &lt;CardText style={style.text}&gt;
+                              &lt;div&gt;
+                                &lt;Chip style={style.chip2} &gt;&lt;Avatar backgroundColor={colors.profile} icon={&lt;AccountCircle /&gt;} /&gt;{this.state.assigneeName}&lt;/Chip&gt;
+                                &lt;Chip style={style.chip2} backgroundColor={this.state.deadlineLabel} &gt;&lt;Avatar backgroundColor={colors.chore} icon={&lt;Event /&gt;} /&gt;&lt;Time value={this.state.deadline} format=&quot;YYYY/MM/DD hh:mm a&quot;/&gt;&lt;/Chip&gt;
+                              &lt;/div&gt;
+                              &lt;p style={style.messagebody}&gt;{this.state.details}&lt;/p&gt;
+                              &lt;div style={style.chips}&gt;{this.state.categoryLabels}&lt;/div&gt;
+                              &lt;/CardText&gt;&lt;/div&gt;) : (&lt;Loading /&gt;);
             return (
                 &lt;FloatingCard style={style.card}&gt;
-                    &lt;CardTitle title=&quot;Chore&quot;&gt;&lt;/CardTitle&gt;
-                    &lt;CardText style={style.text}&gt;
-                        &lt;ToggleButton
-                            onCompletion={this.props.onCompletion}
-                            onUncompletion={this.props.onUncompletion}
-                            getDefaultToggle={this.props.getDefaultToggle}
-                            toggleCallback={this.props.toggleCallback}
-                            toggledObject={chore}
-                            label=&quot;Completed? &quot;
-                        /&gt;
-                        &lt;p&gt;Assignment: {chore.getAssignment()}&lt;/p&gt;
-                        &lt;p&gt;Deadline: {chore.getDeadline()}&lt;/p&gt;
-                        &lt;p&gt;Category: {chore.getCategory()}&lt;/p&gt;
-                        &lt;p&gt;Details: {chore.getCategory()}&lt;/p&gt;
-                    &lt;/CardText&gt;
+                  {contents}
                 &lt;/FloatingCard&gt;
             );
-        }
-        else {
-            return null;
-        }
     }
 };
 

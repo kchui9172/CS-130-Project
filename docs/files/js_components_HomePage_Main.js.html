@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -131,6 +133,8 @@ import Loading from &#x27;../primitives/Loading.js&#x27;;
 import NavDrawer from &#x27;../primitives/NavDrawer.js&#x27;;
 
 import AddAptDialog from &#x27;./AddAptDialog.js&#x27;;
+
+import HomeView from &#x27;./Views/HomeView.js&#x27;;
 import ChoresView from &#x27;./Views/ChoresView.js&#x27;;
 import MessagesView from &#x27;./Views/MessagesView.js&#x27;;
 import PaymentsView from &#x27;./Views/PaymentsView.js&#x27;;
@@ -203,7 +207,7 @@ let SelectableList = wrapState(makeSelectable(List));
  * @extends React.Component
  */
 export default class HomePage extends React.Component {
-  /** 
+  /**
    * Constructs a Home Page.
    *
    * @method constructor
@@ -216,8 +220,8 @@ export default class HomePage extends React.Component {
       loading:  true,
       aptModal: false,
       menuFAB:  false,
-      mainView: null,
       editorView: null,
+      viewIndex:0,
     };
   };
 
@@ -248,28 +252,42 @@ export default class HomePage extends React.Component {
    * @method render
    */
   render() {
+    var currentView = null;
+    if (this.state.viewIndex == 0)
+      currentView = &lt;HomeView /&gt;;
+    else if (this.state.viewIndex == 1)
+      currentView = &lt;MessagesView /&gt;;
+    else if (this.state.viewIndex == 2)
+      currentView = &lt;ChoresView /&gt;;
+    else if (this.state.viewIndex == 3)
+      currentView = &lt;PaymentsView /&gt;;
+
     return ((this.state.loading) ? &lt;Loading style={style.loading}/&gt; :
     (
       &lt;div&gt;
         &lt;AddAptDialog/&gt;
         &lt;NavDrawer&gt;
         &lt;SelectableList ref=&quot;navigation&quot; defaultValue={0} &gt;
-          &lt;ListItem onTouchTap={function(){this.setState({mainView: &lt;MessagesView /&gt;})}.bind(this)} value={1} primaryText=&quot;Messages&quot; leftIcon={&lt;Email     color={colors.message} /&gt;} style={style.firstItem} /&gt;
-          &lt;ListItem onTouchTap={function(){this.setState({mainView: &lt;ChoresView   /&gt;})}.bind(this)} value={2} primaryText=&quot;Chores&quot;   leftIcon={&lt;EventNote color={colors.chore}   /&gt;}  /&gt;
-          &lt;ListItem onTouchTap={function(){this.setState({mainView: &lt;PaymentsView /&gt;})}.bind(this)} value={3} primaryText=&quot;Payments&quot; leftIcon={&lt;Payment   color={colors.payment} /&gt;}  /&gt;
+          &lt;ListItem onTouchTap={function(){this.setState({viewIndex: 1})}.bind(this)} value={1} primaryText=&quot;Messages&quot; leftIcon={&lt;Email     color={colors.message} /&gt;} style={style.firstItem} /&gt;
+          &lt;ListItem onTouchTap={function(){this.setState({viewIndex: 2})}.bind(this)} value={2} primaryText=&quot;Chores&quot;   leftIcon={&lt;EventNote color={colors.chore}   /&gt;}  /&gt;
+          &lt;ListItem onTouchTap={function(){this.setState({viewIndex: 3})}.bind(this)} value={3} primaryText=&quot;Payments&quot; leftIcon={&lt;Payment   color={colors.payment} /&gt;}  /&gt;
         &lt;Divider /&gt;
-          &lt;ListItem onTouchTap={function(){this.setState({mainView: &lt;SettingsView /&gt;})}.bind(this)} value={4} primaryText=&quot;Settings&quot; leftIcon={&lt;Settings  color={colors.primary}     /&gt;} /&gt;
-          &lt;ListItem onTouchTap={function(){DBManager.LogOut()}}                                     value={5} primaryText=&quot;Logout&quot;   leftIcon={&lt;Exit      color={colors.red}         /&gt;} /&gt;
+          &lt;ListItem onTouchTap={function(){DBManager.LogOut()}}                       value={4} primaryText=&quot;Logout&quot;   leftIcon={&lt;Exit      color={colors.red}     /&gt;} /&gt;
         &lt;/SelectableList&gt;
         &lt;/NavDrawer&gt;
-        &lt;FAB/&gt;
-        &lt;div style={style.mainview}&gt;{this.state.mainView}&lt;/div&gt;
+        &lt;FAB view={this.state.viewIndex}/&gt;
+        &lt;div style={style.mainview}&gt;{currentView}&lt;/div&gt;
+        &lt;div ref=&quot;snacker&quot;&gt;&lt;/div&gt;
       &lt;/div&gt;
     )
     );
   }
 }
 
+//this.setState({mainView: &lt;MessagesView /&gt;})
+// else if (this.state.viewIndex == 4)
+//   currentView = &lt;SettingsView /&gt;;
+//   &lt;ListItem onTouchTap={function(){this.setState({viewIndex: 4})}.bind(this)} value={4} primaryText=&quot;Settings&quot; leftIcon={&lt;Settings  color={colors.primary} /&gt;} /&gt;
 //
 
     </pre>

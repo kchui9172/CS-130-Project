@@ -53,6 +53,7 @@ class NavLinks extends Component {
       <div>
       <FlatButton {...this.props} label="GitHub" href="https://github.com/kchui9172/CS-130-Project/tree/master" target="_blank" secondary={true} icon={<Code />} />
       <FlatButton {...this.props} label="API Documentation"  href="https://github.com/kchui9172/CS-130-Project/tree/master" target="_blank" secondary={true} icon={<Code />} />
+      <FlatButton {...this.props} label="About Us" href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCnNvceDSYLUaIfFDsvM12Zg%2Fvideos%3F%26ab_channel%3DKYLEMATTER&h=WAQHXL_hQ" target="_blank" secondary={true} icon={<Code />} />
       </div>
     );
   }
@@ -83,8 +84,8 @@ const NavBar = React.createClass({
       },
     };
   },
-  
-  /** 
+
+  /**
    * Renders the Navigation Bar.
    *
    * @method render

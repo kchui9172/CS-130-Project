@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -124,18 +126,35 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 import React from &#x27;react&#x27;;
-import ReactDOM from &#x27;react-dom&#x27;;
-
-import DBManager from &#x27;../dbManager.js&#x27;;
-
 import User from &#x27;../User.js&#x27;;
 import Chore from &#x27;../Chore.js&#x27;;
-import Apartment from &#x27;../Apartment.js&#x27;;
-
-import RaisedButton from &#x27;material-ui/RaisedButton&#x27;;
-import {FormsyText, FormsyDate} from &#x27;formsy-material-ui/lib&#x27;;
+import ReactDOM from &#x27;react-dom&#x27;;
 import Formsy from &#x27;formsy-react&#x27;;
+import Apartment from &#x27;../Apartment.js&#x27;;
+import DBManager from &#x27;../dbManager.js&#x27;;
+import Divider from &#x27;material-ui/Divider&#x27;;
+import MenuItem from &#x27;material-ui/MenuItem&#x27;;
+import RaisedButton from &#x27;material-ui/RaisedButton&#x27;;
+import {FormsyText, FormsyDate, FormsySelect} from &#x27;formsy-material-ui/lib&#x27;;
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from &#x27;material-ui/Card&#x27;;
 
+
+
+const style = {
+  chorebox: {
+    width:256,
+    minHeight:384,
+    textAlign:&#x27;center&#x27;,
+    padding:&#x27;12px&#x27;,
+  },
+  messagebody: {
+    minHeight:&#x27;80px&#x27;,
+    borderRadius: &#x27;6px&#x27;,
+    padding:&#x27;6px&#x27;,
+    backgroundColor:&#x27;rgba(135,125,102,0.1)&#x27;,
+    border:&#x27;2px solid rgba(224, 224, 224,0.8)&#x27;,
+  },
+};
 /**
  * Represents a Chore Form.
  *
@@ -158,6 +177,11 @@ export default class ChoreForm extends React.Component {
             numericError: &quot;Please provide a number&quot;
         };
 
+        this.state = {
+            tenants: []
+        };
+
+        this.setTenantsList = this.setTenantsList.bind(this);
         this.enableSubmit = this.enableSubmit.bind(this);
         this.disableSubmit = this.disableSubmit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -168,6 +192,33 @@ export default class ChoreForm extends React.Component {
         this.choreIterator = 0;
     }
 
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
+    componentDidMount() {
+        this.setTenantsList();
+    }
+
+    /**
+     * Sets the tenants list in state.
+     *
+     * @method setTenantsList
+     */
+    setTenantsList() {
+        var manager = new DBManager();
+        var tenants = [];
+        manager.getApartment().then(function(apartment) {
+            var tenantIDs = apartment.getTenantIDs();
+            tenantIDs.forEach(function(tenantID) {
+                manager.getUser(tenantID).then(function(user) {
+                    tenants.push(user);
+                    this.setState({tenants: tenants});
+                }.bind(this));
+            }.bind(this));
+        }.bind(this));
+    }
 
     /**
      * Enables form submission.
@@ -199,6 +250,7 @@ export default class ChoreForm extends React.Component {
      * @return {boolean} - Whether form is valid or not
      */
     validateData(data) {
+        console.log(&quot;data: &quot;,data);
         var yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         if (yesterday &gt;= data.choreFirstDueDate) {
@@ -264,6 +316,7 @@ export default class ChoreForm extends React.Component {
 
             var name = data.choreName;
             var assignee = data.choreAssignee;
+            var category = data.choreCategory;
             var firstDueDate = data.choreFirstDueDate;
             var numberOccurrences = parseInt(data.choreNumberOccurrences);
             var repeatFrequency = parseInt(data.choreRepeatFrequency);
@@ -280,9 +333,12 @@ export default class ChoreForm extends React.Component {
                 var newChores = [];
                 do {
                     var assignedDueDate = new Date();
+                    assignedDueDate.setFullYear(firstDueDate.getFullYear());
+                    assignedDueDate.setMonth(firstDueDate.getMonth());
                     assignedDueDate.setDate(firstDueDate.getDate() + (newChores.length * repeatFrequency));
-                    newChores.push(new Chore(values[0], values[1], name, assignedDueDate, details, assignee));
-                    console.log(&#x27;evaluating chore for:&#x27;,values[0], values[1]);
+                    var newChore = new Chore(values[0], values[1], name, category, assignedDueDate, details, assignee);
+                    newChores.push(newChore);
+                    console.log(newChore);
                 } while (newChores.length &lt; numberOccurrences);
                 this.loopAddChores(newChores);
             });
@@ -305,57 +361,84 @@ export default class ChoreForm extends React.Component {
      * @method render
      */
     render() {
-        return (
-            &lt;div&gt;
-                &lt;Formsy.Form ref=&quot;addChores&quot;
-                    onValid={this.enableSubmit}
-                    onInvalid={this.disableSubmit}
-                    onValidSubmit={this.handleSubmit}
-                    onInvalidSubmit={this.handleInvalidSubmit} &gt;
-                    Chore Name: &lt;FormsyText
-                        name=&quot;choreName&quot;
-                        validations=&quot;isWords&quot;
-                        validationError={this.errorMessages.wordsError}
-                        required={true} /&gt;
-                    &lt;br /&gt;
-                    Assignee: &lt;FormsyText
-                        name=&quot;choreAssignee&quot;
-                        validations=&quot;isWords&quot;
-                        validationError={this.errorMessages.wordsError}
-                        required={true} /&gt;
-                    &lt;br /&gt;
-                    First Due Date: &lt;FormsyDate
-                        name=&quot;choreFirstDueDate&quot;
-                        required={true} /&gt;
-                    &lt;br /&gt;
-                    Number of Occurrences: &lt;FormsyText
-                        name=&quot;choreNumberOccurrences&quot;
-                        validations=&quot;isNumeric&quot;
-                        validationError={this.errorMessages.numericError}
-                        required={true} /&gt;
-                    &lt;br /&gt;
-                    Repeat Frequency (in Days): &lt;FormsyText
-                        name=&quot;choreRepeatFrequency&quot;
-                        validations=&quot;isNumeric&quot;
-                        validationError={this.errorMessages.numericError}
-                        required={true} /&gt;
-                    &lt;br /&gt;
-                    Additional Details: &lt;FormsyText
-                        multiline={true}
-                        rows={3}
-                        cols={50}
-                        name=&quot;choreDetails&quot; /&gt;
-                    &lt;br /&gt;
-                    &lt;RaisedButton fullWidth={false}
-                        type=&quot;submit&quot;
-                        label=&quot;Send chores&quot;
-                        primary={false}
-                        secondary={true} /&gt;
-                &lt;/Formsy.Form&gt;
-            &lt;/div&gt;
-        );
+          return (
+              &lt;div style={style.chorebox}&gt;
+              &lt;CardTitle title=&quot;Assign a Chore&quot; /&gt;
+              &lt;Divider /&gt;
+                  &lt;Formsy.Form ref=&quot;addChores&quot;
+                      onValid={this.enableSubmit}
+                      onInvalid={this.disableSubmit}
+                      onValidSubmit={this.handleSubmit}
+                      onInvalidSubmit={this.handleInvalidSubmit} &gt;
+                      &lt;FormsyText
+                          name=&quot;choreName&quot;
+                          floatingLabelText=&quot;Chore Name&quot;
+                          fullWidth={true}
+                          validations=&quot;isWords&quot;
+                          validationError={this.errorMessages.wordsError}
+                          required={true} /&gt;
+                      &lt;FormsyText
+                          name=&quot;choreCategory&quot;
+                          floatingLabelText=&quot;Category Labels&quot;
+                          fullWidth={true}
+                          validations=&quot;isWords&quot;
+                          validationError={this.errorMessages.wordsError}
+                          required={true} /&gt;
+                          &lt;FormsySelect
+                              name=&quot;choreAssignee&quot;
+                              floatingLabelText=&quot;Assignee&quot;
+                              fullWidth={true}
+                              required={true}
+                          &gt;
+                              {this.state.tenants.map(function(tenant) {return (&lt;MenuItem value={tenant.getUserID()} primaryText={tenant.getName()}/&gt;);})}
+                          &lt;/FormsySelect&gt;
+                      &lt;FormsyDate
+                          name=&quot;choreFirstDueDate&quot;
+                          floatingLabelText=&quot;Due Date&quot;
+                          required={true} /&gt;
+                      &lt;FormsyText
+                          name=&quot;choreNumberOccurrences&quot;
+                          floatingLabelText=&quot;Number of Occurrences&quot;
+                          validations=&quot;isNumeric&quot;
+                          fullWidth={true}
+                          validationError={this.errorMessages.numericError}
+                          required={true} /&gt;
+                      &lt;FormsyText
+                          name=&quot;choreRepeatFrequency&quot;
+                          validations=&quot;isNumeric&quot;
+                          floatingLabelText=&quot;Repeat Frequency (in Days)&quot;
+                          fullWidth={true}
+                          validationError={this.errorMessages.numericError}
+                          required={true} /&gt;
+                      &lt;FormsyText
+                          hintText=&quot;Additional Details&quot;
+                          multiLine={true}
+                          fullWidth={true}
+                          rows={1}
+                          textareaStyle={style.messagebody}
+                          name=&quot;choreDetails&quot; /&gt;
+                    &lt;CardActions&gt;
+                      &lt;RaisedButton fullWidth={true}
+                          type=&quot;submit&quot;
+                          label=&quot;Send chores&quot;
+                          primary={false}
+                          secondary={true} /&gt;
+                    &lt;/CardActions&gt;
+                  &lt;/Formsy.Form&gt;
+              &lt;/div&gt;
+          );
     }
 }
+
+          // var _label = this.state.sending ? &quot;Sending...&quot; : this.state.sent ? &quot;Sent!&quot; : &quot;Send Message&quot;;
+          // &lt;Formsy.Form ref=&quot;addMessage&quot; onValidSubmit={this.addItem} &gt;
+          //   &lt;CardText&gt;
+          //     &lt;FormsyText required={true} fullWidth={true} name=&quot;messageText&quot; hintText={&quot;Type message here&quot;} multiLine={true} rows={1} textareaStyle={style.messagebody} underlineDisabledStyle={null} errorText=&quot;Message Field cannot be empty&quot;/&gt;
+          //   &lt;/CardText&gt;
+          //   &lt;CardActions&gt;
+          //   &lt;RaisedButton fullWidth={true} type=&quot;submit&quot; label={_label} primary={false} secondary={true} disabled={this.state.sent}/&gt;
+          //   &lt;/CardActions&gt;
+          // &lt;/Formsy.Form&gt;
 
     </pre>
 </div>

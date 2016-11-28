@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -143,10 +145,7 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from &#x27;materi
 const style = {
   card: {
     width: &#x27;640px&#x27;,
-    position: &#x27;fixed&#x27;,
-    right:&#x27;200px&#x27;,
-    bottom:&#x27;0px&#x27;,
-    margin:&#x27;30px&#x27;,
+    textAlign:&#x27;center&#x27;,
   },
 };
 
@@ -177,46 +176,49 @@ export default class MessageEditor extends React.Component {
    */
   render() {
   return(
+    &lt;div {...this.props}&gt;
     &lt;div style={style.card}&gt;
-    &lt;Toolbar&gt;
-        &lt;ToolbarGroup firstChild={true}&gt;
-          &lt;DropDownMenu value={1} onChange={this.handleChange}&gt;
-            &lt;MenuItem value={1} primaryText=&quot;All Broadcasts&quot; /&gt;
-            &lt;MenuItem value={2} primaryText=&quot;All Voice&quot; /&gt;
-            &lt;MenuItem value={3} primaryText=&quot;All Text&quot; /&gt;
-            &lt;MenuItem value={4} primaryText=&quot;Complete Voice&quot; /&gt;
-            &lt;MenuItem value={5} primaryText=&quot;Complete Text&quot; /&gt;
-            &lt;MenuItem value={6} primaryText=&quot;Active Voice&quot; /&gt;
-            &lt;MenuItem value={7} primaryText=&quot;Active Text&quot; /&gt;
-          &lt;/DropDownMenu&gt;
-        &lt;/ToolbarGroup&gt;
-        &lt;ToolbarGroup&gt;
-          &lt;ToolbarTitle text=&quot;Options&quot; /&gt;
-          &lt;FontIcon className=&quot;muidocs-icon-custom-sort&quot; /&gt;
-          &lt;ToolbarSeparator /&gt;
-          &lt;RaisedButton label=&quot;Create Broadcast&quot; primary={true} /&gt;
-          &lt;IconMenu
-            iconButtonElement={
-              &lt;IconButton touch={true}&gt;
-                &lt;NavigationExpandMoreIcon /&gt;
-              &lt;/IconButton&gt;
-            }
-          &gt;
-            &lt;MenuItem primaryText=&quot;Download&quot; /&gt;
-            &lt;MenuItem primaryText=&quot;More Info&quot; /&gt;
-          &lt;/IconMenu&gt;
-        &lt;/ToolbarGroup&gt;
-      &lt;/Toolbar&gt;
-      &lt;FloatingCard zDepth={5}&gt;
-      &lt;CardTitle title=&quot;Add a new Message&quot; subtitle=&quot;asmdk&quot; /&gt;
-        &lt;CardText&gt;
-          &lt;MessageForm /&gt;
-        &lt;/CardText&gt;
-    &lt;/FloatingCard&gt;
+    &lt;MessageForm /&gt;
+    &lt;/div&gt;
     &lt;/div&gt;
     );
   }
 };
+//   &lt;Card zDepth={5} className=&#x27;blurred rounded&#x27;&gt;
+//   &lt;CardTitle title=&quot;Add a new Message&quot; subtitle=&quot;asmdk&quot; /&gt;
+//     &lt;CardText&gt;
+//       &lt;MessageForm /&gt;
+//     &lt;/CardText&gt;
+// &lt;/Card&gt;
+// &lt;Toolbar&gt;
+//     &lt;ToolbarGroup firstChild={true}&gt;
+//       &lt;DropDownMenu value={1} onChange={this.handleChange}&gt;
+//         &lt;MenuItem value={1} primaryText=&quot;All Broadcasts&quot; /&gt;
+//         &lt;MenuItem value={2} primaryText=&quot;All Voice&quot; /&gt;
+//         &lt;MenuItem value={3} primaryText=&quot;All Text&quot; /&gt;
+//         &lt;MenuItem value={4} primaryText=&quot;Complete Voice&quot; /&gt;
+//         &lt;MenuItem value={5} primaryText=&quot;Complete Text&quot; /&gt;
+//         &lt;MenuItem value={6} primaryText=&quot;Active Voice&quot; /&gt;
+//         &lt;MenuItem value={7} primaryText=&quot;Active Text&quot; /&gt;
+//       &lt;/DropDownMenu&gt;
+//     &lt;/ToolbarGroup&gt;
+//     &lt;ToolbarGroup&gt;
+//       &lt;ToolbarTitle text=&quot;Options&quot; /&gt;
+//       &lt;FontIcon className=&quot;muidocs-icon-custom-sort&quot; /&gt;
+//       &lt;ToolbarSeparator /&gt;
+//       &lt;RaisedButton label=&quot;Create Broadcast&quot; primary={true} /&gt;
+//       &lt;IconMenu
+//         iconButtonElement={
+//           &lt;IconButton touch={true}&gt;
+//             &lt;NavigationExpandMoreIcon /&gt;
+//           &lt;/IconButton&gt;
+//         }
+//       &gt;
+//         &lt;MenuItem primaryText=&quot;Download&quot; /&gt;
+//         &lt;MenuItem primaryText=&quot;More Info&quot; /&gt;
+//       &lt;/IconMenu&gt;
+//     &lt;/ToolbarGroup&gt;
+//   &lt;/Toolbar&gt;
 
     </pre>
 </div>

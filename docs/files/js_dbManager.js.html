@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -231,9 +233,13 @@ export default class DBManager {
 
        var signUpPromise = firebase.auth().createUserWithEmailAndPassword(email, password)
                            .then(function(signedUpUser) {
-                             console.log(&#x27;signedUpUser:&#x27;, signedUpUser.uid);
-                             return signedUpUser;
-                           }).catch(onFailCallback);
+                             var new_user = new User(email, firstname, lastname, &quot;&quot;);
+                             new_user.setUserID(signedUpUser.uid);
+                             console.log(&#x27;signedUpUser:&#x27;, new_user);
+                             this.addUser(new_user).then(function(addedUser) {
+                               return signedUpUser;
+                             }.bind(this));
+                           }.bind(this)).catch(onFailCallback);
     }
     /**
      * Adds a user to the database.
@@ -442,10 +448,13 @@ export default class DBManager {
         var newMessageRef = messagesRef.push();
         message.setMessageID(newMessageRef.getKey());
         newMessageRef.set(JSON.stringify(message));
-        this.getApartment().then(function (apt) {
+        return this.getApartment().then(function (apt) {
             apt.addMessage(newMessageRef.getKey());
             this.updateApartment(apt);
-        }.bind(this));
+            return true;
+        }.bind(this),function (err) {
+          return false;
+        });
     }
 
     /**
@@ -495,23 +504,21 @@ export default class DBManager {
         console.log(&quot;in db manager add payment&quot;);
         var paymentsRef = firebase.database().ref(&#x27;payments&#x27;);
         var newPaymentRef = paymentsRef.push();
+        var paymentID = newPaymentRef.getKey();
+        payment.setPaymentID(paymentID);
         newPaymentRef.set(JSON.stringify(payment));
-        this.getUser().then(function (user) {
-            var context = this;
-            var pay1 = payment;
-            user.addPayment(payment);
-            this.updateUser(user);
-            // Switch loaner and loanee and save to other user
-            var loanerID = payment.getLoaner();
-            payment.setLoanerID(payment.getLoanee());
-            payment.setLoaneeID(loanerID);
-            console.log(&quot;loaner: &quot;, payment.getLoaner());
-            console.log(&quot;loanee: &quot;, payment.getLoanee());
-            this.getUser(payment.getLoaner()).then(function (user2) {
-                user2.addPayment(payment);
+        console.log(&quot;Added Payment to Table.&quot;);
+        var context = this;
+        this.getUser(payment.getLoaner()).then(function (user1) {
+            user1.addPayment(paymentID);
+            context.updateUser(user1);
+            console.log(&quot;Added Payment to User1.&quot;);
+            context.getUser(payment.getLoanee()).then(function (user2) {
+                user2.addPayment(paymentID);
                 context.updateUser(user2);
+                console.log(&quot;Added Payment to User2.&quot;);
             });
-        }.bind(this));
+        });
     }
 
     /**

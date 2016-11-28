@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -124,21 +126,33 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 import React, {Component} from &#x27;react&#x27;;
-import ReactDOM from &#x27;react-dom&#x27;;
-import DBManager from &#x27;../dbManager.js&#x27;;
 import User from &#x27;../User.js&#x27;;
+import ReactDOM from &#x27;react-dom&#x27;;
+import Formsy from &#x27;formsy-react&#x27;;
 import Payment from &#x27;../Payment.js&#x27;;
-
-import RaisedButton from &#x27;material-ui/RaisedButton&#x27;;
+import DBManager from &#x27;../dbManager.js&#x27;;
+import Divider from &#x27;material-ui/Divider&#x27;;
 import MenuItem from &#x27;material-ui/MenuItem&#x27;;
+import RaisedButton from &#x27;material-ui/RaisedButton&#x27;;
 import DatePicker from &#x27;material-ui/DatePicker&#x27;;
 import {FormsyText, FormsyRadio,FormsyRadioGroup,FormsySelect,FormsyDate} from &#x27;formsy-material-ui/lib&#x27;;
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from &#x27;material-ui/Card&#x27;;
 
-import Formsy from &#x27;formsy-react&#x27;;
-
-/*import FloatingCard from &#x27;./primitives/FloatingCard.js&#x27;;
-import { CardActions, CardTitle, CardText} from &#x27;material-ui/Card&#x27;;*/
-
+const style = {
+  paymentbox: {
+    width:256,
+    minHeight:384,
+    textAlign:&#x27;left&#x27;,
+    padding:&#x27;12px&#x27;,
+  },
+  paymentbody: {
+    minHeight:&#x27;80px&#x27;,
+    borderRadius: &#x27;6px&#x27;,
+    padding:&#x27;6px&#x27;,
+    backgroundColor:&#x27;rgba(135,125,102,0.1)&#x27;,
+    border:&#x27;2px solid rgba(224, 224, 224,0.8)&#x27;,
+  },
+};
 /**
  * Represents a PaymentForm.
  *
@@ -239,8 +253,12 @@ export default class PaymentForm extends React.Component {
         console.log(tenantIDs);
         tenantIDs.forEach(function (tenantID) {
             db.getUser(tenantID).then(function (user) {
-                tenants.push(user);
-                this.setState({items: tenants});
+                db.getUser().then(function (curUser) {
+                  if(curUser.getUserID() != user.getUserID()) {
+                    tenants.push(user);
+                    this.setState({items:tenants});
+                  }
+                }.bind(this))
             }.bind(this))
         }.bind(this))
       }.bind(this));
@@ -262,46 +280,64 @@ export default class PaymentForm extends React.Component {
      */
     render() {
         return (
-            &lt;div&gt;
-            &lt;Formsy.Form ref=&quot;addPayment&quot; onValidSubmit={this.addPayment} &gt;
-                &lt;h3&gt; Payment Description&lt;/h3&gt;
-                &lt;FormsyText required={true}  name=&quot;paymentDescription&quot; floatingLabelText={&#x27;Enter description&#x27;} multiLine={true} rows={2}/&gt;
+            &lt;div style={style.paymentbox}&gt;
+            &lt;CardTitle title=&quot;Create a Payment&quot; /&gt;
+            &lt;Divider /&gt;
 
-                &lt;h3&gt; Payment Category&lt;/h3&gt;
-                &lt;FormsyRadioGroup name=&quot;paymentCategory&quot; defaultSelected=&quot;groceries&quot;&gt;
-                  &lt;FormsyRadio
-                    value=&quot;groceries&quot;
-                    label=&quot;Groceries&quot;
-                  /&gt;
-                  &lt;FormsyRadio
-                    value=&quot;meals&quot;
-                    label=&quot;Meals&quot;
-                  /&gt;
-                  &lt;FormsyRadio
-                    value=&quot;rent&quot;
-                    label=&quot;Rent or Utilities&quot;
-                  /&gt;
-                  &lt;FormsyRadio
-                    value=&quot;misc&quot;
-                    label=&quot;Misc&quot;
-                  /&gt;
+            &lt;Formsy.Form ref=&quot;addPayment&quot;
+                onValidSubmit={this.addPayment} &gt;
+
+                &lt;FormsyText
+                  required={true}
+                  name=&quot;paymentAmount&quot;
+                  onBlur={this.enableAmountValidation}
+                  onFocus={this.disableAmountValidation}
+                  validations={this.state.validateAmount ? {isFloat:true} : {isExisty:true}}
+                  validationError=&quot;Please provide a valid number&quot;
+                  floatingLabelText={&#x27;Enter amount&#x27;}
+                /&gt;
+                &lt;FormsyText
+                    name=&quot;paymentDescription&quot;
+                    floatingLabelText={&#x27;Enter description&#x27;}
+                    multiLine={true}
+                    rows={2}
+                    required={true} /&gt;
+
+                &lt;FormsyRadioGroup
+                    name=&quot;paymentCategory&quot;
+                    defaultSelected=&quot;groceries&quot;&gt;
+                      &lt;FormsyRadio
+                        value=&quot;groceries&quot;
+                        label=&quot;Groceries&quot;
+                      /&gt;
+                      &lt;FormsyRadio
+                        value=&quot;meals&quot;
+                        label=&quot;Meals&quot;
+                      /&gt;
+                      &lt;FormsyRadio
+                        value=&quot;rent&quot;
+                        label=&quot;Rent or Utilities&quot;
+                      /&gt;
+                      &lt;FormsyRadio
+                        value=&quot;misc&quot;
+                        label=&quot;Misc&quot;
+                      /&gt;
                 &lt;/FormsyRadioGroup&gt;
 
-                &lt;h3&gt;Are you the loaner or loanee?&lt;/h3&gt;
                 &lt;FormsySelect
                   name=&quot;userPos&quot;
                   required
-                  floatingLabelText=&quot;Choose an option&quot;
+                  floatingLabelText=&quot;Are you the loaner or loanee&quot;
+                  ref=&quot;loanOption&quot;
                 &gt;
                   &lt;MenuItem value={&#x27;loaner&#x27;} primaryText=&quot;Loaner&quot; /&gt;
                   &lt;MenuItem value={&#x27;loanee&#x27;} primaryText=&quot;Loanee&quot; /&gt;
                 &lt;/FormsySelect&gt;
 
-                &lt;h3&gt; Other person involved in transaction&lt;/h3&gt;
                 &lt;FormsySelect
                   name=&quot;otherPos&quot;
                   required
-                  floatingLabelText=&quot;Choose an option&quot;
+                  floatingLabelText=&quot;Choose a roommate&quot;
                 &gt;
                   {this.state.items.map(
                     function(tenant) {
@@ -310,24 +346,13 @@ export default class PaymentForm extends React.Component {
                   )}
                 &lt;/FormsySelect&gt;
 
-                &lt;h3&gt;Amount&lt;/h3&gt;
-                &lt;FormsyText required={true}  
-                  name=&quot;paymentAmount&quot; 
-                  onBlur={this.enableAmountValidation}
-                  onFocus={this.disableAmountValidation}
-                  validations={this.state.validateAmount ? {isFloat:true} : {isExisty:true}}
-                  validationError=&quot;Please provide a valid number&quot; 
-                  floatingLabelText={&#x27;Enter amount&#x27;}
-                /&gt;
-
-                &lt;h3&gt;Due date &lt;/h3&gt;
                 &lt;FormsyDate
                   name=&quot;dueDate&quot;
                   required
                   validations={{
                     checkDate: function(values,chosenDate){
                       if (chosenDate != null){
-                        var date = (new Date(chosenDate.toDateString()+&quot; 12:00:00 +0000&quot;)).toISOString().substring(0,10);  
+                        var date = (new Date(chosenDate.toDateString()+&quot; 12:00:00 +0000&quot;)).toISOString().substring(0,10);
                         var curDate = new Date().toISOString().substring(0,10);
                         return curDate &lt;= date ? true : &#x27;Invalid date: cannot choose date from past&#x27;;
                       }
@@ -336,7 +361,6 @@ export default class PaymentForm extends React.Component {
                   floatingLabelText=&quot;Due Date&quot;
                 /&gt;
 
-                &lt;h3&gt;Recurring Period &lt;/h3&gt;
                 &lt;FormsySelect
                   name=&quot;recurringPeriod&quot;
                   required
@@ -355,10 +379,6 @@ export default class PaymentForm extends React.Component {
         );
     }
 }
-
-
-
-
 
     </pre>
 </div>

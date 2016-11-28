@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -135,11 +137,34 @@ import DBManager from &#x27;../../../dbManager.js&#x27;;
 import Loading from &#x27;../../primitives/Loading.js&#x27;;
 
 const style={
+  card:{
+    padding:&#x27;0px&#x27;,
+    overflow:&#x27;hidden&#x27;,
+  },
   loading:{
     textAlign:&#x27;center&#x27;,
     padding:&#x27;128px&#x27;,
   },
-
+  table: {
+    height:&#x27;512px&#x27;,
+    overflow:&#x27;hidden&#x27;,
+    padding:&#x27;0px&#x27;,
+  },
+  header:{
+    fontSize:&#x27;24px&#x27;,
+    fontWeight:&#x27;bold&#x27;,
+    backgroundColor:&#x27;rgba(101, 86, 177, 0.80)&#x27;,
+    color:&#x27;white&#x27;,
+  },
+  column1:{
+    width:&#x27;20%&#x27;,
+  },
+  column2:{
+    width:&#x27;20%&#x27;,
+  },
+  column3:{
+    width:&#x27;60%&#x27;,
+  },
 };
 /**
  * Represents a Messages Table.
@@ -169,10 +194,10 @@ class MessagesTable extends React.Component {
     composeRow(message) {
         var date = new Date(message.getTimeSent());
         return (
-          &lt;TableRow&gt;
-            &lt;TableRowColumn&gt;{message.getSender()}&lt;/TableRowColumn&gt;
-            &lt;TableRowColumn&gt;&lt;Chip backgroundColor={colors.timestamp} &gt;&lt;Time value={date} format=&quot;YYYY/MM/DD hh:mm a&quot;/&gt;&lt;/Chip&gt;&lt;/TableRowColumn&gt;
-            &lt;TableRowColumn&gt;{message.getText()    }&lt;/TableRowColumn&gt;
+          &lt;TableRow  className=&#x27;transparent&#x27;&gt;
+            &lt;TableRowColumn style={style.column1}&gt;{message.getSender()}&lt;/TableRowColumn&gt;
+            &lt;TableRowColumn style={style.column2}&gt;&lt;Chip backgroundColor={colors.timestamp} &gt;&lt;Time value={date} format=&quot;MM/DD hh:mm a&quot;/&gt;&lt;/Chip&gt;&lt;/TableRowColumn&gt;
+            &lt;TableRowColumn style={style.column3}&gt;{message.getText()    }&lt;/TableRowColumn&gt;
           &lt;/TableRow&gt;
         );
     }
@@ -186,15 +211,15 @@ class MessagesTable extends React.Component {
       var messageEntries = this.props.messages;
       var messageItems = (messageEntries &amp;&amp; messageEntries.length!=0) ? messageEntries.map(this.composeRow) : (&lt;Loading style={style.loading}/&gt;);
         return (
-          &lt;Table&gt;
-            &lt;TableHeader&gt;
-              &lt;TableRow&gt;
-                &lt;TableHeaderColumn tooltip=&quot;The Sender&quot;&gt;Sender&lt;/TableHeaderColumn&gt;
-                &lt;TableHeaderColumn tooltip=&quot;Creation Time&quot;&gt;Time Sent&lt;/TableHeaderColumn&gt;
-                &lt;TableHeaderColumn tooltip=&quot;Content&quot;&gt;Content&lt;/TableHeaderColumn&gt;
+          &lt;Table className=&#x27;rounded transparent&#x27;  height={style.table.height} fixedHeader={true} &gt;
+            &lt;TableHeader displaySelectAll={false} adjustForCheckbox={false} style={style.header}  className=&#x27;transparent frosted&#x27;&gt;
+              &lt;TableRow &gt;
+                &lt;TableHeaderColumn style={style.column1} tooltip=&quot;The Sender&quot;&gt;&lt;h3&gt;Sender&lt;/h3&gt;&lt;/TableHeaderColumn&gt;
+                &lt;TableHeaderColumn style={style.column2} tooltip=&quot;Creation Time&quot;&gt;&lt;h3&gt;Time Sent&lt;/h3&gt;&lt;/TableHeaderColumn&gt;
+                &lt;TableHeaderColumn style={style.column3} tooltip=&quot;Content&quot;&gt;&lt;h3&gt;Content&lt;/h3&gt;&lt;/TableHeaderColumn&gt;
               &lt;/TableRow&gt;
             &lt;/TableHeader&gt;
-            &lt;TableBody&gt;
+            &lt;TableBody displayRowCheckbox={false} showRowHover={true} preScanRows={false} className=&#x27;transparent&#x27;&gt;
               {messageItems}
             &lt;/TableBody&gt;
           &lt;/Table&gt;
@@ -267,10 +292,8 @@ export default class MessagesCard extends React.Component {
    */
   render() {
   return(
-    &lt;Card className=&#x27;rounded blurred&#x27;&gt;
-      &lt;CardText&gt;
-        &lt;MessagesTable messages={this.state.messages}/&gt;
-      &lt;/CardText&gt;
+    &lt;Card className=&#x27;rounded blurred&#x27; style={style.card}&gt;
+      &lt;MessagesTable messages={this.state.messages}/&gt;
     &lt;/Card&gt;
     );
   }

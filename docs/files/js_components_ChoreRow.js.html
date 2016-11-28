@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -129,7 +131,8 @@ import ReactDOM from &#x27;react-dom&#x27;;
 import Formsy from &#x27;formsy-react&#x27;;
 import { FormsyToggle } from &#x27;formsy-material-ui/lib&#x27;;
 
-import ToggleButton from &#x27;./ToggleButton.js&#x27;
+import DBManager from &#x27;../dbManager.js&#x27;;
+import ToggleButton from &#x27;./ToggleButton.js&#x27;;
 
 /**
  * Represents a Chore Row.
@@ -147,7 +150,61 @@ export default class ChoreRow extends React.Component {
      */
     constructor(props) {
         super(props);
-    };
+
+        this.state = {
+            assigneeName: &quot;&quot;,
+            creatorName: &quot;&quot;
+        };
+
+        this.setAssigneeName = this.setAssigneeName.bind(this);
+        this.setCreatorName = this.setCreatorName.bind(this);
+    }
+
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
+    componentDidMount() {
+        this.setAssigneeName();
+        this.setCreatorName();
+    }
+
+    /**
+     * Sets the assignee name in state.
+     *
+     * @method setAssigneeName
+     */
+    setAssigneeName() {
+        var manager = new DBManager();
+        manager.getUser(this.props.chore.getAssignment()).then(function(user) {
+            this.setState({assigneeName: user.getName()});
+        }.bind(this));
+    }
+
+    /**
+     * Sets the creator name in state.
+     *
+     * @method setCreatorName
+     */
+    setCreatorName() {
+        var manager = new DBManager();
+        manager.getUser(this.props.chore.getCreator()).then(function(user) {
+            this.setState({creatorName: user.getName()});
+        }.bind(this));
+    }
+
+    /**
+     * Gets Date from DateTime string.
+     *
+     * @method getDateOnly
+     * @param {string} dateTime - The DateTime to extract from
+     */
+    getDateOnly(dateTime) {
+        if(dateTime == null)
+          return null;
+        return dateTime.split(&#x27;T&#x27;)[0];
+    }
 
     /**
      * Renders a Chore Row.
@@ -159,7 +216,7 @@ export default class ChoreRow extends React.Component {
         return (
             &lt;tr&gt;
                 &lt;td&gt;
-                    &lt;ToggleButton 
+                    &lt;ToggleButton
                         onCompletion={this.props.onCompletion}
                         onUncompletion={this.props.onUncompletion}
                         getDefaultToggle={this.props.getDefaultToggle}
@@ -169,12 +226,12 @@ export default class ChoreRow extends React.Component {
                 &lt;/td&gt;
                 &lt;td&gt;{chore.getChoreID()}&lt;/td&gt;
                 &lt;td&gt;{chore.getCategory()}&lt;/td&gt;
-                &lt;td&gt;{chore.getCreator()}&lt;/td&gt;
-                &lt;td&gt;{chore.getDeadline()}&lt;/td&gt;
+                &lt;td&gt;{this.state.creatorName}&lt;/td&gt;
+                &lt;td&gt;{this.getDateOnly(chore.getDeadline())}&lt;/td&gt;
                 &lt;td&gt;{chore.getDetails()}&lt;/td&gt;
-                &lt;td&gt;{chore.getAssignment()}&lt;/td&gt;
-                &lt;td&gt;{chore.getCreationDate()}&lt;/td&gt;
-                &lt;td&gt;{chore.getCompletionDate()}&lt;/td&gt;
+                &lt;td&gt;{this.state.assigneeName}&lt;/td&gt;
+                &lt;td&gt;{this.getDateOnly(chore.getCreationDate())}&lt;/td&gt;
+                &lt;td&gt;{this.getDateOnly(chore.getCompletionDate())}&lt;/td&gt;
             &lt;/tr&gt;
         );
     }

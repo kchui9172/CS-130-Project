@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -137,7 +139,9 @@ import Menu from &#x27;material-ui/Menu&#x27;;
 import MenuItem from &#x27;material-ui/MenuItem&#x27;;
 import {List, ListItem} from &#x27;material-ui/List&#x27;;
 
-import editMessage from &#x27;../HomePage/Cards/MessageEditor.js&#x27;;
+import PaymentForm from &#x27;../../components/PaymentForm.js&#x27;;
+import MessageForm from &#x27;../../components/MessageForm.js&#x27;;
+import ChoreForm from &#x27;../../components/ChoreForm.js&#x27;;
 
 const style = {
 
@@ -147,18 +151,29 @@ const style = {
     right:0,
     bottom:0,
     zIndex:10,
+    transition: &#x27;all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms&#x27;,
   },
 
   popover: {
     backgroundColor:&#x27;rgba(102,67,167,0.45)&#x27;,
   },
 
-  editorview: {
-    margin: 40,
+  editorVisible: {
+    margin: 100,
     position:&#x27;fixed&#x27;,
     right:0,
     bottom:0,
     zIndex:10,
+    transition: &#x27;all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms&#x27;,
+  },
+
+  editorInvisible: {
+    margin: 100,
+    position:&#x27;fixed&#x27;,
+    right:0,
+    bottom:-512,
+    zIndex:10,
+    transition: &#x27;all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms&#x27;,
   },
 };
 
@@ -187,6 +202,7 @@ const style = {
      this.state = {
        open: false,
        editView: null,
+       editorPosition: style.editorInvisible,
      };
    }
 
@@ -222,31 +238,54 @@ const style = {
      * @method render
      */
     render() {
+        var _icon = null;
+        var _color = null;
+        var _view = null;
+        if (this.props.view == 1) {
+          _icon  = &lt;ContentSend /&gt;
+          _color = colors.message
+          _view = &lt;MessageForm /&gt;
+        }
+        else if (this.props.view == 2) {
+          _icon  = &lt;EventNote /&gt;
+          _color = colors.chore
+          _view = &lt;ChoreForm /&gt;
+        }
+        else if (this.props.view == 3) {
+          _icon  = &lt;AttachMoney /&gt;
+          _color = colors.payment
+          _view  = &lt;PaymentForm /&gt;
+        }
         return (
           &lt;div&gt;
-          &lt;div style={style.editorview}&gt;{this.state.editView}&lt;/div&gt;
-          &lt;FloatingActionButton secondary={true} style={style.button} {...this.props} onTouchTap={this.handleTouchTap}&gt;
-            &lt;Create /&gt;
+
+          &lt;FloatingActionButton backgroundColor={_color} style={style.button} onTouchTap={this.handleTouchTap}&gt;
+            {_icon}
           &lt;/FloatingActionButton&gt;
           &lt;Popover
+            zDepth={5}
             open={this.state.open}
             anchorEl={this.state.anchorEl}
             anchorOrigin={{horizontal: &#x27;left&#x27;, vertical: &#x27;top&#x27;}}
             targetOrigin={{horizontal: &#x27;right&#x27;, vertical: &#x27;bottom&#x27;}}
             onRequestClose={this.handleRequestClose}
-            className=&quot;blurred rounded&quot;
+            className=&quot;blurred rounded-more&quot;
             style={style.popover}
           &gt;
-            &lt;Menu&gt;
-              &lt;MenuItem primaryText=&quot;New Message&quot; onTouchTap={function(){this.setState({editView: &lt;editMessage /&gt;});console.log(&#x27;editMessage&#x27;);}.bind(this)} rightIcon={&lt;ContentSend color={colors.message}/&gt;}/&gt;
-              &lt;MenuItem primaryText=&quot;New Payment&quot; onTouchTap={function(){this.setState({editView: &lt;editPayment /&gt;});console.log(&#x27;editPayment&#x27;);}.bind(this)} rightIcon={&lt;AttachMoney color={colors.payment}/&gt;}/&gt;
-              &lt;MenuItem primaryText=&quot;Add Chore&quot;   onTouchTap={function(){this.setState({editView: &lt;editChore   /&gt;});console.log(&#x27;editChore&#x27;);  }.bind(this)} rightIcon={&lt;EventNote   color={colors.chore}  /&gt;}/&gt;
-            &lt;/Menu&gt;
+          {_view}
           &lt;/Popover&gt;
           &lt;/div&gt;
         );
     }
 }
+// // &lt;Create /&gt;
+// &lt;Menu&gt;
+// &lt;MessageEditor /&gt;
+// &lt;/Menu&gt;
+//&lt;MessageEditor style={this.state.editorPosition} /&gt;
+// &lt;MenuItem primaryText=&quot;New Message&quot; onTouchTap={function(){this.messageEditor()}.bind(this)} rightIcon={&lt;ContentSend color={colors.message}/&gt;}/&gt;
+// &lt;MenuItem primaryText=&quot;New Payment&quot; onTouchTap={function(){this.setState({editView: &lt;editPayment /&gt;});console.log(&#x27;editPayment&#x27;);}.bind(this)} rightIcon={&lt;AttachMoney color={colors.payment}/&gt;}/&gt;
+// &lt;MenuItem primaryText=&quot;Add Chore&quot;   onTouchTap={function(){this.setState({editView: &lt;editChore   /&gt;});console.log(&#x27;editChore&#x27;);  }.bind(this)} rightIcon={&lt;EventNote   color={colors.chore}  /&gt;}/&gt;
 
     </pre>
 </div>

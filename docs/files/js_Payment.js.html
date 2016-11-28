@@ -62,7 +62,6 @@
                                 <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
                                 <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
                                 <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
-                                <li><a href="../classes/React.Component.MessageForm.html">React.Component.MessageForm</a></li>
                                 <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
                                 <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
                                 <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
@@ -72,7 +71,10 @@
                                 <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
                                 <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
                                 <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
                                 <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
                                 <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
                                 <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
                                 <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
@@ -145,6 +147,7 @@ export default class Payment {
      * @param {int} recurringPaymentPeriod - How often this payment is made
      */
     constructor(amount, loaner, loanee, dateLoaned, datePaid, dateDue, paymentDescription, paymentCategory, recurringPaymentPeriod) {
+        this._paymentID = null;
         this._amount = amount;
         this._loaner = loaner;
         this._loanee = loanee;
@@ -167,6 +170,7 @@ export default class Payment {
     static JSONtoPayment(data) {
         var payment = new Payment();
         var JSONObj = JSON.parse(data);
+        payment._paymentID = JSONObj._paymentID;
         payment._amount = JSONObj._amount;
         payment._loaner = JSONObj._loaner;
         payment._loanee = JSONObj._loanee;
@@ -178,6 +182,22 @@ export default class Payment {
         payment._recurringPaymentPeriod = JSONObj._recurringPaymentPeriod;
         return payment;
     }
+
+    /**
+     * Gets the ID associated with this payment.
+     *
+     * @method getPaymentID
+     * @return {string} - Payment ID
+     */
+    getPaymentID() { return this._paymentID; }
+
+    /**
+     * Sets the ID associated with a payment
+     *
+     * @method setPaymentID
+     * @param paymentID {string} - ID associated with payment
+     */
+    setPaymentID(paymentID) { this._paymentID = paymentID; }
 
     /**
      * Gets amount for this payment.
