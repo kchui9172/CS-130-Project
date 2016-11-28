@@ -33,18 +33,18 @@ const styleSmall = {
 
 const BigView = (
   <FloatingCard>
-    <CardTitle title="Cool Facts about Rockmates" subtitle="Lorem Ipsum"/>
+    <CardTitle title="Cool Facts about Rockmates"/>
     <Divider/>
     <CardText style={style.text}>
-    <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.</p>
-
-    <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.</p>
+    <p> Living with roommates in an apartment for the first time can be a daunting task.
+    Keeping track of rent and utilities, making sure everyone is on top of their chores, and keeping everyone on the same page in terms of apartment news
+    can be a hassle. Rockmates is the perfect tool to help organize your apartment! </p>
+    <p>Cool features include: </p>
+    <li> Message board for all apartment related news</li>
+    <li> Clearly listed chores with functionality of marking as complete</li>
+    <li> Tracking payments within the apartment </li>
+    <br/>
+    <p> Sign up to try Rockmates out! </p>
     </CardText>
   </FloatingCard>);
 
