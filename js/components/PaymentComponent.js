@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PaymentForm from './PaymentForm.js';
 import Balance from './Balance.js';
+import Payment from '../Payment.js';
+import DBManager from '../dbManager.js';
+import PaymentList from './PaymentList.js';
 
 /**
  * Represents the Payments page.
@@ -25,15 +28,12 @@ export default class PaymentComponent extends React.Component{
      *
      * @method render
      */
-    render(){
-        return (
-            <div>
-                <h1> Payments </h1>
-                    <h2> Add a Payment </h2>
-                        <PaymentForm />
-                    <h2> Balances </h2>
-                        <Balance />
-            </div>
-	   );
-    }
+     render() {
+         return (
+             <div>
+                 <h1> Payments</h1>
+                 <PaymentList  />
+             </div>
+         );
+     }
 }

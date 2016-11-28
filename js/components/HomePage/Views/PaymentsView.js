@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Grid, Row, Column} from 'react-cellblock';
+import PaymentsCard from '../Cards/PaymentsCard.js';
 
-import PaymentComponent from '../../../components/PaymentComponent.js';
+import PaymentList from '../../../components/PaymentList.js';
 
 /**
  * Represents a Payments View.
@@ -31,7 +32,7 @@ export default class PaymentsView extends React.Component {
   return(
     <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >
           <Row>
-            <Column offset="1/16" width="7/8"><PaymentComponent /></Column>
+            <Column offset="1/16" width="7/8"><PaymentsCard /></Column>
           </Row>
         </Grid>
     );
