@@ -1,0 +1,4435 @@
+{
+    "project": {},
+    "files": {
+        "js/components/AuthPage/CredentialsCard.js": {
+            "name": "js/components/AuthPage/CredentialsCard.js",
+            "modules": {},
+            "classes": {
+                "React.Component.CredentialCard": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/AuthPage/LoginForm.js": {
+            "name": "js/components/AuthPage/LoginForm.js",
+            "modules": {},
+            "classes": {
+                "React.Component.LoginForm": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/AuthPage/Main.js": {
+            "name": "js/components/AuthPage/Main.js",
+            "modules": {},
+            "classes": {
+                "React.Component.AuthPage": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/AuthPage/SignUpForm.js": {
+            "name": "js/components/AuthPage/SignUpForm.js",
+            "modules": {},
+            "classes": {
+                "React.Component.SignUpForm": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/AuthPage/SummaryInfo.js": {
+            "name": "js/components/AuthPage/SummaryInfo.js",
+            "modules": {},
+            "classes": {
+                "React.Component.SummaryInfo": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Cards/ChoreCard.js": {
+            "name": "js/components/HomePage/Cards/ChoreCard.js",
+            "modules": {},
+            "classes": {
+                "React.Component.ChoreCard": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Cards/MessageEditor.js": {
+            "name": "js/components/HomePage/Cards/MessageEditor.js",
+            "modules": {},
+            "classes": {
+                "React.Component.MessagesEditor": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Cards/MessagesCard.js": {
+            "name": "js/components/HomePage/Cards/MessagesCard.js",
+            "modules": {},
+            "classes": {
+                "React.Component.Messagesable": 1,
+                "React.Component.MessagesCard": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Cards/PaymentsCard.js": {
+            "name": "js/components/HomePage/Cards/PaymentsCard.js",
+            "modules": {},
+            "classes": {
+                "React.Component.PaymentsTable": 1,
+                "React.Component.PaymentsCard": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Views/ChoresView.js": {
+            "name": "js/components/HomePage/Views/ChoresView.js",
+            "modules": {},
+            "classes": {
+                "React.Component.ChoresView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Views/HomeView.js": {
+            "name": "js/components/HomePage/Views/HomeView.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Views/MessagesView.js": {
+            "name": "js/components/HomePage/Views/MessagesView.js",
+            "modules": {},
+            "classes": {
+                "React.Component.MessagesView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Views/PaymentsView.js": {
+            "name": "js/components/HomePage/Views/PaymentsView.js",
+            "modules": {},
+            "classes": {
+                "React.Component.PaymentsView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Views/SettingsView.js": {
+            "name": "js/components/HomePage/Views/SettingsView.js",
+            "modules": {},
+            "classes": {
+                "React.Component.SettingsView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/AddAptDialog.js": {
+            "name": "js/components/HomePage/AddAptDialog.js",
+            "modules": {},
+            "classes": {
+                "React.Component.AddAptDialog": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/HomePage/Main.js": {
+            "name": "js/components/HomePage/Main.js",
+            "modules": {},
+            "classes": {
+                "React.Component.HomePage": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/primitives/FAB.js": {
+            "name": "js/components/primitives/FAB.js",
+            "modules": {},
+            "classes": {
+                "React.Component.FAB": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/primitives/FloatingCard.js": {
+            "name": "js/components/primitives/FloatingCard.js",
+            "modules": {},
+            "classes": {
+                "React.Component.FloatingCard": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/primitives/FloatingDialog.js": {
+            "name": "js/components/primitives/FloatingDialog.js",
+            "modules": {},
+            "classes": {
+                "React.Component.FloatingDialog": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/primitives/Loading.js": {
+            "name": "js/components/primitives/Loading.js",
+            "modules": {},
+            "classes": {
+                "React.Component.Loading": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/primitives/NavDrawer.js": {
+            "name": "js/components/primitives/NavDrawer.js",
+            "modules": {},
+            "classes": {
+                "React.Component.NavDrawer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/Balance.js": {
+            "name": "js/components/Balance.js",
+            "modules": {},
+            "classes": {
+                "React.Component.Balance": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/ChoreCardGrid.js": {
+            "name": "js/components/ChoreCardGrid.js",
+            "modules": {},
+            "classes": {
+                "React.Component.ChoreCardGrid": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/ChoreCardRow.js": {
+            "name": "js/components/ChoreCardRow.js",
+            "modules": {},
+            "classes": {
+                "React.Component.ChoreCardRow": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/ChoreComponent.js": {
+            "name": "js/components/ChoreComponent.js",
+            "modules": {},
+            "classes": {
+                "React.Component.Chores": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/ChoreForm.js": {
+            "name": "js/components/ChoreForm.js",
+            "modules": {},
+            "classes": {
+                "React.Component.ChoreForm": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/ChoreRow.js": {
+            "name": "js/components/ChoreRow.js",
+            "modules": {},
+            "classes": {
+                "React.Component.ChoreRow": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/ChoreTable.js": {
+            "name": "js/components/ChoreTable.js",
+            "modules": {},
+            "classes": {
+                "React.Component.ChoreTable": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/MessageComponent.js": {
+            "name": "js/components/MessageComponent.js",
+            "modules": {},
+            "classes": {
+                "React.Component.Messages": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/MessageForm.js": {
+            "name": "js/components/MessageForm.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/NavBar.js": {
+            "name": "js/components/NavBar.js",
+            "modules": {},
+            "classes": {
+                "React.Component.NavLinks": 1,
+                "React.Component.NavBar": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/PaymentComponent.js": {
+            "name": "js/components/PaymentComponent.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/PaymentForm.js": {
+            "name": "js/components/PaymentForm.js",
+            "modules": {},
+            "classes": {
+                "React.Component.PaymentForm": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/PaymentItem.js": {
+            "name": "js/components/PaymentItem.js",
+            "modules": {},
+            "classes": {
+                "React.Component.PaymentsComponent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/PaymentList.js": {
+            "name": "js/components/PaymentList.js",
+            "modules": {},
+            "classes": {
+                "React.Component.PaymentsList": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/TodoItem.js": {
+            "name": "js/components/TodoItem.js",
+            "modules": {},
+            "classes": {
+                "React.Component.TodoItem": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/TodoList.js": {
+            "name": "js/components/TodoList.js",
+            "modules": {},
+            "classes": {
+                "React.Component.TodoList": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/ToggleButton.js": {
+            "name": "js/components/ToggleButton.js",
+            "modules": {},
+            "classes": {
+                "React.Component.ToggleButton": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/Transaction.js": {
+            "name": "js/components/Transaction.js",
+            "modules": {},
+            "classes": {
+                "React.Component.Transaction": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/components/index.js": {
+            "name": "js/components/index.js",
+            "modules": {},
+            "classes": {
+                "React.Component.App.Main": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/Apartment.js": {
+            "name": "js/Apartment.js",
+            "modules": {},
+            "classes": {
+                "Apartment": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/Chore.js": {
+            "name": "js/Chore.js",
+            "modules": {},
+            "classes": {
+                "Chore": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/Message.js": {
+            "name": "js/Message.js",
+            "modules": {},
+            "classes": {
+                "Message": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/Payment.js": {
+            "name": "js/Payment.js",
+            "modules": {},
+            "classes": {
+                "Payment": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/User.js": {
+            "name": "js/User.js",
+            "modules": {},
+            "classes": {
+                "User": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/dbManager.js": {
+            "name": "js/dbManager.js",
+            "modules": {},
+            "classes": {
+                "DBManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "React.Component.CredentialCard": {
+            "name": "React.Component.CredentialCard",
+            "shortname": "React.Component.CredentialCard",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/AuthPage/CredentialsCard.js",
+            "line": 20,
+            "description": "Represents a Credentials Card.",
+            "extends": "React.Component"
+        },
+        "React.Component.LoginForm": {
+            "name": "React.Component.LoginForm",
+            "shortname": "React.Component.LoginForm",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 27,
+            "description": "Represents a Login Form.",
+            "extends": "React.Component"
+        },
+        "React.Component.AuthPage": {
+            "name": "React.Component.AuthPage",
+            "shortname": "React.Component.AuthPage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/AuthPage/Main.js",
+            "line": 19,
+            "description": "Represents an Authentication Page.",
+            "extends": "React.Component"
+        },
+        "React.Component.SignUpForm": {
+            "name": "React.Component.SignUpForm",
+            "shortname": "React.Component.SignUpForm",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 43,
+            "description": "Represents a Sign-Up Form",
+            "extends": "React.Component"
+        },
+        "React.Component.SummaryInfo": {
+            "name": "React.Component.SummaryInfo",
+            "shortname": "React.Component.SummaryInfo",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/AuthPage/SummaryInfo.js",
+            "line": 58,
+            "description": "Represents Summary Information",
+            "extends": "React.Component"
+        },
+        "React.Component.ChoreCard": {
+            "name": "React.Component.ChoreCard",
+            "shortname": "React.Component.ChoreCard",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Cards/ChoreCard.js",
+            "line": 60,
+            "description": "Represents a Chore Card.",
+            "extends": "React.Component"
+        },
+        "React.Component.MessagesEditor": {
+            "name": "React.Component.MessagesEditor",
+            "shortname": "React.Component.MessagesEditor",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Cards/MessageEditor.js",
+            "line": 25,
+            "description": "Represents a Messages Editor.",
+            "extends": "React.Component"
+        },
+        "React.Component.Messagesable": {
+            "name": "React.Component.Messagesable",
+            "shortname": "React.Component.Messagesable",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Cards/MessagesCard.js",
+            "line": 42,
+            "description": "Represents a Messages Table.",
+            "extends": "React.Component"
+        },
+        "React.Component.MessagesCard": {
+            "name": "React.Component.MessagesCard",
+            "shortname": "React.Component.MessagesCard",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Cards/MessagesCard.js",
+            "line": 103,
+            "description": "Represents a Messages Card.",
+            "extends": "React.Component"
+        },
+        "React.Component.PaymentsTable": {
+            "name": "React.Component.PaymentsTable",
+            "shortname": "React.Component.PaymentsTable",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 36,
+            "description": "Represents a Payments Table.",
+            "extends": "React.Component"
+        },
+        "React.Component.PaymentsCard": {
+            "name": "React.Component.PaymentsCard",
+            "shortname": "React.Component.PaymentsCard",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 117,
+            "description": "Represents a Payments Card.",
+            "extends": "React.Component"
+        },
+        "React.Component.ChoresView": {
+            "name": "React.Component.ChoresView",
+            "shortname": "React.Component.ChoresView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 10,
+            "description": "Represents a Chores View.",
+            "extends": "React.Component"
+        },
+        "React.Component.PaymentsView": {
+            "name": "React.Component.PaymentsView",
+            "shortname": "React.Component.PaymentsView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Views/PaymentsView.js",
+            "line": 6,
+            "description": "Represents a Payments View.",
+            "extends": "React.Component"
+        },
+        "React.Component.MessagesView": {
+            "name": "React.Component.MessagesView",
+            "shortname": "React.Component.MessagesView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Views/MessagesView.js",
+            "line": 7,
+            "description": "Represents a Messages View.",
+            "extends": "React.Component"
+        },
+        "React.Component.SettingsView": {
+            "name": "React.Component.SettingsView",
+            "shortname": "React.Component.SettingsView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Views/SettingsView.js",
+            "line": 4,
+            "description": "Represents a Settings View.",
+            "extends": "React.Component"
+        },
+        "React.Component.AddAptDialog": {
+            "name": "React.Component.AddAptDialog",
+            "shortname": "React.Component.AddAptDialog",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 24,
+            "description": "Represents an Add Apartment Dialog.",
+            "extends": "React.Component"
+        },
+        "React.Component.HomePage": {
+            "name": "React.Component.HomePage",
+            "shortname": "React.Component.HomePage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/HomePage/Main.js",
+            "line": 76,
+            "description": "Represents a Home Page.",
+            "extends": "React.Component"
+        },
+        "React.Component.FAB": {
+            "name": "React.Component.FAB",
+            "shortname": "React.Component.FAB",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/primitives/FAB.js",
+            "line": 56,
+            "description": "Represents a Floating Action Button.",
+            "extends": "React.Component"
+        },
+        "React.Component.FloatingCard": {
+            "name": "React.Component.FloatingCard",
+            "shortname": "React.Component.FloatingCard",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/primitives/FloatingCard.js",
+            "line": 14,
+            "description": "Represents a Floating Card",
+            "extends": "React.Component"
+        },
+        "React.Component.FloatingDialog": {
+            "name": "React.Component.FloatingDialog",
+            "shortname": "React.Component.FloatingDialog",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/primitives/FloatingDialog.js",
+            "line": 12,
+            "description": "Represents a Floating Dialog.",
+            "extends": "React.Component"
+        },
+        "React.Component.Loading": {
+            "name": "React.Component.Loading",
+            "shortname": "React.Component.Loading",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/primitives/Loading.js",
+            "line": 17,
+            "description": "Represents a Loading Page.",
+            "extends": "React.Component"
+        },
+        "React.Component.NavDrawer": {
+            "name": "React.Component.NavDrawer",
+            "shortname": "React.Component.NavDrawer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/primitives/NavDrawer.js",
+            "line": 11,
+            "description": "Represents a Navigation Drawer.",
+            "extends": "React.Component"
+        },
+        "React.Component.Balance": {
+            "name": "React.Component.Balance",
+            "shortname": "React.Component.Balance",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/Balance.js",
+            "line": 8,
+            "description": "Represents a Balance.",
+            "extends": "React.Component"
+        },
+        "React.Component.ChoreCardGrid": {
+            "name": "React.Component.ChoreCardGrid",
+            "shortname": "React.Component.ChoreCardGrid",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/ChoreCardGrid.js",
+            "line": 6,
+            "description": "Represents a Chore Card Grid.",
+            "extends": "React.Component"
+        },
+        "React.Component.ChoreCardRow": {
+            "name": "React.Component.ChoreCardRow",
+            "shortname": "React.Component.ChoreCardRow",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/ChoreCardRow.js",
+            "line": 6,
+            "description": "Represents a Chore Card Row.",
+            "extends": "React.Component"
+        },
+        "React.Component.Chores": {
+            "name": "React.Component.Chores",
+            "shortname": "React.Component.Chores",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/ChoreComponent.js",
+            "line": 7,
+            "description": "Represents the Chores page.",
+            "extends": "React.Component"
+        },
+        "React.Component.ChoreForm": {
+            "name": "React.Component.ChoreForm",
+            "shortname": "React.Component.ChoreForm",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/ChoreForm.js",
+            "line": 31,
+            "description": "Represents a Chore Form.",
+            "extends": "React.Component"
+        },
+        "React.Component.ChoreRow": {
+            "name": "React.Component.ChoreRow",
+            "shortname": "React.Component.ChoreRow",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/ChoreRow.js",
+            "line": 10,
+            "description": "Represents a Chore Row.",
+            "extends": "React.Component"
+        },
+        "React.Component.ChoreTable": {
+            "name": "React.Component.ChoreTable",
+            "shortname": "React.Component.ChoreTable",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/ChoreTable.js",
+            "line": 8,
+            "description": "Represents a Chore Table.",
+            "extends": "React.Component"
+        },
+        "React.Component.Messages": {
+            "name": "React.Component.Messages",
+            "shortname": "React.Component.Messages",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/MessageComponent.js",
+            "line": 6,
+            "description": "Represents the Messages page.",
+            "extends": "React.Component"
+        },
+        "React.Component.NavLinks": {
+            "name": "React.Component.NavLinks",
+            "shortname": "React.Component.NavLinks",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/NavBar.js",
+            "line": 38,
+            "description": "Represents Navigation Links",
+            "extends": "React.Component"
+        },
+        "React.Component.NavBar": {
+            "name": "React.Component.NavBar",
+            "shortname": "React.Component.NavBar",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/NavBar.js",
+            "line": 66,
+            "description": "Represents a Navigation Bar.",
+            "extends": "React.Component"
+        },
+        "React.Component.PaymentsComponent": {
+            "name": "React.Component.PaymentsComponent",
+            "shortname": "React.Component.PaymentsComponent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/PaymentItem.js",
+            "line": 5,
+            "description": "Represents the Payments page.",
+            "extends": "React.Component"
+        },
+        "React.Component.PaymentForm": {
+            "name": "React.Component.PaymentForm",
+            "shortname": "React.Component.PaymentForm",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/PaymentForm.js",
+            "line": 29,
+            "description": "Represents a PaymentForm.",
+            "extends": "React.Component"
+        },
+        "React.Component.PaymentsList": {
+            "name": "React.Component.PaymentsList",
+            "shortname": "React.Component.PaymentsList",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/PaymentList.js",
+            "line": 8,
+            "description": "Represents a Payments List.",
+            "extends": "React.Component"
+        },
+        "React.Component.TodoItem": {
+            "name": "React.Component.TodoItem",
+            "shortname": "React.Component.TodoItem",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/TodoItem.js",
+            "line": 4,
+            "description": "Represents a To-Do Item.",
+            "extends": "React.Component"
+        },
+        "React.Component.TodoList": {
+            "name": "React.Component.TodoList",
+            "shortname": "React.Component.TodoList",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/TodoList.js",
+            "line": 7,
+            "description": "Represents a To-Do List.",
+            "extends": "React.Component"
+        },
+        "React.Component.ToggleButton": {
+            "name": "React.Component.ToggleButton",
+            "shortname": "React.Component.ToggleButton",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/ToggleButton.js",
+            "line": 7,
+            "description": "Represents a Toggle Button.",
+            "extends": "React.Component"
+        },
+        "React.Component.Transaction": {
+            "name": "React.Component.Transaction",
+            "shortname": "React.Component.Transaction",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/Transaction.js",
+            "line": 4,
+            "description": "Represents a Transaction.",
+            "extends": "React.Component"
+        },
+        "React.Component.App.Main": {
+            "name": "React.Component.App.Main",
+            "shortname": "React.Component.App.Main",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/components/index.js",
+            "line": 59,
+            "description": "Represents the Main App.",
+            "extends": "React.Component"
+        },
+        "Apartment": {
+            "name": "Apartment",
+            "shortname": "Apartment",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/Apartment.js",
+            "line": 1,
+            "description": "Represents and contains information about an Apartment."
+        },
+        "Chore": {
+            "name": "Chore",
+            "shortname": "Chore",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/Chore.js",
+            "line": 2,
+            "description": "Represents a Chore."
+        },
+        "Message": {
+            "name": "Message",
+            "shortname": "Message",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/Message.js",
+            "line": 2,
+            "description": "Represents a Message."
+        },
+        "Payment": {
+            "name": "Payment",
+            "shortname": "Payment",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/Payment.js",
+            "line": 1,
+            "description": "Represents a Payment."
+        },
+        "User": {
+            "name": "User",
+            "shortname": "User",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/User.js",
+            "line": 1,
+            "description": "Represents a User."
+        },
+        "DBManager": {
+            "name": "DBManager",
+            "shortname": "DBManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js/dbManager.js",
+            "line": 14,
+            "description": "Represents a Database Manager.\nUses the Singleton design pattern."
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "js/components/AuthPage/CredentialsCard.js",
+            "line": 27,
+            "description": "Constructs a Credentials Card.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                },
+                {
+                    "name": "context",
+                    "description": "- Context passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.CredentialCard"
+        },
+        {
+            "file": "js/components/AuthPage/CredentialsCard.js",
+            "line": 42,
+            "description": "Handles event where Credentials Card is changed.",
+            "itemtype": "method",
+            "name": "handleChange",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "- The new, changed value",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.CredentialCard"
+        },
+        {
+            "file": "js/components/AuthPage/CredentialsCard.js",
+            "line": 54,
+            "description": "Renders a Credentials Card.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.CredentialCard"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 38,
+            "description": "Enables the login button.",
+            "itemtype": "method",
+            "name": "enableButton",
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 49,
+            "description": "Disables the login button.",
+            "itemtype": "method",
+            "name": "disableButton",
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 60,
+            "description": "Submits the Login Form to the database",
+            "itemtype": "method",
+            "name": "submitForm",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "- The Login Form data",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 82,
+            "description": "Notifies that login error has occurred.",
+            "itemtype": "method",
+            "name": "notifyLoginError",
+            "params": [
+                {
+                    "name": "error",
+                    "description": "- The error",
+                    "type": "Error"
+                }
+            ],
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 99,
+            "description": "Resets the Login Form.",
+            "itemtype": "method",
+            "name": "resetLoginForm",
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 109,
+            "description": "Notifies that there is an error in the Login Form",
+            "itemtype": "method",
+            "name": "notifyFormError",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "- The current data in the form",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 123,
+            "description": "Gets the initial state of the Login Form.",
+            "itemtype": "method",
+            "name": "getInitialState",
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 144,
+            "description": "Enables password validation.",
+            "itemtype": "method",
+            "name": "enablePasswordValidation",
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 156,
+            "description": "Disables password validation.",
+            "itemtype": "method",
+            "name": "disabePasswordValidation",
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 169,
+            "description": "Enables email validation.",
+            "itemtype": "method",
+            "name": "enableEmailValidation",
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 181,
+            "description": "Disables email validation.",
+            "itemtype": "method",
+            "name": "disableEmailValidation",
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/LoginForm.js",
+            "line": 194,
+            "description": "Renders a Login Form.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.LoginForm"
+        },
+        {
+            "file": "js/components/AuthPage/Main.js",
+            "line": 26,
+            "description": "Constructs an Authentication Page.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.AuthPage"
+        },
+        {
+            "file": "js/components/AuthPage/Main.js",
+            "line": 39,
+            "description": "Renders an Authenticatio Page.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.AuthPage"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 50,
+            "description": "Enables the sign-up button.",
+            "itemtype": "method",
+            "name": "enableButton",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 61,
+            "description": "Disables the sign-up button.",
+            "itemtype": "method",
+            "name": "disableButton",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 72,
+            "description": "Submits the Sign-Up Form to the database.",
+            "itemtype": "method",
+            "name": "submitForm",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "- The data in the Sign-Up Form",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 93,
+            "description": "Notifies that a sign-up error has occurred.",
+            "itemtype": "method",
+            "name": "notifySignUpError",
+            "params": [
+                {
+                    "name": "error",
+                    "description": "- The error",
+                    "type": "Error"
+                }
+            ],
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 110,
+            "description": "Notifies that there is an error in the Sign-Up Form.",
+            "itemtype": "method",
+            "name": "notifyFormError",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "- The data in the Sign-Up Form",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 126,
+            "description": "Resets the Sign-Up Form.",
+            "itemtype": "method",
+            "name": "resetSignupForm",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 136,
+            "description": "Gets the initial state of the Sign-Up Form.",
+            "itemtype": "method",
+            "name": "getInitialState",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 166,
+            "description": "Enables first name validation.",
+            "itemtype": "method",
+            "name": "enableFirstNameValidation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 178,
+            "description": "Disables first name validation.",
+            "itemtype": "method",
+            "name": "disableFirstNameValidation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 191,
+            "description": "Enables last name validation.",
+            "itemtype": "method",
+            "name": "enableLastNameValidation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 203,
+            "description": "Disables last name validation",
+            "itemtype": "method",
+            "name": "disableLastNameValidation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 216,
+            "description": "Enables password validation.",
+            "itemtype": "method",
+            "name": "enablePasswordValidation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 228,
+            "description": "Disables password validation.",
+            "itemtype": "method",
+            "name": "disablePasswordValidation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 241,
+            "description": "Enables re-entered password validation.",
+            "itemtype": "method",
+            "name": "enablePassword2Validation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 253,
+            "description": "Disables re-entered password validation.",
+            "itemtype": "method",
+            "name": "disablePassword2Validation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 266,
+            "description": "Enables email validation.",
+            "itemtype": "method",
+            "name": "enableEmailValidation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 278,
+            "description": "Disables email validation.",
+            "itemtype": "method",
+            "name": "disableEmailValidation",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SignUpForm.js",
+            "line": 291,
+            "description": "Renders a Sign-Up Form.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.SignUpForm"
+        },
+        {
+            "file": "js/components/AuthPage/SummaryInfo.js",
+            "line": 69,
+            "description": "Renders Summary Information",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.SummaryInfo"
+        },
+        {
+            "file": "js/components/HomePage/Cards/ChoreCard.js",
+            "line": 67,
+            "description": "Constructs a Chore Card.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent. See propTypes",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.ChoreCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/ChoreCard.js",
+            "line": 92,
+            "description": "Function called when component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.ChoreCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/ChoreCard.js",
+            "line": 123,
+            "description": "Sets assigneeName in state.",
+            "itemtype": "method",
+            "name": "setAssigneeName",
+            "class": "React.Component.ChoreCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/ChoreCard.js",
+            "line": 134,
+            "description": "Gets Date from DateTime string.",
+            "itemtype": "method",
+            "name": "getDateOnly",
+            "params": [
+                {
+                    "name": "dateTime",
+                    "description": "- The DateTime to extract from",
+                    "type": "String"
+                }
+            ],
+            "class": "React.Component.ChoreCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/ChoreCard.js",
+            "line": 144,
+            "description": "Renders a Chore Card.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.ChoreCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/MessageEditor.js",
+            "line": 33,
+            "description": "Constructs a Messages Editor.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                },
+                {
+                    "name": "context",
+                    "description": "- Context passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.MessagesEditor"
+        },
+        {
+            "file": "js/components/HomePage/Cards/MessageEditor.js",
+            "line": 45,
+            "description": "Renders a Messages Editor.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.MessagesEditor"
+        },
+        {
+            "file": "js/components/HomePage/Cards/MessagesCard.js",
+            "line": 49,
+            "description": "Constructs a MessagesTable.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.Messagesable"
+        },
+        {
+            "file": "js/components/HomePage/Cards/MessagesCard.js",
+            "line": 60,
+            "description": "Creates a row for a Message.",
+            "itemtype": "method",
+            "name": "composeRow",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "- The message",
+                    "type": "Message"
+                }
+            ],
+            "return": {
+                "description": "- A renderable component",
+                "type": "Object"
+            },
+            "class": "React.Component.Messagesable"
+        },
+        {
+            "file": "js/components/HomePage/Cards/MessagesCard.js",
+            "line": 78,
+            "description": "Renders a Messages Table.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.Messagesable"
+        },
+        {
+            "file": "js/components/HomePage/Cards/MessagesCard.js",
+            "line": 110,
+            "description": "Constructs a Messages Card.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.MessagesCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/MessagesCard.js",
+            "line": 124,
+            "description": "Fetches messages from the database.",
+            "itemtype": "method",
+            "name": "fetchMessages",
+            "class": "React.Component.MessagesCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/MessagesCard.js",
+            "line": 152,
+            "description": "Function called when the component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.MessagesCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/MessagesCard.js",
+            "line": 161,
+            "description": "Renders a Messages Card.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.MessagesCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 43,
+            "description": "Constructs a PaymentsTable.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.PaymentsTable"
+        },
+        {
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 69,
+            "description": "Creates a row for a Payment.",
+            "itemtype": "method",
+            "name": "composeRow",
+            "params": [
+                {
+                    "name": "payment",
+                    "description": "- The payment",
+                    "type": "Payment"
+                }
+            ],
+            "return": {
+                "description": "- A renderable component",
+                "type": "Object"
+            },
+            "class": "React.Component.PaymentsTable"
+        },
+        {
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 90,
+            "description": "Renders a Messages Table.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.PaymentsTable"
+        },
+        {
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 124,
+            "description": "Constructs a Payments Card.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.PaymentsCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 138,
+            "description": "Fetches a Payment from the database.",
+            "itemtype": "method",
+            "name": "fetchPayment",
+            "params": [
+                {
+                    "name": "paymentID",
+                    "description": "- The id of the payment to be fetched",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The Payment object",
+                "type": "Payment"
+            },
+            "class": "React.Component.PaymentsCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 160,
+            "description": "Fetches Payments from the database and sets state.",
+            "params": [
+                {
+                    "name": "}",
+                    "description": "paymentIDs - payment ID's associated with User.",
+                    "type": "ArrayString"
+                }
+            ],
+            "itemtype": "method",
+            "name": "fetchPayments",
+            "class": "React.Component.PaymentsCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 180,
+            "description": "Shows the Messages.",
+            "itemtype": "method",
+            "name": "showMessages",
+            "class": "React.Component.PaymentsCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 194,
+            "description": "Function called when the component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.PaymentsCard"
+        },
+        {
+            "file": "js/components/HomePage/Cards/PaymentsCard.js",
+            "line": 203,
+            "description": "Renders a Messages Card.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.PaymentsCard"
+        },
+        {
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 17,
+            "description": "Constructs a Chores View.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.ChoresView"
+        },
+        {
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 38,
+            "description": "Function called when chore is completed.",
+            "itemtype": "method",
+            "name": "onCompletion",
+            "params": [
+                {
+                    "name": "chore",
+                    "description": "- The completed chore",
+                    "type": "Chore"
+                }
+            ],
+            "class": "React.Component.ChoresView"
+        },
+        {
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 50,
+            "description": "Function called when chore is marked not complete.",
+            "itemtype": "method",
+            "name": "onUncompletion",
+            "params": [
+                {
+                    "name": "chore",
+                    "description": "- The incomplete chore",
+                    "type": "Chore"
+                }
+            ],
+            "class": "React.Component.ChoresView"
+        },
+        {
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 62,
+            "description": "Function called to see if button should be toggled on/off.",
+            "itemtype": "method",
+            "name": "getDefaultToggle",
+            "params": [
+                {
+                    "name": "chore",
+                    "description": "- The chore corresponding to the toggle",
+                    "type": "Chore"
+                }
+            ],
+            "class": "React.Component.ChoresView"
+        },
+        {
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 72,
+            "description": "Finds where a chore should be inserted based on soonest deadline.",
+            "itemtype": "method",
+            "name": "findInsertionIndex",
+            "params": [
+                {
+                    "name": "}",
+                    "description": "choreList - The list of chores to be inserted into",
+                    "type": "ArrayChore"
+                },
+                {
+                    "name": "chore",
+                    "description": "- The chore to insert",
+                    "type": "Chore"
+                }
+            ],
+            "return": {
+                "description": "- The index where the chore should be inserted",
+                "type": "Int"
+            },
+            "class": "React.Component.ChoresView"
+        },
+        {
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 91,
+            "description": "Inserts the chore into a list based on soonest deadline.",
+            "itemtype": "method",
+            "name": "insertChoreSorted",
+            "params": [
+                {
+                    "name": "}",
+                    "description": "choreList - The list of chores to be inserted into",
+                    "type": "ArrayChore"
+                },
+                {
+                    "name": "chore",
+                    "description": "- The chore to insert",
+                    "type": "Chore"
+                }
+            ],
+            "return": {
+                "description": "} - The list of chores with the new chore inserted",
+                "type": "ArrayChore"
+            },
+            "class": "React.Component.ChoresView"
+        },
+        {
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 105,
+            "description": "Fetches chores from the database and sets\nthe ChoresLists.",
+            "itemtype": "method",
+            "name": "setChoresLists",
+            "class": "React.Component.ChoresView"
+        },
+        {
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 134,
+            "description": "Function called when component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.ChoresView"
+        },
+        {
+            "file": "js/components/HomePage/Views/ChoresView.js",
+            "line": 143,
+            "description": "Renders a Chores View.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.ChoresView"
+        },
+        {
+            "file": "js/components/HomePage/Views/HomeView.js",
+            "line": 23,
+            "description": "Constructs a Payments View.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                },
+                {
+                    "name": "context",
+                    "description": "- Context passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.PaymentsView"
+        },
+        {
+            "file": "js/components/HomePage/Views/HomeView.js",
+            "line": 35,
+            "description": "Renders a Payments View.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.PaymentsView"
+        },
+        {
+            "file": "js/components/HomePage/Views/MessagesView.js",
+            "line": 14,
+            "description": "Constructs a Messages View.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                },
+                {
+                    "name": "context",
+                    "description": "- Context passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.MessagesView"
+        },
+        {
+            "file": "js/components/HomePage/Views/MessagesView.js",
+            "line": 26,
+            "description": "Renders a Messages View.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.MessagesView"
+        },
+        {
+            "file": "js/components/HomePage/Views/PaymentsView.js",
+            "line": 13,
+            "description": "Constructs a Payments View.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                },
+                {
+                    "name": "context",
+                    "description": "- Context passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.PaymentsView"
+        },
+        {
+            "file": "js/components/HomePage/Views/PaymentsView.js",
+            "line": 25,
+            "description": "Renders a Payments View.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.PaymentsView"
+        },
+        {
+            "file": "js/components/HomePage/Views/SettingsView.js",
+            "line": 11,
+            "description": "Constructs a Settings View.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                },
+                {
+                    "name": "context",
+                    "description": "- Context passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.SettingsView"
+        },
+        {
+            "file": "js/components/HomePage/Views/SettingsView.js",
+            "line": 23,
+            "description": "Renders a Settings View.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.SettingsView"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 31,
+            "description": "Constructs an Add Apartment Dialog.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                },
+                {
+                    "name": "{Object{",
+                    "description": "context - Context passed by parent"
+                }
+            ],
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 48,
+            "description": "Handles opening the Add Apartment Dialog.",
+            "itemtype": "method",
+            "name": "handleOpen",
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 57,
+            "description": "Handles closing the Add Apartment Dialog.",
+            "itemtype": "method",
+            "name": "handleClose",
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 66,
+            "description": "Enables the submit button.",
+            "itemtype": "method",
+            "name": "enableButton",
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 75,
+            "description": "Disables the submit button.",
+            "itemtype": "method",
+            "name": "disableButton",
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 85,
+            "description": "Submits the Add Apartment Dialog form.",
+            "itemtype": "method",
+            "name": "submitForm",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "- The data in the form.",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 109,
+            "description": "Notifies that submit error has occurred.",
+            "itemtype": "method",
+            "name": "notifyRequestError",
+            "params": [
+                {
+                    "name": "error",
+                    "description": "- The error",
+                    "type": "Error"
+                }
+            ],
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 126,
+            "description": "Checks the apartment binding in the database.",
+            "itemtype": "method",
+            "name": "checkAptBinding",
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 140,
+            "description": "Checks the user binding in the database.",
+            "itemtype": "method",
+            "name": "checkUserBinding",
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 160,
+            "description": "Function called when the component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/AddAptDialog.js",
+            "line": 173,
+            "description": "Renders an Add Apartment Dialog.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.AddAptDialog"
+        },
+        {
+            "file": "js/components/HomePage/Main.js",
+            "line": 83,
+            "description": "Constructs a Home Page.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.HomePage"
+        },
+        {
+            "file": "js/components/HomePage/Main.js",
+            "line": 101,
+            "description": "Function called when component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.HomePage"
+        },
+        {
+            "file": "js/components/HomePage/Main.js",
+            "line": 112,
+            "description": "Handles drawer toggle.",
+            "itemtype": "method",
+            "name": "handleDrawerToggle",
+            "class": "React.Component.HomePage"
+        },
+        {
+            "file": "js/components/HomePage/Main.js",
+            "line": 122,
+            "description": "Renders a Home Page.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.HomePage"
+        },
+        {
+            "file": "js/components/primitives/FAB.js",
+            "line": 66,
+            "description": "Constructs a Floating Action Button.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.FAB"
+        },
+        {
+            "file": "js/components/primitives/FAB.js",
+            "line": 82,
+            "description": "Handles touch tap event.",
+            "itemtype": "method",
+            "name": "handleTouchTap",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "- The event triggered on touch tap",
+                    "type": "Event"
+                }
+            ],
+            "class": "React.Component.FAB"
+        },
+        {
+            "file": "js/components/primitives/FAB.js",
+            "line": 97,
+            "description": "Handles request to close Floating Action Button",
+            "itemtype": "method",
+            "name": "handleRequestClose",
+            "class": "React.Component.FAB"
+        },
+        {
+            "file": "js/components/primitives/FAB.js",
+            "line": 108,
+            "description": "Renders a Floating Action Button.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.FAB"
+        },
+        {
+            "file": "js/components/primitives/FloatingCard.js",
+            "line": 23,
+            "description": "Constructs a Floating Card",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                },
+                {
+                    "name": "context",
+                    "description": "- Context passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.FloatingCard"
+        },
+        {
+            "file": "js/components/primitives/FloatingCard.js",
+            "line": 38,
+            "description": "Handles event where mouse is over Floatng Card.",
+            "itemtype": "method",
+            "name": "onMouseOver",
+            "class": "React.Component.FloatingCard"
+        },
+        {
+            "file": "js/components/primitives/FloatingCard.js",
+            "line": 44,
+            "description": "Handles event where mouse moves out of Floating Card.",
+            "itemtype": "method",
+            "name": "onMouseOut",
+            "class": "React.Component.FloatingCard"
+        },
+        {
+            "file": "js/components/primitives/FloatingCard.js",
+            "line": 51,
+            "description": "Renders a Floating Card.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.FloatingCard"
+        },
+        {
+            "file": "js/components/primitives/FloatingDialog.js",
+            "line": 21,
+            "description": "Consturcts a Floating Dialog.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                },
+                {
+                    "name": "context",
+                    "description": "- Context passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.FloatingDialog"
+        },
+        {
+            "file": "js/components/primitives/FloatingDialog.js",
+            "line": 39,
+            "description": "Renders a Floating Dialog.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.FloatingDialog"
+        },
+        {
+            "file": "js/components/primitives/Loading.js",
+            "line": 26,
+            "description": "Constructs a Loading Page.",
+            "itemtype": "method",
+            "name": "constuctor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.Loading"
+        },
+        {
+            "file": "js/components/primitives/Loading.js",
+            "line": 37,
+            "description": "Renders a Loading Page.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.Loading"
+        },
+        {
+            "file": "js/components/primitives/NavDrawer.js",
+            "line": 21,
+            "description": "Constructs a Navigation Drawer",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.NavDrawer"
+        },
+        {
+            "file": "js/components/primitives/NavDrawer.js",
+            "line": 35,
+            "description": "Handles event where mouse moves over Navigation Drawer.",
+            "itemtype": "method",
+            "name": "onMouseOver",
+            "class": "React.Component.NavDrawer"
+        },
+        {
+            "file": "js/components/primitives/NavDrawer.js",
+            "line": 42,
+            "description": "Handles event where mouse moves out of Navigation Drawer.",
+            "itemtype": "method",
+            "name": "onMouseOut",
+            "class": "React.Component.NavDrawer"
+        },
+        {
+            "file": "js/components/primitives/NavDrawer.js",
+            "line": 49,
+            "description": "Renders a Navigation Drawer.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.NavDrawer"
+        },
+        {
+            "file": "js/components/Balance.js",
+            "line": 15,
+            "description": "Constructs a Balance.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.Balance"
+        },
+        {
+            "file": "js/components/Balance.js",
+            "line": 28,
+            "description": "Sorts Payments related to User",
+            "itemtype": "method",
+            "name": "sortPayments",
+            "params": [
+                {
+                    "name": "-",
+                    "description": "array of payments related to user",
+                    "type": "Array[Payment]"
+                }
+            ],
+            "class": "React.Component.Balance"
+        },
+        {
+            "file": "js/components/Balance.js",
+            "line": 53,
+            "description": "Calculate balances that user owes or is owed here!",
+            "itemtype": "method",
+            "name": "calculateBalance",
+            "return": {
+                "description": "- The balance",
+                "type": "Decimal"
+            },
+            "class": "React.Component.Balance"
+        },
+        {
+            "file": "js/components/Balance.js",
+            "line": 96,
+            "description": "Renders a Balance between two users.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.Balance"
+        },
+        {
+            "file": "js/components/ChoreCardGrid.js",
+            "line": 13,
+            "description": "Constructs a Chore Card Grid.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent. See propTypes",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.ChoreCardGrid"
+        },
+        {
+            "file": "js/components/ChoreCardGrid.js",
+            "line": 24,
+            "description": "Renders a Chore Card Grid.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.ChoreCardGrid"
+        },
+        {
+            "file": "js/components/ChoreCardRow.js",
+            "line": 13,
+            "description": "Constructs a Chore Card Row.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properites passed by parent. See propTypes",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.ChoreCardRow"
+        },
+        {
+            "file": "js/components/ChoreCardRow.js",
+            "line": 24,
+            "description": "Renders a Chore Card Row.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.ChoreCardRow"
+        },
+        {
+            "file": "js/components/ChoreComponent.js",
+            "line": 14,
+            "description": "Constructs the Chores page.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent. See propTypes",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.Chores"
+        },
+        {
+            "file": "js/components/ChoreComponent.js",
+            "line": 25,
+            "description": "Renders the Chores page.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.Chores"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 38,
+            "description": "Constructs a Chore Form.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent. See propTypes",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 68,
+            "description": "Function called when component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 77,
+            "description": "Sets the tenants list in state.",
+            "itemtype": "method",
+            "name": "setTenantsList",
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 96,
+            "description": "Enables form submission.",
+            "itemtype": "method",
+            "name": "enableSubmit",
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 107,
+            "description": "Disables form submission.",
+            "itemtype": "method",
+            "name": "disableSubmit",
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 118,
+            "description": "Validates data submitted through the form.",
+            "itemtype": "method",
+            "name": "validateData",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "- The form data",
+                    "type": "Obj"
+                }
+            ],
+            "return": {
+                "description": "- Whether form is valid or not",
+                "type": "Boolean"
+            },
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 146,
+            "description": "Loops through chores and adds them to database.\nUses callbacks to avoid using stale caches.",
+            "itemtype": "method",
+            "name": "loopAddChores",
+            "params": [
+                {
+                    "name": "chores",
+                    "description": "- Chores to be added",
+                    "type": "Array[Chore]"
+                }
+            ],
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 163,
+            "description": "Adds a chore to the database and calls the callback\nfunction after successfully adding it.",
+            "itemtype": "method",
+            "name": "addChore",
+            "params": [
+                {
+                    "name": "newChore",
+                    "description": "- The chore to be added",
+                    "type": "Chore"
+                },
+                {
+                    "name": "callback",
+                    "description": "- The callback function",
+                    "type": "Function"
+                }
+            ],
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 176,
+            "description": "Handles when Chore Form is submitted by pushing the\ndesired Chore(s) to the database.",
+            "itemtype": "method",
+            "name": "handleSubmit",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "- Chore data to be added to database",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 221,
+            "description": "Handles invalid form submission.",
+            "itemtype": "method",
+            "name": "handleInvalidSubmit",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "- The invalid data submitted",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreForm.js",
+            "line": 231,
+            "description": "Renders a Chore Form.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.ChoreForm"
+        },
+        {
+            "file": "js/components/ChoreRow.js",
+            "line": 17,
+            "description": "Constructs a Chore Row.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.ChoreRow"
+        },
+        {
+            "file": "js/components/ChoreRow.js",
+            "line": 36,
+            "description": "Function called when component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.ChoreRow"
+        },
+        {
+            "file": "js/components/ChoreRow.js",
+            "line": 46,
+            "description": "Sets the assignee name in state.",
+            "itemtype": "method",
+            "name": "setAssigneeName",
+            "class": "React.Component.ChoreRow"
+        },
+        {
+            "file": "js/components/ChoreRow.js",
+            "line": 58,
+            "description": "Sets the creator name in state.",
+            "itemtype": "method",
+            "name": "setCreatorName",
+            "class": "React.Component.ChoreRow"
+        },
+        {
+            "file": "js/components/ChoreRow.js",
+            "line": 70,
+            "description": "Gets Date from DateTime string.",
+            "itemtype": "method",
+            "name": "getDateOnly",
+            "params": [
+                {
+                    "name": "dateTime",
+                    "description": "- The DateTime to extract from",
+                    "type": "String"
+                }
+            ],
+            "class": "React.Component.ChoreRow"
+        },
+        {
+            "file": "js/components/ChoreRow.js",
+            "line": 82,
+            "description": "Renders a Chore Row.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.ChoreRow"
+        },
+        {
+            "file": "js/components/ChoreTable.js",
+            "line": 15,
+            "description": "Constructs a Chore Table.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.ChoreTable"
+        },
+        {
+            "file": "js/components/ChoreTable.js",
+            "line": 25,
+            "description": "Renders a Chore Table.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.ChoreTable"
+        },
+        {
+            "file": "js/components/MessageComponent.js",
+            "line": 13,
+            "description": "Constructs the Messages page.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.Messages"
+        },
+        {
+            "file": "js/components/MessageComponent.js",
+            "line": 23,
+            "description": "Renders the Messages page.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.Messages"
+        },
+        {
+            "file": "js/components/MessageForm.js",
+            "line": 32,
+            "description": "Constructs a Message Form.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.NavLinks"
+        },
+        {
+            "file": "js/components/MessageForm.js",
+            "line": 51,
+            "description": "Adds a Message to the database",
+            "itemtype": "method",
+            "name": "addItem",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "- The submitted object with the message text",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.NavLinks"
+        },
+        {
+            "file": "js/components/MessageForm.js",
+            "line": 81,
+            "description": "Handles change in the message text box.",
+            "itemtype": "method",
+            "name": "handleChange",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "- The event triggered on change",
+                    "type": "Event"
+                }
+            ],
+            "class": "React.Component.NavLinks"
+        },
+        {
+            "file": "js/components/MessageForm.js",
+            "line": 92,
+            "description": "Renders a Message Form.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.NavLinks"
+        },
+        {
+            "file": "js/components/NavBar.js",
+            "line": 46,
+            "description": "Renders Navigation Links",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.NavLinks"
+        },
+        {
+            "file": "js/components/NavBar.js",
+            "line": 74,
+            "description": "Gets the initial state.",
+            "itemtype": "method",
+            "name": "getInitialState",
+            "class": "React.Component.NavBar"
+        },
+        {
+            "file": "js/components/NavBar.js",
+            "line": 87,
+            "description": "Renders the Navigation Bar.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.NavBar"
+        },
+        {
+            "file": "js/components/PaymentComponent.js",
+            "line": 16,
+            "description": "Constructs the Payments page.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.PaymentsComponent"
+        },
+        {
+            "file": "js/components/PaymentComponent.js",
+            "line": 26,
+            "description": "Renders the Payments page.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.PaymentsComponent"
+        },
+        {
+            "file": "js/components/PaymentForm.js",
+            "line": 37,
+            "description": "Constructs a Payment Form.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.PaymentForm"
+        },
+        {
+            "file": "js/components/PaymentForm.js",
+            "line": 52,
+            "description": "Adds a Payment to the database.",
+            "itemtype": "method",
+            "name": "addPayment",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "- The data sent on form submission",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.PaymentForm"
+        },
+        {
+            "file": "js/components/PaymentForm.js",
+            "line": 83,
+            "description": "Gets the initial state.",
+            "itemtype": "method",
+            "name": "getInitialState",
+            "class": "React.Component.PaymentForm"
+        },
+        {
+            "file": "js/components/PaymentForm.js",
+            "line": 94,
+            "description": "Enables amount validation.",
+            "itemtype": "method",
+            "name": "enableAmountValidation",
+            "class": "React.Component.PaymentForm"
+        },
+        {
+            "file": "js/components/PaymentForm.js",
+            "line": 105,
+            "description": "Disables amount validation.",
+            "itemtype": "method",
+            "name": "disableAmountValidation",
+            "class": "React.Component.PaymentForm"
+        },
+        {
+            "file": "js/components/PaymentForm.js",
+            "line": 116,
+            "description": "Sets tenant list in state.",
+            "itemtype": "method",
+            "name": "setTenantsList",
+            "class": "React.Component.PaymentForm"
+        },
+        {
+            "file": "js/components/PaymentForm.js",
+            "line": 140,
+            "description": "Function called when component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.PaymentForm"
+        },
+        {
+            "file": "js/components/PaymentForm.js",
+            "line": 149,
+            "description": "Renders a Balance between two users.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.PaymentForm"
+        },
+        {
+            "file": "js/components/PaymentItem.js",
+            "line": 12,
+            "description": "Constructs a Payment Item.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Payment"
+                }
+            ],
+            "class": "React.Component.PaymentsComponent"
+        },
+        {
+            "file": "js/components/PaymentItem.js",
+            "line": 23,
+            "description": "Renders a Payments Item.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.PaymentsComponent"
+        },
+        {
+            "file": "js/components/PaymentList.js",
+            "line": 15,
+            "description": "Constructs the Payments page.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.PaymentsList"
+        },
+        {
+            "file": "js/components/PaymentList.js",
+            "line": 30,
+            "description": "Fetches a Payment from the database.",
+            "itemtype": "method",
+            "name": "fetchPayment",
+            "params": [
+                {
+                    "name": "paymentID",
+                    "description": "- The id of the payment to be fetched",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The Payment object",
+                "type": "Payment"
+            },
+            "class": "React.Component.PaymentsList"
+        },
+        {
+            "file": "js/components/PaymentList.js",
+            "line": 46,
+            "description": "Fetches Payments from the database and sets state.",
+            "params": [
+                {
+                    "name": "}",
+                    "description": "paymentIDs - payment ID's associated with User.",
+                    "type": "ArrayString"
+                }
+            ],
+            "itemtype": "method",
+            "name": "fetchPayments",
+            "class": "React.Component.PaymentsList"
+        },
+        {
+            "file": "js/components/PaymentList.js",
+            "line": 66,
+            "description": "Shows the Messages.",
+            "itemtype": "method",
+            "name": "showMessages",
+            "class": "React.Component.PaymentsList"
+        },
+        {
+            "file": "js/components/PaymentList.js",
+            "line": 79,
+            "description": "Function called when component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.PaymentsList"
+        },
+        {
+            "file": "js/components/PaymentList.js",
+            "line": 89,
+            "description": "Renders a Payments Item.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.PaymentsList"
+        },
+        {
+            "file": "js/components/TodoItem.js",
+            "line": 11,
+            "description": "Constructs a To-Do Item.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.TodoItem"
+        },
+        {
+            "file": "js/components/TodoItem.js",
+            "line": 22,
+            "description": "Renders a To-Do Item.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.TodoItem"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 14,
+            "description": "Constructs a To-Do List.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 30,
+            "description": "Pulls a message from the database.",
+            "itemtype": "method",
+            "name": "pullMessage",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "- The id of the message to be pulled",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The message data",
+                "type": "Object"
+            },
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 48,
+            "description": "Pulls messages from the database",
+            "itemtype": "method",
+            "name": "pullMessages",
+            "params": [
+                {
+                    "name": "}",
+                    "description": "ids - The ids of the messages to be pulled",
+                    "type": "Arraystring"
+                }
+            ],
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 68,
+            "description": "Shows the Messages.",
+            "itemtype": "method",
+            "name": "showMessages",
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 87,
+            "description": "Function called when component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/components/TodoList.js",
+            "line": 105,
+            "description": "Renders a To-Do Item.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.TodoList"
+        },
+        {
+            "file": "js/components/ToggleButton.js",
+            "line": 14,
+            "description": "Constructs a Toggle Button.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent. See propTypes",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.ToggleButton"
+        },
+        {
+            "file": "js/components/ToggleButton.js",
+            "line": 27,
+            "description": "Handles toggle to complete chore.",
+            "itemtype": "method",
+            "name": "handleToggle",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "- Event fired when toggle",
+                    "type": "Event"
+                },
+                {
+                    "name": "value",
+                    "description": "- Whether button is toggled or not",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "React.Component.ToggleButton"
+        },
+        {
+            "file": "js/components/ToggleButton.js",
+            "line": 45,
+            "description": "Renders a Toggle Button.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.ToggleButton"
+        },
+        {
+            "file": "js/components/Transaction.js",
+            "line": 11,
+            "description": "Constructs a Transaction Item.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "props",
+                    "description": "- Properties passed by parent",
+                    "type": "Object"
+                }
+            ],
+            "class": "React.Component.Transaction"
+        },
+        {
+            "file": "js/components/Transaction.js",
+            "line": 22,
+            "description": "Renders a Transaction Item.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.Transaction"
+        },
+        {
+            "file": "js/components/index.js",
+            "line": 71,
+            "description": "Function called when the component mounts.",
+            "itemtype": "method",
+            "name": "componentDidMount",
+            "class": "React.Component.App.Main"
+        },
+        {
+            "file": "js/components/index.js",
+            "line": 93,
+            "description": "Function called when the component unmounts.",
+            "itemtype": "method",
+            "name": "componentWillUnmount",
+            "class": "React.Component.App.Main"
+        },
+        {
+            "file": "js/components/index.js",
+            "line": 102,
+            "description": "Renders the Main App.",
+            "itemtype": "method",
+            "name": "render",
+            "class": "React.Component.App.Main"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 7,
+            "description": "Constructs an Apartment.",
+            "itemtype": "method",
+            "name": "constructor",
+            "params": [
+                {
+                    "name": "address",
+                    "description": "- Address of the Apartment",
+                    "type": "String"
+                }
+            ],
+            "is_constructor": 1,
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 22,
+            "description": "Creates an Apartment from input JSON.",
+            "itemtype": "method",
+            "name": "JSONtoApartment",
+            "static": 1,
+            "params": [
+                {
+                    "name": "-",
+                    "description": "JSON representing an Apartment",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The Apartment represented by the JSON",
+                "type": "Apartment"
+            },
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 41,
+            "description": "Gets the Apartment ID.",
+            "itemtype": "method",
+            "name": "getAptID",
+            "return": {
+                "description": "- The Apartment ID",
+                "type": "String"
+            },
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 51,
+            "description": "Gets the address of the Apartment.",
+            "itemtype": "method",
+            "name": "getAddress",
+            "return": {
+                "description": "- The Apartment address",
+                "type": "String"
+            },
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 61,
+            "description": "Gets the tenants of the Apartment.",
+            "itemtype": "method",
+            "name": "getTenantIDs",
+            "return": {
+                "description": "}",
+                "type": "Arraystring"
+            },
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 71,
+            "description": "Gets the ids of all the messages sent in the Apartment.",
+            "itemtype": "method",
+            "name": "getMessageIDs",
+            "return": {
+                "description": "}",
+                "type": "Arraystring"
+            },
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 81,
+            "description": "Gets the ids of all the chores in the Apartment.",
+            "itemtype": "method",
+            "name": "getChoreIDs",
+            "return": {
+                "description": "}",
+                "type": "Arraystring"
+            },
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 91,
+            "description": "Sets the Apartment ID.",
+            "itemtype": "method",
+            "name": "setAptID",
+            "params": [
+                {
+                    "name": "aptID",
+                    "description": "- The new Apartment ID",
+                    "type": "String"
+                }
+            ],
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 101,
+            "description": "Adds a tenant to the Apartment.",
+            "itemtype": "method",
+            "name": "addTenant",
+            "params": [
+                {
+                    "name": "userID",
+                    "description": "- The new tenant's ID",
+                    "type": "String"
+                }
+            ],
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 111,
+            "description": "Adds a message to the Apartment.",
+            "itemtype": "method",
+            "name": "addMessage",
+            "params": [
+                {
+                    "name": "messageID",
+                    "description": "- The new message ID",
+                    "type": "String"
+                }
+            ],
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Apartment.js",
+            "line": 121,
+            "description": "Adds a chore to the Apartment.",
+            "itemtype": "method",
+            "name": "addChore",
+            "params": [
+                {
+                    "name": "choreID",
+                    "description": "- The new chore ID",
+                    "type": "String"
+                }
+            ],
+            "class": "Apartment"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 8,
+            "description": "Constructs a Chore.",
+            "is_constructor": 1,
+            "itemtype": "method",
+            "name": "constructor",
+            "params": [
+                {
+                    "name": "userID",
+                    "description": "- The ID of the user",
+                    "type": "String"
+                },
+                {
+                    "name": "aptID",
+                    "description": "- The ID of the apartment",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "- The name of the Chore",
+                    "type": "String"
+                },
+                {
+                    "name": "category",
+                    "description": "- The category of the Chore",
+                    "type": "String"
+                },
+                {
+                    "name": "deadline",
+                    "description": "- The deadline of the Chore",
+                    "type": "Date"
+                },
+                {
+                    "name": "details",
+                    "description": "- Additional details of the Chore",
+                    "type": "String"
+                },
+                {
+                    "name": "assignee",
+                    "description": "- The assignee of the Chore",
+                    "type": "String"
+                }
+            ],
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 34,
+            "description": "Creates a Chore from input JSON.",
+            "itemtype": "method",
+            "name": "JSONtoChore",
+            "static": 1,
+            "params": [
+                {
+                    "name": "-",
+                    "description": "JSON representing a Chore",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The Chore represented by the JSON",
+                "type": "Chore"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 58,
+            "description": "Sets a user assignment to the Chore.",
+            "itemtype": "method",
+            "name": "setAssignment",
+            "params": [
+                {
+                    "name": "choreID",
+                    "description": "- The Chore ID",
+                    "type": "String"
+                }
+            ],
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 66,
+            "description": "Sets a user assignment to the Chore.",
+            "itemtype": "method",
+            "name": "setAssignment",
+            "params": [
+                {
+                    "name": "userID",
+                    "description": "- The User ID of the assignee of the Chore",
+                    "type": "String"
+                }
+            ],
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 74,
+            "description": "Sets the deadline for the chore.",
+            "itemtype": "method",
+            "name": "setDeadline",
+            "params": [
+                {
+                    "name": "deadline",
+                    "description": "- The deadline of the Chore",
+                    "type": "Date"
+                }
+            ],
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 82,
+            "description": "Sets the details for the chore.",
+            "itemtype": "method",
+            "name": "setDetails",
+            "params": [
+                {
+                    "name": "details",
+                    "description": "- The details of the Chore",
+                    "type": "String"
+                }
+            ],
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 90,
+            "description": "Sets the completion date of the finished Chore",
+            "itemtype": "method",
+            "name": "complete",
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 97,
+            "description": "Sets the completion date of the Chore to null.",
+            "itemtype": "method",
+            "name": "uncomplete",
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 104,
+            "description": "Gets the Chore ID.",
+            "itemtype": "method",
+            "name": "getChoreID",
+            "return": {
+                "description": "- The Chore ID",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 112,
+            "itemtype": "method",
+            "name": "getName",
+            "return": {
+                "description": "- The Chore Name",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 119,
+            "description": "Gets the Apartment ID of the chore.",
+            "itemtype": "method",
+            "name": "getAptID",
+            "return": {
+                "description": "- The Apt ID",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 127,
+            "description": "Gets the category of the Chore.",
+            "itemtype": "method",
+            "name": "getCategory",
+            "return": {
+                "description": "- The category of the Chore",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 135,
+            "description": "Gets the User ID of the creator of the Chore.",
+            "itemtype": "method",
+            "name": "getCreator",
+            "return": {
+                "description": "- The creator of the Chore",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 143,
+            "description": "Gets the deadline of the Chore.",
+            "itemtype": "method",
+            "name": "getDeadline",
+            "return": {
+                "description": "- The deadline of the Chore",
+                "type": "Date"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 151,
+            "description": "Gets the additional details of the Chore.",
+            "itemtype": "method",
+            "name": "getDetails",
+            "return": {
+                "description": "- The details of the Chore",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 159,
+            "description": "Gets the User ID of the assignee of the Chore.",
+            "itemtype": "method",
+            "name": "getAssignment",
+            "return": {
+                "description": "- The assignee of the Chore",
+                "type": "String"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 167,
+            "description": "Gets the creation date of the Chore.",
+            "itemtype": "method",
+            "name": "getCreationDate",
+            "return": {
+                "description": "- The creation date of the Chore",
+                "type": "Date"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Chore.js",
+            "line": 175,
+            "description": "Gets the completion date of the Chore.",
+            "itemtype": "method",
+            "name": "getCompletionDate",
+            "return": {
+                "description": "- The completion date of the Chore",
+                "type": "Date"
+            },
+            "class": "Chore"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 8,
+            "description": "Represents a message.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "userID",
+                    "description": "- The ID of the user",
+                    "type": "String"
+                },
+                {
+                    "name": "aptID",
+                    "description": "- The ID of the apartment",
+                    "type": "String"
+                },
+                {
+                    "name": "timeSent",
+                    "description": "- The timestamp of when message was sent",
+                    "type": "Date"
+                },
+                {
+                    "name": "text",
+                    "description": "- The actual text of message",
+                    "type": "Text"
+                }
+            ],
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 27,
+            "description": "Creates a Message from input JSON.",
+            "itemtype": "method",
+            "name": "JSONtoMessage",
+            "static": 1,
+            "params": [
+                {
+                    "name": "-",
+                    "description": "JSON representing a User",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The Message represented by the JSON",
+                "type": "Message"
+            },
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 47,
+            "description": "Updates Message to show that it has  been successful posted.",
+            "itemtype": "method",
+            "name": "confirmSend",
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 55,
+            "description": "Gets the Message ID",
+            "itemtype": "method",
+            "name": "getMessageID",
+            "return": {
+                "description": "- The ID of the message",
+                "type": "String"
+            },
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 63,
+            "description": "Gets the user id of the creator of the Message.",
+            "itemtype": "method",
+            "name": "getSender",
+            "return": {
+                "description": "- The user ID of the creator",
+                "type": "String"
+            },
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 71,
+            "description": "Gets the timestamp of when the Message was posted.",
+            "itemtype": "method",
+            "name": "getTimeSent",
+            "return": {
+                "description": "- The time when the Message was posted",
+                "type": "Date"
+            },
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 79,
+            "description": "Gets the text of Message.",
+            "itemtype": "method",
+            "name": "getText",
+            "return": {
+                "description": "- The text of the Message",
+                "type": "String"
+            },
+            "class": "Message"
+        },
+        {
+            "file": "js/Message.js",
+            "line": 87,
+            "description": "Sets the Message ID",
+            "itemtype": "method",
+            "name": "setMessageID",
+            "class": "Message"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 7,
+            "description": "Represents a payment.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "amount",
+                    "description": "- The amount owed in this payment",
+                    "type": "Double"
+                },
+                {
+                    "name": "loaner",
+                    "description": "- The user id of the loaner of this payment",
+                    "type": "String"
+                },
+                {
+                    "name": "loanee",
+                    "description": "- The user id of the loanee of this payment",
+                    "type": "String"
+                },
+                {
+                    "name": "dateLoaned",
+                    "description": "- The date the loan was made",
+                    "type": "Date"
+                },
+                {
+                    "name": "datePaid",
+                    "description": "- The date the loan was repaid",
+                    "type": "Date"
+                },
+                {
+                    "name": "dateDue",
+                    "description": "- The date the loan is to be repaid",
+                    "type": "Date"
+                },
+                {
+                    "name": "paymentDescription",
+                    "description": "- Description of what the loan was for",
+                    "type": "String"
+                },
+                {
+                    "name": "paymentCategory",
+                    "description": "- What category this payment belongs to",
+                    "type": "String"
+                },
+                {
+                    "name": "recurringPaymentPeriod",
+                    "description": "- How often this payment is made",
+                    "type": "Int"
+                }
+            ],
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 35,
+            "description": "Creates a Payment from input JSON.",
+            "itemtype": "method",
+            "name": "JSONtoPayment",
+            "static": 1,
+            "params": [
+                {
+                    "name": "-",
+                    "description": "JSON representing a Payment",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The Payment represented by the JSON",
+                "type": "Payment"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 59,
+            "description": "Gets the ID associated with this payment.",
+            "itemtype": "method",
+            "name": "getPaymentID",
+            "return": {
+                "description": "- Payment ID",
+                "type": "String"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 67,
+            "description": "Sets the ID associated with a payment",
+            "itemtype": "method",
+            "name": "setPaymentID",
+            "params": [
+                {
+                    "name": "paymentID",
+                    "description": "- ID associated with payment",
+                    "type": "String"
+                }
+            ],
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 75,
+            "description": "Gets amount for this payment.",
+            "itemtype": "method",
+            "name": "getAmount",
+            "return": {
+                "description": "- The amount owed",
+                "type": "Double"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 83,
+            "description": "Gets loaner for this payment.",
+            "itemtype": "method",
+            "name": "getLoaner",
+            "return": {
+                "description": "- The loaner in this payment",
+                "type": "String"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 91,
+            "description": "Gets loanee for this payment.",
+            "itemtype": "method",
+            "name": "getLoanee",
+            "return": {
+                "description": "- The loaner in this payment",
+                "type": "String"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 99,
+            "description": "Gets date loaned for this payment.",
+            "itemtype": "method",
+            "name": "getDateLoaned",
+            "return": {
+                "description": "- The date this payment was loaned",
+                "type": "Date"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 107,
+            "description": "Gets date paid for this payment.",
+            "itemtype": "method",
+            "name": "getDatePaid",
+            "return": {
+                "description": "- The date this payment was paid",
+                "type": "Date"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 115,
+            "description": "Gets date due for this payment.",
+            "itemtype": "method",
+            "name": "getDateDue",
+            "return": {
+                "description": "- The date this payment is due",
+                "type": "Date"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 123,
+            "description": "Gets this payment's description.",
+            "itemtype": "method",
+            "name": "getPaymentDescription",
+            "return": {
+                "description": "- Description of payment",
+                "type": "String"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 131,
+            "description": "Gets this payment's category.",
+            "itemtype": "method",
+            "name": "getPaymentCategory",
+            "return": {
+                "description": "- Category of payment",
+                "type": "String"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 139,
+            "description": "Gets this payment's recurring payment period.",
+            "itemtype": "method",
+            "name": "getPaymentPeriod",
+            "return": {
+                "description": "- The recurring payment period",
+                "type": "Int"
+            },
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 147,
+            "description": "Sets the date the payment was repaid.",
+            "itemtype": "method",
+            "name": "setDatePaid",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "- The date payment was paid",
+                    "type": "Date"
+                }
+            ],
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 157,
+            "description": "Sets the Loaner ID.",
+            "itemtype": "method",
+            "name": "setLoanerID",
+            "params": [
+                {
+                    "name": "loanerID",
+                    "description": "- The ID of the loaner",
+                    "type": "String"
+                }
+            ],
+            "class": "Payment"
+        },
+        {
+            "file": "js/Payment.js",
+            "line": 167,
+            "description": "Sets the Loanee ID.",
+            "itemtype": "method",
+            "name": "setLoaneeID",
+            "params": [
+                {
+                    "name": "loaneeID",
+                    "description": "- The ID of the loanee",
+                    "type": "String"
+                }
+            ],
+            "class": "Payment"
+        },
+        {
+            "file": "js/User.js",
+            "line": 7,
+            "description": "Constructs a User.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "email",
+                    "description": "- The email of User",
+                    "type": "String"
+                },
+                {
+                    "name": "firstName",
+                    "description": "- The first name of the User",
+                    "type": "String"
+                },
+                {
+                    "name": "lastName",
+                    "description": "- The last name of the User",
+                    "type": "String"
+                },
+                {
+                    "name": "phoneNumber",
+                    "description": "- The phone number of the User",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 27,
+            "description": "Creates a User from input JSON.",
+            "itemtype": "method",
+            "name": "JSONtoUser",
+            "static": 1,
+            "params": [
+                {
+                    "name": "-",
+                    "description": "JSON representing a User",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The User represented by the JSON",
+                "type": "User"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 48,
+            "description": "Gets the name of the User (first and last names).",
+            "itemtype": "method",
+            "name": "getName",
+            "return": {
+                "description": "- The first and last names of the User",
+                "type": "String"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 56,
+            "description": "Gets the email of the User.",
+            "itemtype": "method",
+            "name": "getEmail",
+            "return": {
+                "description": "- The email of the User",
+                "type": "String"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 64,
+            "description": "Gets the ID of the User.",
+            "itemtype": "method",
+            "name": "getUserID",
+            "return": {
+                "description": "- The User ID",
+                "type": "String"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 72,
+            "description": "Gets the Apartment ID.",
+            "itemtype": "method",
+            "name": "getAptID",
+            "return": {
+                "description": "- The Apartment ID",
+                "type": "String"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 80,
+            "description": "Gets the payment IDs associated with User.",
+            "itemtype": "method",
+            "name": "getPaymentIDs",
+            "return": {
+                "description": "} - The payment IDs of all payments associated with the User",
+                "type": "Arraystring"
+            },
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 88,
+            "description": "Sets the User ID.",
+            "itemtype": "method",
+            "name": "setUserID",
+            "params": [
+                {
+                    "name": "userID",
+                    "description": "- The new value of the User ID",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 96,
+            "description": "Sets the apartment ID.",
+            "itemtype": "method",
+            "name": "setAptID",
+            "params": [
+                {
+                    "name": "aptID",
+                    "description": "- The new value of the apartment ID",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/User.js",
+            "line": 104,
+            "description": "Add payment to payments array.",
+            "itemtype": "method",
+            "name": "addPayment",
+            "params": [
+                {
+                    "name": "paymentID",
+                    "description": "- The ID associated with payment to be added",
+                    "type": "String"
+                }
+            ],
+            "class": "User"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 21,
+            "description": "Constructs a Database Manager.",
+            "itemtype": "method",
+            "name": "constructor",
+            "is_constructor": 1,
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 40,
+            "description": "Attempts to sign a user in.",
+            "itemtype": "method",
+            "name": "signIn",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "- The user's email",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "- The user's password",
+                    "type": "String"
+                },
+                {
+                    "name": "onFailCallback",
+                    "description": "- Asynchronous exception handler",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "Promise of a non-null User object (newly signed in)",
+                "type": "Promise"
+            },
+            "throws": {
+                "description": "- A possible authentication error",
+                "type": "Error"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 80,
+            "description": "Attempts to sign up a user.",
+            "itemtype": "method",
+            "name": "signUp",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "- The user's email",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "- The user's password",
+                    "type": "String"
+                },
+                {
+                    "name": "onFailCallback",
+                    "description": "- Asynchronous exception handler",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "Promise of a nonNull Firebase user",
+                "type": "Promise"
+            },
+            "throws": {
+                "description": "- A possible authentication error",
+                "type": "Error"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 117,
+            "description": "Adds a user to the database.",
+            "itemtype": "method",
+            "name": "addUser",
+            "params": [
+                {
+                    "name": "-",
+                    "description": "The User Object to be added",
+                    "type": "User"
+                }
+            ],
+            "return": {
+                "description": "- The User ID of the added user",
+                "type": "String"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 129,
+            "description": "Updates a user in the database.",
+            "itemtype": "method",
+            "name": "updateUser",
+            "params": [
+                {
+                    "name": "-",
+                    "description": "The User Object to be updated",
+                    "type": "User"
+                }
+            ],
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 140,
+            "description": "Gets the user.",
+            "itemtype": "method",
+            "name": "getUser",
+            "params": [
+                {
+                    "name": "userID",
+                    "description": "- The user ID",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "user_cache.getID()"
+                }
+            ],
+            "return": {
+                "description": "- The corresponding User",
+                "type": "User"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 158,
+            "description": "Checks current authentication state.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "isLoggedIn",
+            "return": {
+                "description": "- The current user id",
+                "type": "Uid"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 169,
+            "description": "Gets the current user.",
+            "static": 1,
+            "itemtype": "method",
+            "name": "currentUser",
+            "return": {
+                "description": "- The current user id",
+                "type": "String"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 180,
+            "description": "Logs the current user out, if logged in",
+            "static": 1,
+            "itemtype": "method",
+            "name": "LogOut",
+            "return": {
+                "description": "- LogOut promise",
+                "type": "Promise"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 191,
+            "description": "Adds an apartment.",
+            "itemtype": "method",
+            "name": "addApartment",
+            "params": [
+                {
+                    "name": "apartment",
+                    "description": "- The apartment to be added",
+                    "type": "Apartment"
+                }
+            ],
+            "return": {
+                "description": "- The apartment ID of the added apartment",
+                "type": "String"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 206,
+            "description": "Updates an apartment.",
+            "itemtype": "method",
+            "name": "updateApartment",
+            "params": [
+                {
+                    "name": "apartment",
+                    "description": "- Apartment",
+                    "type": "Apartment"
+                }
+            ],
+            "throws": {
+                "description": "- Possible failure to update Apartment",
+                "type": "Error"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 218,
+            "description": "Gets an apartment.",
+            "itemtype": "method",
+            "name": "getApartment",
+            "params": [
+                {
+                    "name": "aptID",
+                    "description": "- The apartment ID",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The corresponding Apartment",
+                "type": "Apartment"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 240,
+            "description": "Adds a chore.",
+            "itemtype": "method",
+            "name": "addChore",
+            "params": [
+                {
+                    "name": "chore",
+                    "description": "- The chore to be added.",
+                    "type": "Chore"
+                },
+                {
+                    "name": "callback",
+                    "description": "- The optional callback function",
+                    "type": "Function"
+                }
+            ],
+            "throws": {
+                "description": "- Possible failure to add Chore",
+                "type": "Error"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 264,
+            "description": "Updates a chore in the database.",
+            "itemtype": "method",
+            "name": "updateChore",
+            "params": [
+                {
+                    "name": "-",
+                    "description": "The Chore Object to be updated",
+                    "type": "Chore"
+                }
+            ],
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 275,
+            "description": "Updates a user in the database.",
+            "itemtype": "method",
+            "name": "updateUser",
+            "params": [
+                {
+                    "name": "-",
+                    "description": "The User Object to be updated",
+                    "type": "User"
+                }
+            ],
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 286,
+            "description": "Gets all chore ids.",
+            "itemtype": "method",
+            "name": "getChoreIDs",
+            "return": {
+                "description": "} - An array containing the chore ids",
+                "type": "Arraystring"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 298,
+            "description": "Gets a chore.",
+            "itemtype": "method",
+            "name": "getChore",
+            "params": [
+                {
+                    "name": "choreID",
+                    "description": "- The id of the chore to get",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The chore",
+                "type": "Chore"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 311,
+            "description": "Adds a message.",
+            "itemtype": "method",
+            "name": "addMessage",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "- The message to be added",
+                    "type": "Message"
+                }
+            ],
+            "throws": {
+                "description": "- Possible failure to add Message",
+                "type": "Exception"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 333,
+            "description": "Gets all message ids.",
+            "itemtype": "method",
+            "name": "getMessageIDs",
+            "return": {
+                "description": "} - An array containing the message ids",
+                "type": "Arraystring"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 345,
+            "description": "Gets a message by its id.",
+            "itemtype": "method",
+            "name": "getMessage",
+            "params": [
+                {
+                    "name": "messageID",
+                    "description": "- The id of the message to get",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "- The message",
+                "type": "Message"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 358,
+            "description": "Updates a message in the database.",
+            "itemtype": "method",
+            "name": "updateMessage",
+            "params": [
+                {
+                    "name": "-",
+                    "description": "The message Object to be updated",
+                    "type": "Message"
+                }
+            ],
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 369,
+            "description": "Adds a payment.",
+            "itemtype": "method",
+            "name": "addPayment",
+            "params": [
+                {
+                    "name": "payment",
+                    "description": "- The payment to be added",
+                    "type": "Payment"
+                }
+            ],
+            "throws": {
+                "description": "- Possible failure to add Payment",
+                "type": "Exception"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 397,
+            "description": "Gets all the payment IDs",
+            "itemtype": "method",
+            "name": "getPaymentIDs",
+            "return": {
+                "description": "} - An array containing the payment IDs",
+                "type": "ArrayPaymentIDs"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 409,
+            "description": "Gets the payment with the speicifed ID",
+            "itemtype": "method",
+            "name": "getPayment",
+            "params": [
+                {
+                    "name": "paymentID",
+                    "description": "- Payment ID to find payment"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Payment"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 422,
+            "description": "Binds an Apartment and a User.",
+            "itemtype": "method",
+            "name": "bindApartment",
+            "params": [
+                {
+                    "name": "aptID",
+                    "description": "- The id of the Apartment to bind",
+                    "type": "String"
+                }
+            ],
+            "throws": {
+                "description": "- Possible failure to bind Apartment",
+                "type": "Exception"
+            },
+            "class": "DBManager"
+        },
+        {
+            "file": "js/dbManager.js",
+            "line": 443,
+            "description": "Listens for changes in Messages.",
+            "itemtype": "method",
+            "name": "listenForMessages",
+            "params": [
+                {
+                    "name": "onChangeCallBack",
+                    "description": "- The callback when change occurs",
+                    "type": "Function"
+                }
+            ],
+            "class": "DBManager"
+        }
+    ],
+    "warnings": []
+}

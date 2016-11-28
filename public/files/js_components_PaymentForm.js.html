@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>js/components/PaymentForm.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/Apartment.html">Apartment</a></li>
+                                <li><a href="../classes/Chore.html">Chore</a></li>
+                                <li><a href="../classes/DBManager.html">DBManager</a></li>
+                                <li><a href="../classes/Message.html">Message</a></li>
+                                <li><a href="../classes/Payment.html">Payment</a></li>
+                                <li><a href="../classes/React.Component.AddAptDialog.html">React.Component.AddAptDialog</a></li>
+                                <li><a href="../classes/React.Component.App.Main.html">React.Component.App.Main</a></li>
+                                <li><a href="../classes/React.Component.AuthPage.html">React.Component.AuthPage</a></li>
+                                <li><a href="../classes/React.Component.Balance.html">React.Component.Balance</a></li>
+                                <li><a href="../classes/React.Component.ChoreCard.html">React.Component.ChoreCard</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardGrid.html">React.Component.ChoreCardGrid</a></li>
+                                <li><a href="../classes/React.Component.ChoreCardRow.html">React.Component.ChoreCardRow</a></li>
+                                <li><a href="../classes/React.Component.ChoreForm.html">React.Component.ChoreForm</a></li>
+                                <li><a href="../classes/React.Component.ChoreRow.html">React.Component.ChoreRow</a></li>
+                                <li><a href="../classes/React.Component.Chores.html">React.Component.Chores</a></li>
+                                <li><a href="../classes/React.Component.ChoresView.html">React.Component.ChoresView</a></li>
+                                <li><a href="../classes/React.Component.ChoreTable.html">React.Component.ChoreTable</a></li>
+                                <li><a href="../classes/React.Component.CredentialCard.html">React.Component.CredentialCard</a></li>
+                                <li><a href="../classes/React.Component.FAB.html">React.Component.FAB</a></li>
+                                <li><a href="../classes/React.Component.FloatingCard.html">React.Component.FloatingCard</a></li>
+                                <li><a href="../classes/React.Component.FloatingDialog.html">React.Component.FloatingDialog</a></li>
+                                <li><a href="../classes/React.Component.HomePage.html">React.Component.HomePage</a></li>
+                                <li><a href="../classes/React.Component.Loading.html">React.Component.Loading</a></li>
+                                <li><a href="../classes/React.Component.LoginForm.html">React.Component.LoginForm</a></li>
+                                <li><a href="../classes/React.Component.Messages.html">React.Component.Messages</a></li>
+                                <li><a href="../classes/React.Component.Messagesable.html">React.Component.Messagesable</a></li>
+                                <li><a href="../classes/React.Component.MessagesCard.html">React.Component.MessagesCard</a></li>
+                                <li><a href="../classes/React.Component.MessagesEditor.html">React.Component.MessagesEditor</a></li>
+                                <li><a href="../classes/React.Component.MessagesView.html">React.Component.MessagesView</a></li>
+                                <li><a href="../classes/React.Component.NavBar.html">React.Component.NavBar</a></li>
+                                <li><a href="../classes/React.Component.NavDrawer.html">React.Component.NavDrawer</a></li>
+                                <li><a href="../classes/React.Component.NavLinks.html">React.Component.NavLinks</a></li>
+                                <li><a href="../classes/React.Component.PaymentForm.html">React.Component.PaymentForm</a></li>
+                                <li><a href="../classes/React.Component.PaymentsCard.html">React.Component.PaymentsCard</a></li>
+                                <li><a href="../classes/React.Component.PaymentsComponent.html">React.Component.PaymentsComponent</a></li>
+                                <li><a href="../classes/React.Component.PaymentsList.html">React.Component.PaymentsList</a></li>
+                                <li><a href="../classes/React.Component.PaymentsTable.html">React.Component.PaymentsTable</a></li>
+                                <li><a href="../classes/React.Component.PaymentsView.html">React.Component.PaymentsView</a></li>
+                                <li><a href="../classes/React.Component.SettingsView.html">React.Component.SettingsView</a></li>
+                                <li><a href="../classes/React.Component.SignUpForm.html">React.Component.SignUpForm</a></li>
+                                <li><a href="../classes/React.Component.SummaryInfo.html">React.Component.SummaryInfo</a></li>
+                                <li><a href="../classes/React.Component.TodoItem.html">React.Component.TodoItem</a></li>
+                                <li><a href="../classes/React.Component.TodoList.html">React.Component.TodoList</a></li>
+                                <li><a href="../classes/React.Component.ToggleButton.html">React.Component.ToggleButton</a></li>
+                                <li><a href="../classes/React.Component.Transaction.html">React.Component.Transaction</a></li>
+                                <li><a href="../classes/User.html">User</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: js/components/PaymentForm.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+import React, {Component} from &#x27;react&#x27;;
+import User from &#x27;../User.js&#x27;;
+import ReactDOM from &#x27;react-dom&#x27;;
+import Formsy from &#x27;formsy-react&#x27;;
+import Payment from &#x27;../Payment.js&#x27;;
+import DBManager from &#x27;../dbManager.js&#x27;;
+import Divider from &#x27;material-ui/Divider&#x27;;
+import MenuItem from &#x27;material-ui/MenuItem&#x27;;
+import RaisedButton from &#x27;material-ui/RaisedButton&#x27;;
+import DatePicker from &#x27;material-ui/DatePicker&#x27;;
+import {FormsyText, FormsyRadio,FormsyRadioGroup,FormsySelect,FormsyDate} from &#x27;formsy-material-ui/lib&#x27;;
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from &#x27;material-ui/Card&#x27;;
+
+const style = {
+  paymentbox: {
+    width:256,
+    minHeight:384,
+    textAlign:&#x27;left&#x27;,
+    padding:&#x27;12px&#x27;,
+  },
+  paymentbody: {
+    minHeight:&#x27;80px&#x27;,
+    borderRadius: &#x27;6px&#x27;,
+    padding:&#x27;6px&#x27;,
+    backgroundColor:&#x27;rgba(135,125,102,0.1)&#x27;,
+    border:&#x27;2px solid rgba(224, 224, 224,0.8)&#x27;,
+  },
+};
+/**
+ * Represents a PaymentForm.
+ *
+ * @class React.Component.PaymentForm
+ * @extends React.Component
+ */
+
+export default class PaymentForm extends React.Component {
+    /**
+     * Constructs a Payment Form.
+     *
+     * @method constructor
+     * @constructor
+     */
+    constructor() {
+        super();
+
+        this.state = { items: [] };
+
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.setTenantsList = this.setTenantsList.bind(this);
+    };
+
+    /**
+     * Adds a Payment to the database.
+     *
+     * @method addPayment
+     * @param {Object} e - The data sent on form submission
+     */
+    addPayment(e){
+        var manager = new DBManager();
+        if (e.userPos == &quot;loaner&quot;){
+          console.log(&quot;user is loaner&quot;);
+          manager.getUser().then(function(user){
+            var uid = user.getUserID();
+            console.log(&quot;uid: &quot;,uid);
+            var payment = new Payment(e.paymentAmount,uid,e.otherPos, new Date(),null,e.dueDate,e.paymentDescription,e.paymentCategory,e.recurringPeriod);
+            manager.addPayment(payment);
+          });
+        }
+        else{
+          console.log(&quot;user is loanee&quot;);
+          manager.getUser().then(function(user){
+            var uid = user.getUserID();
+            var payment = new Payment(e.paymentAmount, e.otherPos, uid, new Date(),null,e.dueDate,e.paymentDescription,e.paymentCategory,e.recurringPeriod);
+            manager.addPayment(payment);
+          });
+        }
+        //var payment = new Payment(e.paymentAmount,e.loaner,e.loanee, new Date(), null, e.dueDate, e.paymentDescription,e.paymentCategory,e.recurringPeriod);
+        //manager.addPayment(payment);
+        console.log(&quot;added payment&quot;);
+        //}.bind(this));
+    }
+
+    /**
+     * Gets the initial state.
+     *
+     * @method getInitialState
+     */
+    getInitialState(){
+      return{
+        validateAmount: true,
+      };
+    }
+
+    /**
+     * Enables amount validation.
+     *
+     * @method enableAmountValidation
+     */
+    enableAmountValidation(){
+      this.setState({
+        validateAmount: true,
+      });
+    }
+
+    /**
+     * Disables amount validation.
+     *
+     * @method disableAmountValidation
+     */
+    disableAmountValidation(){
+      this.setState({
+        validateAmount: false,
+      });
+    }
+
+    /**
+     * Sets tenant list in state.
+     *
+     * @method setTenantsList
+     */
+    setTenantsList() {
+      var db = new DBManager();
+      var tenants = [];
+      db.getApartment().then(function(apt) {
+        var tenantIDs = apt.getTenantIDs();
+        console.log(tenantIDs);
+        tenantIDs.forEach(function (tenantID) {
+            db.getUser(tenantID).then(function (user) {
+                db.getUser().then(function (curUser) {
+                  if(curUser.getUserID() != user.getUserID()) {
+                    tenants.push(user);
+                    this.setState({items:tenants});
+                  }
+                }.bind(this))
+            }.bind(this))
+        }.bind(this))
+      }.bind(this));
+    }
+
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
+    componentDidMount() {
+      this.setTenantsList();
+    }
+
+    /**
+     * Renders a Balance between two users.
+     *
+     * @method render
+     */
+    render() {
+        return (
+            &lt;div style={style.paymentbox}&gt;
+            &lt;CardTitle title=&quot;Create a Payment&quot; /&gt;
+            &lt;Divider /&gt;
+
+            &lt;Formsy.Form ref=&quot;addPayment&quot;
+                onValidSubmit={this.addPayment} &gt;
+
+                &lt;FormsyText
+                  required={true}
+                  name=&quot;paymentAmount&quot;
+                  onBlur={this.enableAmountValidation}
+                  onFocus={this.disableAmountValidation}
+                  validations={this.state.validateAmount ? {isFloat:true} : {isExisty:true}}
+                  validationError=&quot;Please provide a valid number&quot;
+                  floatingLabelText={&#x27;Enter amount&#x27;}
+                /&gt;
+                &lt;FormsyText
+                    name=&quot;paymentDescription&quot;
+                    floatingLabelText={&#x27;Enter description&#x27;}
+                    multiLine={true}
+                    rows={2}
+                    required={true} /&gt;
+
+                &lt;FormsyRadioGroup
+                    name=&quot;paymentCategory&quot;
+                    defaultSelected=&quot;groceries&quot;&gt;
+                      &lt;FormsyRadio
+                        value=&quot;groceries&quot;
+                        label=&quot;Groceries&quot;
+                      /&gt;
+                      &lt;FormsyRadio
+                        value=&quot;meals&quot;
+                        label=&quot;Meals&quot;
+                      /&gt;
+                      &lt;FormsyRadio
+                        value=&quot;rent&quot;
+                        label=&quot;Rent or Utilities&quot;
+                      /&gt;
+                      &lt;FormsyRadio
+                        value=&quot;misc&quot;
+                        label=&quot;Misc&quot;
+                      /&gt;
+                &lt;/FormsyRadioGroup&gt;
+
+                &lt;FormsySelect
+                  name=&quot;userPos&quot;
+                  required
+                  floatingLabelText=&quot;Are you the loaner or loanee&quot;
+                  ref=&quot;loanOption&quot;
+                &gt;
+                  &lt;MenuItem value={&#x27;loaner&#x27;} primaryText=&quot;Loaner&quot; /&gt;
+                  &lt;MenuItem value={&#x27;loanee&#x27;} primaryText=&quot;Loanee&quot; /&gt;
+                &lt;/FormsySelect&gt;
+
+                &lt;FormsySelect
+                  name=&quot;otherPos&quot;
+                  required
+                  floatingLabelText=&quot;Choose a roommate&quot;
+                &gt;
+                  {this.state.items.map(
+                    function(tenant) {
+                      return (&lt;MenuItem value={tenant.getUserID()} primaryText={tenant.getName()}/&gt;);
+                    }
+                  )}
+                &lt;/FormsySelect&gt;
+
+                &lt;FormsyDate
+                  name=&quot;dueDate&quot;
+                  required
+                  validations={{
+                    checkDate: function(values,chosenDate){
+                      if (chosenDate != null){
+                        var date = (new Date(chosenDate.toDateString()+&quot; 12:00:00 +0000&quot;)).toISOString().substring(0,10);
+                        var curDate = new Date().toISOString().substring(0,10);
+                        return curDate &lt;= date ? true : &#x27;Invalid date: cannot choose date from past&#x27;;
+                      }
+                    }
+                  }}
+                  floatingLabelText=&quot;Due Date&quot;
+                /&gt;
+
+                &lt;FormsySelect
+                  name=&quot;recurringPeriod&quot;
+                  required
+                  floatingLabelText=&quot;Select recurring period&quot;
+                &gt;
+                  &lt;MenuItem value={&#x27;once&#x27;} primaryText=&quot;Once&quot; /&gt;
+                  &lt;MenuItem value={&#x27;weekly&#x27;} primaryText=&quot;Weekly&quot; /&gt;
+                  &lt;MenuItem value={&#x27;biweekly&#x27;} primaryText=&quot;Biweekly&quot; /&gt;
+                  &lt;MenuItem value={&#x27;monthly&#x27;} primaryText=&quot;Monthly&quot; /&gt;
+                &lt;/FormsySelect&gt;
+
+                &lt;RaisedButton fullWidth={false} type=&quot;submit&quot; label=&quot;Add Payment&quot; primary={false} secondary={true} /&gt;
+            &lt;/Formsy.Form&gt;
+
+            &lt;/div&gt;
+        );
+    }
+}
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
