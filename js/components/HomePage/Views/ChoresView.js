@@ -149,8 +149,7 @@ export default class ChoresView extends React.Component {
         var completeChoresList = this.state.completeChoresList;
         var incompleteChoresList = this.state.incompleteChoresList;
         
-        if (this.state.allChoresList &&
-            this.state.allChoresList.length > 0)
+        if (this.state.allChoresList)
             return (
                 <div>
                     <ChoreCardGrid 

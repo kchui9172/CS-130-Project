@@ -377,23 +377,21 @@ export default class DBManager {
         console.log("in db manager add payment");
         var paymentsRef = firebase.database().ref('payments');
         var newPaymentRef = paymentsRef.push();
+        var paymentID = newPaymentRef.getKey();
+        payment.setPaymentID(paymentID);
         newPaymentRef.set(JSON.stringify(payment));
-        this.getUser().then(function (user) {
-            var context = this;
-            var pay1 = payment;
-            user.addPayment(payment);
-            this.updateUser(user);
-            // Switch loaner and loanee and save to other user
-            var loanerID = payment.getLoaner();
-            payment.setLoanerID(payment.getLoanee());
-            payment.setLoaneeID(loanerID);
-            console.log("loaner: ", payment.getLoaner());
-            console.log("loanee: ", payment.getLoanee());
-            this.getUser(payment.getLoaner()).then(function (user2) {
-                user2.addPayment(payment);
+        console.log("Added Payment to Table.");
+        var context = this;
+        this.getUser(payment.getLoaner()).then(function (user1) {
+            user1.addPayment(paymentID);
+            context.updateUser(user1);
+            console.log("Added Payment to User1.");
+            context.getUser(payment.getLoanee()).then(function (user2) {
+                user2.addPayment(paymentID);
                 context.updateUser(user2);
+                console.log("Added Payment to User2.");
             });
-        }.bind(this));
+        });
     }
 
     /**

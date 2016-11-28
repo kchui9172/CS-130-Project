@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import Formsy from 'formsy-react';
 import { FormsyToggle } from 'formsy-material-ui/lib';
 
-import ToggleButton from './ToggleButton.js'
+import DBManager from '../dbManager.js';
+import ToggleButton from './ToggleButton.js';
 
 /**
  * Represents a Chore Row.
@@ -22,7 +23,59 @@ export default class ChoreRow extends React.Component {
      */
     constructor(props) {
         super(props);
-    };
+
+        this.state = {
+            assigneeName: "",
+            creatorName: ""
+        };
+
+        this.setAssigneeName = this.setAssigneeName.bind(this);
+        this.setCreatorName = this.setCreatorName.bind(this);
+    }
+
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
+    componentDidMount() {
+        this.setAssigneeName();
+        this.setCreatorName();
+    }
+
+    /**
+     * Sets the assignee name in state.
+     *
+     * @method setAssigneeName
+     */
+    setAssigneeName() {
+        var manager = new DBManager();
+        manager.getUser(this.props.chore.getAssignment()).then(function(user) {
+            this.setState({assigneeName: user.getName()});
+        }.bind(this));
+    }
+    
+    /**
+     * Sets the creator name in state.
+     *
+     * @method setCreatorName
+     */
+    setCreatorName() {
+        var manager = new DBManager();
+        manager.getUser(this.props.chore.getCreator()).then(function(user) {
+            this.setState({creatorName: user.getName()});
+        }.bind(this));
+    }
+
+    /**
+     * Gets Date from DateTime string.
+     *
+     * @method getDateOnly
+     * @param {string} dateTime - The DateTime to extract from
+     */
+    getDateOnly(dateTime) {
+        return dateTime.split('T')[0];
+    }
 
     /**
      * Renders a Chore Row.
@@ -44,12 +97,12 @@ export default class ChoreRow extends React.Component {
                 </td>
                 <td>{chore.getChoreID()}</td>
                 <td>{chore.getCategory()}</td>
-                <td>{chore.getCreator()}</td>
-                <td>{chore.getDeadline()}</td>
+                <td>{this.state.creatorName}</td>
+                <td>{this.getDateOnly(chore.getDeadline())}</td>
                 <td>{chore.getDetails()}</td>
-                <td>{chore.getAssignment()}</td>
-                <td>{chore.getCreationDate()}</td>
-                <td>{chore.getCompletionDate()}</td>
+                <td>{this.state.assigneeName}</td>
+                <td>{this.getDateOnly(chore.getCreationDate())}</td>
+                <td>{this.getDateOnly(chore.getCompletionDate())}</td>
             </tr>
         );
     }

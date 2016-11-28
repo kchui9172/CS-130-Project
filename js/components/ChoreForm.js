@@ -49,6 +49,11 @@ export default class ChoreForm extends React.Component {
             numericError: "Please provide a number"
         };
 
+        this.state = {
+            tenants: []
+        };
+
+        this.setTenantsList = this.setTenantsList.bind(this);
         this.enableSubmit = this.enableSubmit.bind(this);
         this.disableSubmit = this.disableSubmit.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -59,6 +64,33 @@ export default class ChoreForm extends React.Component {
         this.choreIterator = 0;
     }
 
+    /**
+     * Function called when component mounts.
+     *
+     * @method componentDidMount
+     */
+    componentDidMount() {
+        this.setTenantsList();
+    }
+
+    /**
+     * Sets the tenants list in state.
+     *
+     * @method setTenantsList
+     */
+    setTenantsList() {
+        var manager = new DBManager();
+        var tenants = [];
+        manager.getApartment().then(function(apartment) {
+            var tenantIDs = apartment.getTenantIDs();
+            tenantIDs.forEach(function(tenantID) {
+                manager.getUser(tenantID).then(function(user) {
+                    tenants.push(user);
+                    this.setState({tenants: tenants});
+                }.bind(this));
+            }.bind(this));
+        }.bind(this));
+    }
 
     /**
      * Enables form submission.
@@ -171,9 +203,12 @@ export default class ChoreForm extends React.Component {
                 var newChores = [];
                 do {
                     var assignedDueDate = new Date();
+                    assignedDueDate.setFullYear(firstDueDate.getFullYear());
+                    assignedDueDate.setMonth(firstDueDate.getMonth());
                     assignedDueDate.setDate(firstDueDate.getDate() + (newChores.length * repeatFrequency));
-                    newChores.push(new Chore(values[0], values[1], name, assignedDueDate, details, assignee));
-                    console.log('evaluating chore for:',values[0], values[1]);
+                    var newChore = new Chore(values[0], values[1], name, assignedDueDate, details, assignee);
+                    newChores.push(newChore);
+                    console.log(newChore);
                 } while (newChores.length < numberOccurrences);
                 this.loopAddChores(newChores);
             });
