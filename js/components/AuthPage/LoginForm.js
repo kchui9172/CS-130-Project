@@ -203,9 +203,6 @@ const LoginForm = React.createClass({
         <img style={style.image} src={require('../../../static/assets/loginForm.jpg')} />
       </CardMedia>
       <CardTitle title="Hello Again!" subtitle="Login to your account" />
-      <CardMedia>
-        <img style={style.image} src={require('../../../static/assets/loginForm.jpg')} />
-      </CardMedia>
       <CardText style={style.contents}>
       <Formsy.Form ref="login" onValid={this.enableButton} onInvalid={this.disableButton} onValidSubmit={this.submitForm} onInvalidSubmit={this.notifyFormError}>
         <FormsyText required={!this.state.validateEmail} onBlur={this.enableEmailValidation} onFocus={this.disableEmailValidation} name="email" validations={this.state.emailInvalid ? {isUndefined:false} : this.state.validateEmail ? {isEmail:true,} : {isExisty:true}} validationError="Please provide a valid email address" floatingLabelText={'Email'} disabled={this.state.hasSubmitted} />

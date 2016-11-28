@@ -3,6 +3,7 @@ import FlatButton from 'material-ui/RaisedButton';
 
 import FAB from '../primitives/FAB.js';
 import Loading from '../primitives/Loading.js';
+import Subheader from 'material-ui/Subheader';
 import NavDrawer from '../primitives/NavDrawer.js';
 
 import AddAptDialog from './AddAptDialog.js';
@@ -25,6 +26,9 @@ import Settings from 'material-ui/svg-icons/action/settings';
 
 import {colors} from '../../config/MUI.js';
 import DBManager from '../../dbManager.js';
+
+import Avatar from 'material-ui/Avatar';
+import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 
 const style = {
   mainview: {
@@ -94,10 +98,26 @@ export default class HomePage extends React.Component {
       aptModal: false,
       menuFAB:  false,
       editorView: null,
-      viewIndex:0,
+      viewIndex:1,
+      roommates:[],
     };
   };
 
+  populateRoommates() {
+    var roomies = [];
+    var manager = new DBManager();
+    manager.getUser().then(function(user) {
+        manager.getApartment().then(function(apt) {
+            apt.getTenantIDs().forEach(function (value) {
+                manager.getUser(value).then(function (usr) {
+                    var tenant = (<ListItem primaryText={usr.getName()} secondaryText={usr.getEmail()} insetChildren={true} rightAvatar={<Avatar color={null} backgroundColor={colors.profile} icon={<AccountCircle />}/>}/>);
+                    roomies.push(tenant);
+                    this.setState({roommates: roomies});
+                }.bind(this));
+            }.bind(this));
+        }.bind(this));
+    }.bind(this));
+  };
   /**
    * Function called when component mounts.
    *
@@ -107,6 +127,7 @@ export default class HomePage extends React.Component {
     this.setState({
           loading: false,
     });
+    this.populateRoommates();
   }
 
   /**
@@ -144,9 +165,12 @@ export default class HomePage extends React.Component {
           <ListItem onTouchTap={function(){this.setState({viewIndex: 1})}.bind(this)} value={1} primaryText="Messages" leftIcon={<Email     color={colors.message} />} style={style.firstItem} />
           <ListItem onTouchTap={function(){this.setState({viewIndex: 2})}.bind(this)} value={2} primaryText="Chores"   leftIcon={<EventNote color={colors.chore}   />}  />
           <ListItem onTouchTap={function(){this.setState({viewIndex: 3})}.bind(this)} value={3} primaryText="Payments" leftIcon={<Payment   color={colors.payment} />}  />
-        <Divider />
           <ListItem onTouchTap={function(){DBManager.LogOut()}}                       value={4} primaryText="Logout"   leftIcon={<Exit      color={colors.red}     />} />
-        </SelectableList>
+          </SelectableList>
+          <Divider inset={true} />
+          <List>
+          {this.state.roommates}
+          </List>
         </NavDrawer>
         <FAB view={this.state.viewIndex}/>
         <div style={style.mainview}>{currentView}</div>
@@ -156,7 +180,8 @@ export default class HomePage extends React.Component {
     );
   }
 }
-
+//<Divider />
+//<Divider inset={true} />
 //this.setState({mainView: <MessagesView />})
 // else if (this.state.viewIndex == 4)
 //   currentView = <SettingsView />;

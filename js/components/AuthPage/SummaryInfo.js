@@ -8,7 +8,9 @@ import FloatingCard from '../primitives/FloatingCard.js';
 const style = {
   text: {
     textAlign:'justify',
-    padding:'20px',
+    padding:'32px',
+    fontSize:'16px',
+    lineHeight:'16px',
   },
 }
 const styleBig = {

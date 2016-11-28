@@ -5,7 +5,10 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FloatingCard from './primitives/FloatingCard.js';
 import Time from 'react-time';
 import Chip from 'material-ui/Chip';
-//import {colors} from '../../../config/MUI.js';
+import {colors} from '../config/MUI.js';
+
+import Avatar from 'material-ui/Avatar';
+import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 
 const style = {
   text: {
@@ -17,10 +20,9 @@ const style = {
     boxShadow:'0 1px 2px rgba(0,0,0,0.25)',
   },
   title:{
-    overflowWrap:'break-word',
-    paddingTop:'0px',
-    paddingBottom:'0px',
-    textAlign: 'center'
+    textAlign: 'left',
+  },
+  subtitle:{
   },
   header:{
     paddingBottom:'0px',
@@ -113,12 +115,21 @@ export default class RoommateCard extends React.Component {
                   "woot"
                 </FloatingCard>
             );*/
-  
+
             var contents = <div>
-                            <CardTitle style={style.title} title={this.props.name} />
-                              <CardMedia>
-                                <img style={style.image} src={require('../../static/assets/spongebob.jpg')} />
-                              </CardMedia></div>;
+                              <CardHeader
+                                titleStyle={style.title}
+                                title={this.props.name}
+                                subtitle={"userl2@mcil.com"}
+                                subtitleStyle={style.subtitle}
+                                showExpandableButton={true}
+                                expandable={true}
+                                avatar={<Avatar color={null} backgroundColor={colors.profile} icon={<AccountCircle />} />}
+                              />
+                            <Divider />
+                            <CardText style={style.text} >
+                            </CardText>
+                          </div>;
             return(
               <FloatingCard style={style.card}>
                 {contents}
@@ -126,4 +137,6 @@ export default class RoommateCard extends React.Component {
             )
     }
 };
-
+// closeIcon={<Avatar color={null} backgroundColor={colors.profile} icon={<AccountCircle />} />}
+// openIcon={<Avatar color={null} backgroundColor={colors.profile} icon={<AccountCircle />} />}
+// <CardTitle  style={style.text} title={"Details"} />

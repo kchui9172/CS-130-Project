@@ -37,8 +37,8 @@ export default class NavDrawer extends React.Component {
    *
    * @method onMouseOver
    */
-  onMouseOver = () => {this.setState({styles: {width:'256px',transition: 'width 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',}})};
-  
+  onMouseOver = () => {this.setState({styles: {width:'320px',transition: 'width 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',}})};
+
   /**
    * Handles event where mouse moves out of Navigation Drawer.
    *
