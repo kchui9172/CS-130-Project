@@ -12,8 +12,22 @@ import Divider from 'material-ui/Divider';
 import Apartment from '../../../Apartment.js';
 import User from '../../../User.js';
 import Chip from 'material-ui/Chip';
+import RoommateCardRow from '../../RoommateCardRow.js';
+import RoommateCard from '../../RoommateCard.js';
+//import NavBar from '../../NavBar.js';
 
 const style={
+  title: {
+    overflowWrap:'break-word',
+    textAlign: 'center',
+  },
+  text:{
+    textAlign:'center',
+    paddingLeft:'16px',
+  },
+  chip2:{
+    margin:'6px',
+  },
   messages:{
     backgroundColor:colors.message,
   },
@@ -26,7 +40,7 @@ const style={
  */
 export default class HomeView extends React.Component {
   /**
-   * Constructs a Payments View.
+   * Constructs a Home View.
    *
    * @method constructor
    * @constructor
@@ -37,7 +51,7 @@ export default class HomeView extends React.Component {
       super(props, context);
       this.state = {
         userName: "",
-        address: "715 Gayle Ave. Los Angeles",
+        address: "715 Gayley Ave. Los Angeles",
         tenants: [],
       };
   }
@@ -70,32 +84,89 @@ export default class HomeView extends React.Component {
    *
    * @method render
    */
+
   render() {
       var name = this.state.userName;
       var title = "Welcome " + name +"!";
       var i = this.state.tenants.indexOf(name);
       if (i > -1) this.state.tenants.splice(i, 1);
       var _chips = [];
-      var tenants = this.state.tenants.forEach(function(tenant){_chips.unshift(<Chip>{tenant}</Chip>);});
+      var tenants = this.state.tenants.forEach(function(tenant){_chips.unshift(<Chip style={style.chip2}>{tenant}</Chip>);});
 
   return(
     <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >
           <Row>
             <Column>
               <Card>
-                <CardTitle title={title}
+                <CardTitle style={style.title} title={title}
                     subtitle={this.state.address}
                 />
                 <Divider />
-                <h2> Roommmates </h2>
-                {_chips}
+                <CardText style = {style.text}>
+                <div>
+                  <h1> Roommates </h1>
+                    {_chips}
+                </div>
+                </CardText>
                 </Card>
             </Column>
           </Row>
         </Grid>
     );
   }
+
+  /*render() {
+      var name = this.state.userName;
+      var title = "Welcome " + name +"!";
+      var i = this.state.tenants.indexOf(name);
+      if (i > -1) this.state.tenants.splice(i, 1);
+      var _chips = [];
+      var tenants = this.state.tenants.forEach(function(tenant){_chips.unshift(<Chip style={style.chip2}>{tenant}</Chip>);});
+      var list = [];
+      list.push(this.state.tenants);
+    
+
+      if (list && list.length > 0){
+        return(
+          <div>
+            <Grid breakpoints={[1]} flexible={true} columnWidth={960} gutterWidth={20} onChange={breakpoint => {}} >
+                <Row>
+                  <Column>
+                    <Card>
+                      <CardTitle style={style.title} title={title}
+                          subtitle={this.state.address}
+                      />
+                      <Divider />
+                      <CardText style = {style.text}>
+                      <div> 
+                        <h1> Roommates </h1>
+                      </div>
+                      </CardText>
+                      </Card>
+                  </Column>
+                </Row>
+            </Grid>
+
+            <Divider />
+            <Grid breakpoints={[4]} flexible={true} columnWidth={280} gutterWidth={20} onChange={breakpoint => {}} >
+              {list.map(
+                  function (roommate) {
+                    return(
+                      <RoommateCardRow
+                        roommate={roommate}
+                      />
+                    );
+                  }.bind(this))
+              }
+            </Grid>
+          </div>
+          );
+      }else{
+        return null;
+      }
+  }*/
 };
+
 
 // <br/>
 // <Row>
