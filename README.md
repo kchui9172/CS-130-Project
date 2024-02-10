@@ -34,12 +34,3 @@ directory and will recursively search and run the `.js` files in the directory.
 
 Additional tests were created using Selenium, but have become outdated as the UI has changed
 drastically and quickly. Stay tuned for those!
-
-Known Bugs ::
--------------
-* In some cases, webpack might throw a build-error like so : 
-							    'ERROR in ./~/react-tap-event-plugin/src/injectTapEventPlugin.js
-Module not found: Error: Cannot resolve module 'react/lib/EventPluginHub' in /mnt/selfBackup/CS-130-Project/node_modules/react-tap-event-plugin/src
- @ ./~/react-tap-event-plugin/src/injectTapEventPlugin.js 23:2-37'
-
-We are still investigating the cause (and solution) for this bug. Stay tuned ~
